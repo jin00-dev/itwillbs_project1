@@ -75,14 +75,78 @@
 	</section>
 
 
-	<!-- 여기 faq게시판 꾸며아함. -->
+		<!-- 여기 faq게시판 꾸며아함. -->
 
 	<div class="container">
-		<h1>
-			여기 faq게시판 꾸미는자리<br> 밑에 footer 알아서 내려감
-		</h1>
+<!-- 		<h1> -->
+<!-- 			여기 faq게시판 꾸미는자리<br> 밑에 footer 알아서 내려감 -->
+<!-- 		</h1> -->
+		<script type="text/javascript">
+			function qnaBoard() {
+				window.open("./qnaBoard.bo","_black","width=500, height=500");
+			}
+			function qnaBoardList() {
+				window.open("./qnaBoardList.bo","_self");
+			}
+
+		</script>
+		<div>
+  			<input type="button" onclick="qnaBoard();" value="1:1 문의"/>
+  			<input type="button" onclick="qnaBoardList();" value="1:1 문의내역"/>
+  		</div>
+  		<h1>자주 묻는 질문</h1>
+    <div class="faq-container">
+      <div class="faq">
+        <h3 class="faq-title">자주 묻는 질문 1</h3>
+
+        <p class="faq-text">대답 1</p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h3 class="faq-title">자주 묻는 질문 2</h3>
+
+        <p class="faq-text">대답 2</p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h3 class="faq-title">자주 묻는 질문 3</h3>
+
+        <p class="faq-text">대답 3</p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h3 class="faq-title">자주 묻는 질문 4</h3>
+
+        <p class="faq-text">대답 4</p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+		
 	</div>
-	
+	<script type="text/javascript">
+		const toggles = document.querySelectorAll(".faq-toggle");
+
+		toggles.forEach((toggle) => {
+	  	toggle.addEventListener("click", () => {
+	   		 toggle.parentNode.classList.toggle("active");
+	  		});
+		});
 	<!-- footer아래로는 코드 금지 -->
 	
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
