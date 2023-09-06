@@ -17,7 +17,7 @@ public class UserDAO {
 	String sql;
 	
 	public int rogin( String id, String pw ) {
-		sql = "select id from user where id=? and pass=?";
+		sql = "select user_id from user where user_id=? and user_pass=?";
 		try {
 			conn = con.getConnection();
 			pstmt = conn.prepareStatement(sql);
