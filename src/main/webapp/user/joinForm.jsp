@@ -7,13 +7,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>회원가입</title>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/global.css" rel="stylesheet">
-<link href="../css/index.css" rel="stylesheet">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/global.css" rel="stylesheet">
+<link href="./css/index.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
 	rel="stylesheet">
-<script src="../js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="./css/joinPage.css">
+<script src="./js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
 	<section id="top">
@@ -79,12 +81,24 @@
 
 	<!-- 여기 회원가입 페이지 꾸며아함. -->
 
-	<div class="container">
-		<h1>
-			여기 회원가입페이지 꾸미는자리<br> 밑에 footer 알아서 내려감
-		</h1>
-	</div>
-	`
+	<!--center -------------------------------------------------------------  -->
+<section id="center" class="center_o pt-2 pb-2">
+	<form action="./MemberJoinAction.me" method="post">
+		<fieldset id="join_wrap">
+			<legend>회원가입</legend>
+				<label>아이디 :</label><input type="text"  name="id"> <br>
+				<label>비밀번호 :</label> <input type="password" name="pw"> <br>
+				<label>아이디 힌트 :</label> <input type="text"  name="idHint"> <br>
+				<label>비밀번호 힌트 :</label> <input type="text"  name="pwHint"> <br>
+				
+				<input type="submit" value="회원 가입">
+		</fieldset>
+	</form>
+
+	<hr>
+ </section>
+
+<!--center end-------------------------------------------------------------  -->
 	<!-- footer아래로는 코드 금지 -->
 
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
