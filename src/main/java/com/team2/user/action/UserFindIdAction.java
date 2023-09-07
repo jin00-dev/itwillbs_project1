@@ -9,17 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class UserFindIdAction implements Action{
 
 	@Override
-	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) {
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 		UserDAO dao =  new UserDAO();
 		UserDTO dto =  new UserDTO();
 		
-		ActionFoward af = new ActionFoward();
+		ActionForward af = new ActionForward();
 		List<String> list = new ArrayList<String>();
 		
 		dto.setIdHint( req.getParameter("idHint") );
