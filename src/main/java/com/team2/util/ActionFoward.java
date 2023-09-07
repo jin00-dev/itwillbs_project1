@@ -2,7 +2,7 @@ package com.team2.util;
 
 public class ActionFoward {
 	private String path;
-	private boolean pathType;
+	private boolean isRedirect;
 	
 	public String getPath() {
 		return path;
@@ -10,17 +10,16 @@ public class ActionFoward {
 	public void setPath(String path) {
 		this.path = path;
 	}
-	public boolean isPathType() {
-		return pathType;
+	public boolean isRedirect() {
+		return isRedirect;
 	}
-	public void setPathType(boolean pathType) {
-		this.pathType = pathType;
+	public void setRedirect(boolean isRedirect) {
+		this.isRedirect = isRedirect;
 	}
 	
 	@Override
 	public String toString() {
-		return "ActionFoward [path=" + path + ", pathType=" + pathType + "]";
+		return "ActionFoward [path=" + path + ", isRedirect=" + isRedirect + "]";
 	}
-	
 	
 }

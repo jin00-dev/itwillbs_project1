@@ -125,7 +125,7 @@
 		
 		<fieldset class="id_pw_wrap">
 			<legend >비회원 예매</legend>
-			<form action="./NonMemberLoginAction.me"  method="post">
+			<form action="./NonMemberLoginAction.me" method="post">
 			
 					<input type="text" name="id" placeholder="아이디" class="id_pw"> <br>
 					<input type="text" name="phone" placeholder="휴대폰 번호" class="id_pw"> <br>

@@ -42,7 +42,7 @@ public class UserDAO {
 		try {
 			conn = con.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m.getIdHint());
+//			pstmt.setString(1, m.getIdHint());
 			rs = pstmt.executeQuery();
 			
 			list = new ArrayList<String>();
@@ -68,8 +68,8 @@ public class UserDAO {
 		try {
 			conn = con.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m.getId());
-			pstmt.setString(2, m.getPwHint());
+//			pstmt.setString(1, m.getId());
+//			pstmt.setString(2, m.getPwHint());
 			rs = pstmt.executeQuery();
 			
 			list = new ArrayList<String>();
@@ -88,21 +88,24 @@ public class UserDAO {
 	}
 	
 	public int join( UserDTO m ) {
-		sql = "insert into user values(?,?,?,?,default)";
+		sql 
+		= "insert into user (user_id,user_name,user_pass,user_phone,user_regdate,last_access,user_type) values(?,?,?,?,default,default,0)";
 		
 		conn  = con.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m.getId() );
-			pstmt.setString(2, m.getPw() );
-			pstmt.setString(3, m.getIdHint() );
-			pstmt.setString(4, m.getPwHint() );
+			pstmt.setString(1, m.getUser_id() );
+			pstmt.setString(2, m.getUser_name() );
+			pstmt.setString(3, m.getUser_pass() );
+			pstmt.setString(4, m.getUser_phone() );
 			
 			return pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return -1;
+		}finally {
+			con.closeDB(conn, rs, pstmt);
 		}
 		
 	}

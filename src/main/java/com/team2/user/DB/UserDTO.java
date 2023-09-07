@@ -1,50 +1,80 @@
 package com.team2.user.DB;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class UserDTO {
-	private String id;
-	private String pw;
-	private String idHint;
-	private String pwHint;
-	private Date regDate;
+	private String user_id;
+	private String user_name;
+	private String user_pass;
+	private String user_phone;
+	private Timestamp user_regdate;
+	private int user_orderCount;
+	private String user_car_num;
+	private String user_car_type;
+	private Timestamp last_access;
+	private int user_type;
 	
-	public String getId() {
-		return id;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
-	public String getPw() {
-		return pw;
+	public String getUser_name() {
+		return user_name;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
-	public String getIdHint() {
-		return idHint;
+	public String getUser_pass() {
+		return user_pass;
 	}
-	public void setIdHint(String idHint) {
-		this.idHint = idHint;
+	public void setUser_pass(String user_pass) {
+		this.user_pass = user_pass;
 	}
-	public String getPwHint() {
-		return pwHint;
+	public String getUser_phone() {
+		return user_phone;
 	}
-	public void setPwHint(String pwHInt) {
-		this.pwHint = pwHInt;
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public Timestamp getUser_regdate() {
+		return user_regdate;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setUser_regdate(Timestamp user_regdate) {
+		this.user_regdate = user_regdate;
+	}
+	public int getUser_orderCount() {
+		return user_orderCount;
+	}
+	public void setUser_orderCount(int user_orderCount) {
+		this.user_orderCount = user_orderCount;
+	}
+	public String getUser_car_num() {
+		return user_car_num;
+	}
+	public void setUser_car_num(String user_car_num) {
+		this.user_car_num = user_car_num;
+	}
+	public String getUser_car_type() {
+		return user_car_type;
+	}
+	public void setUser_car_type(String user_car_type) {
+		this.user_car_type = user_car_type;
+	}
+	public Timestamp getLast_access() {
+		return last_access;
+	}
+	public void setLast_access(Timestamp last_access) {
+		this.last_access = last_access;
+	}
+	public int getUser_type() {
+		return user_type;
+	}
+	public void setUser_type(int user_type) {
+		this.user_type = user_type;
 	}
 	
-	@Override
-	public String toString() {
-		return "MemberDTO [id=" + id + ", pw=" + pw + ", idHint=" + idHint + ", pwHInt=" + pwHint + ", regDate="
-				+ regDate + "]";
-	}
-	
+		
 	
 }

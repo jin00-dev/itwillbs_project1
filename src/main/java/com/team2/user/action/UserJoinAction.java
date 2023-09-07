@@ -16,21 +16,23 @@ public class UserJoinAction implements Action {
 
 	@Override
 	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+//		req.setCharacterEncoding("UTF-8");
+		
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
 		
-		dto.setId( req.getParameter("id") );
-		dto.setPw( req.getParameter("pw") );
-		dto.setIdHint( req.getParameter("idHint") );
-		dto.setPwHint( req.getParameter("pwHint") );
+		dto.setUser_id(req.getParameter("user_id"));
+		dto.setUser_pass(req.getParameter("user_pass"));
+		dto.setUser_name(req.getParameter("user_name"));
+		dto.setUser_phone(req.getParameter("user_phone"));
 		
 		int result = dao.join(dto);
 		
-		PrintWriter out = resp.getWriter();
 		resp.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = resp.getWriter();
 		
 		
-		if(result == -1) {
+		if(result == -1 || result == 0) {
 			out.println("<script>");
 			out.println("alert('입력 오류');");
 			out.println("history.back();");
@@ -38,7 +40,7 @@ public class UserJoinAction implements Action {
 		}else {
 			out.println("<script>");
 			out.println("alert('회원가입 성공');");
-			out.println("location.href='./MemberLogin.me';");
+			out.println("location.href='./UserLogin.me';");
 			out.println("</script>");
 		}
 

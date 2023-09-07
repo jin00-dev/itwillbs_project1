@@ -18,7 +18,7 @@ public class UserLoginAction implements Action {
 			HttpSession se = req.getSession();
 			
 			UserDAO mDAO = new UserDAO();
-			ActionFoward af = new ActionFoward();
+			ActionFoward action = new ActionFoward();
 
 			String id = req.getParameter("id");
 			String pw = req.getParameter("pw");
@@ -26,13 +26,13 @@ public class UserLoginAction implements Action {
 			int result = mDAO.rogin(id, pw);
 			
 			if(result == -1) {
-				af = null;
+				action = null;
 			}else {
 				se.setAttribute("id", id);
-				af.setPath("./Main.me");
-				af.setPathType(true);
+				action.setPath("./Main.me");
+				action.setRedirect(true);
 			}
-			return af;
+			return action;
 			
 	}
 	

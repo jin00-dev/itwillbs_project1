@@ -16,19 +16,19 @@ public class UserFindPwAction implements Action{
 	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) {
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
-		ActionFoward af = new ActionFoward();
+		ActionFoward action = new ActionFoward();
 		
-		dto.setId(req.getParameter("id"));
-		dto.setPwHint(req.getParameter("pwHint"));
+//		dto.setId(req.getParameter("id"));
+//		dto.setPwHint(req.getParameter("pwHint"));
 		
 		List<String> list = dao.findPw(dto);
 		
 		req.setAttribute("pwList", list);
 		
-		af.setPath("./user/findPwView.jsp");
-		af.setPathType(false);
+		action.setPath("./user/findPwView.jsp");
+		action.setRedirect(false);
 		
-		return af;
+		return action;
 	}
 
 }

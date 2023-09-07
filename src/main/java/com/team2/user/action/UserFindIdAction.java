@@ -19,19 +19,19 @@ public class UserFindIdAction implements Action{
 		UserDAO dao =  new UserDAO();
 		UserDTO dto =  new UserDTO();
 		
-		ActionFoward af = new ActionFoward();
+		ActionFoward action = new ActionFoward();
 		List<String> list = new ArrayList<String>();
 		
-		dto.setIdHint( req.getParameter("idHint") );
+//		dto.setIdHint( req.getParameter("idHint") );
 		
 		list = dao.findId(dto);
 		req.setAttribute("idList", list);
 		
-		af.setPath( "./user/findIdView.jsp");
-		af.setPathType(false);
+		action.setPath( "./user/findIdView.jsp");
+		action.setRedirect(false);
 		
 		
-		return af;
+		return action;
 	}
 
 }
