@@ -7,13 +7,37 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>로그인</title>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/global.css" rel="stylesheet">
-<link href="../css/index.css" rel="stylesheet">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/global.css" rel="stylesheet">
+<link href="./css/index.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
 	rel="stylesheet">
-<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="./css/loginPage.css" />
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+<script type="text/javascript">
+    Kakao.init('0d2a9fe9a6518b6101a59a7a94f08950');
+    function kakaoLogin() {
+        Kakao.Auth.login({
+            success: function (response) {
+                Kakao.API.request({
+                    url: '/v2/user/me',
+                    success: function (response) {
+                        alert(JSON.stringify(response))
+                    },
+                    fail: function (error) {
+                        alert(JSON.stringify(error))
+                    },
+                })
+            },
+            fail: function (error) {
+                alert(JSON.stringify(error))
+            },
+        })
+    }
+</script>
 </head>
 <body>
 	<section id="top">
@@ -76,15 +100,47 @@
 	</section>
 
 
-	<!-- 여기 로그인 페이지 꾸며아함. -->
+	<!--center -------------------------------------------------------------  -->
+<section id="center" class="center_o pt-2 pb-2">
+		<fieldset class="id_pw_wrap">
+			<legend >로그인</legend>
+			<form action="./UserLoginAction.me" method="post">
+			
+					<input type="text" name="id" placeholder="아이디" class="id_pw"> <br>
+					<input type="password" name="pw" placeholder="비밀번호" class="id_pw"> <hr>
+				
+				<button type="submit" class="btn_login">
+					<span>로그인</span>
+				</button>
+			</form>
+		
+		<div class="panel_item2">
+			<a href="./UserFindId.me">아이디 찾기</a> |
+			<a href="./UserFindPw.me">비밀번호 찾기</a> |
+			<a href="./UserJoin.me">회원 가입</a> 
+			<hr>
+			<a href="javascript:kakaoLogin()"><img src="./img/kakao_login_large.png" width="80px"/></a>
+		</div>
+		</fieldset>
+		
+		<fieldset class="id_pw_wrap">
+			<legend >비회원 예매</legend>
+			<form action="./NonMemberLoginAction.me"  method="post">
+			
+					<input type="text" name="id" placeholder="아이디" class="id_pw"> <br>
+					<input type="text" name="phone" placeholder="휴대폰 번호" class="id_pw"> <br>
+					<input type="password" name="pw" placeholder="비밀번호" class="id_pw"> <br>
+					<input type="password" name="pwCheck" placeholder="비밀번호 확인" class="id_pw"> <hr>
+				
+				<button type="submit" class="btn_login">
+					<span>와! 비회원 예매</span>
+				</button>
+			</form>
+		</fieldset>
+		<hr>
+ </section>
 
-	<div class="container">
-		<h1>
-			여기 로그인페이지 꾸미는자리<br> 밑에 footer 알아서 내려감
-		</h1>
-	</div>
-	
-	<!-- footer아래로는 코드 금지 -->
+<!--center end-------------------------------------------------------------  -->
 
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">
