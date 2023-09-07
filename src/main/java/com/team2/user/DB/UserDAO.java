@@ -7,14 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.team2.util.ConnectionDB;
-
-public class UserDAO {
-	ConnectionDB con = new ConnectionDB();
-	PreparedStatement pstmt;
-	Connection conn;
-	ResultSet rs;
-	String sql;
+public class UserDAO  {
+	
+	
 	
 	public int rogin( String id, String pw ) {
 		sql = "select user_id from user where user_id=? and user_pass=?";

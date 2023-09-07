@@ -6,17 +6,17 @@ import javax.servlet.http.HttpSession;
 
 import com.team2.user.DB.UserDAO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class NonUserLoginAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		resp.setContentType("text/html; charset=UTF-8");
 		HttpSession se = req.getSession();
 		
 		UserDAO mDAO = new UserDAO();
-		ActionFoward af = new ActionFoward();
+		ActionForward af = new ActionForward();
 
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");

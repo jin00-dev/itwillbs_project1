@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class UserLogoutAction implements Action{
 
 	@Override
-	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) {
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 		HttpSession session = req.getSession();
 		session.invalidate();
