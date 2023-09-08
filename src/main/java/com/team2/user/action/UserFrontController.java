@@ -29,7 +29,7 @@ public class UserFrontController extends HttpServlet {
 		if( command.equals("/UserLogin.me") ) {
 			af = new ActionForward();
 			af.setPath("./user/loginForm.jsp");
-			af.setPathType(false);
+			af.setRedirect(false);
 		}
 		//로그인 처리
 		else if( command.equals("/UserLoginAction.me") ) {
@@ -55,7 +55,7 @@ public class UserFrontController extends HttpServlet {
 		else if( command.equals("/Main.me") ) {
 			af = new ActionForward();
 			af.setPath("./main.jsp");
-			af.setPathType(false);
+			af.setRedirect(false);
 		}
 		//로그아웃 처리
 		else if( command.equals("/UserLogoutAction.me") ) {
@@ -71,7 +71,7 @@ public class UserFrontController extends HttpServlet {
 		else if( command.equals("/UserFindId.me") ) {
 			af = new ActionForward();
 			af.setPath("./user/findIdForm.jsp");
-			af.setPathType(false);
+			af.setRedirect(false);
 		}
 		//아이디 찾기 처리
 		else if( command.equals("/UserFindIdAction.me") ) {
@@ -88,7 +88,7 @@ public class UserFrontController extends HttpServlet {
 		else if( command.equals("/UserFindPw.me") ) {
 			af = new ActionForward();
 			af.setPath("./user/findPwForm.jsp");
-			af.setPathType(false);
+			af.setRedirect(false);
 		}
 		//비밀번호 찾기 처리
 		else if( command.equals("/UserFindPwAction.me") ) {
@@ -103,7 +103,7 @@ public class UserFrontController extends HttpServlet {
 		else if( command.equals("/UserJoin.me") ) {
 			af = new ActionForward();
 			af.setPath("./user/joinForm.jsp");
-			af.setPathType(false);
+			af.setRedirect(false);
 		}
 		//회원가입 처리
 		else if( command.equals("/UserJoinAction.me") ) {
@@ -114,33 +114,15 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		//이제부터 게시판-------------------------------------------------------------
-		//게시판 메인
-//		else if( command.equals("/BoardMain.me") ) {
-//			action = new BoardMainAction();
-//			try {
-//				af = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		//글 읽기
-//		else if( command.equals("/BoardRead.me") ) {
-//			action = new BoardReadAction();
-//			try {
-//				af = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
+		
 		
 		////3.주소로 이동////////////
 		if( af != null ) {
-			if( af.isPathType() ) {
-				System.out.println( af.getPath() +" ##"+ af.isPathType() );     
+			if( af.isRedirect() ) {
+				System.out.println( af.getPath() +" ##"+ af.isRedirect() );     
 				response.sendRedirect( af.getPath() );
 			}else {
-				System.out.println( af.getPath() +" ##"+ af.isPathType() );
+				System.out.println( af.getPath() +" ##"+ af.isRedirect() );
 				RequestDispatcher dis = request.getRequestDispatcher(af.getPath());
 				dis.forward(request, response);
 			}
