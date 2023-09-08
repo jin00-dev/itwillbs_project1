@@ -81,7 +81,7 @@
 <!-- 		<h1> -->
 <!-- 			여기 faq게시판 꾸미는자리<br> 밑에 footer 알아서 내려감 -->
 <!-- 		</h1> -->
-		<script type="text/javascript">
+<!-- 		<script type="text/javascript">
 			function qnaBoard() {
 				window.open("./qnaBoard.bo","_black","width=500, height=500");
 			}
@@ -89,11 +89,12 @@
 				window.open("./qnaBoardList.bo","_self");
 			}
 
-		</script>
+		</script> -->
 		<div>
-  			<input type="button" onclick="qnaBoard();" value="1:1 문의"/>
+  			<input type="button" value="1:1 문의" onclick="location.href='./QnAWriteBoard.bo';"> 
+  			<!-- 화면 이동 방식 변경 -->
   			<input type="button" onclick="qnaBoardList();" value="1:1 문의내역"/>
-  		</div>
+  		</div>s
   		<h1>자주 묻는 질문</h1>
     <div class="faq-container">
       <div class="faq">
