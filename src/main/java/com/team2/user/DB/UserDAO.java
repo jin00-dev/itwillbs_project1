@@ -87,6 +87,7 @@ public class UserDAO {
 		}
 	}
 	
+	//회원가입
 	public int join( UserDTO m ) {
 		sql 
 		= "insert into user (user_id,user_name,user_pass,user_phone,user_regdate,last_access,user_type) values(?,?,?,?,default,default,0)";
@@ -110,7 +111,32 @@ public class UserDAO {
 		
 	}
 	
-	
+	//아이디 중복 확인
+	public boolean checkId(String id) {
+		
+		sql = "select count(*) from user where user_id=?";
+		conn  = con.getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id );
+			rs =  pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(rs.getInt(1) >0) {
+					return false; //아이디가 이미 존재함
+				}else {
+					return true; //아이디 사용 가능
+				}
+			}
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			con.closeDB(conn, rs, pstmt);
+		}
+	}
 	
 	
 	

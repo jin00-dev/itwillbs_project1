@@ -16,8 +16,8 @@
 <section id="center" class="center_o pt-2 pb-2">
 	<section id="join_box">
 		<h1>회원가입</h1>
-		<fieldset id="authenfication">
-			<button>간편인증</button>
+		<fieldset id="certification">
+			<button onclick="certification()">간편인증</button>
 			<button>휴대폰인증</button>
 		</fieldset>
 	
@@ -26,7 +26,8 @@
 					<label>이름 </label> <br><input type="text" name="user_name" placeholder="이름입력"> <br>
 					<label>전화번호 </label><br> <input type="text" name="user_phone" placeholder="-없이 휴대폰 번호 입력"> <br>
 					<label>아이디 </label><br><input type="text"  name="user_id" placeholder="아이디 입력"> 
-					<input type="button" id="double_check" value="중복확인" onclick="location.href='./UserIdCheckAction.me';"><br>
+					<input type="button" id="double_check" value="중복확인" onclick="checkUserId()"><br>
+					<p id='chId'></p>
 					<label>비밀번호 </label><br> <input type="password" name="user_pass" placeholder="비밀번호 입력"> <br>
 					<label>비밀번호 확인 </label><br> <input type="password" name="user_chpw" placeholder="비밀번호 입력 확인"> <br>
 					<input type="submit" value="회원가입" onclick="return check()">
@@ -44,6 +45,8 @@
 	<jsp:include page="/inc/bottomBar.jsp" ></jsp:include>
 </footer>
 
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 
 	<script>
 		window.onscroll = function() {
@@ -64,6 +67,30 @@
 			}
 		}
 		
+		
+		
+		
+		
+		//아이디 중복체크
+		function checkUserId() {
+            var userId = $("input[name='user_id']").val();
+            $.ajax({
+                url: './UserIdCheckAction.me',
+                type: 'POST',
+                data: {userId: userId},
+                success: function(response) {
+                    if(response.trim() === "true") {
+                    	$("#chId").text("사용 가능한 아이디입니다.");
+            			$("#chId").css('color','green');
+                    } else {
+                        $("#chId").text("이미 존재하는 아이디입니다.");
+                        $("#chId").css('color','red');
+                    }
+                }
+            });
+        }
+		
+		//입력값 공백 및 비밀번호 일치확인
 		function check(){
 			var str = "";
 			
@@ -107,7 +134,7 @@
 			}
 			
 			
-	}
+		}
 	</script>
 
 </body>

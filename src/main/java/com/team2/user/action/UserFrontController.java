@@ -43,7 +43,13 @@ public class UserFrontController extends HttpServlet {
 		}
 		//로그인 아이디 중복 확인
 		else if(command.equals("/UserIdCheckAction.me")) {
+			action = new UserIdCheckAction();
 			
+			try {
+				af =  action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		//비회원 로그인 처리
 		else if( command.equals("/NonUserLoginAction.me") ) {
