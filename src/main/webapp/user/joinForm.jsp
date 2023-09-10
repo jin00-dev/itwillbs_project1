@@ -18,7 +18,7 @@
 		<h1>회원가입</h1>
 		<fieldset id="certification">
 			<button onclick="certification()">간편인증</button>
-			<button>휴대폰인증</button>
+			<button onclick="requestPay()">휴대폰인증</button>
 		</fieldset>
 	
 		<form action="./UserJoinAction.me" method="post" >
@@ -46,8 +46,8 @@
 </footer>
 
 <!-- iamport.payment.js -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
-
+<!-- <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script> -->
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	<script>
 		window.onscroll = function() {
 			myFunction()
@@ -67,27 +67,57 @@
 			}
 		}
 		
+		//통합인증 - 미완성
+		function certification(){
+			
+			var IMP = window.IMP; // 생략 가능
+			IMP.init("imp29272276");
+			
+			// IMP.certification(param, callback) 호출
+			  IMP.certification({ // param
+			    pg:'inicis_unified.MIIiasTest',//본인인증 설정이 2개이상 되어 있는 경우 필수 
+			    merchant_uid: "ORD20180131-0000011", // 주문 번호
+ 			    m_redirect_url : "./UserJoin.me", // 모바일환경에서 popup:false(기본값) 인 경우 필수, 예: https://www.myservice.com/payments/complete/mobile
+			    popup : false // PC환경에서는 popup 파라미터가 무시되고 항상 true 로 적용됨
+			  }, function (rsp) { // callback
+				  if (rsp.success) { // 인증 성공 시 jQuery로 HTTP 요청
+				      jQuery.ajax({
+				        url: "./UserJoin.me", 
+				        method: "POST",
+				        headers: { "Content-Type": "application/json" },
+				        data: { imp_uid: rsp.imp_uid },
+				      });
+				       console.log(rsp.imp_uid); //imp_342128002174
+				    } else {
+				      alert("인증에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+				    }
+			  });
 		
-		
-		
+		}
 		
 		//아이디 중복체크
 		function checkUserId() {
             var userId = $("input[name='user_id']").val();
-            $.ajax({
-                url: './UserIdCheckAction.me',
-                type: 'POST',
-                data: {userId: userId},
-                success: function(response) {
-                    if(response.trim() === "true") {
-                    	$("#chId").text("사용 가능한 아이디입니다.");
-            			$("#chId").css('color','green');
-                    } else {
-                        $("#chId").text("이미 존재하는 아이디입니다.");
-                        $("#chId").css('color','red');
-                    }
-                }
-            });
+            
+            if(userId.length == 0){
+				alert('아이디를 입력하세요');
+				$('input[name="user_id"]').focus(); 
+            }else{
+	            $.ajax({
+	                url: './UserIdCheckAction.me',
+	                type: 'POST',
+	                data: {userId: userId},
+	                success: function(response) {
+	                    if(response.trim() === "true") {
+	                    	$("#chId").text("사용 가능한 아이디입니다.");
+	            			$("#chId").css('color','green');
+	                    } else {
+	                        $("#chId").text("이미 존재하는 아이디입니다.");
+	                        $("#chId").css('color','red');
+	                    }
+	                }
+	            });
+            }
         }
 		
 		//입력값 공백 및 비밀번호 일치확인

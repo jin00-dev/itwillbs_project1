@@ -11,8 +11,13 @@
   padding: 1em;
 }
 
+#certification button {
+	border-radius: 0.5em;
+	 margin: 0em 0.6em;
+}
+
 /* 버튼(인증,서브밋)   */
-button,input[type="submit"],input[type="button"] {
+button, input[type="submit"],input[type="button"] {
   padding: 0.5em;
   margin: 0.5em 1em;
   width: 10em;
