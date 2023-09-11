@@ -17,7 +17,7 @@ public class UserJoinAction implements Action {
 	@Override
 	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 //		req.setCharacterEncoding("UTF-8");
-		
+		String isCertification = req.getParameter("isCertification");
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
 		
@@ -26,15 +26,15 @@ public class UserJoinAction implements Action {
 		dto.setUser_name(req.getParameter("user_name"));
 		dto.setUser_phone(req.getParameter("user_phone"));
 		
-		int result = dao.join(dto);
-		
+		int result = dao.join(dto, isCertification);
+
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		
 		
-		if(result == -1 || result == 0) {
+		if(result == -1 || result == 0  ) {
 			out.println("<script>");
-			out.println("alert('입력 오류');");
+			out.println("alert('오류');");
 			out.println("history.back();");
 			out.println("</script>");
 		}else {

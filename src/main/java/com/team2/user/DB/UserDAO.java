@@ -88,11 +88,14 @@ public class UserDAO {
 	}
 	
 	//회원가입
-	public int join( UserDTO m ) {
+	public int join( UserDTO m , String is ) {
 		sql 
 		= "insert into user (user_id,user_name,user_pass,user_phone,user_regdate,last_access,user_type) values(?,?,?,?,default,default,0)";
 		
 		conn  = con.getConnection();
+		if(!is.equals("true")) {
+			return 0;
+		}
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getUser_id() );
