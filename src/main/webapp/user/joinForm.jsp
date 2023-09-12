@@ -24,15 +24,18 @@
 		<form action="./UserJoinAction.me" method="post">
 			<fieldset id="join_wrap">
 				<label>이름 </label> <br><input type="text" name="user_name" placeholder="이름입력"> <br>
-				<label>전화번호 </label><br> <input type="text" name="user_phone"
-					placeholder="-없이 휴대폰 번호 입력"> <br> 
+				<p id='hiddenMsgName'></p>
+				<label>전화번호 </label><br> <input type="text" name="user_phone"placeholder="-없이 휴대폰 번호 입력"> <br> 
+				<p id='hiddenMsgPhone'></p>
 				<label>아이디 </label><br><input type="text" name="user_id" placeholder="아이디 입력"> 
 				<input type="button" id="double_check" value="중복확인"onclick="checkUserId()"><br>
-				<p id='chId'>
-					<input type="hidden">
-				</p>
+				<p id='chId'></p>
+				<input type="hidden" id="isCheckId" value="false">
 				<label>비밀번호 </label><br> <input type="password" name="user_pass" placeholder="비밀번호 입력"> <br>
+				<p id='hiddenMsgPw'></p>
 				 <label>비밀번호 확인 </label><br> <input type="password" name="user_chpw" placeholder="비밀번호 입력 확인"> <br> 
+				<p id='hiddenMsgPwCheck'></p>
+				
 				 <input type="hidden"name="isCertification"> 
 				 <input type="submit" value="회원가입"	onclick="return check()">
 			</fieldset>
@@ -106,18 +109,18 @@
 			$.ajax({
 				url : './UserIdCheckAction.me',
 				type : 'POST',
-				data : {
-					userId : userId
-				},
+				data : {userId : userId},
 				success : function(response) {
 					if (response.trim() === "true") {
 						$("#chId").text("사용 가능한 아이디입니다.");
 						$("#chId").css('color', 'green');
-						$("#chId input").val(true);
+						$("#isCheckId").val("true");
+// 						console.log($("#isCheckId").val());
 					} else {
 						$("#chId").text("이미 존재하는 아이디입니다.");
 						$("#chId").css('color', 'red');
-						$("#chId input").val(false);
+						$("#isCheckId").val("false");
+// 						console.log($("#isCheckId").val());
 					}
 				}
 			});
@@ -126,7 +129,7 @@
 
 	//입력값 공백 및 비밀번호 일치확인 및 인증체크
 	function check() {
-		var str = "";
+// 		var str = "";
 
 		/* 인증여부 체크 */
 // 		if ($("input[name='isCertification']").val() != 'true') {
@@ -135,49 +138,67 @@
 // 		}
 		/* 이름 유효성 검사 */
 		if ($('input[name="user_name"]').val().length == 0) {
-			alert('이름을 입력하세요');
+			$("#hiddenMsgName").text("이름을 입력하세요.");
+			$("#hiddenMsgName").css('color', 'red');
 			$('input[name="user_name"]').focus();
 			return false;
+		}else{
+			$("#hiddenMsgName").text("");
 		}
 
 		/* 휴대폰번호 유효성 검사 */
 		if ($('input[name="user_phone"]').val().length == 0) {
-			alert('전화번호를 입력하세요');
+			$("#hiddenMsgPhone").text("전화번호를 입력하세요.");
+			$("#hiddenMsgPhone").css('color', 'red');
 			$('input[name="user_phone"]').focus();
 			return false;
+		}else{
+			$("#hiddenMsgPhone").text("");
 		}
 
 		/* 아이디 유효성 검사 */
-		if ($('input[name="user_id"]').val().length == 0) { // if( $('#id').val() == "" ) 도 가능
-			alert('아이디를 입력하세요');
-			$('input[name="user_id"]').focus(); // 이건 그냥 마우스 커서가 여기로 오게 하는것
+		if ($('input[name="user_id"]').val().length == 0) {
+			$("#chId").text("아이디를 입력하세요.");
+			$("#chId").css('color', 'red');
+			$('input[name="user_id"]').focus(); 
 			return false;
+		}else{
+			$("#chId").text("");
 		}
-
-		if ($("#chId input").val() != true) { // if( $('#id').val() == "" ) 도 가능
-			alert('아이디 중복확인을 해주세요');
-			alert($("#chId input").val());
-			$('input[name="user_id"]').focus(); // 이건 그냥 마우스 커서가 여기로 오게 하는것
+		
+		/* 아이디 중복 검사 실패시 */
+		if ($("#isCheckId").val() != "true") {
+			$("#chId").text("아이디 중복 확인을 해주세요.");
+			$("#chId").css('color', 'red');
+// 			alert($("#chId").text());
+			$('input[name="user_id"]').focus(); 
 			return false;
+		}else{
+			$("#chId").text("");
 		}
 
 		/* 비밀번호 및 비밀번호 확인 유효성 검사 */
 		if ($('input[name="user_pass"]').val().length == 0) {
-			alert('비밀번호를 입력하세요');
+			$("#hiddenMsgPw").text("비밀번호를 입력해 주세요.");
+			$("#hiddenMsgPw").css('color', 'red');
 			$('input[name="user_pass"]').focus();
 			return false;
+		}else{
+			$("#hiddenMsgPw").text("");
 		}
 
 		if ($('input[name="user_chpw"]').val().length == 0) {
-			alert("비밀번호 확인을 입력하세요.");
+			$("#hiddenMsgPwCheck").text("비밀번호 확인을 입력해주세요.");
+			$("#hiddenMsgPwCheck").css('color', 'red');
 			$('input[name="user_chpw"]').focus();
 			return false;
+		}else{
+			$("#hiddenMsgPwCheck").text("");
 		}
 
-		if ($('input[name="user_pass"]').val() != $('input[name="user_chpw"]')
-				.val()) {
+		if ($('input[name="user_pass"]').val() != $('input[name="user_chpw"]').val()) {
 			alert("비밀번호가 일치하지 않습니다.");
-			$('input[name="user_pass"]').select(); // 마우스 커서도 오고, 텍스트가 블록 씌워진 상태로 됨
+			$('input[name="user_pass"]').select(); 
 			return false;
 		}
 

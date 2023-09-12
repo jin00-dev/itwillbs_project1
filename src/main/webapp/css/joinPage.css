@@ -6,6 +6,11 @@
   width: 25em; 
 }
 
+#join_box p{
+	font-size: 14.4px;
+	text-align: left;
+}
+
 /* 필드셋  */
 #certification, #join_wrap {
   padding: 1em;

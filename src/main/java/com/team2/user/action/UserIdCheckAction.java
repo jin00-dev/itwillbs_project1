@@ -21,11 +21,12 @@ public class UserIdCheckAction implements Action{
 		
 		PrintWriter out = resp.getWriter();
 		
-		if(result == false) {
-			out.print("false");
-		}else {
-			out.print("true");
-		}
+		out.print(result);
+//		if(result == false) {
+//			out.print("false");
+//		}else {
+//			out.print("true");
+//		}
 		
 		return null;
 	}
