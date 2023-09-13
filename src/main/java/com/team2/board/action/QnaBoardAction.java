@@ -3,17 +3,15 @@ package com.team2.board.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.team2.board.db.ENFBoardDAO;
-import com.team2.board.db.ENFBoardDTO;
 import com.team2.board.db.QRBoardDAO;
 import com.team2.board.db.QRBoardDTO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class QnaBoardAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M :QnaBoardAction_execute() 호출");
 		
 		// 한글처리(생략) -> web.xml에 필터적용해서

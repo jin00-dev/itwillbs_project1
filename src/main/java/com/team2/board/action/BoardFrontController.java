@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class BoardFrontController extends HttpServlet{
 
@@ -32,12 +32,12 @@ public class BoardFrontController extends HttpServlet{
 		/*************************2. 가상주소 비교**************************************/
 		System.out.println("\n C : 2. 가상주소 비교 - 시작");
 			Action action = null;
-			ActionFoward forward = null;
+			ActionForward forward = null;
 			if(command.equals("/board/qnaBoard.bo")) {
 				System.out.println(" C : /board/qnaBoard.bo 호출");
 				System.out.println(" C : 패턴1 - DB사용X, 페이지이동");
 
-				forward = new ActionFoward();
+				forward = new ActionForward();
 				
 				forward.setPath("./qnaBoard.jsp");
 				forward.setRedirect(false);
@@ -93,7 +93,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : /board/faqBoardAdd.bo 호출");
 				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
 				
-				forward = new ActionFoward();
+				forward = new ActionForward();
 				forward.setPath("./faqBoardAdd.jsp");
 				forward.setRedirect(false);
 			}else if(command.equals("/board/faqBoardAddAction.bo")) {
@@ -112,7 +112,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : /board/noticeBoardAdd.bo 호출");
 				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
 				
-				forward = new ActionFoward();
+				forward = new ActionForward();
 				forward.setPath("./noticeBoardAdd.jsp");
 				forward.setRedirect(false);
 			}else if(command.equals("/board/noticeBoardAddAction.bo")) {
@@ -131,7 +131,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : /board/rentBoard.bo 호출");
 				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
 				
-				forward = new ActionFoward();
+				forward = new ActionForward();
 				forward.setPath("./rentBoardAdd.jsp");
 				forward.setRedirect(false);
 			}else if(command.equals("/board/qnaBoardContent.bo")) {

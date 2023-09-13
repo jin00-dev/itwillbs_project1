@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.team2.board.db.ENFBoardDAO;
 import com.team2.board.db.ENFBoardDTO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class NoticeBoardAddAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M : NoticeBoardAddAction_execute() 호출");
 		
 		ENFBoardDTO dto = new ENFBoardDTO();
@@ -25,7 +25,7 @@ public class NoticeBoardAddAction implements Action {
 		System.out.println(" M : "+dto);
 		dao.insertBoard(dto);
 		
-		ActionFoward forward = new ActionFoward();
+		ActionForward forward = new ActionForward();
 		forward.setPath("./noticeMain.jsp");
 		forward.setRedirect(false);
 		

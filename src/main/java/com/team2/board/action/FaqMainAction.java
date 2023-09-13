@@ -7,14 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team2.board.db.ENFBoardDAO;
 import com.team2.board.db.ENFBoardDTO;
-import com.team2.board.db.QRBoardDTO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class FaqMainAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M : faqBoardAction_execute() 호출");
 		
 		ENFBoardDAO dao = new ENFBoardDAO();
@@ -23,7 +22,7 @@ public class FaqMainAction implements Action {
 		
 		request.setAttribute("boardList", boardList);
 		
-		ActionFoward forward = new ActionFoward();
+		ActionForward forward = new ActionForward();
 		forward.setPath("./faqMain.jsp");
 		forward.setRedirect(false);
 		

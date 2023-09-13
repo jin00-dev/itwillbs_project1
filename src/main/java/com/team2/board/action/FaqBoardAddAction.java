@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.team2.board.db.ENFBoardDAO;
 import com.team2.board.db.ENFBoardDTO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class FaqBoardAddAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M : faqBoardAddAction_execute() 호출");
 		
 		ENFBoardDTO dto = new ENFBoardDTO();
@@ -24,7 +24,7 @@ public class FaqBoardAddAction implements Action {
 		dao.insertBoard(dto);
 		
 		// 페이지 이동
-		ActionFoward forward = new ActionFoward();
+		ActionForward forward = new ActionForward();
 		forward.setPath("./faqMain.bo");
 		forward.setRedirect(true);
 		return forward;

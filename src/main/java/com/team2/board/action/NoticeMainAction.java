@@ -7,15 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team2.board.db.ENFBoardDAO;
 import com.team2.board.db.ENFBoardDTO;
-import com.team2.board.db.QRBoardDAO;
-import com.team2.board.db.QRBoardDTO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class NoticeMainAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M :noticeMainAction_execute 호출");
 		// M : DB + 처리(계산)
 		
@@ -86,7 +84,7 @@ public class NoticeMainAction implements Action {
 		request.setAttribute("endPage", endPage);
 		
 		// 페이지이동
-		ActionFoward forward = new ActionFoward();
+		ActionForward forward = new ActionForward();
 		forward.setPath("./noticeMain.jsp");
 		forward.setRedirect(false);
 		

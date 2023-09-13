@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.team2.board.db.QRBoardDAO;
 import com.team2.board.db.QRBoardDTO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class QnaBoardListAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M : QnaBoardListAction_execute() 실행");
 		// M : DB + 처리(계산)
 		
@@ -84,7 +84,7 @@ public class QnaBoardListAction implements Action {
 		request.setAttribute("endPage", endPage);
 		
 		// 페이지이동
-		ActionFoward forward = new ActionFoward();
+		ActionForward forward = new ActionForward();
 		forward.setPath("./qnaBoardList.jsp");
 		forward.setRedirect(false);
 		
