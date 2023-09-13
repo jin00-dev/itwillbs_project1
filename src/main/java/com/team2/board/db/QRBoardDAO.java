@@ -57,7 +57,7 @@ public class QRBoardDAO {
 		Context initCTX = new InitialContext();
 		
 		//context.xml 파일(jdbc/jsp6 이름)접근 -> DAtaSource 형태로 변경
-		DataSource ds = (DataSource)initCTX.lookup("java:comp/env/jdbc/team2Test");
+		DataSource ds = (DataSource)initCTX.lookup("java:comp/env/jdbc/testweb");
 		
 		// 연결정보 객체를 사용해서 디비 연결
 		con = ds.getConnection();
