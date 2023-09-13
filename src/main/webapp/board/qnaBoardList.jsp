@@ -80,7 +80,7 @@
 	<!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
-		<h1>qnaBoardContent</h1>
+		<h1>qnaBoardList</h1>
 		<table id="qnaBoardList">
 				<tr>
 					<th class="bno">No.</th>
@@ -95,7 +95,7 @@
 						${dto.qna_bno }
 					</td>
 					<td>	
-						<a href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&pageNum=${pageNum}">${dto.subject }</a>
+						<a href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${dto.user_id }">${dto.subject }</a>
 					</td>
 					<td>
 						<c:choose> 
@@ -107,7 +107,14 @@
 							</c:otherwise>
 						</c:choose>
 					</td>
-					<td>${dto.answer }</td>
+					<td><c:choose> 
+							<c:when test="${dto.answer == 0}">
+								N							
+							</c:when>
+							<c:otherwise>
+								Y
+							</c:otherwise>
+						</c:choose></td>
 			</c:forEach>
 <%-- 			</c:if> --%>
 				

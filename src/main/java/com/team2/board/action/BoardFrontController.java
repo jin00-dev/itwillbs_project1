@@ -158,6 +158,45 @@ public class BoardFrontController extends HttpServlet{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			}else if(command.equals("/board/qnaBoardUpdate.bo")) {
+				System.out.println(" C : /board/qnaBoardUpdate.bo 호출 ");
+				System.out.println(" C : 패턴 3 - DB사용O,페이지 출력");
+				// BoardUpdateAction
+				action = new QnaBoardUpdateAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(command.equals("/board/qnaBoardUpdatePro.bo")) {
+				System.out.println(" C : /board/qna/BoardUpdatePro.bo 호출 ");
+				System.out.println(" C : 패턴2 - DB사용O,페이지 이동");
+				
+				// BoardUpdateProAction 객체 
+				action = new QnaBoardUpdateProAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(command.equals("/board/qnaBoardDelete.bo")) {
+				System.out.println(" C : /board/qna/BoardDelete.bo 호출 ");
+				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
+				
+				forward = new ActionForward();
+				forward.setPath("./qnaBoardDelete.jsp");
+				forward.setRedirect(false);		
+			}else if(command.equals("/board/qnaBoardDeleteAction.bo")) {
+				System.out.println(" C : /board/qnaBoardDeleteAction.bo 호출 ");
+				System.out.println(" C : 패턴2 - DB사용O, 페이지이동");
+				
+				// BoardDeleteAction() 객체
+				action = new QnaBoardDeleteAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}			
 			}
 		System.out.println(" C : 2. 가상주소 비교 - 끝");
 		/*************************2. 가상주소 비교**************************************/

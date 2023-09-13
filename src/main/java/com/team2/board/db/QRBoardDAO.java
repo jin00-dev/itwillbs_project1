@@ -272,7 +272,7 @@ public class QRBoardDAO {
 			//		: 위치(인덱스)에서 개수만큼 데이터를 짤라서 가져오기
 		
 			sql = "select * from qna_rent_board where category = 0 limit ?, ?";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);
 			// ???
 			pstmt.setInt(1, startRow-1); //시작위치 starRow 1
 			pstmt.setInt(2, pageSize); // 개수 pageSize 10
@@ -464,19 +464,17 @@ public class QRBoardDAO {
 	public void updateBoard(QRBoardDTO bb) {
 		
 		//1.2. 디비연결
+		Byte category = bb.getCategory();
 		try {
 			
 			con = getConnect();
 			//3. sql구문작성(기존의 회원여부확인) & pstmt객체
-			if(bb.getCategory() == 0) {
+			if(category == 0) {
 				sql = "update qna_rent_board set subject=?,content=?,updatedate=now()"
-						+ ",answer=? where qna_bno=?";
-			}else if(bb.getCategory() == 1) {
-				sql = "update qna_rent_board set subject=?,content=?,updatedate=now()"
-						+ ",event_type=? where rent_bno=?";
+						+ " where qna_bno=?";
 			}else {
 				sql = "update qna_rent_board set subject=?,content=?,updatedate=now()"
-						+ ",event_type=? where user_id=?";
+						+ " where rent_bno=?";;
 			}
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, bb.getSubject());
@@ -499,23 +497,72 @@ public class QRBoardDAO {
 	
 	// 글 정보 삭제하기 -deleteBoard(bb)
 
-	public void deleteBoard(QRBoardDTO bb) {
-		
+	public int deleteBoard(QRBoardDTO bb,String pass) {
+		int result = -1;
+		Byte category = bb.getCategory();
+		System.out.println("category : "+category);
+		String user_id = bb.getUser_id();
+		System.out.println("user_id : "+user_id);
 		try {
 			//1.2. 디비연결
 			con = getConnect();
-			if(bb.getCategory() == 0) {
-				sql = "delete from qna_rent_board where qna_bno=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, bb.getQna_bno());
-			}else if(bb.getCategory() == 1) {
-				sql = "delete from qna_rent_board where rent_bno=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, bb.getRent_bno());
+			sql = "select user_pass from user where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { // 계정있는지
+				System.out.println("계정O");
+				if(pass.equals(rs.getString("user_pass"))) { // 비밀번호 같은지
+					System.out.println("비밀번호같음");
+					if( category == 0) { // 해당 게시글이 있는지
+						System.out.println("qna게시판임");
+						sql = "select * from qna_rent_board where qna_bno=?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, bb.getQna_bno());
+						rs = pstmt.executeQuery();
+						if(rs.next()) {  // 해당 게시글 삭제
+							System.out.println("해당게시판이 있음");
+							
+							sql = "delete from qna_rent_board where qna_bno=?";
+							pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, bb.getQna_bno());
+							pstmt.executeUpdate();	
+							System.out.println(" DAO : 글 삭제 수정완료! ");
+							
+							result = 1; 
+						}else {
+							System.out.println("category == 0 게시물없음");
+							result = -1; // 게시물 없음
+						}
+					}else { // category ==1
+						System.out.println("rent게시판임");
+						sql = "select * from qna_rent_baord where rent_bno=?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, bb.getQna_bno());
+						rs = pstmt.executeQuery();
+						
+						if(rs.next()) {
+							System.out.println("해당게시판이 있음");
+							sql = "delete from qna_rent_board where rent_bno=?";
+							pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, bb.getQna_bno());
+							pstmt.executeUpdate();	
+							System.out.println(" DAO : 글 삭제 수정완료! ");
+							
+							result = 1; 
+						}else {
+							System.out.println("category == 1 게시물없음");
+							result = -1; // 게시물 없음
+						}
+					}
+					
+				}else {
+					result = 0; // 비밀번호 오류
+				}
+			}else {
+				result = 0; // 계정오류
 			}
-			pstmt.executeUpdate();	
-			System.out.println(" DAO : 글 삭제 수정완료! ");
-	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -523,8 +570,7 @@ public class QRBoardDAO {
 			closeDB();
 		}
 		
-		
-	
+		return result;
 	}
 	// 글 정보 삭제하기 -deleteBoard(bb)
 	
