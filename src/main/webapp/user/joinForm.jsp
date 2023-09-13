@@ -111,13 +111,13 @@
 				type : 'POST',
 				data : {userId : userId},
 				success : function(response) {
-					if (response.trim() === "true") {
+					if (response.trim() === "true" && $('input[name="user_id"]').val() !="admin") {
 						$("#chId").text("사용 가능한 아이디입니다.");
 						$("#chId").css('color', 'green');
 						$("#isCheckId").val("true");
 // 						console.log($("#isCheckId").val());
 					} else {
-						$("#chId").text("이미 존재하는 아이디입니다.");
+						$("#chId").text("사용 할 수 없는 아이디입니다.");
 						$("#chId").css('color', 'red');
 						$("#isCheckId").val("false");
 // 						console.log($("#isCheckId").val());
@@ -130,12 +130,13 @@
 	//입력값 공백 및 비밀번호 일치확인 및 인증체크
 	function check() {
 // 		var str = "";
-
+		let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+		
 		/* 인증여부 체크 */
-// 		if ($("input[name='isCertification']").val() != 'true') {
-// 			alert('본인인증을 해주세요');
-// 			return false;
-// 		}
+ 		if ($("input[name='isCertification']").val() != 'true') {
+			alert('본인인증을 해주세요');
+ 			return false;
+ 		}
 		/* 이름 유효성 검사 */
 		if ($('input[name="user_name"]').val().length == 0) {
 			$("#hiddenMsgName").text("이름을 입력하세요.");
@@ -183,6 +184,10 @@
 			$("#hiddenMsgPw").css('color', 'red');
 			$('input[name="user_pass"]').focus();
 			return false;
+		}else if(reg.test($('input[name="user_pass"]').val()) === false) {
+			$("#hiddenMsgPw").text("비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.");
+			$("#hiddenMsgPw").css('color', 'red');
+			return false;
 		}else{
 			$("#hiddenMsgPw").text("");
 		}
@@ -197,7 +202,8 @@
 		}
 
 		if ($('input[name="user_pass"]').val() != $('input[name="user_chpw"]').val()) {
-			alert("비밀번호가 일치하지 않습니다.");
+			$("#hiddenMsgPw").text("비밀번호가 일치하지 않습니다.");
+			$("#hiddenMsgPw").css('color', 'red');
 			$('input[name="user_pass"]').select(); 
 			return false;
 		}
