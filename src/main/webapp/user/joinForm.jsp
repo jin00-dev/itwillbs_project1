@@ -131,6 +131,7 @@
 	function check() {
 // 		var str = "";
 		let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+		let phoneRule = /^(01[016789]{1})[0-9]{4}[0-9]{4}$/;
 		
 		/* 인증여부 체크 */
  		if ($("input[name='isCertification']").val() != 'true') {
@@ -152,6 +153,10 @@
 			$("#hiddenMsgPhone").text("전화번호를 입력하세요.");
 			$("#hiddenMsgPhone").css('color', 'red');
 			$('input[name="user_phone"]').focus();
+			return false;
+		}else if(phoneRule.test($('input[name="user_phone"]').val()) === false){
+			$("#hiddenMsgPhone").text("-없이 올바르게 입력하세요.");
+			$("#hiddenMsgPhone").css('color', 'red');
 			return false;
 		}else{
 			$("#hiddenMsgPhone").text("");
