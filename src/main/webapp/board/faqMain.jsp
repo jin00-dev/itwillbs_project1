@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,9 +67,9 @@
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="noticeMain.jsp">공지사항</a></li>
+								<li><a class="dropdown-item" href="noticeMain.bo">공지사항</a></li>
 								<li><a class="dropdown-item" href="#">자주묻는질문</a></li>
-								<li><a class="dropdown-item border-0" href="rentMain.jsp">대관문의</a></li>
+								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
 				</div>
 			</div>
@@ -75,7 +77,7 @@
 	</section>
 
 
-		<!-- 여기 faq게시판 꾸며아함. -->
+	<!-- 여기 faq게시판 꾸며아함. -->
 
 	<div class="container">
 <!-- 		<h1> -->
@@ -88,54 +90,60 @@
 			function qnaBoardList() {
 				window.open("./qnaBoardList.bo","_self");
 			}
+			
 
 		</script>
 		<div>
-  			<input type="button" onclick="qnaBoard();" value="1:1 문의"/>
+  			<input type="button"  onclick="qnaBoard();" value="1:1 문의"/>
   			<input type="button" onclick="qnaBoardList();" value="1:1 문의내역"/>
   		</div>
   		<h1>자주 묻는 질문</h1>
     <div class="faq-container">
-      <div class="faq">
-        <h3 class="faq-title">자주 묻는 질문 1</h3>
+      <c:forEach var="dto" items="${boardList }">
+      	<div class="faq">
+        	<h3 class="faq-title">${dto.subject }</h3>
 
-        <p class="faq-text">대답 1</p>
+        	<p class="faq-text">${dto.content }</p>
 
-        <button class="faq-toggle">
-          <i class="fas fa-chevron-down"></i>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="faq">
-        <h3 class="faq-title">자주 묻는 질문 2</h3>
+        	<button class="faq-toggle">
+          	<i class="fas fa-chevron-down"></i>
+          	<i class="fas fa-times"></i>
+        	</button>
+      	</div>
+       </c:forEach>
+<!--       <div class="faq"> -->
+<!--         <h3 class="faq-title">자주 묻는 질문 2</h3> -->
 
-        <p class="faq-text">대답 2</p>
+<!--         <p class="faq-text">대답 2</p> -->
 
-        <button class="faq-toggle">
-          <i class="fas fa-chevron-down"></i>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="faq">
-        <h3 class="faq-title">자주 묻는 질문 3</h3>
+<!--         <button class="faq-toggle"> -->
+<!--           <i class="fas fa-chevron-down"></i> -->
+<!--           <i class="fas fa-times"></i> -->
+<!--         </button> -->
+<!--       </div> -->
+<!--       <div class="faq"> -->
+<!--         <h3 class="faq-title">자주 묻는 질문 3</h3> -->
 
-        <p class="faq-text">대답 3</p>
+<!--         <p class="faq-text">대답 3</p> -->
 
-        <button class="faq-toggle">
-          <i class="fas fa-chevron-down"></i>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="faq">
-        <h3 class="faq-title">자주 묻는 질문 4</h3>
+<!--         <button class="faq-toggle"> -->
+<!--           <i class="fas fa-chevron-down"></i> -->
+<!--           <i class="fas fa-times"></i> -->
+<!--         </button> -->
+<!--       </div> -->
+<!--       <div class="faq"> -->
+<!--         <h3 class="faq-title">자주 묻는 질문 4</h3> -->
 
-        <p class="faq-text">대답 4</p>
+<!--         <p class="faq-text">대답 4</p> -->
 
-        <button class="faq-toggle">
-          <i class="fas fa-chevron-down"></i>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
+<!--         <button class="faq-toggle"> -->
+<!--           <i class="fas fa-chevron-down"></i> -->
+<!--           <i class="fas fa-times"></i> -->
+<!--         </button> -->
+<!--       </div> -->
+    </div>
+    <div>
+    	<input type="button" name="btn" id="insertQna" value="faq추가" onclick="location.href='faqBoardAdd.bo';">
     </div>
 		
 	</div>
@@ -147,6 +155,7 @@
 	   		 toggle.parentNode.classList.toggle("active");
 	  		});
 		});
+	</script>
 	<!-- footer아래로는 코드 금지 -->
 	
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
