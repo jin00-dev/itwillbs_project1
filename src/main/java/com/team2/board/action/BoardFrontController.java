@@ -35,13 +35,37 @@ public class BoardFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-			if(command.equals("/QnAWriteBoard.bo")) {
-				System.out.println(" C : /QnAWriteBoard.bo 호출");
-				System.out.println(" C : 패턴 1 - DB사용 X, 페이지 이동 ");
+			if(command.equals("/board/rentWrite.bo")) {
+				System.out.println(" C : /board/rentWrite.bo 호출");
 				
 				forward = new ActionForward();
-				forward.setPath("./board/qnaBoard.jsp");
-				forward.setRedirect(false);
+				forward.setPath("./rentBoard.jsp");
+				forward.setRedirect(false); 
+				// 대관문의 글쓰기 페이지로 이동 
+			}
+			else if(command.equals("/board/rentWriteAction.bo")) {
+				System.out.println(" C : /board/rentWriteAction.bo 호출");
+				
+				action =new rentWriteAction();
+				
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}// 대관 문의 글쓰기 insert 
+				
+			}
+			else if (command.equals("/board/CinemaSelectAction.bo")) {
+				System.out.println("C : /board/CinemaSelectAction.bo 호출");
+				
+				action =new CinemaSelectAction();
+				
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 			}
 			
 		

@@ -4,20 +4,20 @@ import java.sql.Timestamp;
 
 public class qnaRentBoardDTO {
 	
-	private int category ;
-	private int qna_bno ;
-	private int rent_bno ; 
-	private String user_id ;
+	private int category ; // qna = 0 , rent = 1
+	private int qna_bno ; // 0 일때 증가
+	private int rent_bno ; //1 일때 증가
+	private String user_id ; 
 	private String subject ;
 	private String content ;
 	private int readCount ;
 	private Timestamp regdate ;
 	private Timestamp updatedate ;
-	private String rent_name ;
-	private String cinema_name ;
-	private String rent_phone ;
-	private String rent_email ;
-	private int answer ;
+	private String rent_name ; //대관신청
+	private String cinema_name ; // 대관신청
+	private String rent_phone ; // 대관신청
+	private String rent_email ; // 대관신청 
+	private int answer ; // 회신여부 
 	private String answer_context ;
 	
 	
