@@ -6,19 +6,19 @@ import javax.servlet.http.HttpSession;
 
 import com.team2.user.DB.UserDAO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 
 public class UserLoginAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) {
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 			resp.setContentType("text/html; charset=UTF-8");
 			HttpSession se = req.getSession();
 			
 			UserDAO mDAO = new UserDAO();
-			ActionFoward action = new ActionFoward();
+			ActionForward action = new ActionForward();
 
 			String id = req.getParameter("id");
 			String pw = req.getParameter("pw");
