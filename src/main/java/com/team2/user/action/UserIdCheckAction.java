@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team2.user.DB.UserDAO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class UserIdCheckAction implements Action{
 
 	@Override
-	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		UserDAO dao = new UserDAO();
 		
 		String id = req.getParameter("userId");

@@ -1,6 +1,6 @@
 package com.team2.util;
 
-public class ActionFoward {
+public class ActionForward {
 	private String path;
 	private boolean isRedirect;
 	

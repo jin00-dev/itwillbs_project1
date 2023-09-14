@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 
 public class UserJoinAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 //		req.setCharacterEncoding("UTF-8");
 		String isCertification = req.getParameter("isCertification");
 		UserDAO dao = new UserDAO();
