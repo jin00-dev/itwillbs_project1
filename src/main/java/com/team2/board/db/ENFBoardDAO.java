@@ -658,16 +658,25 @@ public class ENFBoardDAO {
 			con = getConnect();
 			//3. sql구문작성(기존의 회원여부확인) & pstmt객체
 			if(bb.getCategory() == 0) {
-				sql = "update event_notice_faq_board set subject=?,content=?,updatedate=now(),event_type=? where event_bno=?";
+				sql = "update event_notice_faq_board set subject=?,content=?,event_type,updatedate=now() where event_bno=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, bb.getSubject());
+				pstmt.setString(2, bb.getContent());
+				pstmt.setByte(3, bb.getEvent_type());
+				pstmt.setInt(4, bb.getEvent_bno());
 			}else if(bb.getCategory() == 1) {
-				sql = "update event_notice_faq_board set subject=?,content=?,updatedate=now(),event_type=? where notice_bno=?";
+				sql = "update event_notice_faq_board set subject=?,content=?,updatedate=now() where notice_bno=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, bb.getSubject());
+				pstmt.setString(2, bb.getContent());
+				pstmt.setInt(3, bb.getNotice_bno());
 			}else {
-				sql = "update event_notice_faq_board set subject=?,content=?,updatedate=now(),event_type=? where faq_bno=?";
+				sql = "update event_notice_faq_board set subject=?,content=?,updatedate=now() where faq_bno=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, bb.getSubject());
+				pstmt.setString(2, bb.getContent());
+				pstmt.setInt(3, bb.getFaq_bno());
 			}
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, bb.getSubject());
-			pstmt.setString(2, bb.getContent());
-			pstmt.setByte(3, bb.getEvent_type());
 					
 			//4.sql 실행
 			pstmt.executeUpdate();	
