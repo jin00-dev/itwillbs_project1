@@ -12,7 +12,6 @@
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/global.css" rel="stylesheet">
 <link href="../css/index.css" rel="stylesheet">
-<link href="../css/faqMain.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
 	rel="stylesheet">
@@ -60,16 +59,17 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">이벤트</a></li>
-						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
-						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="../event/eventMain.jsp">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="noticeMain.bo">공지사항</a></li>
-								<li><a class="dropdown-item" href="#">자주묻는질문</a></li>
+								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
 				</div>
@@ -78,88 +78,45 @@
 	</section>
 
 
-	<!-- 여기 faq게시판 꾸며아함. -->
+	<!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
-<!-- 		<h1> -->
-<!-- 			여기 faq게시판 꾸미는자리<br> 밑에 footer 알아서 내려감 -->
-<!-- 		</h1> -->
-	 		<script type="text/javascript">
-			function qnaBoard() {
-				window.open("./qnaBoard.bo","_black","width=500, height=500");
-			}
-			function qnaBoardList() {
-				window.open("./qnaBoardList.bo","_self");
-			}
-			
+		<form action="./qnaBoardUpdatePro.bo?pageNum=${pageNum }"
+			method="post">
+			<input type="hidden" name="qna_bno" value="${dto.qna_bno }">
+			<input type="hidden" name="subject" value="${dto.subject }">
+			<input type="hidden" name="content" value="${dto.content }">
+			<input type="hidden" name="answer" value="1">
+			<table id="Update">
+				<tr>
+					<th class="ttitle" colspan="3">1:1문의 수정</th>
+				</tr>
 
-		</script> 
-		<div>
+				<tr>
+					<td>제 목 :</td>
+					<td colspan="2">${dto.subject }</td>
+				</tr>
+				<tr>
+					<td>내 용 :</td>
+					<td colspan="2">${dto.content }</td>
+				</tr>
+				<tr>
+					<td>답 변 내 용 :</td>
+					<td colspan="2"><textarea rows="" cols="" id="wInput"
+							name="answer_context"></textarea></td>
+				</tr>
+			</table>
 
-  			<input type="button"  onclick="qnaBoard();" value="1:1 문의"/>
-  			<input type="button" onclick="qnaBoardList();" value="1:1 문의내역"/>
-  		</div>s
-  		<h1>자주 묻는 질문</h1>
-    <div class="faq-container">
-      <c:forEach var="dto" items="${boardList }">
-      	<div class="faq">
-        	<h3 class="faq-title">${dto.subject }</h3>
-
-        	<p class="faq-text">${dto.content }</p>
-
-        	<button class="faq-toggle">
-          	<i class="fas fa-chevron-down"></i>
-          	<i class="fas fa-times"></i>
-        	</button>
-      	</div>
-       </c:forEach>
-<!--       <div class="faq"> -->
-<!--         <h3 class="faq-title">자주 묻는 질문 2</h3> -->
-
-<!--         <p class="faq-text">대답 2</p> -->
-
-<!--         <button class="faq-toggle"> -->
-<!--           <i class="fas fa-chevron-down"></i> -->
-<!--           <i class="fas fa-times"></i> -->
-<!--         </button> -->
-<!--       </div> -->
-<!--       <div class="faq"> -->
-<!--         <h3 class="faq-title">자주 묻는 질문 3</h3> -->
-
-<!--         <p class="faq-text">대답 3</p> -->
-
-<!--         <button class="faq-toggle"> -->
-<!--           <i class="fas fa-chevron-down"></i> -->
-<!--           <i class="fas fa-times"></i> -->
-<!--         </button> -->
-<!--       </div> -->
-<!--       <div class="faq"> -->
-<!--         <h3 class="faq-title">자주 묻는 질문 4</h3> -->
-
-<!--         <p class="faq-text">대답 4</p> -->
-
-<!--         <button class="faq-toggle"> -->
-<!--           <i class="fas fa-chevron-down"></i> -->
-<!--           <i class="fas fa-times"></i> -->
-<!--         </button> -->
-<!--       </div> -->
-    </div>
-    <div>
-    	<input type="button" name="btn" id="insertQna" value="faq추가" onclick="location.href='faqBoardAdd.bo';">
-    </div>
-		
+			<div id="table_search">
+				<input type="submit" value="수정하기" class="btn">
+			</div>
+			<div class="clear"></div>
+			<div id="page_control"></div>
+		</form>
 	</div>
-	<script type="text/javascript">
-		const toggles = document.querySelectorAll(".faq-toggle");
 
-		toggles.forEach((toggle) => {
-	  	toggle.addEventListener("click", () => {
-	   		 toggle.parentNode.classList.toggle("active");
-	  		});
-		});
-	</script>
 	<!-- footer아래로는 코드 금지 -->
-	
+
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">
 			<ul class="mb-0">

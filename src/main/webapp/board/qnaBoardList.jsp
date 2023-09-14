@@ -12,7 +12,6 @@
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/global.css" rel="stylesheet">
 <link href="../css/index.css" rel="stylesheet">
-<link href="../css/faqMain.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
 	rel="stylesheet">
@@ -69,7 +68,7 @@
 								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="noticeMain.bo">공지사항</a></li>
-								<li><a class="dropdown-item" href="#">자주묻는질문</a></li>
+								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
 				</div>
@@ -78,86 +77,50 @@
 	</section>
 
 
-	<!-- 여기 faq게시판 꾸며아함. -->
+	<!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
-<!-- 		<h1> -->
-<!-- 			여기 faq게시판 꾸미는자리<br> 밑에 footer 알아서 내려감 -->
-<!-- 		</h1> -->
-	 		<script type="text/javascript">
-			function qnaBoard() {
-				window.open("./qnaBoard.bo","_black","width=500, height=500");
-			}
-			function qnaBoardList() {
-				window.open("./qnaBoardList.bo","_self");
-			}
-			
-
-		</script> 
-		<div>
-
-  			<input type="button"  onclick="qnaBoard();" value="1:1 문의"/>
-  			<input type="button" onclick="qnaBoardList();" value="1:1 문의내역"/>
-  		</div>s
-  		<h1>자주 묻는 질문</h1>
-    <div class="faq-container">
-      <c:forEach var="dto" items="${boardList }">
-      	<div class="faq">
-        	<h3 class="faq-title">${dto.subject }</h3>
-
-        	<p class="faq-text">${dto.content }</p>
-
-        	<button class="faq-toggle">
-          	<i class="fas fa-chevron-down"></i>
-          	<i class="fas fa-times"></i>
-        	</button>
-      	</div>
-       </c:forEach>
-<!--       <div class="faq"> -->
-<!--         <h3 class="faq-title">자주 묻는 질문 2</h3> -->
-
-<!--         <p class="faq-text">대답 2</p> -->
-
-<!--         <button class="faq-toggle"> -->
-<!--           <i class="fas fa-chevron-down"></i> -->
-<!--           <i class="fas fa-times"></i> -->
-<!--         </button> -->
-<!--       </div> -->
-<!--       <div class="faq"> -->
-<!--         <h3 class="faq-title">자주 묻는 질문 3</h3> -->
-
-<!--         <p class="faq-text">대답 3</p> -->
-
-<!--         <button class="faq-toggle"> -->
-<!--           <i class="fas fa-chevron-down"></i> -->
-<!--           <i class="fas fa-times"></i> -->
-<!--         </button> -->
-<!--       </div> -->
-<!--       <div class="faq"> -->
-<!--         <h3 class="faq-title">자주 묻는 질문 4</h3> -->
-
-<!--         <p class="faq-text">대답 4</p> -->
-
-<!--         <button class="faq-toggle"> -->
-<!--           <i class="fas fa-chevron-down"></i> -->
-<!--           <i class="fas fa-times"></i> -->
-<!--         </button> -->
-<!--       </div> -->
-    </div>
-    <div>
-    	<input type="button" name="btn" id="insertQna" value="faq추가" onclick="location.href='faqBoardAdd.bo';">
-    </div>
-		
+		<h1>qnaBoardList</h1>
+		<table id="qnaBoardList">
+				<tr>
+					<th class="bno">No.</th>
+					<th class="subject">Title</th>
+					<th class="date">Date</th>
+					<th class="answer">Answer</th>
+				</tr>
+<%-- 			<c:if test="${user_id==boardList.user_id }"> --%>
+			<c:forEach var="dto" items="${boardList }">
+				<tr>
+					<td>
+						${dto.qna_bno }
+					</td>
+					<td>	
+						<a href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${dto.user_id }">${dto.subject }</a>
+					</td>
+					<td>
+						<c:choose> 
+							<c:when test="${empty dto.updatedate}">
+								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd"/>
+							</c:when>
+							<c:otherwise>
+								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd"/>							
+							</c:otherwise>
+						</c:choose>
+					</td>
+					<td><c:choose> 
+							<c:when test="${dto.answer == 0}">
+								N							
+							</c:when>
+							<c:otherwise>
+								Y
+							</c:otherwise>
+						</c:choose></td>
+			</c:forEach>
+<%-- 			</c:if> --%>
+				
+			</table>
 	</div>
-	<script type="text/javascript">
-		const toggles = document.querySelectorAll(".faq-toggle");
-
-		toggles.forEach((toggle) => {
-	  	toggle.addEventListener("click", () => {
-	   		 toggle.parentNode.classList.toggle("active");
-	  		});
-		});
-	</script>
+	
 	<!-- footer아래로는 코드 금지 -->
 	
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
