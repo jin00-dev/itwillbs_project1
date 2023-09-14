@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class UserFrontController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ActionFoward af = null;
+		ActionForward af = null;
 		
 		////주소 계산//////////////////////////
 		String uri = request.getRequestURI();
@@ -27,7 +27,7 @@ public class UserFrontController extends HttpServlet {
 		////이동 방식 계산////////////////////
 		//로그인 페이지
 		if( command.equals("/UserLogin.me") ) {
-			af = new ActionFoward();
+			af = new ActionForward();
 			af.setPath("./user/loginForm.jsp");
 			af.setRedirect(false);
 		}
@@ -63,7 +63,7 @@ public class UserFrontController extends HttpServlet {
 		}
 		//메인 페이지
 		else if( command.equals("/Main.me") ) {
-			af = new ActionFoward();
+			af = new ActionForward();
 			af.setPath("./main.jsp");
 			af.setRedirect(false);
 		}
@@ -78,8 +78,8 @@ public class UserFrontController extends HttpServlet {
 			}
 		}
 		//아이디 찾기
-		else if( command.equals("/UserFindId.me") ) {
-			af = new ActionFoward();
+		else if( command.equals("/findIdForm.me") ) {
+			af = new ActionForward();
 			af.setPath("./user/findIdForm.jsp");
 			af.setRedirect(false);
 		}
@@ -96,7 +96,7 @@ public class UserFrontController extends HttpServlet {
 		
 		//비밀번호 찾기	
 		else if( command.equals("/UserFindPw.me") ) {
-			af = new ActionFoward();
+			af = new ActionForward();
 			af.setPath("./user/findPwForm.jsp");
 			af.setRedirect(false);
 		}
@@ -111,7 +111,7 @@ public class UserFrontController extends HttpServlet {
 		}
 		//회원가입
 		else if( command.equals("/UserJoin.me") ) {
-			af = new ActionFoward();
+			af = new ActionForward();
 			af.setPath("./user/joinForm.jsp");
 			af.setRedirect(false);
 		}
@@ -121,6 +121,21 @@ public class UserFrontController extends HttpServlet {
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		//탈퇴처리
+		else if (command.equals("/UserDelete.me")) {
+			af = new ActionForward();
+			af.setPath("./user/UserDelete.jsp");
+			af.setRedirect(false);
+		}else if (command.equals("/UserDeleteAction.me")) {
+			action = new UserDeleteAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				
 				e.printStackTrace();
 			}
 		}
