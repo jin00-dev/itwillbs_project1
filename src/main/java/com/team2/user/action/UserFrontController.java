@@ -15,7 +15,11 @@ public class UserFrontController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+<<<<<<< HEAD
 		ActionForward af = null;
+=======
+		ActionFoward forward = null;
+>>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		
 		////주소 계산//////////////////////////
 		String uri = request.getRequestURI();
@@ -27,16 +31,22 @@ public class UserFrontController extends HttpServlet {
 		////이동 방식 계산////////////////////
 		//로그인 페이지
 		if( command.equals("/UserLogin.me") ) {
+<<<<<<< HEAD
 			af = new ActionForward();
 			af.setPath("./user/loginForm.jsp");
 			af.setRedirect(false);
+=======
+			forward = new ActionFoward();
+			forward.setPath("./user/loginForm.jsp");
+			forward.setRedirect(false);
+>>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		}
 		//로그인 처리
 		else if( command.equals("/UserLoginAction.me") ) {
 			action = new UserLoginAction();
 			
 			try {
-				af =  action.execute(request, response);
+				forward =  action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -46,7 +56,7 @@ public class UserFrontController extends HttpServlet {
 			action = new UserIdCheckAction();
 			
 			try {
-				af =  action.execute(request, response);
+				forward =  action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -56,39 +66,52 @@ public class UserFrontController extends HttpServlet {
 			action = new NonUserLoginAction();
 			
 			try {
-				af =  action.execute(request, response);
+				forward =  action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		//메인 페이지
 		else if( command.equals("/Main.me") ) {
+<<<<<<< HEAD
 			af = new ActionForward();
 			af.setPath("./main.jsp");
 			af.setRedirect(false);
+=======
+			forward = new ActionFoward();
+			forward.setPath("./main.jsp");
+			forward.setRedirect(false);
+>>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		}
 		//로그아웃 처리
 		else if( command.equals("/UserLogoutAction.me") ) {
 			action = new UserLogoutAction();
 			
 			try {
-				af = action.execute(request, response);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		//아이디 찾기
+<<<<<<< HEAD
 		else if( command.equals("/findIdForm.me") ) {
 			af = new ActionForward();
 			af.setPath("./user/findIdForm.jsp");
 			af.setRedirect(false);
+=======
+		else if( command.equals("/UserFindId.me") ) {
+			forward = new ActionFoward();
+			forward.setPath("./user/findIdForm.jsp");
+			forward.setRedirect(false);
+>>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		}
 		//아이디 찾기 처리
 		else if( command.equals("/UserFindIdAction.me") ) {
 			action = new UserFindIdAction();
 			
 			try {
-				af = action.execute(request, response);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -96,30 +119,42 @@ public class UserFrontController extends HttpServlet {
 		
 		//비밀번호 찾기	
 		else if( command.equals("/UserFindPw.me") ) {
+<<<<<<< HEAD
 			af = new ActionForward();
 			af.setPath("./user/findPwForm.jsp");
 			af.setRedirect(false);
+=======
+			forward = new ActionFoward();
+			forward.setPath("./user/findPwForm.jsp");
+			forward.setRedirect(false);
+>>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		}
 		//비밀번호 찾기 처리
 		else if( command.equals("/UserFindPwAction.me") ) {
 			action = new UserFindPwAction();
 			try {
-				af = action.execute(request, response);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		//회원가입
 		else if( command.equals("/UserJoin.me") ) {
+<<<<<<< HEAD
 			af = new ActionForward();
 			af.setPath("./user/joinForm.jsp");
 			af.setRedirect(false);
+=======
+			forward = new ActionFoward();
+			forward.setPath("./user/joinForm.jsp");
+			forward.setRedirect(false);
+>>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		}
 		//회원가입 처리
 		else if( command.equals("/UserJoinAction.me") ) {
 			action = new UserJoinAction();
 			try {
-				af = action.execute(request, response);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -139,12 +174,61 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		//회원정보 페이지 전 정보 확인 페이지
+		else if(command.equals("/UserInfoCheck.me")) {
+			forward = new ActionFoward();
+			forward.setPath("./user/userInfoForm.jsp");
+			forward.setRedirect(false);
+		}
+		//회원정보 일치하는지 확인
+		else if(command.equals("/UserInfoCheckAction.me")) {
+			action = new UserInfoCheckAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원 정보 페이지
+		else if(command.equals("/UserInfoAction.me")) {
+			action = new UserInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원 정보 수정
+		else if(command.equals("/UserInfoChangeAction.me")) {
+			action = new UserInfoChangeAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원탈퇴 폼 페이지
+		else if(command.equals("/UserDelete.me")) {
+			forward = new ActionFoward();
+			forward.setPath("./user/deleteForm.jsp");
+			forward.setRedirect(false);
+		}
+		//회원탈퇴 처리
+		else if(command.equals("/UserDeleteAction.me")) {
+			action = new UserDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		//이제부터 게시판-------------------------------------------------------------
 		//게시판 메인
 //		else if( command.equals("/BoardMain.me") ) {
 //			action = new BoardMainAction();
 //			try {
-//				af = action.execute(request, response);
+//				forward = action.execute(request, response);
 //			} catch (Exception e) {
 //				e.printStackTrace();
 //			}
@@ -153,20 +237,20 @@ public class UserFrontController extends HttpServlet {
 //		else if( command.equals("/BoardRead.me") ) {
 //			action = new BoardReadAction();
 //			try {
-//				af = action.execute(request, response);
+//				forward = action.execute(request, response);
 //			} catch (Exception e) {
 //				e.printStackTrace();
 //			}
 //		}
 		
 		////3.주소로 이동////////////
-		if( af != null ) {
-			if( af.isRedirect() ) {
-				System.out.println( af.getPath() +" ##"+ af.isRedirect() );     
-				response.sendRedirect( af.getPath() );
+		if( forward != null ) {
+			if( forward.isRedirect() ) {
+				System.out.println( forward.getPath() +" ##"+ forward.isRedirect() );     
+				response.sendRedirect( forward.getPath() );
 			}else {
-				System.out.println( af.getPath() +" ##"+ af.isRedirect() );
-				RequestDispatcher dis = request.getRequestDispatcher(af.getPath());
+				System.out.println( forward.getPath() +" ##"+ forward.isRedirect() );
+				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 				dis.forward(request, response);
 			}
 		}

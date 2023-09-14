@@ -142,6 +142,7 @@ public class UserDAO {
 		}
 	}
 	
+<<<<<<< HEAD
 	//아이디 찾기 findId()
 
 	public UserDTO findId(String phone) {
@@ -164,10 +165,82 @@ public class UserDAO {
 		}finally {
 			con.closeDB(conn, rs, pstmt);}
 	return dto;
+=======
+	//유저 정보 가져오기
+	public UserDTO getUserInfo(String user_id){
+		sql = "select user_id, user_name, user_phone from user where user_id=?";
+		conn  = con.getConnection();
+		UserDTO dto = new UserDTO();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user_id );
+			rs =  pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setUser_id(rs.getString(1));
+				dto.setUser_name(rs.getString(2));
+				dto.setUser_phone(rs.getString(3));
+			}
+			return dto;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			con.closeDB(conn, rs, pstmt);
+		}
+>>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 	}
 	
+	//유저 정보 수정
+	public int updateUserInfo(UserDTO dto){
+		sql = "update user set user_name=?, user_phone=?, user_pass=? where user_id=?";
+		conn  = con.getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getUser_name());
+			pstmt.setString(2, dto.getUser_phone());
+			pstmt.setString(3, dto.getUser_pass());
+			pstmt.setString(4, dto.getUser_id());
+			
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			con.closeDB(conn, rs, pstmt);
+		}
+	}
 	
+<<<<<<< HEAD
 	//아이디 찾기 findId()
+=======
+	//유저 삭제
+	public int deleteUserInfo(UserDTO dto) {
+		sql = "delete from user where user_id=? and user_pass=?";
+		String sql2 = "SET foreign_key_checks = 0";
+		
+		conn  = con.getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.executeUpdate();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setString(2, dto.getUser_pass());
+			
+			
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			con.closeDB(conn, rs, pstmt);
+		}
+	}
+>>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 	
 	// 비밀번호 찾기 findPw()
 	

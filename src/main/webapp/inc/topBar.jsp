@@ -35,8 +35,8 @@
 				<div class="col-md-4">
 					<div class="top_1r text-end">
 						<ul class="social-network social-circle mb-0">
-							<li><a href="loginForm.jsp">로그인</a></li>
-							<li><a href="#">회원가입</a></li>
+							<li><a href="./UserLogin.me">로그인</a></li>
+							<li><a href="./UserJoin.me">회원가입</a></li>
 						</ul>
 					</div>
 				</div>
