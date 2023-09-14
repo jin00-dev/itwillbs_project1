@@ -38,7 +38,7 @@ public class QnaBoardDeleteAction implements Action {
 			JSMethod.alertBack(response, "게시글 없음");
 			return null;
 		}
-		JSMethod.alertLocation(response, "삭제 완료!", "./qnaBoardList.bo?pageNum="+pageNum);
+		JSMethod.alertDelete(response, "삭제 완료!");
 		// 처리결과에 따른 페이지 이동
 		
 		return null;

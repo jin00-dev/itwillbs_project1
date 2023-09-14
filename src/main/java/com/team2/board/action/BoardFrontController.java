@@ -77,7 +77,7 @@ public class BoardFrontController extends HttpServlet{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}else if(command.equals("/board/qnaBoardAction.bo")) {
+			}else if(command.equals("/board/QnaBoardAction.bo")) {
 				System.out.println(" C : /board/qnaBoardAction.bo 호출");
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				
@@ -197,6 +197,55 @@ public class BoardFrontController extends HttpServlet{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}			
+			}else if(command.equals("/board/qnaBoardAnswer.bo")) {
+				System.out.println(" C : /board/qnaBoardAnswer.bo 호출 ");
+				System.out.println(" C : 패턴 3 - DB사용O,페이지 출력");
+				// BoardUpdateAction
+				action = new QnaBoardAnswerAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(command.equals("/board/noticeBoardDelete.bo")) {
+				System.out.println(" C : /board/noticeBoardDelete.bo 호출 ");
+				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
+				
+				forward = new ActionForward();
+				forward.setPath("./noticeBoardDelete.jsp");
+				forward.setRedirect(false);	
+			}else if(command.equals("/board/noticeBoardDeleteAction.bo")) {
+				System.out.println(" C : /board/noticeBoardDeleteAction.bo 호출 ");
+				System.out.println(" C : 패턴2 - DB사용O, 페이지이동");
+				
+				// BoardDeleteAction() 객체
+				action = new NoticeBoardDeleteAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	
+			}else if(command.equals("/board/noticeBoardUpdate.bo")) {
+				System.out.println(" C : /board/noticeBoardUpdate.bo 호출 ");
+				System.out.println(" C : 패턴 3 - DB사용O,페이지 출력");
+				// BoardUpdateAction
+				action = new NoticeBoardUpdateAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(command.equals("/board/noticeBoardUpdatePro.bo")) {
+				System.out.println(" C : /board/noticeBoardUpdatePro.bo 호출 ");
+				System.out.println(" C : 패턴2 - DB사용O,페이지 이동");
+				
+				// BoardUpdateProAction 객체 
+				action = new NoticeBoardUpdateProAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		System.out.println(" C : 2. 가상주소 비교 - 끝");
 		/*************************2. 가상주소 비교**************************************/

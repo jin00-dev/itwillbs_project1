@@ -130,7 +130,7 @@ public class QRBoardDAO {
 		if(category == 0 ) {
 			sql = "insert into qna_rent_board(category,qna_bno,user_id,"
 					+ "subject,content,read_count,regdate,answer) "
-					+ "values(?,?,?,?,?,?,now(),'N')";
+					+ "values(?,?,?,?,?,?,now(),0)";
 			pstmt = con.prepareStatement(sql);
 			// ???
 			pstmt.setByte(1, category);
@@ -144,7 +144,7 @@ public class QRBoardDAO {
 			sql = "insert into qna_rent_board(category,rent_bno,user_id,"
 					+ "subject,content,read_count,regdate,rent_name,"
 					+ "cinema_name,rent_email,rent_phone,answer) "
-					+ "values(?,?,?,?,?,?,now(),?,?,?,?,'N')";
+					+ "values(?,?,?,?,?,?,now(),?,?,?,?,0)";
 			pstmt = con.prepareStatement(sql);
 			// ???
 			pstmt.setByte(1, category);
@@ -470,15 +470,20 @@ public class QRBoardDAO {
 			con = getConnect();
 			//3. sql구문작성(기존의 회원여부확인) & pstmt객체
 			if(category == 0) {
-				sql = "update qna_rent_board set subject=?,content=?,updatedate=now()"
+				sql = "update qna_rent_board set subject=?,content=?,"
+						+ "answer=?,answer_context=?,updatedate=now()"
 						+ " where qna_bno=?";
 			}else {
-				sql = "update qna_rent_board set subject=?,content=?,updatedate=now()"
+				sql = "update qna_rent_board set subject=?,content=?,"
+						+ " answer=?,answer_context=?,updatedate=now()"
 						+ " where rent_bno=?";;
 			}
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, bb.getSubject());
 			pstmt.setString(2, bb.getContent());
+			pstmt.setByte(3, bb.getAnswer());
+			pstmt.setString(4, bb.getAnswer_context());
+			pstmt.setInt(5, bb.getQna_bno());
 					
 			//4.sql 실행
 			pstmt.executeUpdate();	

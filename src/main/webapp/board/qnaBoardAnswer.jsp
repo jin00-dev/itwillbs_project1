@@ -59,9 +59,10 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">이벤트</a></li>
-						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
-						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="../event/eventMain.jsp">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -77,72 +78,45 @@
 	</section>
 
 
-	<!-- 여기 문의 꾸며아함. -->
+	<!-- 여기 대관문의 꾸며아함. -->
 
-		<table id="qnaContent">
-		<tr>
-			<th class="ttitle" colspan="4"></th>
-		</tr>
-		<tr>
-			<td>글번호</td>
-			<td>${dto.qna_bno }</td>
+	<div class="container">
+		<form action="./qnaBoardUpdatePro.bo?pageNum=${pageNum }"
+			method="post">
+			<input type="hidden" name="qna_bno" value="${dto.qna_bno }">
+			<input type="hidden" name="subject" value="${dto.subject }">
+			<input type="hidden" name="content" value="${dto.content }">
+			<input type="hidden" name="answer" value="1">
+			<table id="Update">
+				<tr>
+					<th class="ttitle" colspan="3">1:1문의 수정</th>
+				</tr>
 
-			<td>작성일</td>
-			<td><c:choose>
-					<c:when test="${empty dto.updatedate}">
-						<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
-					</c:when>
-					<c:otherwise>
-						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-					</c:otherwise>
-				</c:choose></td>
+				<tr>
+					<td>제 목 :</td>
+					<td colspan="2">${dto.subject }</td>
+				</tr>
+				<tr>
+					<td>내 용 :</td>
+					<td colspan="2">${dto.content }</td>
+				</tr>
+				<tr>
+					<td>답 변 내 용 :</td>
+					<td colspan="2"><textarea rows="" cols="" id="wInput"
+							name="answer_context"></textarea></td>
+				</tr>
+			</table>
 
-		</tr>
-		<tr>
-			<td> 질 문</td>
-			<td colspan="3">${dto.subject }</td>
-		</tr>
-		<tr>
-			<td> 내 용</td>
-			<td colspan="3">${dto.content }</td>
-		</tr>
-		<tr>
-			<td> 답 변 </td>
-			<td colspan="3">${dto.answer_context }</td>
-		</tr>
-		
-	</table>
-	<script type="text/javascript">
-		function deleteQna() {
-			window.open("./qnaBoardDelete.bo?qna_bno=${dto.qna_bno }&&pageNum=${param.pageNum }&&user_id=${dto.user_id }",
-					"_black","width=400, height=200");
-		}
-		
-		function boardList() {
-			location.href="qnaBoardList.bo?pageNum=${param.pageNum}";
-		}
-	</script>
-<%-- 	<c:if test="${user_id == dto.user_id }"> --%>
-	<div id="table_search">
-		<c:if test="${dto.answer == 0 }"> 
-		<!-- 답변 못받을 경우만 수정가능하게  -->
-		<input type="button" value="수정하기" class="btn"
-			onclick="location.href='qnaBoardUpdate.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }';">
-		</c:if>
-		<input type="button" value="삭제하기" class="btn"
-			onclick="deleteQna();">
-		<input type="button" value="목록이동" class="btn"
-			onclick="boardList();">
+			<div id="table_search">
+				<input type="submit" value="수정하기" class="btn">
+			</div>
+			<div class="clear"></div>
+			<div id="page_control"></div>
+		</form>
 	</div>
-<%-- 	</c:if> --%>
-<%-- 		<c:if test="${user_type = 1 }"> --%>
-			<!-- 관리자만 가능하게  -->
-			<input type="button" value="답변쓰기" class="btn"
-			onclick="location.href='qnaBoardAnswer.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }';">
-<%-- 		</c:if> --%>
-	
+
 	<!-- footer아래로는 코드 금지 -->
-	
+
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">
 			<ul class="mb-0">
