@@ -59,9 +59,10 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">이벤트</a></li>
-						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
-						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="../event/eventMain.jsp">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,57 +81,92 @@
 	<!-- 여기 공지사항 꾸며아함. -->
 
 	<div class="container">
-		<h1>공지사항 </h1>
+		<h1>공지사항</h1>
 		<table id="noticeBoardList">
-				<tr>
-					<th class="bno">No.</th>
-					<th class="subject">Title</th>
-					<th class="date">Date</th>
-					<th class="readCount">ReadCount</th>
-				</tr>
+			<tr>
+				<th class="bno">No.</th>
+				<th class="subject">Title</th>
+				<th class="date">Date</th>
+				<th class="readCount">ReadCount</th>
+			</tr>
 			<c:forEach var="dto" items="${boardList }">
 				<tr>
-					<td>
-						${dto.notice_bno }
+					<td>${dto.notice_bno }</td>
+					<td><a
+						href="noticeBoardContent.bo?notice_bno=${dto.notice_bno }&pageNum=${pageNum}">${dto.subject }</a>
 					</td>
-					<td>	
-						<a href="noticeBoardContent.bo?notice_bno=${dto.notice_bno }&pageNum=${pageNum}">${dto.subject }</a>
-					</td>
-					<td>
-						<c:choose> 
-						<c:when test="${empty dto.updatedate}">
-							<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd"/>
-						</c:when>
-						<c:otherwise>
-							<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd"/>							
-						</c:otherwise>
-						</c:choose>
-					</td>
+					<td><c:choose>
+							<c:when test="${empty dto.updatedate}">
+								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
+							</c:when>
+							<c:otherwise>
+								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
+							</c:otherwise>
+						</c:choose></td>
 					<td>${dto.read_count }</td>
 			</c:forEach>
-				
-			</table>
-			<div id="table_search">
-				<input type="text" name="search" class="input_box"> <input
-					type="button" value="search" class="btn">
-				<input type="button" name="noticeAdd" value="공지추가" onclick="location.href='noticeBoardAdd.bo';">
-			</div>
-			<div class="clear"></div>
-			<div id="page_control">
-				<c:if test="${startPage > pageBlock }">
-					<a href="./BoardList.bo?pageNum=${startPage-pageBlock }">Prev</a>
-				</c:if>
-				<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
-					<a href="./BoardList.bo?pageNum=${i }">${i }</a>
-				</c:forEach>
-				<c:if test="${endPage < pageCount }">
-					<a href="./BoardList.bo?pageNum=${startPage+pageBlock }">Next</a>
-				</c:if>
-			</div>
+
+		</table>
+		<div id="table_search">
+			<form action="./boardSearch.bo" name="boardSearch" method="post">
+				<input type="hidden" name="category" value="${boardList[0].category }">
+				<table>
+				<tr>
+					<td>
+						<select name="searchField">
+							<option value="0" >선택</option>
+							<option value="subject">제목</option>
+							<option value="content">내용</option>
+						</select>
+					</td>
+				 
+					<td>
+						<input type="text" name="searchText" class="input_box">
+					</td>
+					<td>
+						<input type="submit" value="search">
+					</td>
+				</tr>
+				</table>
+
+
+			</form>
+		</div>
+		<script type="text/javascript">
+				var popupX = (document.body.offsetWidth / 2) - (500 / 2) + 90;
+				// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+		
+				var popupY= (window.screen.height / 2) - (300 / 2) - 20;
+				// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+				function noticeBoardAdd() {
+					window.open("./noticeBoardAdd.bo","_black",
+							"width=500, height=300, left="+popupX+", top="+popupY);
+				}
+				function boardList() {
+					location.href="./noticeMain.bo";
+				}
+			
+			</script>
+		<%-- 				<c:if test="${user_type == 1 }"> --%>
+		<input type="button" name="noticeAdd" value="공지추가"
+			onclick="noticeBoardAdd();">
+		<%-- 				</c:if> --%>
+		<div class="clear"></div>
+		<div id="page_control">
+			<c:if test="${startPage > pageBlock }">
+				<a href="./noticeMain.bo?pageNum=${startPage-pageBlock }">Prev</a>
+			</c:if>
+			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
+				<a href="./noticeMain.bo?pageNum=${i }">${i }</a>
+			</c:forEach>
+			<c:if test="${endPage < pageCount }">
+				<a href="./noticeMain.bo?pageNum=${startPage+pageBlock }">Next</a>
+			</c:if>
+		</div>
 	</div>
-	
+
 	<!-- footer아래로는 코드 금지 -->
-	
+
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">
 			<ul class="mb-0">

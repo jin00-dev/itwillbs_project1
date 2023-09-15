@@ -120,13 +120,13 @@
 	</script>
 <%-- 	<c:if test="${user_type == 1 }"> --%>
 		<div id="table_search">
-		<input type="button" value="수정하기" class="btn"
+		<input type="button" value="수정하기"
 			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&event_type=${dto.event_type }&&pageNum=${param.pageNum }';">
-		<input type="button" value="삭제하기" class="btn"
+		<input type="button" value="삭제하기"
 			onclick="noticeDelete();">
 		</div>
 <%-- 	</c:if> --%>
-		<input type="button" value="목록이동" class="btn"
+		<input type="button" value="목록이동"
 			onclick="boardList();">
 	</div>
 	

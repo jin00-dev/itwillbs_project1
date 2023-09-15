@@ -27,7 +27,7 @@ public class NoticeBoardDeleteAction implements Action {
 		ENFBoardDAO dao = new ENFBoardDAO();
 		dao.deleteBoard(dto);
 
-		JSMethod.alertDelete(response, "삭제 완료!");
+		JSMethod.alertLocation(response, "삭제 완료!");
 		
 		
 		return null;
