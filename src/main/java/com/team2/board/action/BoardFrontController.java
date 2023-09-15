@@ -277,7 +277,39 @@ public class BoardFrontController extends HttpServlet{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-	}
+			}else if(command.equals("/board/rentWrite.bo")) {
+				System.out.println(" C : /board/rentWrite.bo 호출");
+
+				forward = new ActionForward();
+				forward.setPath("./rentBoard.jsp");
+				forward.setRedirect(false); 
+				// 대관문의 글쓰기 페이지로 이동 
+			}
+			else if(command.equals("/board/rentWriteAction.bo")) {
+				System.out.println(" C : /board/rentWriteAction.bo 호출");
+
+				action =new rentWriteAction();
+
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}// 대관 문의 글쓰기 insert 
+
+			}
+			else if (command.equals("/board/CinemaSelectAction.bo")) {
+				System.out.println("C : /board/CinemaSelectAction.bo 호출");
+
+				action =new CinemaSelectAction();
+
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}// 대관문의 극장 select
+
+			}
+		
 		System.out.println(" C : 2. 가상주소 비교 - 끝");
 		/*************************2. 가상주소 비교**************************************/
 		
