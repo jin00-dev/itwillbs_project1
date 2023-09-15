@@ -6,13 +6,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>회원가입</title>
+<title>Off The Lamp</title>
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/global.css" rel="stylesheet">
 <link href="./css/index.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/joinPage.css">
 <script src="./js/bootstrap.bundle.min.js"></script>
 
@@ -70,8 +68,7 @@
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="../board/noticeMain.jsp">공지사항</a></li>
 								<li><a class="dropdown-item" href="../board/faqMain.jsp">자주묻는질문</a></li>
-								<li><a class="dropdown-item border-0"
-									href="../board/rentMain.jsp">대관문의</a></li>
+								<li><a class="dropdown-item border-0" href="../board/rentMain.jsp">대관문의</a></li>
 							</ul></li>
 				</div>
 			</div>
