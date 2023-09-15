@@ -7,6 +7,7 @@ import com.team2.board.db.ENFBoardDAO;
 import com.team2.board.db.ENFBoardDTO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
+import com.team2.util.JSMethod;
 
 public class FaqBoardAddAction implements Action {
 
@@ -23,11 +24,8 @@ public class FaqBoardAddAction implements Action {
 		System.out.println(" M : "+dto);
 		dao.insertBoard(dto);
 		
-		// 페이지 이동
-		ActionForward forward = new ActionForward();
-		forward.setPath("./faqMain.bo");
-		forward.setRedirect(true);
-		return forward;
+		JSMethod.alertLocation(response, "추가 완료!");
+		return null;
 	}
 
 }
