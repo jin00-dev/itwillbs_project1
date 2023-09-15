@@ -2,42 +2,30 @@
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
+
 <head>
+<!-- Jquery 라이브러리 추가 -->
+<script src="../js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+
+
+
+
+</script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>로그인</title>
-<link href="./css/bootstrap.min.css" rel="stylesheet">
-<link href="./css/global.css" rel="stylesheet">
-<link href="./css/index.css" rel="stylesheet">
+<title>회원가입</title>
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/global.css" rel="stylesheet">
+<link href="../css/index.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
 	rel="stylesheet">
-<script src="./js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="./css/loginPage.css" />
-<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<link rel="stylesheet" href="../css/findId.css">
+<script src="../js/bootstrap.bundle.min.js"></script>
 
-<script type="text/javascript">
-    Kakao.init('0d2a9fe9a6518b6101a59a7a94f08950');
-    function kakaoLogin() {
-        Kakao.Auth.login({
-            success: function (response) {
-                Kakao.API.request({
-                    url: '/v2/user/me',
-                    success: function (response) {
-                        alert(JSON.stringify(response))
-                    },
-                    fail: function (error) {
-                        alert(JSON.stringify(error))
-                    },
-                })
-            },
-            fail: function (error) {
-                alert(JSON.stringify(error))
-            },
-        })
-    }
-</script>
 </head>
 <body>
 	<section id="top">
@@ -57,8 +45,8 @@
 				<div class="col-md-4">
 					<div class="top_1r text-end">
 						<ul class="social-network social-circle mb-0">
-							<li><a href="#">로그인</a></li>
-							<li><a href="insertForm.jsp">회원가입</a></li>
+							<li><a href="loginForm.jsp">로그인</a></li>
+							<li><a href="#">회원가입</a></li>
 						</ul>
 					</div>
 				</div>
@@ -83,8 +71,8 @@
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="../event/eventMain.jsp">이벤트</a></li>
-						<li class="nav-item"><a class="nav-link" href="../board/introduceMain.jsp">소개게시판</a>
-						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="../board/introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -92,7 +80,8 @@
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="../board/noticeMain.jsp">공지사항</a></li>
 								<li><a class="dropdown-item" href="../board/faqMain.jsp">자주묻는질문</a></li>
-								<li><a class="dropdown-item border-0" href="../board/rentMain.jsp">대관문의</a></li>
+								<li><a class="dropdown-item border-0"
+									href="../board/rentMain.jsp">대관문의</a></li>
 							</ul></li>
 				</div>
 			</div>
@@ -100,47 +89,39 @@
 	</section>
 
 
+	<!-- 여기 회원가입 페이지 꾸며아함. -->
+
 	<!--center -------------------------------------------------------------  -->
 <section id="center" class="center_o pt-2 pb-2">
-		<fieldset class="id_pw_wrap">
-			<legend >로그인</legend>
-			<form action="./UserLoginAction.me" method="post">
-			
-					<input type="text" name="id" placeholder="아이디" class="id_pw"> <br>
-					<input type="password" name="pw" placeholder="비밀번호" class="id_pw"> <hr>
-				
-				<button type="submit" class="btn_login">
-					<span>로그인</span>
-				</button>
-			</form>
-		
-		<div class="panel_item2">
-			<a href="./UserFindId.me">아이디 찾기</a> |
-			<a href="./UserFindPw.me">비밀번호 찾기</a> |
-			<a href="./UserJoin.me">회원 가입</a> 
-			<hr>
-			<a href="javascript:kakaoLogin()"><img src="./img/kakao_login_large.png" width="80px"/></a>
+	<form action="./loginForm.jsp" method="post"></form>
+		<fieldset>
+ <div class="container">
+        <nav class="navi">
+            <ul>
+                  
+                   <li><a id="find" href="./findIdForm.me">아이디찾기</a></li> 
+                   <li><a id="find" href="./findPwForm.me">비밀번호찾기</a></li> 
+            </ul>   
+        </nav>
+        </div>
+ </fieldset>
+	
+	
+	
+	 <div id="box2">
+	 <fieldset>
+            <h4 id="a">이름</h4>
+               <input id="box" type="text" name="user_name"> <br>
+             <h4 id ="a">휴대폰 번호</h4>
+              <input id="box" type="text" name="user_phone"> 
+              <input type="button" value="인증"> <br>
+             
+               <input id="b" type="button" value="아이디 찾기" href="./findIdForm2.me"> 
+            </fieldset>
 		</div>
-		</fieldset>
-		
-		<fieldset class="id_pw_wrap">
-			<legend >비회원 예매</legend>
-			<form action="./NonMemberLoginAction.me" method="post">
-			
-					<input type="text" name="id" placeholder="아이디" class="id_pw"> <br>
-					<input type="text" name="phone" placeholder="휴대폰 번호" class="id_pw"> <br>
-					<input type="password" name="pw" placeholder="비밀번호" class="id_pw"> <br>
-					<input type="password" name="pwCheck" placeholder="비밀번호 확인" class="id_pw"> <hr>
-				
-				<button type="submit" class="btn_login">
-					<span>와! 비회원 예매</span>
-				</button>
-			</form>
-		</fieldset>
-		<hr>
  </section>
-
 <!--center end-------------------------------------------------------------  -->
+	<!-- footer아래로는 코드 금지 -->
 
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">
@@ -154,7 +135,7 @@
 			</ul>
 		</div>
 	</section>
-	
+
 
 	<script>
 		window.onscroll = function() {
