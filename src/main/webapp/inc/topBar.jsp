@@ -84,8 +84,7 @@
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="../board/noticeMain.jsp">공지사항</a></li>
 								<li><a class="dropdown-item" href="../board/faqMain.jsp">자주묻는질문</a></li>
-								<li><a class="dropdown-item border-0"
-									href="../board/rentMain.jsp">대관문의</a></li>
+								<li><a class="dropdown-item border-0 "href="../board/rentMain.jsp">대관문의</a></li>
 							</ul></li>
 				</div>
 			</div>

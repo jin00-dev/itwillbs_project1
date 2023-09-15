@@ -65,8 +65,8 @@
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="noticeMain.jsp">공지사항</a></li>
-								<li><a class="dropdown-item" href="faqMain.jsp">자주묻는질문</a></li>
+								<li><a class="dropdown-item" href="board/noticeMain.bo">공지사항</a></li>
+								<li><a class="dropdown-item" href="board/faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="#">대관문의</a></li>
 							</ul></li>
 				</div>
@@ -110,7 +110,7 @@
 		</ul>
 		
 		<div>
-			<input type="button" value="대관문의작성" onclick="location.href = './rentWrite.bo'">		
+			<input type="button" value="대관문의작성" onclick="location.href = './rentMain.bo'">		
 		</div>
 
 		
