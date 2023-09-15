@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,9 +67,9 @@
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="noticeMain.jsp">공지사항</a></li>
-								<li><a class="dropdown-item" href="faqMain.jsp">자주묻는질문</a></li>
-								<li><a class="dropdown-item border-0" href="#">대관문의</a></li>
+								<li><a class="dropdown-item" href="noticeMain.bo">공지사항</a></li>
+								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
+								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
 				</div>
 			</div>
@@ -78,42 +80,45 @@
 	<!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
-		<h1>
-			대관 문의 게시판 
-		</h1>
-		<h2> 대관 절차 </h2>
-		<ul>
-			<li>
-				대관 절차 적는 곳 			
-			</li>
-		</ul>
-		<h2> 승인 부결 통보 </h2>
-		<ul>
-			<li>
-				심의에서 승인 또는 부결된 결과는 개별적으로 통보해 드립니다. 			
-			</li>
-			<li>
-				심의에서 승인된 신청 건에 대해서는 기본대관료 내역 및 계약금과 승인일이 명시된 대관승인서를 메일로 보내드립니다. 			
-			</li>
-		</ul>
-		<h2> 대관 계약</h2>
-		<ul>
-			<li>
-				계약금을 납부함으로써 대관계약이 성립됩니다.	
-			</li>
-			<li>
-				계약금은 기본대관료의 10%이며, 납부기한은 청구일로부터 10일 이내입니다.	
-			</li>
-			<li>
-				계약금을 납부 기한 내 납부하지 않을 시 자동으로 대관승인이 취소됩니다.
-			</li>
-		</ul>
-		
-		<div>
-			<input type="button" value="대관문의작성" onclick="location.href = './rentWrite.bo'">		
-		</div>
-
-		
+		<h1>qnaBoardList</h1>
+		<table id="qnaBoardList">
+				<tr>
+					<th class="bno">No.</th>
+					<th class="subject">Title</th>
+					<th class="date">Date</th>
+					<th class="answer">Answer</th>
+				</tr>
+<%-- 			<c:if test="${user_id==boardList.user_id }"> --%>
+			<c:forEach var="dto" items="${boardList }">
+				<tr>
+					<td>
+						${dto.qna_bno }
+					</td>
+					<td>	
+						<a href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${dto.user_id }">${dto.subject }</a>
+					</td>
+					<td>
+						<c:choose> 
+							<c:when test="${empty dto.updatedate}">
+								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd"/>
+							</c:when>
+							<c:otherwise>
+								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd"/>							
+							</c:otherwise>
+						</c:choose>
+					</td>
+					<td><c:choose> 
+							<c:when test="${dto.answer == 0}">
+								N							
+							</c:when>
+							<c:otherwise>
+								Y
+							</c:otherwise>
+						</c:choose></td>
+			</c:forEach>
+<%-- 			</c:if> --%>
+				
+			</table>
 	</div>
 	
 	<!-- footer아래로는 코드 금지 -->

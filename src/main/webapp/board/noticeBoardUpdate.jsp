@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,17 +59,18 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">이벤트</a></li>
-						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
-						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="../event/eventMain.jsp">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="noticeMain.jsp">공지사항</a></li>
-								<li><a class="dropdown-item" href="faqMain.jsp">자주묻는질문</a></li>
-								<li><a class="dropdown-item border-0" href="#">대관문의</a></li>
+								<li><a class="dropdown-item" href="noticeMain.bo">공지사항</a></li>
+								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
+								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
 				</div>
 			</div>
@@ -76,48 +79,43 @@
 
 
 	<!-- 여기 대관문의 꾸며아함. -->
-
+	
 	<div class="container">
-		<h1>
-			대관 문의 게시판 
-		</h1>
-		<h2> 대관 절차 </h2>
-		<ul>
-			<li>
-				대관 절차 적는 곳 			
-			</li>
-		</ul>
-		<h2> 승인 부결 통보 </h2>
-		<ul>
-			<li>
-				심의에서 승인 또는 부결된 결과는 개별적으로 통보해 드립니다. 			
-			</li>
-			<li>
-				심의에서 승인된 신청 건에 대해서는 기본대관료 내역 및 계약금과 승인일이 명시된 대관승인서를 메일로 보내드립니다. 			
-			</li>
-		</ul>
-		<h2> 대관 계약</h2>
-		<ul>
-			<li>
-				계약금을 납부함으로써 대관계약이 성립됩니다.	
-			</li>
-			<li>
-				계약금은 기본대관료의 10%이며, 납부기한은 청구일로부터 10일 이내입니다.	
-			</li>
-			<li>
-				계약금을 납부 기한 내 납부하지 않을 시 자동으로 대관승인이 취소됩니다.
-			</li>
-		</ul>
-		
-		<div>
-			<input type="button" value="대관문의작성" onclick="location.href = './rentWrite.bo'">		
-		</div>
+		<form action="./noticeBoardUpdatePro.bo?pageNum=${pageNum }"
+			method="post">
+			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
+			<table id="Update">
+				<tr>
+					<th class="ttitle" colspan="3">공지사항 수정</th>
+				</tr>
+<!-- 				<tr> -->
+<!-- 					<td> -->
+<%-- 						<input type="radio" name="event_type" value="0" <c:if test="${dto.event_type == 0}">checked</c:if>> --%>
+<%-- 						<input type="radio" name="event_type" value="1" <c:if test="${dto.event_type == 1}">checked</c:if>>					 --%>
+<!-- 					</td> -->
+<!-- 				</tr> -->
+				<tr>
+					<td>제 목 :</td>
+					<td colspan="2"><input type="text" id="sInput" name="subject"
+						value="${dto.subject }"></td>
+				</tr>
+				<tr>
+					<td>내 용 :</td>
+					<td colspan="2"><textarea rows="" cols="" id="wInput"
+							name="content">${dto.content }</textarea></td>
+				</tr>
+			</table>
 
-		
+			<div id="table_search">
+				<input type="submit" value="수정하기" class="btn">
+			</div>
+			<div class="clear"></div>
+			<div id="page_control"></div>
+		</form>
 	</div>
-	
+
 	<!-- footer아래로는 코드 금지 -->
-	
+
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">
 			<ul class="mb-0">

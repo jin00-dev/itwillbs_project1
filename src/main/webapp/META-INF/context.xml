@@ -2,13 +2,13 @@
 
 <Context>
 	<Resource 
-		name ="jdbc/testweb"
+		name ="jdbc/team2"
 		auth ="Container"
 		type ="javax.sql.DataSource"
 		driverClassName ="com.mysql.cj.jdbc.Driver"
 		username ="c6d2305t2"
 		password ="1234"
-		url ="jdbc:mysql://itwillbs.com:3306/c6d2305t2"
+		url ="jdbc:mysql://itwillbs.com:3306/c6d2305t2?serverTimezone=Asia/Seoul"
 		maxWait ="5000"
 	/>
 	
