@@ -11,5 +11,4 @@
 		url ="jdbc:mysql://itwillbs.com:3306/c6d2305t2?serverTimezone=Asia/Seoul"
 		maxWait ="5000"
 	/>
-	
 </Context>
