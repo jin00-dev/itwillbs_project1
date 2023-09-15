@@ -127,13 +127,6 @@ public class BoardFrontController extends HttpServlet{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}else if(command.equals("/board/rentBoard.bo")) {
-				System.out.println(" C : /board/rentBoard.bo 호출");
-				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
-				
-				forward = new ActionForward();
-				forward.setPath("./rentBoardAdd.jsp");
-				forward.setRedirect(false);
 			}else if(command.equals("/board/qnaBoardContent.bo")) {
 				System.out.println(" C : /board/qnaBoardContent.bo 호출");
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
@@ -254,6 +247,43 @@ public class BoardFrontController extends HttpServlet{
 				forward.setPath("./main.html");
 				forward.setRedirect(false);
 			}
+			else if(command.equals("/board/rentWrite.bo")) {
+				System.out.println(" C : /board/rentWrite.bo 호출");
+
+				forward = new ActionForward();
+				forward.setPath("./rentBoard.jsp");
+				forward.setRedirect(false); 
+				// 대관문의 글쓰기 페이지로 이동 
+			}
+			else if(command.equals("/board/rentWriteAction.bo")) {
+				System.out.println(" C : /board/rentWriteAction.bo 호출");
+
+				action =new rentWriteAction();
+
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}// 대관 문의 글쓰기 insert 
+
+			}
+			else if (command.equals("/board/CinemaSelectAction.bo")) {
+				System.out.println("C : /board/CinemaSelectAction.bo 호출");
+
+				action =new CinemaSelectAction();
+
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}// 대관문의 극장 select
+
+			}
+			
+			
+			
+			
+			
 		System.out.println(" C : 2. 가상주소 비교 - 끝");
 		/*************************2. 가상주소 비교**************************************/
 		
