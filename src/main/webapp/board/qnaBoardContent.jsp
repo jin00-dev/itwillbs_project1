@@ -114,8 +114,15 @@
 	</table>
 	<script type="text/javascript">
 		function deleteQna() {
+			var popupX = (document.body.offsetWidth / 2) - (400 / 2) + 110;
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+			
+			var popupY= (window.screen.height / 2) - (200 / 2) - 50;
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+			console.log(popupX);
+			console.log(popupY);
 			window.open("./qnaBoardDelete.bo?qna_bno=${dto.qna_bno }&&pageNum=${param.pageNum }&&user_id=${dto.user_id }",
-					"_black","width=400, height=200");
+					"_black","height=200, width=400, left="+popupX+", top="+popupY);
 		}
 		
 		function boardList() {
@@ -126,18 +133,18 @@
 	<div id="table_search">
 		<c:if test="${dto.answer == 0 }"> 
 		<!-- 답변 못받을 경우만 수정가능하게  -->
-		<input type="button" value="수정하기" class="btn"
+		<input type="button" value="수정하기"
 			onclick="location.href='qnaBoardUpdate.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }';">
 		</c:if>
-		<input type="button" value="삭제하기" class="btn"
+		<input type="button" value="삭제하기"
 			onclick="deleteQna();">
-		<input type="button" value="목록이동" class="btn"
+		<input type="button" value="목록이동"
 			onclick="boardList();">
 	</div>
 <%-- 	</c:if> --%>
 <%-- 		<c:if test="${user_type = 1 }"> --%>
 			<!-- 관리자만 가능하게  -->
-			<input type="button" value="답변쓰기" class="btn"
+			<input type="button" value="답변쓰기"
 			onclick="location.href='qnaBoardAnswer.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }';">
 <%-- 		</c:if> --%>
 	
