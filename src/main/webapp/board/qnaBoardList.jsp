@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ÀÌº¥Æ®</title>
+<title>ì´ë²¤íŠ¸</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/global.css" rel="stylesheet">
 <link href="../css/index.css" rel="stylesheet">
@@ -35,8 +35,8 @@
 				<div class="col-md-4">
 					<div class="top_1r text-end">
 						<ul class="social-network social-circle mb-0">
-							<li><a href="../user/loginForm.jsp">·Î±×ÀÎ</a></li>
-							<li><a href="../user/insertForm.jsp">È¸¿ø°¡ÀÔ</a></li>
+							<li><a href="../user/loginForm.jsp">ë¡œê·¸ì¸</a></li>
+							<li><a href="../user/insertForm.jsp">íšŒì›ê°€ìž…</a></li>
 						</ul>
 					</div>
 				</div>
@@ -58,18 +58,18 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../order/orderMain.jsp">¿¹¸Å¾È³»</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">ÀÌº¥Æ®</a></li>
-						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">¼Ò°³°Ô½ÃÆÇ</a>
+							aria-current="page" href="../order/orderMain.jsp">ì˜ˆë§¤ì•ˆë‚´</a></li>
+						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">ì´ë²¤íŠ¸</a></li>
+						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">ì†Œê°œê²Œì‹œíŒ</a>
 						</li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								°í°´¹®ÀÇ </a>
+								ê³ ê°ë¬¸ì˜ </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="noticeMain.bo">°øÁö»çÇ×</a></li>
-								<li><a class="dropdown-item" href="faqMain.bo">ÀÚÁÖ¹¯´ÂÁú¹®</a></li>
-								<li><a class="dropdown-item border-0" href="rentMain.bo">´ë°ü¹®ÀÇ</a></li>
+								<li><a class="dropdown-item" href="noticeMain.bo">ê³µì§€ì‚¬í•­</a></li>
+								<li><a class="dropdown-item" href="faqMain.bo">ìžì£¼ë¬»ëŠ”ì§ˆë¬¸</a></li>
+								<li><a class="dropdown-item border-0" href="rentMain.bo">ëŒ€ê´€ë¬¸ì˜</a></li>
 							</ul></li>
 				</div>
 			</div>
@@ -77,7 +77,7 @@
 	</section>
 
 
-	<!-- ¿©±â ´ë°ü¹®ÀÇ ²Ù¸ç¾ÆÇÔ. -->
+	<!-- ì—¬ê¸° ëŒ€ê´€ë¬¸ì˜ ê¾¸ë©°ì•„í•¨. -->
 
 	<div class="container">
 		<h1>qnaBoardList</h1>
@@ -119,9 +119,46 @@
 <%-- 			</c:if> --%>
 				
 			</table>
+				<div id="page_control">
+				<c:if test="${startPage > pageBlock }">
+					<a href="./qnaBoardList.bo?pageNum=${startPage-pageBlock }">Prev</a>
+				</c:if>
+				<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
+					<a href="./qnaBoardList.bo?pageNum=${i }">${i }</a>
+				</c:forEach>
+				<c:if test="${endPage < pageCount }">
+					<a href="./qnaBoardList.bo?pageNum=${startPage+pageBlock }">Next</a>
+				</c:if>
+			</div>
+			
+				<div id="table_search">
+			<form action="./qrBoardSearch.bo" name="boardSearch" method="post">
+				<input type="hidden" name="category" value="${boardList[0].category }">
+				<table>
+				<tr>
+					<td>
+						<select name="searchField">
+							<option value="0" >ì„ íƒ</option>
+							<option value="subject">ì œëª©</option>
+							<option value="content">ë‚´ìš©</option>
+						</select>
+					</td>
+				 
+					<td>
+						<input type="text" name="searchText" class="input_box">
+					</td>
+					<td>
+						<input type="submit" value="search">
+					</td>
+				</tr>
+				</table>
+
+
+			</form>
+		</div>
 	</div>
 	
-	<!-- footer¾Æ·¡·Î´Â ÄÚµå ±ÝÁö -->
+	<!-- footerì•„ëž˜ë¡œëŠ” ì½”ë“œ ê¸ˆì§€ -->
 	
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ÀÌº¥Æ®</title>
+<title>ì´ë²¤íŠ¸</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/global.css" rel="stylesheet">
 <link href="../css/index.css" rel="stylesheet">
@@ -35,8 +35,8 @@
 				<div class="col-md-4">
 					<div class="top_1r text-end">
 						<ul class="social-network social-circle mb-0">
-							<li><a href="../user/loginForm.jsp">·Î±×ÀÎ</a></li>
-							<li><a href="../user/insertForm.jsp">È¸¿ø°¡ÀÔ</a></li>
+							<li><a href="../user/loginForm.jsp">ë¡œê·¸ì¸</a></li>
+							<li><a href="../user/insertForm.jsp">íšŒì›ê°€ìž…</a></li>
 						</ul>
 					</div>
 				</div>
@@ -58,19 +58,19 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../order/orderMain.jsp">¿¹¸Å¾È³»</a></li>
+							aria-current="page" href="../order/orderMain.jsp">ì˜ˆë§¤ì•ˆë‚´</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.jsp">ÀÌº¥Æ®</a></li>
+							href="../event/eventMain.jsp">ì´ë²¤íŠ¸</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="introduceMain.jsp">¼Ò°³°Ô½ÃÆÇ</a></li>
+							href="introduceMain.jsp">ì†Œê°œê²Œì‹œíŒ</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								°í°´¹®ÀÇ </a>
+								ê³ ê°ë¬¸ì˜ </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="noticeMain.bo">°øÁö»çÇ×</a></li>
-								<li><a class="dropdown-item" href="faqMain.bo">ÀÚÁÖ¹¯´ÂÁú¹®</a></li>
-								<li><a class="dropdown-item border-0" href="rentMain.bo">´ë°ü¹®ÀÇ</a></li>
+								<li><a class="dropdown-item" href="noticeMain.bo">ê³µì§€ì‚¬í•­</a></li>
+								<li><a class="dropdown-item" href="faqMain.bo">ìžì£¼ë¬»ëŠ”ì§ˆë¬¸</a></li>
+								<li><a class="dropdown-item border-0" href="rentMain.bo">ëŒ€ê´€ë¬¸ì˜</a></li>
 							</ul></li>
 				</div>
 			</div>
@@ -78,7 +78,7 @@
 	</section>
 
 
-	<!-- ¿©±â ´ë°ü¹®ÀÇ ²Ù¸ç¾ÆÇÔ. -->
+	<!-- ì—¬ê¸° ëŒ€ê´€ë¬¸ì˜ ê¾¸ë©°ì•„í•¨. -->
 
 	<div class="container">
 		<form action="./qnaBoardUpdatePro.bo?pageNum=${pageNum }"
@@ -89,33 +89,33 @@
 			<input type="hidden" name="answer" value="1">
 			<table id="Update">
 				<tr>
-					<th class="ttitle" colspan="3">1:1¹®ÀÇ ¼öÁ¤</th>
+					<th class="ttitle" colspan="3">1:1ë¬¸ì˜ ìˆ˜ì •</th>
 				</tr>
 
 				<tr>
-					<td>Á¦ ¸ñ :</td>
+					<td>ì œ ëª© :</td>
 					<td colspan="2">${dto.subject }</td>
 				</tr>
 				<tr>
-					<td>³» ¿ë :</td>
+					<td>ë‚´ ìš© :</td>
 					<td colspan="2">${dto.content }</td>
 				</tr>
 				<tr>
-					<td>´ä º¯ ³» ¿ë :</td>
+					<td>ë‹µ ë³€ ë‚´ ìš© :</td>
 					<td colspan="2"><textarea rows="" cols="" id="wInput"
 							name="answer_context"></textarea></td>
 				</tr>
 			</table>
 
 			<div id="table_search">
-				<input type="submit" value="¼öÁ¤ÇÏ±â" class="btn">
+				<input type="submit" value="ìˆ˜ì •í•˜ê¸°" class="btn">
 			</div>
 			<div class="clear"></div>
 			<div id="page_control"></div>
 		</form>
 	</div>
 
-	<!-- footer¾Æ·¡·Î´Â ÄÚµå ±ÝÁö -->
+	<!-- footerì•„ëž˜ë¡œëŠ” ì½”ë“œ ê¸ˆì§€ -->
 
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">

@@ -59,9 +59,10 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">이벤트</a></li>
-						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
-						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="../event/eventMain.jsp">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -77,79 +78,67 @@
 	</section>
 
 
-	<!-- 여기 문의 꾸며아함. -->
+	<!-- 여기 공지사항 꾸며아함. -->
 
-		<table id="qnaContent">
-		<tr>
-			<th class="ttitle" colspan="4"></th>
-		</tr>
-		<tr>
-			<td>글번호</td>
-			<td>${dto.qna_bno }</td>
+	<div class="container">
+		<h1>검색 리스트페이지</h1>
+		<table id="noticeBoardList">
+			<tr>
+				<th class="bno">No.</th>
+				<th class="subject">Title</th>
+				<th class="date">Date</th>
+				<th class="readCount">ReadCount</th>
+			</tr>
+			<c:forEach var="dto" items="${boardList }">
+				<tr>
+					<c:choose>
+						<c:when test="${dto.category == 0 }">
+							<td>${dto.qna_bno }</td>					
+							<td><a
+								href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&pageNum=${pageNum}">${dto.subject }</a>
+							</td>
+						</c:when>
+						<c:otherwise>
+							<td>${dto.rent_bno }</td>											
+							<td><a
+								href="rentBoardContent.bo?rent_bno=${dto.rent_bno }&pageNum=${pageNum}">${dto.subject }</a>
+							</td>
+						</c:otherwise>
+					</c:choose>
+					
+					<td><c:choose>
+							<c:when test="${empty dto.updatedate}">
+								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
+							</c:when>
+							<c:otherwise>
+								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
+							</c:otherwise>
+						</c:choose></td>
+					<td>${dto.read_count }</td>
+			</c:forEach>
 
-			<td>작성일</td>
-			<td><c:choose>
-					<c:when test="${empty dto.updatedate}">
-						<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
-					</c:when>
-					<c:otherwise>
-						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-					</c:otherwise>
-				</c:choose></td>
+		</table>
 
-		</tr>
-		<tr>
-			<td> 질 문</td>
-			<td colspan="3">${dto.subject }</td>
-		</tr>
-		<tr>
-			<td> 내 용</td>
-			<td colspan="3">${dto.content }</td>
-		</tr>
-		<tr>
-			<td> 답 변 </td>
-			<td colspan="3">${dto.answer_context }</td>
-		</tr>
-		
-	</table>
-	<script type="text/javascript">
-		function deleteQna() {
-			var popupX = (document.body.offsetWidth / 2) - (400 / 2) + 110;
-			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
-			
-			var popupY= (window.screen.height / 2) - (200 / 2) - 50;
-			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-			console.log(popupX);
-			console.log(popupY);
-			window.open("./qnaBoardDelete.bo?qna_bno=${dto.qna_bno }&&pageNum=${param.pageNum }&&user_id=${dto.user_id }",
-					"_black","height=200, width=400, left="+popupX+", top="+popupY);
-		}
-		
-		function boardList() {
-			location.href="qnaBoardList.bo?pageNum=${param.pageNum}";
-		}
-	</script>
-<%-- 	<c:if test="${user_id == dto.user_id }"> --%>
-	<div id="table_search">
-		<c:if test="${dto.answer == 0 }"> 
-		<!-- 답변 못받을 경우만 수정가능하게  -->
-		<input type="button" value="수정하기"
-			onclick="location.href='qnaBoardUpdate.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }';">
-		</c:if>
-		<input type="button" value="삭제하기"
-			onclick="deleteQna();">
-		<input type="button" value="목록이동"
-			onclick="boardList();">
+		<div class="clear"></div>
+		<div id="page_control">
+			<c:if test="${startPage > pageBlock }">
+				<a
+					href="./qrBoardSearch.bo?pageNum=${startPage-pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Prev</a>
+			</c:if>
+			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
+				<a
+					href="./qrBoardSearch.bo?pageNum=${i }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">${i }</a>
+			</c:forEach>
+			<c:if test="${endPage < pageCount }">
+				<a
+					href="./qrBoardSearch.bo?pageNum=${startPage+pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
+			</c:if>
+			<!-- 			<input type="button" value="목록이동" onclick="history.back();"> -->
+		</div>
 	</div>
-<%-- 	</c:if> --%>
-<%-- 		<c:if test="${user_type = 1 }"> --%>
-			<!-- 관리자만 가능하게  -->
-			<input type="button" value="답변쓰기"
-			onclick="location.href='qnaBoardAnswer.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }';">
-<%-- 		</c:if> --%>
-	
+
 	<!-- footer아래로는 코드 금지 -->
-	
+
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">
 			<ul class="mb-0">

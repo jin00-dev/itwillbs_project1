@@ -127,6 +127,13 @@ public class BoardFrontController extends HttpServlet{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			}else if(command.equals("/board/rentBoard.bo")) {
+				System.out.println(" C : /board/rentBoard.bo 호출");
+				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
+				
+				forward = new ActionForward();
+				forward.setPath("./rentBoardAdd.jsp");
+				forward.setRedirect(false);
 			}else if(command.equals("/board/qnaBoardContent.bo")) {
 				System.out.println(" C : /board/qnaBoardContent.bo 호출");
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
@@ -246,48 +253,35 @@ public class BoardFrontController extends HttpServlet{
 				forward = new ActionForward();
 				forward.setPath("./main.html");
 				forward.setRedirect(false);
-			}
-			else if(command.equals("/board/rentWrite.bo")) {
-				System.out.println(" C : /board/rentWrite.bo 호출");
+			}else if(command.equals("/board/enfBoardSearch.bo")) {
+				System.out.println(" C : /board/enfBoardSearch.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용0, 페이지이동");
 
-				forward = new ActionForward();
-				forward.setPath("./rentBoard.jsp");
-				forward.setRedirect(false); 
-				// 대관문의 글쓰기 페이지로 이동 
-			}
-			else if(command.equals("/board/rentWriteAction.bo")) {
-				System.out.println(" C : /board/rentWriteAction.bo 호출");
-
-				action =new rentWriteAction();
-
+				// BoardListAction
+				action = new ENFBoardSearchAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}// 대관 문의 글쓰기 insert 
-
-			}
-			else if (command.equals("/board/CinemaSelectAction.bo")) {
-				System.out.println("C : /board/CinemaSelectAction.bo 호출");
-
-				action =new CinemaSelectAction();
-
+				}
+			}else if(command.equals("/board/qrBoardSearch.bo")) {
+				System.out.println(" C : /board/qrBoardSearch.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용0, 페이지이동");
+		
+				// BoardListAction
+				action = new QRBoardSearchAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}// 대관문의 극장 select
-
-			}
-			
-			
-			
-			
-			
+				}
+	}
 		System.out.println(" C : 2. 가상주소 비교 - 끝");
 		/*************************2. 가상주소 비교**************************************/
 		
-		/*************************3. 가상주소 페이지이동**************************************/
+		/*************************1. 가상주소 페이지이동**************************************/
 		System.out.println("\n C : 3. 가상주소 페이지이동 - 시작");
 		if(forward != null) {
 			if(forward.isRedirect()) {
@@ -300,7 +294,7 @@ public class BoardFrontController extends HttpServlet{
 			}
 		}
 		System.out.println(" C : 3. 가상주소 페이지이동 - 끝");
-		/*************************3. 가상주소 페이지이동**************************************/
+		/*************************1. 가상주소 페이지이동**************************************/
 		
 		System.out.println("\n\n -----------------컨트롤러 끝------------------");
 	}
