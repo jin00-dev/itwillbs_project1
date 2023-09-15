@@ -12,7 +12,6 @@
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/global.css" rel="stylesheet">
 <link href="../css/index.css" rel="stylesheet">
-<link href="../css/faqMain.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
 	rel="stylesheet">
@@ -84,21 +83,33 @@
 <!-- 		<h1> -->
 <!-- 			여기 faq게시판 꾸미는자리<br> 밑에 footer 알아서 내려감 -->
 <!-- 		</h1> -->
-	 		<script type="text/javascript">
+		<script type="text/javascript">
+			var popupX = (document.body.offsetWidth / 2) - (500 / 2) + 90;
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+		
+			var popupY= (window.screen.height / 2) - (300 / 2) - 20;
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+			console.log(popupX);
+			console.log(popupY);
 			function qnaBoard() {
-				window.open("./qnaBoard.bo","_black","width=500, height=500");
+				window.open("./qnaBoard.bo","_black","width=500, height=300, left="+popupX+", top="+popupY);
 			}
 			function qnaBoardList() {
 				window.open("./qnaBoardList.bo","_self");
 			}
+			function qnaBoardAdd() {
+				window.open("./faqBoardAdd.bo","_black","width=500, height=300, left="+popupX+", top="+popupY);
+			}
+			function boardList() {
+				location.href="./faqMain.bo";
+			}
 			
 
-		</script> 
+		</script>
 		<div>
-
-  			<input type="button"  onclick="qnaBoard();" value="1:1 문의"/>
+  			<input type="button" onclick="qnaBoard();" value="1:1 문의"/>
   			<input type="button" onclick="qnaBoardList();" value="1:1 문의내역"/>
-  		</div>s
+  		</div>
   		<h1>자주 묻는 질문</h1>
     <div class="faq-container">
       <c:forEach var="dto" items="${boardList }">
@@ -145,7 +156,7 @@
 <!--       </div> -->
     </div>
     <div>
-    	<input type="button" name="btn" id="insertQna" value="faq추가" onclick="location.href='faqBoardAdd.bo';">
+    	<input type="button" name="btn" id="insertQna" value="faq추가" onclick="qnaBoardAdd();">
     </div>
 		
 	</div>

@@ -1,6 +1,5 @@
 package com.team2.board.action;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +8,7 @@ import com.team2.board.db.ENFBoardDAO;
 import com.team2.board.db.ENFBoardDTO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
+import com.team2.util.JSMethod;
 
 public class NoticeBoardAddAction implements Action {
 
@@ -25,11 +25,9 @@ public class NoticeBoardAddAction implements Action {
 		System.out.println(" M : "+dto);
 		dao.insertBoard(dto);
 		
-		ActionForward forward = new ActionForward();
-		forward.setPath("./noticeMain.jsp");
-		forward.setRedirect(false);
+		JSMethod.alertLocation(response, "추가 완료!");
 		
-		return forward;
+		return null;
 	}
 
 }

@@ -52,7 +52,7 @@ public class JSMethod {
 //		
 //	}
 	
-	public static void alertDelete(HttpServletResponse response, String msg) {
+	public static void alertLocation(HttpServletResponse response, String msg) {
 		try {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out;
