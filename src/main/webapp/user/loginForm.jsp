@@ -58,7 +58,7 @@
 					<div class="top_1r text-end">
 						<ul class="social-network social-circle mb-0">
 							<li><a href="#">로그인</a></li>
-							<li><a href="insertForm.jsp">회원가입</a></li>
+							<li><a href="./UserJoin.me">회원가입</a></li>
 						</ul>
 					</div>
 				</div>

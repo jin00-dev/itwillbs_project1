@@ -81,7 +81,7 @@
 
 	<div class="container">
 		<h1>
-			여기 메인페이지 꾸미는자리<br> 밑에 footer 알아서 내려감
+			여기 예매페이지 꾸미는자리<br> 밑에 footer 알아서 내려감
 		</h1>
 	</div>
 	
