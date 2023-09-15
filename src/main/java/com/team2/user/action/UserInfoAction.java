@@ -7,13 +7,13 @@ import javax.servlet.http.HttpSession;
 import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class UserInfoAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		ActionFoward forward = new ActionFoward();
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		ActionForward forward = new ActionForward();
 		HttpSession session = req.getSession();
 		
 		String id = (String) session.getAttribute("user_id");

@@ -142,9 +142,7 @@ public class UserDAO {
 		}
 	}
 	
-<<<<<<< HEAD
 	//아이디 찾기 findId()
-
 	public UserDTO findId(String phone) {
 		UserDTO dto = new UserDTO();
 		sql = "select user_id from user where user_phone=?";
@@ -163,9 +161,11 @@ public class UserDAO {
 			
 			e.printStackTrace();
 		}finally {
-			con.closeDB(conn, rs, pstmt);}
+			con.closeDB(conn, rs, pstmt);
+			}
 	return dto;
-=======
+	}
+	
 	//유저 정보 가져오기
 	public UserDTO getUserInfo(String user_id){
 		sql = "select user_id, user_name, user_phone from user where user_id=?";
@@ -189,7 +189,6 @@ public class UserDAO {
 		}finally {
 			con.closeDB(conn, rs, pstmt);
 		}
->>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 	}
 	
 	//유저 정보 수정
@@ -213,9 +212,6 @@ public class UserDAO {
 		}
 	}
 	
-<<<<<<< HEAD
-	//아이디 찾기 findId()
-=======
 	//유저 삭제
 	public int deleteUserInfo(UserDTO dto) {
 		sql = "delete from user where user_id=? and user_pass=?";
@@ -240,10 +236,8 @@ public class UserDAO {
 			con.closeDB(conn, rs, pstmt);
 		}
 	}
->>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 	
 	// 비밀번호 찾기 findPw()
-	
 	public UserDTO findPw(String phone) {
 		UserDTO dto = new UserDTO();
 		sql = "select user_pass from user where user_phone";
@@ -263,8 +257,6 @@ public class UserDAO {
 			con.closeDB(conn, rs, pstmt);}
 		return dto;
 		}
-	
-	//비밀번호 찾기 findPw()
 	
 	//회원정보 삭제
 	public int UserDelete(String id,String pw) {
@@ -313,6 +305,5 @@ public class UserDAO {
 		return result;		
 	}
 	
-	//회원정보 삭제
 	
 }

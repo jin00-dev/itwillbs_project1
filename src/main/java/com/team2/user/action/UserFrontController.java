@@ -15,31 +15,22 @@ public class UserFrontController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-<<<<<<< HEAD
-		ActionForward af = null;
-=======
-		ActionFoward forward = null;
->>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		
 		////주소 계산//////////////////////////
 		String uri = request.getRequestURI();
 		System.out.println(uri);
 		String ss = request.getContextPath();
 		String command = uri.substring(ss.length());
-		Action action = null;
 		
+		Action action = null;
+		ActionForward forward = null;
 		////이동 방식 계산////////////////////
+		
 		//로그인 페이지
 		if( command.equals("/UserLogin.me") ) {
-<<<<<<< HEAD
-			af = new ActionForward();
-			af.setPath("./user/loginForm.jsp");
-			af.setRedirect(false);
-=======
-			forward = new ActionFoward();
+			forward = new ActionForward();
 			forward.setPath("./user/loginForm.jsp");
 			forward.setRedirect(false);
->>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		}
 		//로그인 처리
 		else if( command.equals("/UserLoginAction.me") ) {
@@ -73,15 +64,9 @@ public class UserFrontController extends HttpServlet {
 		}
 		//메인 페이지
 		else if( command.equals("/Main.me") ) {
-<<<<<<< HEAD
-			af = new ActionForward();
-			af.setPath("./main.jsp");
-			af.setRedirect(false);
-=======
-			forward = new ActionFoward();
+			forward = new ActionForward();
 			forward.setPath("./main.jsp");
 			forward.setRedirect(false);
->>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		}
 		//로그아웃 처리
 		else if( command.equals("/UserLogoutAction.me") ) {
@@ -94,17 +79,10 @@ public class UserFrontController extends HttpServlet {
 			}
 		}
 		//아이디 찾기
-<<<<<<< HEAD
-		else if( command.equals("/findIdForm.me") ) {
-			af = new ActionForward();
-			af.setPath("./user/findIdForm.jsp");
-			af.setRedirect(false);
-=======
 		else if( command.equals("/UserFindId.me") ) {
-			forward = new ActionFoward();
+			forward = new ActionForward();
 			forward.setPath("./user/findIdForm.jsp");
 			forward.setRedirect(false);
->>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		}
 		//아이디 찾기 처리
 		else if( command.equals("/UserFindIdAction.me") ) {
@@ -119,15 +97,9 @@ public class UserFrontController extends HttpServlet {
 		
 		//비밀번호 찾기	
 		else if( command.equals("/UserFindPw.me") ) {
-<<<<<<< HEAD
-			af = new ActionForward();
-			af.setPath("./user/findPwForm.jsp");
-			af.setRedirect(false);
-=======
-			forward = new ActionFoward();
+			forward = new ActionForward();
 			forward.setPath("./user/findPwForm.jsp");
 			forward.setRedirect(false);
->>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		}
 		//비밀번호 찾기 처리
 		else if( command.equals("/UserFindPwAction.me") ) {
@@ -140,15 +112,9 @@ public class UserFrontController extends HttpServlet {
 		}
 		//회원가입
 		else if( command.equals("/UserJoin.me") ) {
-<<<<<<< HEAD
-			af = new ActionForward();
-			af.setPath("./user/joinForm.jsp");
-			af.setRedirect(false);
-=======
-			forward = new ActionFoward();
+			forward = new ActionForward();
 			forward.setPath("./user/joinForm.jsp");
 			forward.setRedirect(false);
->>>>>>> 963d24660cc8c19a1463f6ef1b624f80fb4dbb36
 		}
 		//회원가입 처리
 		else if( command.equals("/UserJoinAction.me") ) {
@@ -160,23 +126,9 @@ public class UserFrontController extends HttpServlet {
 			}
 			
 		}
-		//탈퇴처리
-		else if (command.equals("/UserDelete.me")) {
-			af = new ActionForward();
-			af.setPath("./user/UserDelete.jsp");
-			af.setRedirect(false);
-		}else if (command.equals("/UserDeleteAction.me")) {
-			action = new UserDeleteAction();
-			try {
-				af = action.execute(request, response);
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-			}
-		}
 		//회원정보 페이지 전 정보 확인 페이지
 		else if(command.equals("/UserInfoCheck.me")) {
-			forward = new ActionFoward();
+			forward = new ActionForward();
 			forward.setPath("./user/userInfoForm.jsp");
 			forward.setRedirect(false);
 		}
@@ -209,7 +161,7 @@ public class UserFrontController extends HttpServlet {
 		}
 		//회원탈퇴 폼 페이지
 		else if(command.equals("/UserDelete.me")) {
-			forward = new ActionFoward();
+			forward = new ActionForward();
 			forward.setPath("./user/deleteForm.jsp");
 			forward.setRedirect(false);
 		}

@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
-import com.team2.util.ActionFoward;
+import com.team2.util.ActionForward;
 
 public class UserInfoChangeAction implements Action {
 
 	@Override
-	public ActionFoward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		ActionFoward forward = null;
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		ActionForward forward = null;
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
 		
