@@ -175,25 +175,7 @@ public class UserFrontController extends HttpServlet {
 			}
 		}
 		
-		//이제부터 게시판-------------------------------------------------------------
-		//게시판 메인
-//		else if( command.equals("/BoardMain.me") ) {
-//			action = new BoardMainAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		//글 읽기
-//		else if( command.equals("/BoardRead.me") ) {
-//			action = new BoardReadAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
+
 		
 		////3.주소로 이동////////////
 		if( forward != null ) {
