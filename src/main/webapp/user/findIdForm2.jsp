@@ -2,18 +2,30 @@
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
+
 <head>
+<!-- Jquery 라이브러리 추가 -->
+<script src="../js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+
+
+
+
+</script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>로그인</title>
+<title>회원가입</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/global.css" rel="stylesheet">
 <link href="../css/index.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
 	rel="stylesheet">
+<link rel="stylesheet" href="../css/findId.css">
 <script src="../js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
 	<section id="top">
@@ -33,8 +45,8 @@
 				<div class="col-md-4">
 					<div class="top_1r text-end">
 						<ul class="social-network social-circle mb-0">
-							<li><a href="#">로그인</a></li>
-							<li><a href="insertForm.jsp">회원가입</a></li>
+							<li><a href="loginForm.jsp">로그인</a></li>
+							<li><a href="#">회원가입</a></li>
 						</ul>
 					</div>
 				</div>
@@ -59,8 +71,8 @@
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="../event/eventMain.jsp">이벤트</a></li>
-						<li class="nav-item"><a class="nav-link" href="../board/introduceMain.jsp">소개게시판</a>
-						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="../board/introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -68,7 +80,8 @@
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="../board/noticeMain.jsp">공지사항</a></li>
 								<li><a class="dropdown-item" href="../board/faqMain.jsp">자주묻는질문</a></li>
-								<li><a class="dropdown-item border-0" href="../board/rentMain.jsp">대관문의</a></li>
+								<li><a class="dropdown-item border-0"
+									href="../board/rentMain.jsp">대관문의</a></li>
 							</ul></li>
 				</div>
 			</div>
@@ -76,56 +89,22 @@
 	</section>
 
 
-<<<<<<< HEAD
-	<!-- 여기 로그인 페이지 꾸며아함. -->
-=======
+	<!-- 여기 회원가입 페이지 꾸며아함. -->
+
 	<!--center -------------------------------------------------------------  -->
 <section id="center" class="center_o pt-2 pb-2">
-		<fieldset class="id_pw_wrap">
-			<legend >로그인</legend>
-			<form action="./UserLoginAction.me" method="post">
-			
-					<input type="text" name="id" placeholder="아이디" class="id_pw"> <br>
-					<input type="password" name="pw" placeholder="비밀번호" class="id_pw"> <hr>
-				
-				<button type="submit" class="btn_login">
-					<span>로그인</span>
-				</button>
-			</form>
-		
-		<div class="panel_item2">
-			<a href="./UserFindId.me">아이디 찾기</a> |
-			<a href="./UserFindPw.me">비밀번호 찾기</a> |
-			<a href="./UserJoin.me">회원 가입</a> 
-			<hr>
-			<a href="javascript:kakaoLogin()"><img src="./img/kakao_login_large.png" width="80px"/></a>
-		</div>
-		</fieldset>
-		
-		<fieldset class="id_pw_wrap">
-			<legend >비회원 예매</legend>
-			<form action="./NonMemberLoginAction.me" method="post">
-			
-					<input type="text" name="id" placeholder="아이디" class="id_pw"> <br>
-					<input type="text" name="phone" placeholder="휴대폰 번호" class="id_pw"> <br>
-					<input type="password" name="pw" placeholder="비밀번호" class="id_pw"> <br>
-					<input type="password" name="pwCheck" placeholder="비밀번호 확인" class="id_pw"> <hr>
-				
-				<button type="submit" class="btn_login">
-					<span>와! 비회원 예매</span>
-				</button>
-			</form>
-		</fieldset>
-		<hr>
- </section>
->>>>>>> 567c9df0b9a2a7f5a48b00ac1ba56a90ae81b652
-
-	<div class="container">
-		<h1>
-			여기 로그인페이지 꾸미는자리<br> 밑에 footer 알아서 내려감
-		</h1>
-	</div>
+	<form action="./findIdForm.jsp" method="post">
 	
+			
+			<script type="text/javascript">
+			alert("고객님의 아이디는 "+id+" 입니다");
+			</script>
+		
+	</form>
+
+	<hr>
+ </section>
+<!--center end-------------------------------------------------------------  -->
 	<!-- footer아래로는 코드 금지 -->
 
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
@@ -140,7 +119,7 @@
 			</ul>
 		</div>
 	</section>
-	
+
 
 	<script>
 		window.onscroll = function() {

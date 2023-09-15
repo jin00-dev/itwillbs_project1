@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+.container{
+    width: 800px;
+    margin: 0 auto;
+}
+
+.navi{
+    width: 800px;
+    height: 60px;
+    border: 2px solid #ccc;
+    padding-bottom: 10px;
+
+}
+.navi ul{
+    list-style: none;
+}
+
+.navi ul li{
+    float: left;
+    width: 250px;
+    padding: 10px;
+    margin: 20px;
+}
+
+#box2{
+	border: 1px solid;
+	margin: 50px auto;
+	width: 300px;
+	height: 300px;
+
+}
+#box3{
+	border: 1px solid;
+	margin: 50px auto;
+	width: 300px;
+	height: 300px;
+}
+
+#a{
+margin: 15px;
+}
+
+#b{
+	margin-left: 25px;
+	float: center;
+}
+#box{
+	margin: 20px;
+
+}
+#find{
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,7 +9,7 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  
+s  
   	<!-- 게시판 컨트롤러 매핑 -->
 	  <servlet>
 	    <servlet-name>BoardFrontController</servlet-name>
