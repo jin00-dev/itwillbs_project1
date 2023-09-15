@@ -115,12 +115,12 @@
 						$("#chId").text("사용 가능한 아이디입니다.");
 						$("#chId").css('color', 'green');
 						$("#isCheckId").val("true");
-// 						console.log($("#isCheckId").val());
+						console.log($("#isCheckId").val());
 					} else {
 						$("#chId").text("사용 할 수 없는 아이디입니다.");
 						$("#chId").css('color', 'red');
 						$("#isCheckId").val("false");
-// 						console.log($("#isCheckId").val());
+						console.log($("#isCheckId").val());
 					}
 				}
 			});
@@ -173,7 +173,8 @@
 		}
 		
 		/* 아이디 중복 검사 실패시 */
-		if ($("#isCheckId").val() != "true") {
+		if ($('#isCheckId').val() != "true") {
+			alert('dtd');
 			$("#chId").text("아이디 중복 확인을 해주세요.");
 			$("#chId").css('color', 'red');
 // 			alert($("#chId").text());
@@ -181,6 +182,7 @@
 			return false;
 		}else{
 			$("#chId").text("");
+			alert('dtd2');
 		}
 
 		/* 비밀번호 및 비밀번호 확인 유효성 검사 */

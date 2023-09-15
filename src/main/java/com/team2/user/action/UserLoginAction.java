@@ -28,7 +28,7 @@ public class UserLoginAction implements Action {
 			if(result == -1) {
 				action = null;
 			}else {
-				se.setAttribute("id", id);
+				se.setAttribute("user_id", id);
 				action.setPath("./Main.me");
 				action.setRedirect(true);
 			}

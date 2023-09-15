@@ -20,7 +20,7 @@ public class UserIdCheckAction implements Action{
 		boolean result = dao.checkId(id);
 		
 		PrintWriter out = resp.getWriter();
-		
+		System.out.println(result);
 		out.print(result);
 //		if(result == false) {
 //			out.print("false");

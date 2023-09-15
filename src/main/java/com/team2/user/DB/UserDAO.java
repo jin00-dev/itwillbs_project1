@@ -24,9 +24,13 @@ public class UserDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
-			pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			
-			return 1;
+			if(rs.next()) {
+				return 1; //로그인성공
+			}else {
+				return 0; //실패
+			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -258,52 +262,6 @@ public class UserDAO {
 		return dto;
 		}
 	
-	//회원정보 삭제
-	public int UserDelete(String id,String pw) {
-		int result = -1;
-		
-		try {
-			//1.2. 디비연결
-			conn = con.getConnection();
-			//3. sql 작성(select) & pstmt 객체
-			sql = "select user_pass from user where user_id=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			//4. sql 실행
-			rs = pstmt.executeQuery();
-			//5. 데이터 처리
-			if(rs.next()) {
-				// 회원
-				if(pw.equals(rs.getString("pw"))) {
-					// 비밀번호 O
-					//3. sql 작성(delete) & pstmt 객체
-					sql = "delete from user where user_id=?";
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, id);
-					
-					//4. sql 실행
-					result = pstmt.executeUpdate();
-					// result = 1;
-				}else {
-					// 비밀번호 X  0
-					result = 0;
-				}
-			}else {
-				// 비회원 -1
-				result = -1;
-			}
-			
-			System.out.println(" DAO : 정보수정완료 "+result);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			con.closeDB(conn, rs, pstmt);
-		}
-		
-		
-		return result;		
-	}
 	
 	
 }

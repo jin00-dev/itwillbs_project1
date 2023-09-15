@@ -21,6 +21,7 @@ public class UserDeleteAction implements Action {
 		dto.setUser_pass(req.getParameter("user_pass"));
 		System.out.println(dto.getUser_id());
 		System.out.println(dto.getUser_pass());
+		
 		int result = dao.deleteUserInfo(dto);
 		
 		resp.setContentType("text/html; charset=UTF-8");
