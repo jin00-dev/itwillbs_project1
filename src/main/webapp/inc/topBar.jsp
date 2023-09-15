@@ -1,19 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>회원가입</title>
+<title>Off The Lamp</title>
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/global.css" rel="stylesheet">
 <link href="./css/index.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"	rel="stylesheet">
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
 
@@ -25,8 +23,8 @@
 				<div class="col-md-3">
 					<div class="top_1l pt-1">
 						<h3 class="mb-0">
-							<a class="text-white" href="./Main.me"><i
-								class="fa fa-video-camera col_red me-1"></i>Drive in Cinema</a>
+							<a class="text-white" href="./Main.me">
+							<i class="fa fa-video-camera col_red me-1"></i>Off The Lamp</a>
 						</h3>
 					</div>
 				</div>
@@ -49,8 +47,8 @@
 									<li><a href="./UserLogoutAction.me">로그아웃</a></li>
 									<li><a href="./UserInfoCheck.me">관리자페이지</a></li>
 								</c:when>
-							</c:choose>						
-							
+							</c:choose>		
+											
 						</ul>
 					</div>
 				</div>
@@ -61,8 +59,8 @@
 	<section id="header">
 		<nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
 			<div class="container">
-				<a class="navbar-brand text-white fw-bold" href="../main.html"><i
-					class="fa fa-video-camera col_red me-1"></i>Drive In Cinema</a>
+				<a class="navbar-brand text-white fw-bold" href="./main.me"><i
+					class="fa fa-video-camera col_red me-1"></i>Off The Lamp</a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -84,7 +82,7 @@
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="../board/noticeMain.jsp">공지사항</a></li>
 								<li><a class="dropdown-item" href="../board/faqMain.jsp">자주묻는질문</a></li>
-								<li><a class="dropdown-item border-0 "href="../board/rentMain.jsp">대관문의</a></li>
+								<li><a class="dropdown-item border-0 "href="../board/rentWrite.bo">대관문의</a></li>
 							</ul></li>
 				</div>
 			</div>
