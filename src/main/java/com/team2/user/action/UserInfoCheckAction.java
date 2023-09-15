@@ -18,7 +18,8 @@ public class UserInfoCheckAction implements Action {
 		
 		String id = req.getParameter("user_id");
 		String pw = req.getParameter("user_pass");
-		
+		System.out.println("id:"+id);
+		System.out.println("pw:"+pw);
 		int result = dao.rogin(id, pw);
 		
 		resp.setContentType("text/html; charset=UTF-8");

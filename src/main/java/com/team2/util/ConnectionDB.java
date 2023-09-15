@@ -18,7 +18,7 @@ public class ConnectionDB {
 			Context initCTX = new InitialContext();
 			
 			// context.xml 파일 접근 DataSource 형태로 변경
-			DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/testweb");
+			DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/team2");
 			
 			try {
 				return conn = ds.getConnection(); //db연결

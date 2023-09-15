@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,12 @@
 <link rel="stylesheet" href="./css/userInfo.css">
 </head>
 <body>
-<%session.setAttribute("user_id", "test1"); %>
+<c:if test="${empty sessionScope.user_id}">
+	<script>
+		alert('로그인 해주세요.');
+		location.href='./UserLogin.me';
+	</script>
+</c:if>
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
