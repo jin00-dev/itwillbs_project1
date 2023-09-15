@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ÀÌº¥Æ®</title>
+<title>ì´ë²¤íŠ¸</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/global.css" rel="stylesheet">
 <link href="../css/index.css" rel="stylesheet">
@@ -35,8 +35,8 @@
 				<div class="col-md-4">
 					<div class="top_1r text-end">
 						<ul class="social-network social-circle mb-0">
-							<li><a href="../user/loginForm.jsp">·Î±×ÀÎ</a></li>
-							<li><a href="../user/insertForm.jsp">È¸¿ø°¡ÀÔ</a></li>
+							<li><a href="../user/loginForm.jsp">ë¡œê·¸ì¸</a></li>
+							<li><a href="../user/insertForm.jsp">íšŒì›ê°€ìž…</a></li>
 						</ul>
 					</div>
 				</div>
@@ -58,18 +58,18 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../order/orderMain.jsp">¿¹¸Å¾È³»</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">ÀÌº¥Æ®</a></li>
-						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">¼Ò°³°Ô½ÃÆÇ</a>
+							aria-current="page" href="../order/orderMain.jsp">ì˜ˆë§¤ì•ˆë‚´</a></li>
+						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">ì´ë²¤íŠ¸</a></li>
+						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">ì†Œê°œê²Œì‹œíŒ</a>
 						</li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								°í°´¹®ÀÇ </a>
+								ê³ ê°ë¬¸ì˜ </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="noticeMain.bo">°øÁö»çÇ×</a></li>
-								<li><a class="dropdown-item" href="#">ÀÚÁÖ¹¯´ÂÁú¹®</a></li>
-								<li><a class="dropdown-item border-0" href="rentMain.bo">´ë°ü¹®ÀÇ</a></li>
+								<li><a class="dropdown-item" href="noticeMain.bo">ê³µì§€ì‚¬í•­</a></li>
+								<li><a class="dropdown-item" href="#">ìžì£¼ë¬»ëŠ”ì§ˆë¬¸</a></li>
+								<li><a class="dropdown-item border-0" href="rentMain.bo">ëŒ€ê´€ë¬¸ì˜</a></li>
 							</ul></li>
 				</div>
 			</div>
@@ -77,18 +77,18 @@
 	</section>
 
 
-	<!-- ¿©±â faq°Ô½ÃÆÇ ²Ù¸ç¾ÆÇÔ. -->
+	<!-- ì—¬ê¸° faqê²Œì‹œíŒ ê¾¸ë©°ì•„í•¨. -->
 
 	<div class="container">
 <!-- 		<h1> -->
-<!-- 			¿©±â faq°Ô½ÃÆÇ ²Ù¹Ì´ÂÀÚ¸®<br> ¹Ø¿¡ footer ¾Ë¾Æ¼­ ³»·Á°¨ -->
+<!-- 			ì—¬ê¸° faqê²Œì‹œíŒ ê¾¸ë¯¸ëŠ”ìžë¦¬<br> ë°‘ì— footer ì•Œì•„ì„œ ë‚´ë ¤ê° -->
 <!-- 		</h1> -->
 		<script type="text/javascript">
 			var popupX = (document.body.offsetWidth / 2) - (500 / 2) + 90;
-			// ¸¸µé ÆË¾÷Ã¢ ÁÂ¿ì Å©±âÀÇ 1/2 ¸¸Å­ º¸Á¤°ªÀ¸·Î »©ÁÖ¾úÀ½
+			// ë§Œë“¤ íŒì—…ì°½ ì¢Œìš° í¬ê¸°ì˜ 1/2 ë§Œí¼ ë³´ì •ê°’ìœ¼ë¡œ ë¹¼ì£¼ì—ˆìŒ
 		
 			var popupY= (window.screen.height / 2) - (300 / 2) - 20;
-			// ¸¸µé ÆË¾÷Ã¢ »óÇÏ Å©±âÀÇ 1/2 ¸¸Å­ º¸Á¤°ªÀ¸·Î »©ÁÖ¾úÀ½
+			// ë§Œë“¤ íŒì—…ì°½ ìƒí•˜ í¬ê¸°ì˜ 1/2 ë§Œí¼ ë³´ì •ê°’ìœ¼ë¡œ ë¹¼ì£¼ì—ˆìŒ
 			console.log(popupX);
 			console.log(popupY);
 			function qnaBoard() {
@@ -107,10 +107,10 @@
 
 		</script>
 		<div>
-  			<input type="button" onclick="qnaBoard();" value="1:1 ¹®ÀÇ"/>
-  			<input type="button" onclick="qnaBoardList();" value="1:1 ¹®ÀÇ³»¿ª"/>
+  			<input type="button" onclick="qnaBoard();" value="1:1 ë¬¸ì˜"/>
+  			<input type="button" onclick="qnaBoardList();" value="1:1 ë¬¸ì˜ë‚´ì—­"/>
   		</div>
-  		<h1>ÀÚÁÖ ¹¯´Â Áú¹®</h1>
+  		<h1>ìžì£¼ ë¬»ëŠ” ì§ˆë¬¸</h1>
     <div class="faq-container">
       <c:forEach var="dto" items="${boardList }">
       	<div class="faq">
@@ -125,19 +125,9 @@
       	</div>
        </c:forEach>
 <!--       <div class="faq"> -->
-<!--         <h3 class="faq-title">ÀÚÁÖ ¹¯´Â Áú¹® 2</h3> -->
+<!--         <h3 class="faq-title">ìžì£¼ ë¬»ëŠ” ì§ˆë¬¸ 2</h3> -->
 
-<!--         <p class="faq-text">´ë´ä 2</p> -->
-
-<!--         <button class="faq-toggle"> -->
-<!--           <i class="fas fa-chevron-down"></i> -->
-<!--           <i class="fas fa-times"></i> -->
-<!--         </button> -->
-<!--       </div> -->
-<!--       <div class="faq"> -->
-<!--         <h3 class="faq-title">ÀÚÁÖ ¹¯´Â Áú¹® 3</h3> -->
-
-<!--         <p class="faq-text">´ë´ä 3</p> -->
+<!--         <p class="faq-text">ëŒ€ë‹µ 2</p> -->
 
 <!--         <button class="faq-toggle"> -->
 <!--           <i class="fas fa-chevron-down"></i> -->
@@ -145,9 +135,19 @@
 <!--         </button> -->
 <!--       </div> -->
 <!--       <div class="faq"> -->
-<!--         <h3 class="faq-title">ÀÚÁÖ ¹¯´Â Áú¹® 4</h3> -->
+<!--         <h3 class="faq-title">ìžì£¼ ë¬»ëŠ” ì§ˆë¬¸ 3</h3> -->
 
-<!--         <p class="faq-text">´ë´ä 4</p> -->
+<!--         <p class="faq-text">ëŒ€ë‹µ 3</p> -->
+
+<!--         <button class="faq-toggle"> -->
+<!--           <i class="fas fa-chevron-down"></i> -->
+<!--           <i class="fas fa-times"></i> -->
+<!--         </button> -->
+<!--       </div> -->
+<!--       <div class="faq"> -->
+<!--         <h3 class="faq-title">ìžì£¼ ë¬»ëŠ” ì§ˆë¬¸ 4</h3> -->
+
+<!--         <p class="faq-text">ëŒ€ë‹µ 4</p> -->
 
 <!--         <button class="faq-toggle"> -->
 <!--           <i class="fas fa-chevron-down"></i> -->
@@ -156,7 +156,7 @@
 <!--       </div> -->
     </div>
     <div>
-    	<input type="button" name="btn" id="insertQna" value="faqÃß°¡" onclick="qnaBoardAdd();">
+    	<input type="button" name="btn" id="insertQna" value="faqì¶”ê°€" onclick="qnaBoardAdd();">
     </div>
 		
 	</div>
@@ -169,7 +169,7 @@
 	  		});
 		});
 	</script>
-	<!-- footer¾Æ·¡·Î´Â ÄÚµå ±ÝÁö -->
+	<!-- footerì•„ëž˜ë¡œëŠ” ì½”ë“œ ê¸ˆì§€ -->
 	
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">

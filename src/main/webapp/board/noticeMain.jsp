@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ÀÌº¥Æ®</title>
+<title>ì´ë²¤íŠ¸</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/global.css" rel="stylesheet">
 <link href="../css/index.css" rel="stylesheet">
@@ -35,8 +35,8 @@
 				<div class="col-md-4">
 					<div class="top_1r text-end">
 						<ul class="social-network social-circle mb-0">
-							<li><a href="../user/loginForm.jsp">·Î±×ÀÎ</a></li>
-							<li><a href="../user/insertForm.jsp">È¸¿ø°¡ÀÔ</a></li>
+							<li><a href="../user/loginForm.jsp">ë¡œê·¸ì¸</a></li>
+							<li><a href="../user/insertForm.jsp">íšŒì›ê°€ìž…</a></li>
 						</ul>
 					</div>
 				</div>
@@ -58,19 +58,19 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../order/orderMain.jsp">¿¹¸Å¾È³»</a></li>
+							aria-current="page" href="../order/orderMain.jsp">ì˜ˆë§¤ì•ˆë‚´</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.jsp">ÀÌº¥Æ®</a></li>
+							href="../event/eventMain.jsp">ì´ë²¤íŠ¸</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="introduceMain.jsp">¼Ò°³°Ô½ÃÆÇ</a></li>
+							href="introduceMain.jsp">ì†Œê°œê²Œì‹œíŒ</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								°í°´¹®ÀÇ </a>
+								ê³ ê°ë¬¸ì˜ </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">°øÁö»çÇ×</a></li>
-								<li><a class="dropdown-item" href="faqMain.bo">ÀÚÁÖ¹¯´ÂÁú¹®</a></li>
-								<li><a class="dropdown-item border-0" href="rentMain.bo">´ë°ü¹®ÀÇ</a></li>
+								<li><a class="dropdown-item" href="#">ê³µì§€ì‚¬í•­</a></li>
+								<li><a class="dropdown-item" href="faqMain.bo">ìžì£¼ë¬»ëŠ”ì§ˆë¬¸</a></li>
+								<li><a class="dropdown-item border-0" href="rentMain.bo">ëŒ€ê´€ë¬¸ì˜</a></li>
 							</ul></li>
 				</div>
 			</div>
@@ -78,10 +78,10 @@
 	</section>
 
 
-	<!-- ¿©±â °øÁö»çÇ× ²Ù¸ç¾ÆÇÔ. -->
+	<!-- ì—¬ê¸° ê³µì§€ì‚¬í•­ ê¾¸ë©°ì•„í•¨. -->
 
 	<div class="container">
-		<h1>°øÁö»çÇ×</h1>
+		<h1>ê³µì§€ì‚¬í•­</h1>
 		<table id="noticeBoardList">
 			<tr>
 				<th class="bno">No.</th>
@@ -108,15 +108,15 @@
 
 		</table>
 		<div id="table_search">
-			<form action="./boardSearch.bo" name="boardSearch" method="post">
+			<form action="./enfBoardSearch.bo" name="boardSearch" method="post">
 				<input type="hidden" name="category" value="${boardList[0].category }">
 				<table>
 				<tr>
 					<td>
 						<select name="searchField">
-							<option value="0" >¼±ÅÃ</option>
-							<option value="subject">Á¦¸ñ</option>
-							<option value="content">³»¿ë</option>
+							<option value="0" >ì„ íƒ</option>
+							<option value="subject">ì œëª©</option>
+							<option value="content">ë‚´ìš©</option>
 						</select>
 					</td>
 				 
@@ -134,10 +134,10 @@
 		</div>
 		<script type="text/javascript">
 				var popupX = (document.body.offsetWidth / 2) - (500 / 2) + 90;
-				// ¸¸µé ÆË¾÷Ã¢ ÁÂ¿ì Å©±âÀÇ 1/2 ¸¸Å­ º¸Á¤°ªÀ¸·Î »©ÁÖ¾úÀ½
+				// ë§Œë“¤ íŒì—…ì°½ ì¢Œìš° í¬ê¸°ì˜ 1/2 ë§Œí¼ ë³´ì •ê°’ìœ¼ë¡œ ë¹¼ì£¼ì—ˆìŒ
 		
 				var popupY= (window.screen.height / 2) - (300 / 2) - 20;
-				// ¸¸µé ÆË¾÷Ã¢ »óÇÏ Å©±âÀÇ 1/2 ¸¸Å­ º¸Á¤°ªÀ¸·Î »©ÁÖ¾úÀ½
+				// ë§Œë“¤ íŒì—…ì°½ ìƒí•˜ í¬ê¸°ì˜ 1/2 ë§Œí¼ ë³´ì •ê°’ìœ¼ë¡œ ë¹¼ì£¼ì—ˆìŒ
 				function noticeBoardAdd() {
 					window.open("./noticeBoardAdd.bo","_black",
 							"width=500, height=300, left="+popupX+", top="+popupY);
@@ -148,7 +148,7 @@
 			
 			</script>
 		<%-- 				<c:if test="${user_type == 1 }"> --%>
-		<input type="button" name="noticeAdd" value="°øÁöÃß°¡"
+		<input type="button" name="noticeAdd" value="ê³µì§€ì¶”ê°€"
 			onclick="noticeBoardAdd();">
 		<%-- 				</c:if> --%>
 		<div class="clear"></div>
@@ -165,7 +165,7 @@
 		</div>
 	</div>
 
-	<!-- footer¾Æ·¡·Î´Â ÄÚµå ±ÝÁö -->
+	<!-- footerì•„ëž˜ë¡œëŠ” ì½”ë“œ ê¸ˆì§€ -->
 
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">

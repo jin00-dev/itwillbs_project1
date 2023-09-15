@@ -59,15 +59,16 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">이벤트</a></li>
-						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
-						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="../event/eventMain.jsp">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">공지사항</a></li>
+								<li><a class="dropdown-item" href="noticeMain.bo">공지사항</a></li>
 								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
@@ -78,60 +79,52 @@
 
 
 	<!-- 여기 공지사항 꾸며아함. -->
+
 	<div class="container">
-		<h1>공지사항 글내용</h1>
-		<table id="noticeContent">
-		<tr>
-			<th class="ttitle" colspan="4"></th>
-		</tr>
-		<tr>
-			<td>글번호</td>
-			<td>${dto.notice_bno }</td>
+		<h1>검색 리스트페이지</h1>
+		<table id="noticeBoardList">
+			<tr>
+				<th class="bno">No.</th>
+				<th class="subject">Title</th>
+				<th class="date">Date</th>
+				<th class="readCount">ReadCount</th>
+			</tr>
+			<c:forEach var="dto" items="${boardList }">
+				<tr>
+					<td>${dto.notice_bno }</td>
+					<td><a
+						href="noticeBoardContent.bo?notice_bno=${dto.notice_bno }&pageNum=${pageNum}">${dto.subject }</a>
+					</td>
+					<td><c:choose>
+							<c:when test="${empty dto.updatedate}">
+								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
+							</c:when>
+							<c:otherwise>
+								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
+							</c:otherwise>
+						</c:choose></td>
+					<td>${dto.read_count }</td>
+			</c:forEach>
 
-			<td>작성일</td>
-			<td><c:choose>
-					<c:when test="${empty dto.updatedate}">
-						<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
-					</c:when>
-					<c:otherwise>
-						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-					</c:otherwise>
-				</c:choose></td>
-
-		</tr>
-		<tr>
-			<td>제 목</td>
-			<td colspan="3">${dto.subject }</td>
-		</tr>
-		<tr>
-			<td>내 용</td>
-			<td colspan="3">${dto.content }</td>
-		</tr>
+		</table>
 		
-	</table>
-	<script type="text/javascript">
-		function noticeDelete() {
-			window.open("./noticeBoardDelete.bo?notice_bno=${dto.notice_bno }&&pageNum=${param.pageNum }",
-					"_black","width=400, height=200");
-		}
-		function boardList() {
-			location.href="noticeMain.bo?pageNum=${param.pageNum}";
-		}
-	</script>
-<%-- 	<c:if test="${user_type == 1 }"> --%>
-		<div id="table_search">
-		<input type="button" value="수정하기"
-			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&event_type=${dto.event_type }&&pageNum=${param.pageNum }';">
-		<input type="button" value="삭제하기"
-			onclick="noticeDelete();">
+		<div class="clear"></div>
+		<div id="page_control">
+			<c:if test="${startPage > pageBlock }">
+				<a href="./enfBoardSearch.bo?pageNum=${startPage-pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Prev</a>
+			</c:if>
+			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
+				<a href="./enfBoardSearch.bo?pageNum=${i }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">${i }</a>
+			</c:forEach>
+			<c:if test="${endPage < pageCount }">
+				<a href="./enfBoardSearch.bo?pageNum=${startPage+pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
+			</c:if>
+<!-- 			<input type="button" value="목록이동" onclick="history.back();"> -->
 		</div>
-<%-- 	</c:if> --%>
-		<input type="button" value="목록이동"
-			onclick="boardList();">
 	</div>
 	
 	<!-- footer아래로는 코드 금지 -->
-	
+
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
 		<div class="container">
 			<ul class="mb-0">

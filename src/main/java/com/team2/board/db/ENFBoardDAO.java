@@ -57,7 +57,7 @@ public class ENFBoardDAO {
 		Context initCTX = new InitialContext();
 		
 		//context.xml 파일(jdbc/jsp6 이름)접근 -> DAtaSource 형태로 변경
-		DataSource ds = (DataSource)initCTX.lookup("java:comp/env/jdbc/team2");
+		DataSource ds = (DataSource)initCTX.lookup("java:comp/env/jdbc/testweb");
 		
 		// 연결정보 객체를 사용해서 디비 연결
 		con = ds.getConnection();
@@ -177,7 +177,7 @@ public class ENFBoardDAO {
 	
 	
 	// 글 리스트 조회 -boardList()
-	public ArrayList<ENFBoardDTO> boardList() throws Exception{
+	public ArrayList<ENFBoardDTO> eventBoardList() throws Exception{
 		ArrayList<ENFBoardDTO> boardList = new ArrayList<>();
 //		List boardList = new ArrayList();//업캐스팅
 		System.out.println(" DAO : boardList() 실행");
@@ -230,12 +230,7 @@ public class ENFBoardDAO {
 //		List boardList = new ArrayList();//업캐스팅
 		System.out.println(" DAO : boardList() 실행");
 		
-//		//1. 드라이버로드
-//		Class.forName(DRIVER);
-//		System.out.println("드라이버 로드 성공");
-//		//2. 디비연결
-//		Connection con = DriverManager.getConnection(DBURL, DBID, DBPW);
-//		System.out.println("디비 연결 성공");
+
 		//1.2.디비연결
 		con = getConnect();
 		//3. sql구문작성 & pstmt 객체
@@ -263,7 +258,7 @@ public class ENFBoardDAO {
 			boardList.add(bb);
 		}//while
 		System.out.println(" 게시판 목록 조회 성공! ");
-		System.out.println(boardList);
+//		System.out.println(boardList);
 		System.out.println(" DAO : boardList() 실행");
 		System.out.println("=========================");
 		
@@ -355,6 +350,51 @@ public class ENFBoardDAO {
 	
 	// 글의 개수 -getBoardCount
 	
+	// 글의 개수 -getBoardCount
+	public int getBoardCount(Byte category, String searchField, String searchText) {
+		System.out.println(" DAO : getBoardCount() 호출");
+		System.out.println(" DAO : 실행목적: 글의 개수(int)리턴");
+		
+		searchField = searchField.trim();
+		searchText = searchText.trim();
+		System.out.println("category : "+ category);
+		System.out.println("searchField: "+searchField);
+		System.out.println("searchText: "+searchText);
+		int result = 0;
+		
+		try {
+			// 1.2. 디비연결
+			con = getConnect();
+			//3. sql구문 작성 &pstmt 객체
+		
+//			sql = "select count(*) from event_notice_faq_board where "+searchField+" like "+"'%"+searchText+"%' and category=1";								
+//			sql = "select count(*) from event_notice_faq_board where "+searchField+" like "+"'%"+searchText+"%' and category=?";								
+			sql = "select count(*) from event_notice_faq_board where "+searchField+" like ? and category=?";								
+			
+		
+			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1,searchField);
+			pstmt.setString(1,"%"+searchText+"%");
+			pstmt.setByte(2, category);
+			//4.sql 실행
+			rs = pstmt.executeQuery();
+			//5.데이터처리
+			if(rs.next()) {
+//			result = rs.getInt(1);
+				result = rs.getInt("count(*)");
+				System.out.println(" DAO : 글의 개수 조회 완료! ");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		return result;
+	}
+	
+	// 글의 개수 -getBoardCount
+	
 	// 글 리스트 정보 가져오기(페이징처리)-getBoardListPage(startRow,pageSize)
 	public List<ENFBoardDTO> getBoardListPage(int startRow,int pageSize){
 		
@@ -425,7 +465,7 @@ public class ENFBoardDAO {
 			// 		"	 정렬 re_ref(그룹번호) 내림차순
 			// 		"	 정렬 re_seq(답글순서) 오름차순
 			sql = "select * from event_notice_faq_board where category = 0 limit ?, ?";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);
 			// ???
 			pstmt.setInt(1, startRow-1); //시작위치 starRow 1
 			pstmt.setInt(2, pageSize); // 개수 pageSize 10
@@ -474,10 +514,9 @@ public class ENFBoardDAO {
 			// 게시판 글 리스트 원하는 만큼만 조회
 			// 	limit 시작위치, 개수
 			//		: 위치(인덱스)에서 개수만큼 데이터를 짤라서 가져오기
-			// 		"	 정렬 re_ref(그룹번호) 내림차순
-			// 		"	 정렬 re_seq(답글순서) 오름차순
+		
 			sql = "select * from event_notice_faq_board where category = 1 limit ?, ?";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);
 			// ???
 			pstmt.setInt(1, startRow-1); //시작위치 starRow 1
 			pstmt.setInt(2, pageSize); // 개수 pageSize 10
@@ -503,7 +542,60 @@ public class ENFBoardDAO {
 			System.out.println(" DAO : (페이징처리된) 글 리스트를 저장");
 			System.out.println(" DAO : 리스트 사이즈"+boardList.size());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return boardList;
+	}
+	public List<ENFBoardDTO> searchGetBoardListPage(
+			Byte category, String searchField, String searchText, int startRow,int pageSize){
+		
+		System.out.println(" DAO : noticeGetBoardListPage(startRow,pageSize) 호출");
+		List<ENFBoardDTO> boardList = new ArrayList<ENFBoardDTO>();
+		System.out.println("stratRow : "+startRow);
+		System.out.println("pageSize : "+pageSize);
+		try {
+			//1.2. 디비연결 (커넥션풀)
+			con = getConnect();
+			//3.sql구문 작성 & pstmt 객체
+			// 게시판 글 리스트 원하는 만큼만 조회
+			// 	limit 시작위치, 개수
+			//		: 위치(인덱스)에서 개수만큼 데이터를 짤라서 가져오기			
+			sql = "select * from event_notice_faq_board where "
+						+ "category = ? and "+searchField+" like ? limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setByte(1, category);
+			pstmt.setString(2, "%"+searchText+"%");
+			pstmt.setInt(3, startRow-1); //시작위치 starRow 1
+			pstmt.setInt(4, pageSize); // 개수 pageSize 10
+			//4. sql 실행
+			rs = pstmt.executeQuery();
+			//5. 데이터처리 (rs->BoardBean -> List)
+			while(rs.next()) {
+				// rs->BoardBean
+				ENFBoardDTO bb = new ENFBoardDTO();
+				bb.setCategory(rs.getByte("category"));
+				bb.setEvent_bno(rs.getInt("event_bno"));
+				bb.setNotice_bno(rs.getInt("notice_bno"));
+				bb.setFaq_bno(rs.getInt("faq_bno"));
+				bb.setSubject(rs.getString("subject"));
+				bb.setContent(rs.getString("content"));
+				bb.setRead_count(rs.getInt("read_count"));
+				bb.setRegdate(rs.getTimestamp("regdate"));
+				bb.setUpdatedate(rs.getTimestamp("updatedate"));
+				bb.setEvent_type(rs.getByte("event_type"));
+			
+				//BoardBean -> List
+				boardList.add(bb);
+			}//while
+			
+			System.out.println(" DAO : (페이징처리된) 글 리스트를 저장");
+			System.out.println(" DAO : 리스트 사이즈 : "+boardList.size());
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
@@ -525,8 +617,6 @@ public class ENFBoardDAO {
 			// 게시판 글 리스트 원하는 만큼만 조회
 			// 	limit 시작위치, 개수
 			//		: 위치(인덱스)에서 개수만큼 데이터를 짤라서 가져오기
-			// 		"	 정렬 re_ref(그룹번호) 내림차순
-			// 		"	 정렬 re_seq(답글순서) 오름차순
 			sql = "select * from event_notice_faq_board where 2 limit ?, ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			// ???
@@ -554,7 +644,6 @@ public class ENFBoardDAO {
 			System.out.println(" DAO : (페이징처리된) 글 리스트를 저장");
 			System.out.println(" DAO : 리스트 사이즈"+boardList.size());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			closeDB();
@@ -728,6 +817,41 @@ public class ENFBoardDAO {
 	}
 	// 글 정보 삭제하기 -deleteBoard(bb)
 	
+	// 글 검색하기 - searchBoard
+	
+//	public int searchBoard(Byte category, String searchField, String searchText) {
+//		
+//		System.out.println(" DAO : searchBoard(searchField,searchText) 호출");
+//		List<ENFBoardDTO> boardList = new ArrayList<ENFBoardDTO>();
+//		try {
+//			con = getConnect();
+//			sql = "select * from event_notice_faq_board where "+searchField+" like '%"+searchText+"%' && category="+category;
+//			pstmt = con.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			
+//			while(rs.next()) {
+//				// rs->BoardBean
+//				ENFBoardDTO bb = new ENFBoardDTO();
+//				bb.setCategory(rs.getByte("category"));
+//				bb.setNotice_bno(rs.getInt("notice_bno"));
+//				bb.setSubject(rs.getString("subject"));
+//				bb.setContent(rs.getString("content"));
+//				bb.setRead_count(rs.getInt("read_count"));
+//				bb.setRegdate(rs.getTimestamp("regdate"));
+//				bb.setUpdatedate(rs.getTimestamp("updatedate"));
+//				
+//				
+//				//BoardBean -> List
+//				boardList.add(bb);
+//			}//while
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			closeDB();
+//		}
+//		
+//		return boardList;
+//	}
 	
 	
 	
