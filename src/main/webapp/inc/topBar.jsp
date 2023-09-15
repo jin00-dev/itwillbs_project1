@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@
 				<div class="col-md-3">
 					<div class="top_1l pt-1">
 						<h3 class="mb-0">
-							<a class="text-white" href="../main.html"><i
+							<a class="text-white" href="./Main.me"><i
 								class="fa fa-video-camera col_red me-1"></i>Drive in Cinema</a>
 						</h3>
 					</div>
@@ -35,8 +36,21 @@
 				<div class="col-md-4">
 					<div class="top_1r text-end">
 						<ul class="social-network social-circle mb-0">
-							<li><a href="./UserLogin.me">로그인</a></li>
-							<li><a href="./UserJoin.me">회원가입</a></li>
+							<c:choose>
+								<c:when test="${empty sessionScope.user_id }">
+									<li><a href="./UserLogin.me">로그인</a></li>
+									<li><a href="./UserJoin.me">회원가입</a></li>
+								</c:when>
+								<c:when test="${!empty sessionScope.user_id }">
+									<li><a href="./UserLogoutAction.me">로그아웃</a></li>
+									<li><a href="./UserInfoCheck.me">마이페이지</a></li>
+								</c:when>
+								<c:when test="${ sessionScope.user_id eq 'admin'}">
+									<li><a href="./UserLogoutAction.me">로그아웃</a></li>
+									<li><a href="./UserInfoCheck.me">관리자페이지</a></li>
+								</c:when>
+							</c:choose>						
+							
 						</ul>
 					</div>
 				</div>
