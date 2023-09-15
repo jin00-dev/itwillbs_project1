@@ -43,6 +43,14 @@ public class BoardFrontController extends HttpServlet {
 			forward.setRedirect(false); 
 			// 대관문의 글쓰기 페이지로 이동 
 		}
+		else if(command.equals("/board/rentMain.bo")) {
+			System.out.println(" C : /board/rentMain.bo 호출");
+			
+			forward = new ActionForward();
+			forward.setPath("./rentMain.jsp");
+			forward.setRedirect(false); 
+			// 대관문의 페이지로 이동
+		}
 		else if(command.equals("/board/rentWriteAction.bo")) {
 			System.out.println(" C : /board/rentWriteAction.bo 호출");
 			
