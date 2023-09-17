@@ -59,7 +59,7 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link" href="../event/eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
 						</li>
 						<li class="nav-item dropdown"><a

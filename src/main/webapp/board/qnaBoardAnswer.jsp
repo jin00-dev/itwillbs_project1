@@ -60,7 +60,7 @@
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.jsp">이벤트</a></li>
+							href="../event/eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
@@ -108,7 +108,7 @@
 			</table>
 
 			<div id="table_search">
-				<input type="submit" value="수정하기" class="btn">
+				<input type="submit" value="수정하기">
 			</div>
 			<div class="clear"></div>
 			<div id="page_control"></div>

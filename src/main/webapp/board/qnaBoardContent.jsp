@@ -59,7 +59,7 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link" href="../event/eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
 						</li>
 						<li class="nav-item dropdown"><a
@@ -114,7 +114,7 @@
 	</table>
 	<script type="text/javascript">
 		function deleteQna() {
-			var popupX = (document.body.offsetWidth / 2) - (400 / 2) + 110;
+			var popupX = (document.body.offsetWidth / 2) - (400 / 2);
 			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 			
 			var popupY= (window.screen.height / 2) - (200 / 2) - 50;

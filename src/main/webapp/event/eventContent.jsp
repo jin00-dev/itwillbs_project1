@@ -11,7 +11,6 @@
 <title>이벤트</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/global.css" rel="stylesheet">
-<link href="../css/index.css" rel="stylesheet">
 <link href="../css/event.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
@@ -61,8 +60,7 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="eventMain.bo">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link" href="eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
@@ -80,80 +78,110 @@
 	</section>
 
 
-	<!-- 여기 이벤트 꾸며아함. -->
+	<!-- 여기 공지사항 꾸며아함. -->
+	<section id="eventContent">
+	<div id="left">
+		<figure id="leftImage">
 
+		</figure>
+	</div>
+	<div id="right">
+		<div class="container">
+			<h1>이벤트 글내용</h1>
+			<table id="eventContent">
+				<tr>
+					<th class="ttitle" colspan="4"></th>
+				</tr>
+				<tr>
+					<td>글번호</td>
+					<td>${dto.event_bno }</td>
+
+					<td>작성일</td>
+					<td><c:choose>
+							<c:when test="${empty dto.updatedate}">
+								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
+							</c:when>
+							<c:otherwise>
+								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
+							</c:otherwise>
+						</c:choose></td>
+
+				</tr>
+				<tr>
+					<td>제 목</td>
+					<td colspan="3">${dto.subject }</td>
+				</tr>
+				<tr>
+					<td>내 용</td>
+					<td colspan="3">${dto.content }</td>
+				</tr>
+			</table>
+			<%-- 	<c:if test="${user_type == 1 }"> --%>
+			<div id="table_search">
+				<input type="button" value="수정하기"
+					onclick="location.href='eventBoardUpdate.bo?event_bno=${dto.event_bno}&&event_type=${dto.event_type }&&category=0';">
+				<input type="button" value="삭제하기" onclick="eventDelete();">
+			</div>
+			<%-- 	</c:if> --%>
+			<input type="button" value="목록이동" onclick="boardList();">
+
+		</div>
+	</div>
+	</section>
 	<script type="text/javascript">
-	window.onload = function () {
-	    startLoadFile();
-	};
-
-	function startLoadFile(){
-	    $.ajax({
-	        url: './eventImg.json',
-	        type: 'get',
-	        dataType : 'json',
-	        success : function (data) {
-	        	console.log(data);
-	            createImages(data);
-	        }
-	    	
-	    });
-	}
-
-	// JSON 포멧 데이터 처리
-	function createImages(objImageInfo) {
-	    var images = objImageInfo.image;
-	    console.log(images);
-	    var str1DOM = "";
-	    var str2DOM = "";
-	    for (var i = 0; i < images.length; i++) {
-	        // N번째 이미지 정보를 구하기
-	        var image = images[i];
-			if(image.eventType==0){
-		        // 이벤트중인 N번째 이미지 패널을 생성
-		        str1DOM += "<div class='image_panel'>";
-		        str1DOM += "	<a href='eventContent.bo?category=0&&event_bno="+image.event_bno+"'>";
-		        str1DOM += "    <img src='" + image.url + "'> </a>";
-		        str1DOM += "    <p class='title'>" + image.title + "</p>";
-		        str1DOM += "</div>";
-			}else{
-		        // 이벤트끝난 N번째 이미지 패널을 생성
-		        str2DOM += "<div class='image_panel'>";
-		        str2DOM += "	<a href='eventContent.bo?&&category=0&&event_bno="+image.event_bno+"'>";
-		        str2DOM += "    <img src='" + image.url + "'> </a>";
-		        str2DOM += "    <p class='title'>" + image.title + "</p>";
-		        str2DOM += "</div>";				
-			}
-	    }
-	    // 이미지 컨테이너에 생성한 이미지 패널들을 추가하기
-	    var $imageContainer1 = $("#image_figure1");
-	    var $imageContainer2 = $("#image_figure2");
-	        $imageContainer1.append(str1DOM);
-	        $imageContainer2.append(str2DOM);
-	}
-	</script>
-	
-	
-	
-	
-	<h1>이벤트 메인페이지</h1>
-	<input type="button" value="이벤트추가" onclick="eventAdd.bo">
- 	<h2>진행중인 이벤트</h2>
-	<section id="eventing">
-		<div id="image_container1">
-			<figure id=image_figure1>
-			</figure>
-		</div>
-	</section>
-	<h2>지난 이벤트</h2>
-	<section id="evented">
-		<div id="image_container2">
-			<figure id=image_figure2>
+		function eventDelete() {
+			var popupX = (document.body.offsetWidth / 2) - (400 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 			
-			</figure>
-		</div>
-	</section>
-	
+			var popupY= (window.screen.height / 2) - (200 / 2) - 50;
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+			window.open("./evnetDelete.bo?event_bno=${dto.event_bno }&&category=0",
+					"_black","width=400, height=200, left="+popupX+", top="+popupY);
+		}
+		function boardList() {
+			location.href="eventMain.bo";
+		}
+		window.onload = function () {
+		    startLoadFile();
+		};
+
+		function startLoadFile(){
+		    $.ajax({
+		        url: './eventImg.json',
+		        type: 'get',
+		        dataType : 'json',
+		        success : function (data) {
+		        	console.log(data);
+		            createImages(data);
+		        }
+		    	
+		    });
+		}
+		function createImages(objImageInfo) {
+		    var images = objImageInfo.image;
+		    console.log(images);
+// 		    var bno = "<c:out value='${dto.event_bno}'/>";
+		    var bno = '${dto.event_bno}';
+		  
+		    console.log(bno);
+		    var strDOM = "";
+		    for (var i = 0; i < images.length; i++) {
+		        // N번째 이미지 정보를 구하기
+		        var image = images[i];
+		        if(image.event_bno == bno){
+			        //  N번째 이미지 패널을 생성
+			        strDOM += "<div class='image_panel'>";
+			        strDOM += "    <img src='" + image.url + "'>";
+			        strDOM += "    <p class='title'>" + image.title + "</p>";
+			        strDOM += "</div>";
+		        }
+		    }
+		    // 이미지 컨테이너에 생성한 이미지 패널들을 추가하기
+		    var $imageContainer1 = $("#leftImage");
+		        $imageContainer1.append(strDOM);
+		}
+	</script>
+
 	<!-- footer아래로는 코드 금지 -->
 
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
