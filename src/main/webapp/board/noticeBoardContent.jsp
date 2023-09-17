@@ -59,7 +59,7 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link" href="../event/eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
 						</li>
 						<li class="nav-item dropdown"><a
@@ -67,7 +67,7 @@
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">공지사항</a></li>
+								<li><a class="dropdown-item" href="noticeMain.bo">공지사항</a></li>
 								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
@@ -111,8 +111,13 @@
 	</table>
 	<script type="text/javascript">
 		function noticeDelete() {
-			window.open("./noticeBoardDelete.bo?notice_bno=${dto.notice_bno }&&pageNum=${param.pageNum }",
-					"_black","width=400, height=200");
+			var popupX = (document.body.offsetWidth / 2) - (400 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+			
+			var popupY= (window.screen.height / 2) - (200 / 2) - 50;
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+			window.open("./noticeBoardDelete.bo?notice_bno=${dto.notice_bno }&&pageNum=${param.pageNum }&&category=1",
+					"_black","width=400, height=200, left="+popupX+", top="+popupY);
 		}
 		function boardList() {
 			location.href="noticeMain.bo?pageNum=${param.pageNum}";
@@ -121,7 +126,7 @@
 <%-- 	<c:if test="${user_type == 1 }"> --%>
 		<div id="table_search">
 		<input type="button" value="수정하기"
-			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&event_type=${dto.event_type }&&pageNum=${param.pageNum }';">
+			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&category=1&&pageNum=${param.pageNum }';">
 		<input type="button" value="삭제하기"
 			onclick="noticeDelete();">
 		</div>

@@ -60,7 +60,7 @@
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.jsp">이벤트</a></li>
+							href="../event/eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
@@ -68,7 +68,7 @@
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">공지사항</a></li>
+								<li><a class="dropdown-item" href="noticeMain.bo">공지사항</a></li>
 								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
@@ -93,7 +93,7 @@
 				<tr>
 					<td>${dto.notice_bno }</td>
 					<td><a
-						href="noticeBoardContent.bo?notice_bno=${dto.notice_bno }&pageNum=${pageNum}">${dto.subject }</a>
+						href="noticeBoardContent.bo?notice_bno=${dto.notice_bno }&&pageNum=${pageNum}&&category=${dto.category}">${dto.subject }</a>
 					</td>
 					<td><c:choose>
 							<c:when test="${empty dto.updatedate}">

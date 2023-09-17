@@ -101,7 +101,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				
 				//BoardUpdateAction 객체
-				action = new FaqBoardAddAction();
+				action = new ENFBoardAddAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -120,7 +120,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				
 				//BoardUpdateAction 객체
-				action = new NoticeBoardAddAction();
+				action = new ENFBoardAddAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -151,7 +151,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				
 				//BoardUpdateAction 객체
-				action = new NoticeBoardContentAction();
+				action = new ENFBoardContentAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -219,7 +219,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴2 - DB사용O, 페이지이동");
 				
 				// BoardDeleteAction() 객체
-				action = new NoticeBoardDeleteAction();
+				action = new ENFBoardDeleteAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -229,7 +229,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : /board/noticeBoardUpdate.bo 호출 ");
 				System.out.println(" C : 패턴 3 - DB사용O,페이지 출력");
 				// BoardUpdateAction
-				action = new NoticeBoardUpdateAction();
+				action = new ENFBoardUpdateAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -240,7 +240,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴2 - DB사용O,페이지 이동");
 				
 				// BoardUpdateProAction 객체 
-				action = new NoticeBoardUpdateProAction();
+				action = new ENFBoardUpdateProAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -308,6 +308,26 @@ public class BoardFrontController extends HttpServlet{
 					e.printStackTrace();
 				}// 대관문의 극장 select
 
+			}else if(command.equals("/event/eventMain.bo")) {
+				System.out.println(" C : /board/eventMain.bo 호출");
+				System.out.println(" C : 패턴1 - DB사용X, 페이지이동");
+
+				forward = new ActionForward();
+				
+				forward.setPath("./eventMain.jsp");
+				forward.setRedirect(false);
+			}else if(command.equals("/event/eventContent.bo")) {
+				System.out.println(" C : /board/eventContent.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
+				
+				//BoardUpdateAction 객체
+				action = new ENFBoardContentAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		
 		System.out.println(" C : 2. 가상주소 비교 - 끝");

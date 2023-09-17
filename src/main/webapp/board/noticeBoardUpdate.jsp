@@ -60,7 +60,7 @@
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.jsp">이벤트</a></li>
+							href="../event/eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
@@ -81,7 +81,7 @@
 	<!-- 여기 대관문의 꾸며아함. -->
 	
 	<div class="container">
-		<form action="./noticeBoardUpdatePro.bo?pageNum=${pageNum }"
+		<form action="./noticeBoardUpdatePro.bo?pageNum=${pageNum }&&category=1"
 			method="post">
 			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
 			<table id="Update">
@@ -101,7 +101,8 @@
 			</table>
 
 			<div id="table_search">
-				<input type="submit" value="수정하기" class="btn">
+				<input type="submit" value="수정하기" >
+				<input type="button" value="목록이동" onclick="history.back();">
 			</div>
 			<div class="clear"></div>
 			<div id="page_control"></div>
