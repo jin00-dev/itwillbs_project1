@@ -173,6 +173,13 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/UserOrderBoardAction.me") ){
+			action = new UserOrderBoardAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		//이제부터 게시판-------------------------------------------------------------

@@ -6,10 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/userInfo.css">
 </head>
 <body>
-<%-- <%session.setAttribute("user_id", "1"); %> --%>
 <c:if test="${empty sessionScope.user_id}">
 	<script>
 		alert('로그인 해주세요.');
@@ -21,6 +19,7 @@
 </header>
 <!--center -------------------------------------------------------------  -->
 <main>
+	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
 		<input id="btn1" type="button" value="예매/취소내역"	onclick="location.href='./UserOrderBoardAction.me'">
@@ -39,7 +38,7 @@
 				<p id='hiddenMsgPwCheck'></p>
 				
 				 <input type="hidden" id="isDelete"> 
-				 <input type="submit" value="확인"	onclick="return check()">
+				 <input type="submit" value="확인"	onclick="">
 			</fieldset>
 		</form>
 	</div>
@@ -49,40 +48,5 @@
 <footer>
 	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 </footer>
-
-<script type="text/javascript">
-//입력값 공백 및 비밀번호 일치확인
-	function check() {
-		
-		/* 비밀번호 및 비밀번호 확인 유효성 검사 */
-		if ($('input[name="user_pass"]').val().length == 0) {
-			$("#hiddenMsgPw").text("비밀번호를 입력해 주세요.");
-			$("#hiddenMsgPw").css('color', 'red');
-			$('input[name="user_pass"]').focus();
-			return false;
-		}else{
-			$("#hiddenMsgPw").text("");
-		}
-	
-		if ($('input[name="user_chpw"]').val().length == 0) {
-			$("#hiddenMsgPwCheck").text("비밀번호 확인을 입력해주세요.");
-			$("#hiddenMsgPwCheck").css('color', 'red');
-			$('input[name="user_chpw"]').focus();
-			return false;
-		}else{
-			$("#hiddenMsgPwCheck").text("");
-		}
-	
-		if ($('input[name="user_pass"]').val() != $('input[name="user_chpw"]').val()) {
-			$("#hiddenMsgPw").text("비밀번호가 일치하지 않습니다.");
-			$("#hiddenMsgPw").css('color', 'red');
-			$('input[name="user_pass"]').select(); 
-			return false;
-		}
-	
-	}
-</script>
-
-
 </body>
 </html>
