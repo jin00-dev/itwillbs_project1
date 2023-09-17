@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -70,19 +69,19 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
+							aria-current="page" href="./orderMain.or">예매안내</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.jsp">이벤트</a></li>
+							href="./eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="../board/introduceMain.jsp">소개게시판</a></li>
+							href="./introduceMain.bo">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="../board/noticeMain.jsp">공지사항</a></li>
-								<li><a class="dropdown-item" href="../board/faqMain.jsp">자주묻는질문</a></li>
-								<li><a class="dropdown-item border-0 "href="../board/rentWrite.bo">대관문의</a></li>
+								<li><a class="dropdown-item" href="./noticeMain.bo">공지사항</a></li>
+								<li><a class="dropdown-item" href="./faqMain.bo">자주묻는질문</a></li>
+								<li><a class="dropdown-item border-0 "href="./rentMain.bo">대관문의</a></li>
 							</ul></li>
 				</div>
 			</div>
