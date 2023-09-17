@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -8,86 +7,26 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ÀÌº¥Æ®</title>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/global.css" rel="stylesheet">
-<link href="../css/index.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
-	rel="stylesheet">
-<script src="../js/bootstrap.bundle.min.js"></script>
+<title>ì´ë²¤íŠ¸</title>
 </head>
+
 <body>
-	<section id="top">
-		<div class="container">
-			<div class="row top_1">
-				<div class="col-md-3">
-					<div class="top_1l pt-1">
-						<h3 class="mb-0">
-							<a class="text-white" href="../main.html"><i
-								class="fa fa-video-camera col_red me-1"></i>Drive in Cinema</a>
-						</h3>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="top_1m"></div>
-				</div>
-				<div class="col-md-4">
-					<div class="top_1r text-end">
-						<ul class="social-network social-circle mb-0">
-							<li><a href="../user/loginForm.jsp">·Î±×ÀÎ</a></li>
-							<li><a href="../user/insertForm.jsp">È¸¿ø°¡ÀÔ</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<!-- ìƒë‹¨ ë°” ê³ ì • -->
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
 
-	<section id="header">
-		<nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
-			<div class="container">
-				<a class="navbar-brand text-white fw-bold" href="../main.html"><i
-					class="fa fa-video-camera col_red me-1"></i>Drive In Cinema</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mb-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../order/orderMain.jsp">¿¹¸Å¾È³»</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">ÀÌº¥Æ®</a></li>
-						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">¼Ò°³°Ô½ÃÆÇ</a>
-						</li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								°í°´¹®ÀÇ </a>
-							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="noticeMain.bo">°øÁö»çÇ×</a></li>
-								<li><a class="dropdown-item" href="faqMain.bo">ÀÚÁÖ¹¯´ÂÁú¹®</a></li>
-								<li><a class="dropdown-item border-0" href="rentMain.bo">´ë°ü¹®ÀÇ</a></li>
-							</ul></li>
-				</div>
-			</div>
-		</nav>
-	</section>
-
-
-	<!-- ¿©±â ¹®ÀÇ ²Ù¸ç¾ÆÇÔ. -->
+	<!-- ì—¬ê¸° ë¬¸ì˜ ê¾¸ë©°ì•„í•¨. -->
 
 		<table id="qnaContent">
 		<tr>
 			<th class="ttitle" colspan="4"></th>
 		</tr>
 		<tr>
-			<td>±Û¹øÈ£</td>
+			<td>ê¸€ë²ˆí˜¸</td>
 			<td>${dto.qna_bno }</td>
 
-			<td>ÀÛ¼ºÀÏ</td>
+			<td>ì‘ì„±ì¼</td>
 			<td><c:choose>
 					<c:when test="${empty dto.updatedate}">
 						<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
@@ -99,15 +38,15 @@
 
 		</tr>
 		<tr>
-			<td> Áú ¹®</td>
+			<td> ì§ˆ ë¬¸</td>
 			<td colspan="3">${dto.subject }</td>
 		</tr>
 		<tr>
-			<td> ³» ¿ë</td>
+			<td> ë‚´ ìš©</td>
 			<td colspan="3">${dto.content }</td>
 		</tr>
 		<tr>
-			<td> ´ä º¯ </td>
+			<td> ë‹µ ë³€ </td>
 			<td colspan="3">${dto.answer_context }</td>
 		</tr>
 		
@@ -115,10 +54,10 @@
 	<script type="text/javascript">
 		function deleteQna() {
 			var popupX = (document.body.offsetWidth / 2) - (400 / 2) + 110;
-			// ¸¸µé ÆË¾÷Ã¢ ÁÂ¿ì Å©±âÀÇ 1/2 ¸¸Å­ º¸Á¤°ªÀ¸·Î »©ÁÖ¾úÀ½
+			// ë§Œë“¤ íŒì—…ì°½ ì¢Œìš° í¬ê¸°ì˜ 1/2 ë§Œí¼ ë³´ì •ê°’ìœ¼ë¡œ ë¹¼ì£¼ì—ˆìŒ
 			
 			var popupY= (window.screen.height / 2) - (200 / 2) - 50;
-			// ¸¸µé ÆË¾÷Ã¢ »óÇÏ Å©±âÀÇ 1/2 ¸¸Å­ º¸Á¤°ªÀ¸·Î »©ÁÖ¾úÀ½
+			// ë§Œë“¤ íŒì—…ì°½ ìƒí•˜ í¬ê¸°ì˜ 1/2 ë§Œí¼ ë³´ì •ê°’ìœ¼ë¡œ ë¹¼ì£¼ì—ˆìŒ
 			console.log(popupX);
 			console.log(popupY);
 			window.open("./qnaBoardDelete.bo?qna_bno=${dto.qna_bno }&&pageNum=${param.pageNum }&&user_id=${dto.user_id }",
@@ -132,37 +71,29 @@
 <%-- 	<c:if test="${user_id == dto.user_id }"> --%>
 	<div id="table_search">
 		<c:if test="${dto.answer == 0 }"> 
-		<!-- ´äº¯ ¸ø¹ŞÀ» °æ¿ì¸¸ ¼öÁ¤°¡´ÉÇÏ°Ô  -->
-		<input type="button" value="¼öÁ¤ÇÏ±â"
+		<!-- ë‹µë³€ ëª»ë°›ì„ ê²½ìš°ë§Œ ìˆ˜ì •ê°€ëŠ¥í•˜ê²Œ  -->
+		<input type="button" value="ìˆ˜ì •í•˜ê¸°"
 			onclick="location.href='qnaBoardUpdate.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }';">
 		</c:if>
-		<input type="button" value="»èÁ¦ÇÏ±â"
+		<input type="button" value="ì‚­ì œí•˜ê¸°"
 			onclick="deleteQna();">
-		<input type="button" value="¸ñ·ÏÀÌµ¿"
+		<input type="button" value="ëª©ë¡ì´ë™"
 			onclick="boardList();">
 	</div>
 <%-- 	</c:if> --%>
 <%-- 		<c:if test="${user_type = 1 }"> --%>
-			<!-- °ü¸®ÀÚ¸¸ °¡´ÉÇÏ°Ô  -->
-			<input type="button" value="´äº¯¾²±â"
+			<!-- ê´€ë¦¬ìë§Œ ê°€ëŠ¥í•˜ê²Œ  -->
+			<input type="button" value="ë‹µë³€ì“°ê¸°"
 			onclick="location.href='qnaBoardAnswer.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }';">
 <%-- 		</c:if> --%>
 	
-	<!-- footer¾Æ·¡·Î´Â ÄÚµå ±İÁö -->
+	<!-- footerì•„ë˜ë¡œëŠ” ì½”ë“œ ê¸ˆì§€ -->
 	
-	<section id="footer_b" class="pt-3 pb-3 bg_grey">
-		<div class="container">
-			<ul class="mb-0">
-				<li class="d-inline-block me-2"><a href="#">Home</a></li>
-				<li class="d-inline-block me-2"><a href="#">Features</a></li>
-				<li class="d-inline-block me-2"><a href="#">Pages</a></li>
-				<li class="d-inline-block me-2"><a href="#">Portfolio</a></li>
-				<li class="d-inline-block me-2"><a href="#">Blog</a></li>
-				<li class="d-inline-block"><a href="#">Contact</a></li>
-			</ul>
-		</div>
-	</section>
-
+<!-- í•˜ë‹¨ë°” ê³ ì •  -->
+<footer>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+</footer>
+<!-- í•˜ë‹¨ë°” ê³ ì •  -->
 
 	<script>
 		window.onscroll = function() {

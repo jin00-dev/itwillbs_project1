@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +31,11 @@
 	</script>
 </head>
 <body>
+<!-- 상단 바 고정 -->
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
+
 	<h1>faqBoard.jsp</h1>
 	
 	<fieldset>
@@ -57,5 +61,11 @@
 				</div>
 		</form>
 	</fieldset>
+	
+<!-- 하단바 고정  -->
+<footer>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+</footer>
+<!-- 하단바 고정  -->
 </body>
 </html>

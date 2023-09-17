@@ -1,145 +1,68 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>·Î±×ÀÎ</title>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/global.css" rel="stylesheet">
-<link href="../css/index.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
-	rel="stylesheet">
-<script src="../js/bootstrap.bundle.min.js"></script>
+<title>ë¡œê·¸ì¸</title>
 </head>
+
 <body>
-	<section id="top">
-		<div class="container">
-			<div class="row top_1">
-				<div class="col-md-3">
-					<div class="top_1l pt-1">
-						<h3 class="mb-0">
-							<a class="text-white" href="../main.html"><i
-								class="fa fa-video-camera col_red me-1"></i>Drive in Cinema</a>
-						</h3>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="top_1m"></div>
-				</div>
-				<div class="col-md-4">
-					<div class="top_1r text-end">
-						<ul class="social-network social-circle mb-0">
-							<li><a href="#">·Î±×ÀÎ</a></li>
-							<li><a href="./UserJoin.me">È¸¿ø°¡ÀÔ</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section id="header">
-		<nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
-			<div class="container">
-				<a class="navbar-brand text-white fw-bold" href="../main.html"><i
-					class="fa fa-video-camera col_red me-1"></i>Drive In Cinema</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mb-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../order/orderMain.jsp">¿¹¸Å¾È³»</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.jsp">ÀÌº¥Æ®</a></li>
-						<li class="nav-item"><a class="nav-link" href="../board/introduceMain.jsp">¼Ò°³°Ô½ÃÆÇ</a>
-						</li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								°í°´¹®ÀÇ </a>
-							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="../board/noticeMain.jsp">°øÁö»çÇ×</a></li>
-								<li><a class="dropdown-item" href="../board/faqMain.jsp">ÀÚÁÖ¹¯´ÂÁú¹®</a></li>
-								<li><a class="dropdown-item border-0" href="../board/rentMain.jsp">´ë°ü¹®ÀÇ</a></li>
-							</ul></li>
-				</div>
-			</div>
-		</nav>
-	</section>
-
-
-<<<<<<< HEAD
-	<!-- ¿©±â ·Î±×ÀÎ ÆäÀÌÁö ²Ù¸ç¾ÆÇÔ. -->
-=======
-	<!--center -------------------------------------------------------------  -->
+<!-- ìƒë‹¨ ë°” ê³ ì • -->
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
+<!-- ìƒë‹¨ ë°” ê³ ì • -->
+<!-- ì—¬ê¸° ë¡œê·¸ì¸ íŽ˜ì´ì§€ ê¾¸ë©°ì•„í•¨. -->
 <section id="center" class="center_o pt-2 pb-2">
 		<fieldset class="id_pw_wrap">
-			<legend >·Î±×ÀÎ</legend>
+			<legend >ë¡œê·¸ì¸</legend>
 			<form action="./UserLoginAction.me" method="post">
 			
-					<input type="text" name="id" placeholder="¾ÆÀÌµð" class="id_pw"> <br>
-					<input type="password" name="pw" placeholder="ºñ¹Ð¹øÈ£" class="id_pw"> <hr>
+					<input type="text" name="id" placeholder="ì•„ì´ë””" class="id_pw"> <br>
+					<input type="password" name="pw" placeholder="ë¹„ë°€ë²ˆí˜¸" class="id_pw"> <hr>
 				
 				<button type="submit" class="btn_login">
-					<span>·Î±×ÀÎ</span>
+					<span>ë¡œê·¸ì¸</span>
 				</button>
 			</form>
 		
 		<div class="panel_item2">
-			<a href="./UserFindId.me">¾ÆÀÌµð Ã£±â</a> |
-			<a href="./UserFindPw.me">ºñ¹Ð¹øÈ£ Ã£±â</a> |
-			<a href="./UserJoin.me">È¸¿ø °¡ÀÔ</a> 
+			<a href="./UserFindId.me">ì•„ì´ë”” ì°¾ê¸°</a> |
+			<a href="./UserFindPw.me">ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</a> |
+			<a href="./UserJoin.me">íšŒì› ê°€ìž…</a> 
 			<hr>
 			<a href="javascript:kakaoLogin()"><img src="./img/kakao_login_large.png" width="80px"/></a>
 		</div>
 		</fieldset>
 		
 		<fieldset class="id_pw_wrap">
-			<legend >ºñÈ¸¿ø ¿¹¸Å</legend>
+			<legend >ë¹„íšŒì› ì˜ˆë§¤</legend>
 			<form action="./NonMemberLoginAction.me" method="post">
 			
-					<input type="text" name="id" placeholder="¾ÆÀÌµð" class="id_pw"> <br>
-					<input type="text" name="phone" placeholder="ÈÞ´ëÆù ¹øÈ£" class="id_pw"> <br>
-					<input type="password" name="pw" placeholder="ºñ¹Ð¹øÈ£" class="id_pw"> <br>
-					<input type="password" name="pwCheck" placeholder="ºñ¹Ð¹øÈ£ È®ÀÎ" class="id_pw"> <hr>
+					<input type="text" name="id" placeholder="ì•„ì´ë””" class="id_pw"> <br>
+					<input type="text" name="phone" placeholder="íœ´ëŒ€í° ë²ˆí˜¸" class="id_pw"> <br>
+					<input type="password" name="pw" placeholder="ë¹„ë°€ë²ˆí˜¸" class="id_pw"> <br>
+					<input type="password" name="pwCheck" placeholder="ë¹„ë°€ë²ˆí˜¸ í™•ì¸" class="id_pw"> <hr>
 				
 				<button type="submit" class="btn_login">
-					<span>¿Í! ºñÈ¸¿ø ¿¹¸Å</span>
+					<span>ì™€! ë¹„íšŒì› ì˜ˆë§¤</span>
 				</button>
 			</form>
 		</fieldset>
 		<hr>
  </section>
->>>>>>> 567c9df0b9a2a7f5a48b00ac1ba56a90ae81b652
 
-	<div class="container">
-		<h1>
-			¿©±â ·Î±×ÀÎÆäÀÌÁö ²Ù¹Ì´ÂÀÚ¸®<br> ¹Ø¿¡ footer ¾Ë¾Æ¼­ ³»·Á°¨
-		</h1>
-	</div>
 	
-	<!-- footer¾Æ·¡·Î´Â ÄÚµå ±ÝÁö -->
+	<!-- footerì•„ëž˜ë¡œëŠ” ì½”ë“œ ê¸ˆì§€ -->
 
-	<section id="footer_b" class="pt-3 pb-3 bg_grey">
-		<div class="container">
-			<ul class="mb-0">
-				<li class="d-inline-block me-2"><a href="#">Home</a></li>
-				<li class="d-inline-block me-2"><a href="#">Features</a></li>
-				<li class="d-inline-block me-2"><a href="#">Pages</a></li>
-				<li class="d-inline-block me-2"><a href="#">Portfolio</a></li>
-				<li class="d-inline-block me-2"><a href="#">Blog</a></li>
-				<li class="d-inline-block"><a href="#">Contact</a></li>
-			</ul>
-		</div>
-	</section>
+<!-- í•˜ë‹¨ë°” ê³ ì •  -->
+<footer>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+</footer>
+<!-- í•˜ë‹¨ë°” ê³ ì •  -->
 	
 
 	<script>

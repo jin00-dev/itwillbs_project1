@@ -1,135 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ÀÌº¥Æ®</title>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/global.css" rel="stylesheet">
-<link href="../css/index.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
-	rel="stylesheet">
-<script src="../js/bootstrap.bundle.min.js"></script>
+<title>ì´ë²¤íŠ¸</title>
 </head>
 <body>
-	<section id="top">
-		<div class="container">
-			<div class="row top_1">
-				<div class="col-md-3">
-					<div class="top_1l pt-1">
-						<h3 class="mb-0">
-							<a class="text-white" href="../main.html"><i
-								class="fa fa-video-camera col_red me-1"></i>Drive in Cinema</a>
-						</h3>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="top_1m"></div>
-				</div>
-				<div class="col-md-4">
-					<div class="top_1r text-end">
-						<ul class="social-network social-circle mb-0">
-							<li><a href="../user/loginForm.jsp">·Î±×ÀÎ</a></li>
-							<li><a href="../user/insertForm.jsp">È¸¿ø°¡ÀÔ</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<!-- ìƒë‹¨ ë°” ê³ ì • -->
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
 
-	<section id="header">
-		<nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
-			<div class="container">
-				<a class="navbar-brand text-white fw-bold" href="../main.html"><i
-					class="fa fa-video-camera col_red me-1"></i>Drive In Cinema</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mb-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../order/orderMain.jsp">¿¹¸Å¾È³»</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.jsp">ÀÌº¥Æ®</a></li>
-						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">¼Ò°³°Ô½ÃÆÇ</a>
-						</li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								°í°´¹®ÀÇ </a>
-							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="board/noticeMain.bo">°øÁö»çÇ×</a></li>
-								<li><a class="dropdown-item" href="board/faqMain.bo">ÀÚÁÖ¹¯´ÂÁú¹®</a></li>
-								<li><a class="dropdown-item border-0" href="#">´ë°ü¹®ÀÇ</a></li>
-							</ul></li>
-				</div>
-			</div>
-		</nav>
-	</section>
-
-
-	<!-- ¿©±â ´ë°ü¹®ÀÇ ²Ù¸ç¾ÆÇÔ. -->
+	<!-- ì—¬ê¸° ëŒ€ê´€ë¬¸ì˜ ê¾¸ë©°ì•„í•¨. -->
 
 	<div class="container">
 		<h1>
-			´ë°ü ¹®ÀÇ °Ô½ÃÆÇ 
+			ëŒ€ê´€ ë¬¸ì˜ ê²Œì‹œíŒ 
 		</h1>
-		<h2> ´ë°ü ÀýÂ÷ </h2>
+		<h2> ëŒ€ê´€ ì ˆì°¨ </h2>
 		<ul>
 			<li>
-				´ë°ü ÀýÂ÷ Àû´Â °÷ 			
+				ëŒ€ê´€ ì ˆì°¨ ì ëŠ” ê³³ 			
 			</li>
 		</ul>
-		<h2> ½ÂÀÎ ºÎ°á Åëº¸ </h2>
+		<h2> ìŠ¹ì¸ ë¶€ê²° í†µë³´ </h2>
 		<ul>
 			<li>
-				½ÉÀÇ¿¡¼­ ½ÂÀÎ ¶Ç´Â ºÎ°áµÈ °á°ú´Â °³º°ÀûÀ¸·Î Åëº¸ÇØ µå¸³´Ï´Ù. 			
+				ì‹¬ì˜ì—ì„œ ìŠ¹ì¸ ë˜ëŠ” ë¶€ê²°ëœ ê²°ê³¼ëŠ” ê°œë³„ì ìœ¼ë¡œ í†µë³´í•´ ë“œë¦½ë‹ˆë‹¤. 			
 			</li>
 			<li>
-				½ÉÀÇ¿¡¼­ ½ÂÀÎµÈ ½ÅÃ» °Ç¿¡ ´ëÇØ¼­´Â ±âº»´ë°ü·á ³»¿ª ¹× °è¾à±Ý°ú ½ÂÀÎÀÏÀÌ ¸í½ÃµÈ ´ë°ü½ÂÀÎ¼­¸¦ ¸ÞÀÏ·Î º¸³»µå¸³´Ï´Ù. 			
+				ì‹¬ì˜ì—ì„œ ìŠ¹ì¸ëœ ì‹ ì²­ ê±´ì— ëŒ€í•´ì„œëŠ” ê¸°ë³¸ëŒ€ê´€ë£Œ ë‚´ì—­ ë° ê³„ì•½ê¸ˆê³¼ ìŠ¹ì¸ì¼ì´ ëª…ì‹œëœ ëŒ€ê´€ìŠ¹ì¸ì„œë¥¼ ë©”ì¼ë¡œ ë³´ë‚´ë“œë¦½ë‹ˆë‹¤. 			
 			</li>
 		</ul>
-		<h2> ´ë°ü °è¾à</h2>
+		<h2> ëŒ€ê´€ ê³„ì•½</h2>
 		<ul>
 			<li>
-				°è¾à±ÝÀ» ³³ºÎÇÔÀ¸·Î½á ´ë°ü°è¾àÀÌ ¼º¸³µË´Ï´Ù.	
+				ê³„ì•½ê¸ˆì„ ë‚©ë¶€í•¨ìœ¼ë¡œì¨ ëŒ€ê´€ê³„ì•½ì´ ì„±ë¦½ë©ë‹ˆë‹¤.	
 			</li>
 			<li>
-				°è¾à±ÝÀº ±âº»´ë°ü·áÀÇ 10%ÀÌ¸ç, ³³ºÎ±âÇÑÀº Ã»±¸ÀÏ·ÎºÎÅÍ 10ÀÏ ÀÌ³»ÀÔ´Ï´Ù.	
+				ê³„ì•½ê¸ˆì€ ê¸°ë³¸ëŒ€ê´€ë£Œì˜ 10%ì´ë©°, ë‚©ë¶€ê¸°í•œì€ ì²­êµ¬ì¼ë¡œë¶€í„° 10ì¼ ì´ë‚´ìž…ë‹ˆë‹¤.	
 			</li>
 			<li>
-				°è¾à±ÝÀ» ³³ºÎ ±âÇÑ ³» ³³ºÎÇÏÁö ¾ÊÀ» ½Ã ÀÚµ¿À¸·Î ´ë°ü½ÂÀÎÀÌ Ãë¼ÒµË´Ï´Ù.
+				ê³„ì•½ê¸ˆì„ ë‚©ë¶€ ê¸°í•œ ë‚´ ë‚©ë¶€í•˜ì§€ ì•Šì„ ì‹œ ìžë™ìœ¼ë¡œ ëŒ€ê´€ìŠ¹ì¸ì´ ì·¨ì†Œë©ë‹ˆë‹¤.
 			</li>
 		</ul>
 		
 		<div>
-			<input type="button" value="´ë°ü¹®ÀÇÀÛ¼º" onclick="location.href = './rentMain.bo'">		
+			<input type="button" value="ëŒ€ê´€ë¬¸ì˜ìž‘ì„±" onclick="location.href = './rentWrite.bo'">		
 		</div>
 
 		
 	</div>
 	
-	<!-- footer¾Æ·¡·Î´Â ÄÚµå ±ÝÁö -->
+	<!-- footerì•„ëž˜ë¡œëŠ” ì½”ë“œ ê¸ˆì§€ -->
 	
-	<section id="footer_b" class="pt-3 pb-3 bg_grey">
-		<div class="container">
-			<ul class="mb-0">
-				<li class="d-inline-block me-2"><a href="#">Home</a></li>
-				<li class="d-inline-block me-2"><a href="#">Features</a></li>
-				<li class="d-inline-block me-2"><a href="#">Pages</a></li>
-				<li class="d-inline-block me-2"><a href="#">Portfolio</a></li>
-				<li class="d-inline-block me-2"><a href="#">Blog</a></li>
-				<li class="d-inline-block"><a href="#">Contact</a></li>
-			</ul>
-		</div>
-	</section>
+<!-- í•˜ë‹¨ë°” ê³ ì •  -->
+<footer>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+</footer>
+<!-- í•˜ë‹¨ë°” ê³ ì •  -->
 
 
 	<script>

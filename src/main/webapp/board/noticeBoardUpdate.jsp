@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -8,77 +7,15 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ÀÌº¥Æ®</title>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/global.css" rel="stylesheet">
-<link href="../css/index.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
-	rel="stylesheet">
-<script src="../js/bootstrap.bundle.min.js"></script>
+<title>ì´ë²¤íŠ¸</title>
 </head>
+
 <body>
-	<section id="top">
-		<div class="container">
-			<div class="row top_1">
-				<div class="col-md-3">
-					<div class="top_1l pt-1">
-						<h3 class="mb-0">
-							<a class="text-white" href="../main.html"><i
-								class="fa fa-video-camera col_red me-1"></i>Drive in Cinema</a>
-						</h3>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="top_1m"></div>
-				</div>
-				<div class="col-md-4">
-					<div class="top_1r text-end">
-						<ul class="social-network social-circle mb-0">
-							<li><a href="../user/loginForm.jsp">·Î±×ÀÎ</a></li>
-							<li><a href="../user/insertForm.jsp">È¸¿ø°¡ÀÔ</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section id="header">
-		<nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
-			<div class="container">
-				<a class="navbar-brand text-white fw-bold" href="../main.html"><i
-					class="fa fa-video-camera col_red me-1"></i>Drive In Cinema</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mb-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../order/orderMain.jsp">¿¹¸Å¾È³»</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.jsp">ÀÌº¥Æ®</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="introduceMain.jsp">¼Ò°³°Ô½ÃÆÇ</a></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								°í°´¹®ÀÇ </a>
-							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="noticeMain.bo">°øÁö»çÇ×</a></li>
-								<li><a class="dropdown-item" href="faqMain.bo">ÀÚÁÖ¹¯´ÂÁú¹®</a></li>
-								<li><a class="dropdown-item border-0" href="rentMain.bo">´ë°ü¹®ÀÇ</a></li>
-							</ul></li>
-				</div>
-			</div>
-		</nav>
-	</section>
-
-
-	<!-- ¿©±â ´ë°ü¹®ÀÇ ²Ù¸ç¾ÆÇÔ. -->
+	<!-- ìƒë‹¨ ë°” ê³ ì • -->
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
+	<!-- ì—¬ê¸° ëŒ€ê´€ë¬¸ì˜ ê¾¸ë©°ì•„í•¨. -->
 	
 	<div class="container">
 		<form action="./noticeBoardUpdatePro.bo?pageNum=${pageNum }"
@@ -86,7 +23,7 @@
 			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
 			<table id="Update">
 				<tr>
-					<th class="ttitle" colspan="3">°øÁö»çÇ× ¼öÁ¤</th>
+					<th class="ttitle" colspan="3">ê³µì§€ì‚¬í•­ ìˆ˜ì •</th>
 				</tr>
 <!-- 				<tr> -->
 <!-- 					<td> -->
@@ -95,40 +32,32 @@
 <!-- 					</td> -->
 <!-- 				</tr> -->
 				<tr>
-					<td>Á¦ ¸ñ :</td>
+					<td>ì œ ëª© :</td>
 					<td colspan="2"><input type="text" id="sInput" name="subject"
 						value="${dto.subject }"></td>
 				</tr>
 				<tr>
-					<td>³» ¿ë :</td>
+					<td>ë‚´ ìš© :</td>
 					<td colspan="2"><textarea rows="" cols="" id="wInput"
 							name="content">${dto.content }</textarea></td>
 				</tr>
 			</table>
 
 			<div id="table_search">
-				<input type="submit" value="¼öÁ¤ÇÏ±â" class="btn">
+				<input type="submit" value="ìˆ˜ì •í•˜ê¸°" class="btn">
 			</div>
 			<div class="clear"></div>
 			<div id="page_control"></div>
 		</form>
 	</div>
 
-	<!-- footer¾Æ·¡·Î´Â ÄÚµå ±İÁö -->
+	<!-- footerì•„ë˜ë¡œëŠ” ì½”ë“œ ê¸ˆì§€ -->
 
-	<section id="footer_b" class="pt-3 pb-3 bg_grey">
-		<div class="container">
-			<ul class="mb-0">
-				<li class="d-inline-block me-2"><a href="#">Home</a></li>
-				<li class="d-inline-block me-2"><a href="#">Features</a></li>
-				<li class="d-inline-block me-2"><a href="#">Pages</a></li>
-				<li class="d-inline-block me-2"><a href="#">Portfolio</a></li>
-				<li class="d-inline-block me-2"><a href="#">Blog</a></li>
-				<li class="d-inline-block"><a href="#">Contact</a></li>
-			</ul>
-		</div>
-	</section>
-
+<!-- í•˜ë‹¨ë°” ê³ ì •  -->
+<footer>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+</footer>
+<!-- í•˜ë‹¨ë°” ê³ ì •  -->
 
 	<script>
 		window.onscroll = function() {

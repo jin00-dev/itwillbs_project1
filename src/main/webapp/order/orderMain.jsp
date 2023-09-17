@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -7,17 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>¿¹¸Å¾È³»</title>
-<link href="./css/cinema.css" rel="stylesheet">
-<link href="./css/bootstrap.min.css" rel="stylesheet">
-<link href="./css/global.css" rel="stylesheet">
-<link href="./css/main.css" rel="stylesheet">
-<link href="./css/index.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
-	rel="stylesheet">
-<script src="./js/bootstrap.bundle.min.js"></script>
-<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<title>ì˜ˆë§¤ì•ˆë‚´</title>
 <script type="text/javascript">
 	
 	$(document).ready(function() {
@@ -41,7 +30,7 @@
 						console.log(data);
 						$('#theater_list').empty();
 						$.each(data,function(idx,item){
-							// cinema_name : Áö¿ª¿¡µû¸¥ ±ØÀåµéÀÌ¸§
+							// cinema_name : ì§€ì—­ì—ë”°ë¥¸ ê·¹ì¥ë“¤ì´ë¦„
 							var cinema_name = item.cinema_name;
 							$('#theater_list').append("<a class='showMovie'>"+cinema_name+"</a> <br>")
 						});
@@ -59,7 +48,7 @@
 										console.log(data);
 										$('#movieName').empty();
 										$.each(data,function(idx,item){
-											// movie_name : ±ØÀå¿¡¼­ »ó¿µÁßÀÎ ¿µÈ­µé
+											// movie_name : ê·¹ì¥ì—ì„œ ìƒì˜ì¤‘ì¸ ì˜í™”ë“¤
 											var movie_name = item.movie_name;
 											$('#movieName').append("<a class='showTime'>"+movie_name+"</a> <br>")
 										});
@@ -77,7 +66,7 @@
 													console.log(data);
 													$('#movieTime').empty();
 													$.each(data,function(idx,item){
-														// »ó¿µÁßÀÎ ¿µÈ­ÀÇ »ó¿µ½Ã°£
+														// ìƒì˜ì¤‘ì¸ ì˜í™”ì˜ ìƒì˜ì‹œê°„
 														var dateTime = item.movieTime;
 														alert(dateTime)
 														$('#movieTime').append("<a class='time'>"+item.movieTime.substr(11,5)+"</a> <br>")
@@ -96,11 +85,11 @@
 																url : "./seatPayment.or",
 																data : {"theater":theater,"movie":movie,"time":time,"car_num":car_num,"car_type":car_type},
 																success : function(){
-																	alert("¤¸¤§¤µ¤¡");
+																	alert("ã…ˆã„·ã……ã„±");
 																	
 																},
 																error : function(){
-																	alert("¤¸¤§¤µ¤¡");
+																	alert("ã…ˆã„·ã……ã„±");
 																}
 															});
 															
@@ -109,7 +98,7 @@
 													});															
 												},
 												error : function(){
-													alert("¿À·ù!");
+													alert("ì˜¤ë¥˜!");
 												}									
 											});	// movie click
  							
@@ -117,37 +106,37 @@
 										
 									},
 									error : function(){
-										alert("¿À·ù!");
+										alert("ì˜¤ë¥˜!");
 									}
 								});
 							}); // cinema click
 	
 					},
 					error : function() {
-						alert("¿À·ù!");
+						alert("ì˜¤ë¥˜!");
 					}
 				});
 
 			}); // region click
 			
 			$('.noCinema').click(function(){
-				alert("Áö¿ªÀ» ¼±ÅÃÇØÁÖ¼¼¿ä");
+				alert("ì§€ì—­ì„ ì„ íƒí•´ì£¼ì„¸ìš”");
 			});
 			
 			$('.noMovie').click(function(){
-				alert("±ØÀåÀ» ¼±ÅÃÇØÁÖ¼¼¿ä");
+				alert("ê·¹ì¥ì„ ì„ íƒí•´ì£¼ì„¸ìš”");
 			});
 			
 			$('#btn1').click(function(){
 				if($('#text1').val() == "" ){
-					alert("Â÷·®¹øÈ£¸¦ ±âÀÔÇÏ¼¼¿ä");
+					alert("ì°¨ëŸ‰ë²ˆí˜¸ë¥¼ ê¸°ì…í•˜ì„¸ìš”");
 					$('#text1').focus();
 				}
 			});
 			
 		
 		
-		}); // jquery³¡
+		}); // jqueryë
 
 
 	
@@ -155,113 +144,58 @@
 
 </script>
 </head>
+
 <body>
-	<section id="top">
-		<div class="con">
-			<div class="row top_1">
-				<div class="col-md-3">
-					<div class="top_1l pt-1">
-						<h3 class="mb-0">
-							<a class="text-white" href="./main.html"><i
-								class="fa fa-video-camera col_red me-1"></i>Drive in Cinema</a>
-						</h3>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="top_1m"></div>
-				</div>
-				<div class="col-md-4">
-					<div class="top_1r text-end">
-						<ul class="social-network social-circle mb-0">
-							<li><a href="./user/loginForm.jsp">·Î±×ÀÎ</a></li>
-							<li><a href="./user/insertForm.jsp">È¸¿ø°¡ÀÔ</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section id="header">
-		<nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
-			<div class="container">
-				<a class="navbar-brand text-white fw-bold" href="./main.html"><i
-					class="fa fa-video-camera col_red me-1"></i>Drive In Cinema</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mb-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="#">¿¹¸Å¾È³»</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="./event/eventMain.jsp">ÀÌº¥Æ®</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="./board/introduceMain.jsp">¼Ò°³°Ô½ÃÆÇ</a></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								°í°´¹®ÀÇ </a>
-							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="./board/noticeMain.jsp">°øÁö»çÇ×</a></li>
-								<li><a class="dropdown-item" href="./board/faqMain.jsp">ÀÚÁÖ¹¯´ÂÁú¹®</a></li>
-								<li><a class="dropdown-item border-0"
-									href="./board/rentMain.jsp">´ë°ü¹®ÀÇ</a></li>
-							</ul></li>
-				</div>
-			</div>
-		</nav>
-	</section>
-
-
-	<!-- ¿©±â ¿¹¸Å ÆäÀÌÁö ²Ù¸ç¾ÆÇÔ. -->
+<!-- ìƒë‹¨ ë°” ê³ ì • -->
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
+<!-- ìƒë‹¨ ë°” ê³ ì • -->
+<!-- ì—¬ê¸° ì˜ˆë§¤ í˜ì´ì§€ ê¾¸ë©°ì•„í•¨. -->
 	<main>
 		<section id="section">
 
 
 	<div class="container">
 		<h1>
-			¿©±â ¿¹¸ÅÆäÀÌÁö ²Ù¹Ì´ÂÀÚ¸®<br> ¹Ø¿¡ footer ¾Ë¾Æ¼­ ³»·Á°¨
+			ì—¬ê¸° ì˜ˆë§¤í˜ì´ì§€ ê¾¸ë¯¸ëŠ”ìë¦¬<br> ë°‘ì— footer ì•Œì•„ì„œ ë‚´ë ¤ê°
 		</h1>
 	</div>
 
-			<div id="movie_res" class="cdiv">¿µÈ­¿¹¸Å</div>
+			<div id="movie_res" class="cdiv">ì˜í™”ì˜ˆë§¤</div>
 
-			<div id="theater" class="cdiv">¿µÈ­°ü</div>
-			<div id="theater" class="cdiv">¿µÈ­/»ó¿µ½Ã°£</div>
-			<div id="car_number" class="cdiv">Â÷·®µî·Ï</div>
+			<div id="theater" class="cdiv">ì˜í™”ê´€</div>
+			<div id="theater" class="cdiv">ì˜í™”/ìƒì˜ì‹œê°„</div>
+			<div id="car_number" class="cdiv">ì°¨ëŸ‰ë“±ë¡</div>
 
 			<div id="text" class="cdiv">
 
-				<a class="region">¼­¿ï/°æ±â</a><br> <a class="region">ºÎ»ê/°æ»ó</a><br> <a class="region">´ë±¸/¿ï»ê</a><br>
-				<a class="region">´ëÀü/ÃæÃ»</a><br> <a class="region">±¤ÁÖ/Àü¶ó</a><br>
-				<a class="region">°­¿ø/Á¦ÁÖ</a><br>
+				<a class="region">ì„œìš¸/ê²½ê¸°</a><br> <a class="region">ë¶€ì‚°/ê²½ìƒ</a><br> <a class="region">ëŒ€êµ¬/ìš¸ì‚°</a><br>
+				<a class="region">ëŒ€ì „/ì¶©ì²­</a><br> <a class="region">ê´‘ì£¼/ì „ë¼</a><br>
+				<a class="region">ê°•ì›/ì œì£¼</a><br>
 
 			</div>
 
 			<div class="cdiv" id="theater_list">
-			<a class="noCinema">ÀÚÀ¯·ÎÀÚµ¿Â÷±ØÀå</a><br>
-			<a class="noCinema">ÀåÈïÀÚµ¿Â÷±ØÀå</a><br>
-			<a class="noCinema">ÃÊÀÌÀÚµ¿Â÷±ØÀå</a><br>
-			<a class="noCinema">ÆÛ½ºÆ®°¡µçÀÚµ¿Â÷±ØÀå</a><br>
-			<a class="noCinema">ÆòÅÃÈ£ÀÚµ¿Â÷±ØÀå</a><br>
-			<a class="noCinema">Æ÷ÃµÀÚµ¿Â÷±ØÀå</a><br>
-			<a class="noCinema">ÇÑ±¹¹Î¼ÓÃÌÀÚµ¿Â÷±ØÀå</a><br>
+			<a class="noCinema">ììœ ë¡œìë™ì°¨ê·¹ì¥</a><br>
+			<a class="noCinema">ì¥í¥ìë™ì°¨ê·¹ì¥</a><br>
+			<a class="noCinema">ì´ˆì´ìë™ì°¨ê·¹ì¥</a><br>
+			<a class="noCinema">í¼ìŠ¤íŠ¸ê°€ë“ ìë™ì°¨ê·¹ì¥</a><br>
+			<a class="noCinema">í‰íƒí˜¸ìë™ì°¨ê·¹ì¥</a><br>
+			<a class="noCinema">í¬ì²œìë™ì°¨ê·¹ì¥</a><br>
+			<a class="noCinema">í•œêµ­ë¯¼ì†ì´Œìë™ì°¨ê·¹ì¥</a><br>
 			</div>
 			
 			
 
 			<div id="movieName" class="cdiv">
-			<a class="noMovie">Àá</a><br>
-			<a class="noMovie">¿ÀÆæÇÏÀÌ¸Ó</a><br>
-			<a class="noMovie">ÄÜÅ©¸®Æ® À¯ÅäÇÇ¾Æ</a><br>
-			<a class="noMovie">´ŞÂ¦Áö±ÙÇØ: 7510</a><br>
-			<a class="noMovie">7¹ø¹æÀÇ¼±¹°</a><br>
-			<a class="noMovie">¾Ç¸¶¸¦ º¸¾Ò´Ù</a><br>
-			<a class="noMovie">°Ü¿ï¿Õ±¹2</a><br>
+			<a class="noMovie">ì </a><br>
+			<a class="noMovie">ì˜¤íœí•˜ì´ë¨¸</a><br>
+			<a class="noMovie">ì½˜í¬ë¦¬íŠ¸ ìœ í† í”¼ì•„</a><br>
+			<a class="noMovie">ë‹¬ì§ì§€ê·¼í•´: 7510</a><br>
+			<a class="noMovie">7ë²ˆë°©ì˜ì„ ë¬¼</a><br>
+			<a class="noMovie">ì•…ë§ˆë¥¼ ë³´ì•˜ë‹¤</a><br>
+			<a class="noMovie">ê²¨ìš¸ì™•êµ­2</a><br>
 			</div>
 
 
@@ -271,16 +205,16 @@
 
 			<div class="cdiv" id="otc">
 				<div>
-					Â÷·®¹øÈ£<input type="text" id="text1"><br> <br>
-					<!-- ¿É¼Ç Â÷Á¾ -->
+					ì°¨ëŸ‰ë²ˆí˜¸<input type="text" id="text1"><br> <br>
+					<!-- ì˜µì…˜ ì°¨ì¢… -->
 				</div>
 				<div id="carnum">
-					Â÷·®Á¾·ù <select id="option">
-						<option class="text" value="¼ÒÇüÂ÷">¼ÒÇüÂ÷</option>
-						<option class="text" value="ÁßÇüÂ÷">ÁßÇüÂ÷</option>
-						<option class="text" value="´ëÇüÂ÷">´ëÇüÂ÷</option>
+					ì°¨ëŸ‰ì¢…ë¥˜ <select id="option">
+						<option class="text" value="ì†Œí˜•ì°¨">ì†Œí˜•ì°¨</option>
+						<option class="text" value="ì¤‘í˜•ì°¨">ì¤‘í˜•ì°¨</option>
+						<option class="text" value="ëŒ€í˜•ì°¨">ëŒ€í˜•ì°¨</option>
 				</div>
-				</select> <input type="button" id="btn1" value="Â÷·®µî·Ï">
+				</select> <input type="button" id="btn1" value="ì°¨ëŸ‰ë“±ë¡">
 			</div>
 
 		</section>
@@ -288,20 +222,13 @@
 >>>>>>> payment
 	
 
-	<!-- footer¾Æ·¡·Î´Â ÄÚµå ±İÁö -->
+	<!-- footerì•„ë˜ë¡œëŠ” ì½”ë“œ ê¸ˆì§€ -->
 
-	<section id="footer_b" class="pt-3 pb-3 bg_grey">
-		<div class="container">
-			<ul class="mb-0">
-				<li class="d-inline-block me-2"><a href="#">Home</a></li>
-				<li class="d-inline-block me-2"><a href="#">Features</a></li>
-				<li class="d-inline-block me-2"><a href="#">Pages</a></li>
-				<li class="d-inline-block me-2"><a href="#">Portfolio</a></li>
-				<li class="d-inline-block me-2"><a href="#">Blog</a></li>
-				<li class="d-inline-block"><a href="#">Contact</a></li>
-			</ul>
-		</div>
-	</section>
+<!-- í•˜ë‹¨ë°” ê³ ì •  -->
+<footer>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+</footer>
+<!-- í•˜ë‹¨ë°” ê³ ì •  -->
 
 	<script>
 		window.onscroll = function() {
