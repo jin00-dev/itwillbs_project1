@@ -173,7 +173,9 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/UserOrderBoardAction.me") ){
+		}
+		//
+		else if(command.equals("/UserOrderBoardAction.me") ){
 			action = new UserOrderBoardAction();
 			try {
 				forward = action.execute(request, response);
@@ -181,28 +183,19 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		//관리자-회원리스트 페이지
+		else if(command.equals("/AdminUserInfoBoardAction.me") ){
+			action = new AdminUserInfoBoardAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
-		//이제부터 게시판-------------------------------------------------------------
-		//게시판 메인
-//		else if( command.equals("/BoardMain.me") ) {
-//			action = new BoardMainAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		//글 읽기
-//		else if( command.equals("/BoardRead.me") ) {
-//			action = new BoardReadAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
 		
-		////3.주소로 이동////////////
+		
+		////3.주소로 이동//////////////////////////////////
 		if( forward != null ) {
 			if( forward.isRedirect() ) {
 				System.out.println( forward.getPath() +" ##"+ forward.isRedirect() );     

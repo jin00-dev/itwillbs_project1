@@ -37,6 +37,7 @@
 				<p id='hiddenMsgPwCheck'></p>
 				
 				 <input type="hidden"name="isCertification"> 
+				 <input type="hidden"name="imp_uid"> 
 				 <input type="submit" value="회원가입"	onclick="return check()">
 			</fieldset>
 		</form>
@@ -83,12 +84,13 @@
 			pg : 'inicis_unified.MIIiasTest',//본인인증 설정이 2개이상 되어 있는 경우 필수 
 			// 			    merchant_uid: "ORD20180131-0000011", // 주문 번호
 			// 			    min_age: 15, //본인인증 최소 나이
-			//  			    m_redirect_url : "./UserJoinAction.me", // 모바일환경에서 popup:false(기본값) 인 경우 필수, 예: https://www.myservice.com/payments/complete/mobile
+		    m_redirect_url : "./UserJoinAction.me", // 모바일환경에서 popup:false(기본값) 인 경우 필수, 예: https://www.myservice.com/payments/complete/mobile
 			popup : false
 		// PC환경에서는 popup 파라미터가 무시되고 항상 true 로 적용됨
 		}, function(rsp) { // callback
 			if (rsp.success) { // 인증 성공 시 jQuery로 HTTP 요청
 				$("input[name='isCertification']").val(rsp.success);
+				$("input[name='imp_uid']").val(rsp.imp_uid);
 				alert("인증에 성공하였습니다.");
 			} else {
 				$("input[name='isCertification']").val(rsp.success);
@@ -174,7 +176,6 @@
 		
 		/* 아이디 중복 검사 실패시 */
 		if ($('#isCheckId').val() != "true") {
-			alert('dtd');
 			$("#chId").text("아이디 중복 확인을 해주세요.");
 			$("#chId").css('color', 'red');
 // 			alert($("#chId").text());
@@ -182,7 +183,6 @@
 			return false;
 		}else{
 			$("#chId").text("");
-			alert('dtd2');
 		}
 
 		/* 비밀번호 및 비밀번호 확인 유효성 검사 */
