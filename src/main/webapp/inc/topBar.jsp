@@ -37,6 +37,10 @@
 					<div class="top_1r text-end">
 						<ul class="social-network social-circle mb-0">
 							<c:choose>
+								<c:when test="${ sessionScope.user_id eq 'admin'}">
+									<li><a href="./UserLogoutAction.me">로그아웃</a></li>
+									<li><a href="./UserInfoCheck.me">관리자페이지</a></li>
+								</c:when>
 								<c:when test="${empty sessionScope.user_id }">
 									<li><a href="./UserLogin.me">로그인</a></li>
 									<li><a href="./UserJoin.me">회원가입</a></li>
@@ -45,10 +49,7 @@
 									<li><a href="./UserLogoutAction.me">로그아웃</a></li>
 									<li><a href="./UserInfoCheck.me">마이페이지</a></li>
 								</c:when>
-								<c:when test="${ sessionScope.user_id eq 'admin'}">
-									<li><a href="./UserLogoutAction.me">로그아웃</a></li>
-									<li><a href="./UserInfoCheck.me">관리자페이지</a></li>
-								</c:when>
+								
 							</c:choose>						
 							
 						</ul>

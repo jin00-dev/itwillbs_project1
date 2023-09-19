@@ -97,7 +97,7 @@
 	<div id="MyModal" class="modal">
 	    <div class="modal-contents">
 	      <h2 id="p0"></h2>
-	      <p id="p1">
+	      <p id="p1"></p>
 	      <p id="p2"></p>
      	  <p id="p3"></p>
 	      <input id="user_typeChange" type="button" value="등급변경">
