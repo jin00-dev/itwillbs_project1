@@ -39,7 +39,7 @@ public class BoardFrontController extends HttpServlet{
 
 				forward = new ActionForward();
 				
-				forward.setPath("./qnaBoard.jsp");
+				forward.setPath("./board/qnaBoard.jsp");
 				forward.setRedirect(false);
 			}
 			else if(command.equals("/qnaBoardList.bo")) {
@@ -95,7 +95,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
 				
 				forward = new ActionForward();
-				forward.setPath("./faqBoardAdd.jsp");
+				forward.setPath("./board/faqBoardAdd.jsp");
 				forward.setRedirect(false);
 			}
 			else if(command.equals("/faqBoardAddAction.bo")) {
@@ -116,7 +116,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
 				
 				forward = new ActionForward();
-				forward.setPath("./noticeBoardAdd.jsp");
+				forward.setPath("./board/noticeBoardAdd.jsp");
 				forward.setRedirect(false);
 			}
 			else if(command.equals("/noticeBoardAddAction.bo")) {
@@ -224,7 +224,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
 				
 				forward = new ActionForward();
-				forward.setPath("./qnaBoardDelete.jsp");
+				forward.setPath("./board/qnaBoardDelete.jsp");
 				forward.setRedirect(false);		
 			}
 			else if(command.equals("/qnaBoardDeleteAction.bo")) {
@@ -255,7 +255,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
 				
 				forward = new ActionForward();
-				forward.setPath("./noticeBoardDelete.jsp");
+				forward.setPath("./board/noticeBoardDelete.jsp");
 				forward.setRedirect(false);	
 			}
 			else if(command.equals("/noticeBoardDeleteAction.bo")) {
@@ -293,8 +293,8 @@ public class BoardFrontController extends HttpServlet{
 					e.printStackTrace();
 				}
 			}
-			else if(command.equals("/board/enfBoardSearch.bo")) {
-				System.out.println(" C : /board/enfBoardSearch.bo 호출");
+			else if(command.equals("/enfBoardSearch.bo")) {
+				System.out.println(" C : /enfBoardSearch.bo 호출");
 				System.out.println(" C : 패턴3 - DB사용0, 페이지이동");
 
 				// BoardListAction
@@ -305,8 +305,8 @@ public class BoardFrontController extends HttpServlet{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}else if(command.equals("/board/qrBoardSearch.bo")) {
-				System.out.println(" C : /board/qrBoardSearch.bo 호출");
+			}else if(command.equals("/qrBoardSearch.bo")) {
+				System.out.println(" C : /qrBoardSearch.bo 호출");
 				System.out.println(" C : 패턴3 - DB사용0, 페이지이동");
 		
 				// BoardListAction
@@ -318,17 +318,17 @@ public class BoardFrontController extends HttpServlet{
 					e.printStackTrace();
 				}
 			}
-			else if(command.equals("/event/eventMain.bo")) {
-				System.out.println(" C : /board/eventMain.bo 호출");
+			else if(command.equals("/eventMain.bo")) {
+				System.out.println(" C : /eventMain.bo 호출");
 				System.out.println(" C : 패턴1 - DB사용X, 페이지이동");
 
 				forward = new ActionForward();
 				
-				forward.setPath("./eventMain.jsp");
+				forward.setPath("./event/eventMain.jsp");
 				forward.setRedirect(false);
 			}
-			else if(command.equals("/event/eventContent.bo")) {
-				System.out.println(" C : /board/eventContent.bo 호출");
+			else if(command.equals("/eventContent.bo")) {
+				System.out.println(" C : /eventContent.bo 호출");
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				
 				//BoardUpdateAction 객체
