@@ -174,10 +174,36 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		//
+		else if(command.equals("/UserOrderBoardAction.me") ){
+			action = new UserOrderBoardAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//관리자-회원리스트 페이지
+		else if(command.equals("/AdminUserInfoBoardAction.me") ){
+			action = new AdminUserInfoBoardAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원등급 변경
+		else if(command.equals("/UserTypeChangeAction.me")) {
+			action = new UserTypeChangeAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
-
 		
-		////3.주소로 이동////////////
+		////3.주소로 이동//////////////////////////////////
 		if( forward != null ) {
 			if( forward.isRedirect() ) {
 				System.out.println( forward.getPath() +" ##"+ forward.isRedirect() );     

@@ -17,9 +17,11 @@ public class UserJoinAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 //		req.setCharacterEncoding("UTF-8");
-		String isCertification = req.getParameter("isCertification");
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
+		String isCertification = req.getParameter("isCertification");
+		String imp_uid = req.getParameter("imp_uid");
+		
 		
 		dto.setUser_id(req.getParameter("user_id"));
 		dto.setUser_pass(req.getParameter("user_pass"));
