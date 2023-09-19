@@ -12,7 +12,7 @@
 <link href="./css/index.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"	rel="stylesheet">
 <script src="./js/bootstrap.bundle.min.js"></script>
-<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<!-- <script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> -->
 
 </head>
 <body>

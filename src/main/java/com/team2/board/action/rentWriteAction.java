@@ -27,14 +27,14 @@ public class rentWriteAction implements Action {
 		
 		System.out.println(" M : "+dto);
 		
-		//DB연결 => DAO 객체 - insertQnaBoard (1:1 문의 글쓰기) 
+		//DB연결 => DAO 객체 - insertRentBoard (대관 문의 글쓰기) 
 		BoardDAO dao = new BoardDAO();
 		dao.insertRentBoard(dto);
 		
 		// 페이지 이동
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./rentWrite.jsp");
+		forward.setPath("./board/rentMain.jsp");
 		forward.setRedirect(true);
 		
 		return forward;

@@ -4,14 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="../js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="../js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 			$.ajax({
 				url : "./CinemaSelectAction.bo",
 				dataType : "json",
 				success : function(data){
-					
+					arert("성공");
 					$.each(data,function(idx,item){
 						$("#region_name").click(function(){
 							$(".start").remove(); //remove 후 첫 데이터 (강원) 데이터 선택 안됨
@@ -25,9 +25,11 @@
 									var list = item.cinema_list.split(",");
 									for(var i in list){
 										$("#cinema_name").append("<option value="+list[i]+">"+list[i]+"</option>");
-// 										$("#cinema_name").empty("<option value="+list[i]+">"+list[i]+"</option>"); 데이터 중복 수정 필요
-// 										$("#cinema_name").append("<option value="+list[i]+">"+list[i]+"</option>");
 										}//for
+									for(var ii in list){
+										$("#cinema_name").empty("<option value="+list[ii]+">"+list[ii]+"</option>"); //데이터 중복 수정 필요
+										$("#cinema_name").append("<option value="+list[ii]+">"+list[ii]+"</option>");
+										}//for 
 									}//if
 						});//change
 					});//each 
