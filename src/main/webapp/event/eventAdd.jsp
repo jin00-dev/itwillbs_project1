@@ -8,27 +8,17 @@
 </head>
 <body>
 	<h1>eventAdd.jsp</h1>
-	<fieldset>
-		<form action="eventAddAction.bo" method="post" name = "fr" id="eventAddForm">
-		<table id="noticeAdd">
-					<tr>
-						<td>제목 :</td>
-						<td colspan="2"><textarea rows="" cols="" id="sInput" name="subject"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>내용 :</td>
-						<td colspan="2">
-							<textarea rows="" cols="" id="cInput" name="content"></textarea>
-						</td>
-					</tr>
-
-				</table>
-
-				<div id="eventAddSubmit">
-					<input type="submit" value="완료">
-				</div>
-		</form>
-	</fieldset>
+	 <form action="eventUpload.bo" method="post" enctype="multipart/form-data">
+	 	<fieldset>
+			<legend>파일 업로드</legend>
+				<label for="subject" > 타이틀 :</label>
+				<input type="text" name="subject" id="subject"><br>
+				<label for="content" > 내용 :</label>
+				<input type="text" name="content" id="content"><br>
+				<label for="file"> 파일 :</label>
+				<input type="file" name="file" id="file" required><br>
+			<input type="submit" value="upload">	 	
+	 	</fieldset>
+	 </form>
 </body>
 </html>

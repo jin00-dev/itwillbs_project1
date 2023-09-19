@@ -132,8 +132,9 @@ public class ENFBoardDAO {
 		// 3. sql구문 작성 & pstmt 객체
 		if(category == 0) {
 			sql = "insert into event_notice_faq_board (category,event_bno,subject,"
-					+ "content,read_count,regdate,event_type) "
-					+ "values(?,?,?,?,now(),?)";			
+					+ "content,read_count,regdate,event_type,img) "
+					+ "values(?,?,?,?,?,now(),?,?)";	
+			
 			pstmt = con.prepareStatement(sql);
 			// ???
 			pstmt.setInt(1, category);
@@ -141,7 +142,8 @@ public class ENFBoardDAO {
 			pstmt.setString(3, bb.getSubject());
 			pstmt.setString(4, bb.getContent());
 			pstmt.setInt(5, 0);// 모드글 생성시 조회수는 0
-			pstmt.setByte(6, bb.getEvent_type());
+			pstmt.setByte(6, (byte) 0);// 모드글 생성시 이벤트시작
+			pstmt.setString(7, bb.getImg());;// 모드글 생성시 이벤트시작
 			pstmt.executeUpdate();
 		}else if(category == 1) {
 			sql = "insert into event_notice_faq_board (category,notice_bno,subject,"
@@ -182,17 +184,11 @@ public class ENFBoardDAO {
 //		List boardList = new ArrayList();//업캐스팅
 		System.out.println(" DAO : boardList() 실행");
 
-//		//1. 드라이버로드
-//		Class.forName(DRIVER);
-//		System.out.println("드라이버 로드 성공");
-//		//2. 디비연결
-//		Connection con = DriverManager.getConnection(DBURL, DBID, DBPW);
-//		System.out.println("디비 연결 성공");
 		//1.2.디비연결
 		con = getConnect();
 		//3. sql구문작성 & pstmt 객체
 		
-		sql = "select * from event_notice_faq_board";
+		sql = "select * from event_notice_faq_board where category = 0";
 		pstmt = con.prepareStatement(sql);
 		//4. sql 실행
 		rs = pstmt.executeQuery();
@@ -204,14 +200,13 @@ public class ENFBoardDAO {
 			ENFBoardDTO bb = new ENFBoardDTO();
 			bb.setCategory(rs.getByte("category"));
 			bb.setEvent_bno(rs.getInt("event_bno"));
-			bb.setNotice_bno(rs.getInt("notice_bno"));
-			bb.setFaq_bno(rs.getInt("faq_bno"));
 			bb.setSubject(rs.getString("subject"));
 			bb.setContent(rs.getString("content"));
 			bb.setRead_count(rs.getInt("read_count"));
 			bb.setRegdate(rs.getTimestamp("regdate"));
 			bb.setUpdatedate(rs.getTimestamp("updatedate"));
 			bb.setEvent_type(rs.getByte("event_type"));
+			bb.setImg(rs.getString("img"));
 		
 			
 			//BoardBean -> ArrayList 한칸에 저장
@@ -271,12 +266,6 @@ public class ENFBoardDAO {
 //		List boardList = new ArrayList();//업캐스팅
 		System.out.println(" DAO : boardList() 실행");
 		
-//		//1. 드라이버로드
-//		Class.forName(DRIVER);
-//		System.out.println("드라이버 로드 성공");
-//		//2. 디비연결
-//		Connection con = DriverManager.getConnection(DBURL, DBID, DBPW);
-//		System.out.println("디비 연결 성공");
 		//1.2.디비연결
 		con = getConnect();
 		//3. sql구문작성 & pstmt 객체
@@ -431,6 +420,7 @@ public class ENFBoardDAO {
 				bb.setRegdate(rs.getTimestamp("regdate"));
 				bb.setUpdatedate(rs.getTimestamp("updatedate"));
 				bb.setEvent_type(rs.getByte("event_type"));
+				bb.setImg(rs.getString("content"));
 			
 				
 				//BoardBean -> List
@@ -483,6 +473,7 @@ public class ENFBoardDAO {
 				bb.setRegdate(rs.getTimestamp("regdate"));
 				bb.setUpdatedate(rs.getTimestamp("updatedate"));
 				bb.setEvent_type(rs.getByte("event_type"));
+				bb.setImg(rs.getString("content"));
 				
 				
 				//BoardBean -> List
@@ -722,6 +713,7 @@ public class ENFBoardDAO {
 				bb.setRegdate(rs.getTimestamp("regdate"));
 				bb.setUpdatedate(rs.getTimestamp("updatedate"));
 				bb.setEvent_type(rs.getByte("event_type"));
+				bb.setImg(rs.getString("img"));
 			}//if
 			System.out.println("DAO : Category "+category+"번 유형 "+bno+"번 글정보 저장완료!");
 		} catch (Exception e) {
@@ -747,12 +739,13 @@ public class ENFBoardDAO {
 			con = getConnect();
 			//3. sql구문작성(기존의 회원여부확인) & pstmt객체
 			if(bb.getCategory() == 0) {
-				sql = "update event_notice_faq_board set subject=?,content=?,event_type,updatedate=now() where event_bno=?";
+				sql = "update event_notice_faq_board set subject=?,content=?,event_type=?,updatedate=now(),img=? where event_bno=?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, bb.getSubject());
 				pstmt.setString(2, bb.getContent());
 				pstmt.setByte(3, bb.getEvent_type());
-				pstmt.setInt(4, bb.getEvent_bno());
+				pstmt.setString(4, bb.getImg());
+				pstmt.setInt(5, bb.getEvent_bno());
 			}else if(bb.getCategory() == 1) {
 				sql = "update event_notice_faq_board set subject=?,content=?,updatedate=now() where notice_bno=?";
 				pstmt = con.prepareStatement(sql);
@@ -817,41 +810,42 @@ public class ENFBoardDAO {
 	}
 	// 글 정보 삭제하기 -deleteBoard(bb)
 	
-	// 글 검색하기 - searchBoard
+	public int getBoardCountMax(Byte category) {
+		System.out.println(" DAO : getBoardCount() 호출");
+		System.out.println(" DAO : 실행목적: 글의 개수(int)리턴");
+		
 	
-//	public int searchBoard(Byte category, String searchField, String searchText) {
-//		
-//		System.out.println(" DAO : searchBoard(searchField,searchText) 호출");
-//		List<ENFBoardDTO> boardList = new ArrayList<ENFBoardDTO>();
-//		try {
-//			con = getConnect();
-//			sql = "select * from event_notice_faq_board where "+searchField+" like '%"+searchText+"%' && category="+category;
-//			pstmt = con.prepareStatement(sql);
-//			rs = pstmt.executeQuery();
-//			
-//			while(rs.next()) {
-//				// rs->BoardBean
-//				ENFBoardDTO bb = new ENFBoardDTO();
-//				bb.setCategory(rs.getByte("category"));
-//				bb.setNotice_bno(rs.getInt("notice_bno"));
-//				bb.setSubject(rs.getString("subject"));
-//				bb.setContent(rs.getString("content"));
-//				bb.setRead_count(rs.getInt("read_count"));
-//				bb.setRegdate(rs.getTimestamp("regdate"));
-//				bb.setUpdatedate(rs.getTimestamp("updatedate"));
-//				
-//				
-//				//BoardBean -> List
-//				boardList.add(bb);
-//			}//while
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		
-//		return boardList;
-//	}
+		int result = 0;
+	
+		try {
+			// 1.2. 디비연결
+			con = getConnect();
+			//3. sql구문 작성 &pstmt 객체
+		
+			if(category == 0 ) {
+				sql = "select max(event_bno) from event_notice_faq_board where category = 0";
+			}else if(category == 1) {
+				sql = "select max(notice_bno) from event_notice_faq_board where category = 1";			
+			}else {
+				sql = "select max(faq_bno) from event_notice_faq_board where category = 2";
+			}
+			pstmt = con.prepareStatement(sql);
+			//4.sql 실행
+			rs = pstmt.executeQuery();
+			//5.데이터처리
+			if(rs.next()) {
+//			result = rs.getInt(1);
+				result = rs.getInt(1)+1;
+				System.out.println(" DAO : 글의 개수 조회 완료! ");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+	
+		return result;
+	}
 	
 	
 	
