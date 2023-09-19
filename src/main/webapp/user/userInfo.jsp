@@ -22,8 +22,8 @@
 <main>
 	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
-		<input id="btn1" type="button" value="예매/취소내역"	onclick="">
-		<input id="btn2" type="button" value="회원정보수정"	onclick="./UserInfoCheck.me">
+		<input id="btn1" type="button" value="예매/취소내역"	onclick="location.href='./UserOrderBoardAction.me'">
+		<input id="btn2" type="button" value="회원정보수정" style="background: gray;"	onclick="location.href='./UserInfoCheck.me'">
 		
 	</div>
 	<form action="./UserInfoChangeAction.me" method="post">

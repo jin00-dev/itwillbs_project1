@@ -3,6 +3,7 @@ package com.team2.user.DB;
 import java.sql.Timestamp;
 
 public class UserDTO {
+	private int user_num;
 	private String user_id;
 	private String user_name;
 	private String user_pass;
@@ -14,6 +15,13 @@ public class UserDTO {
 	private Timestamp last_access;
 	private int user_type;
 	
+	
+	public int getUser_num() {
+		return user_num;
+	}
+	public void setUser_num(int user_num) {
+		this.user_num = user_num;
+	}
 	public String getUser_id() {
 		return user_id;
 	}
