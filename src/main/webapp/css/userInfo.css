@@ -113,3 +113,44 @@ input[type="text"], input[type="password"] {
 	font-size: 0.9em;
 	text-align: left;
 }
+/*------------------------모달----------------------------------  */
+ .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+    }
+.modal p,h2{
+	color: black;
+}
+
+.modal-contents {
+  position: relative;
+  margin: 15% auto;
+  padding: 20px;
+  background-color: #fff;
+  width: 40em;
+  height: 40em;
+  text-align: center;
+}
+.modal-contents p{
+	float: left;
+	width: 15em;
+	margin: 0.5em;
+}
+.modal-contents input[type="button"]{
+	width: 6em;
+    height: 2em;
+    padding-bottom: 1.5em;
+    text-align: center;
+    font-weight: 900;
+    float: left;
+}
+
+.modal-contents .close {
+  clear: left;
+  margin: 1em 15.5em;
+}

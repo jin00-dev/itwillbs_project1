@@ -79,6 +79,7 @@ public class AdminUserInfoBoardAction implements Action {
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
 		req.setAttribute("startRow", startRow);
+		req.setAttribute("pageSize", pageSize);
 
 		ActionForward af = new ActionForward();
 		af.setPath("./user/admin_userInfo.jsp");

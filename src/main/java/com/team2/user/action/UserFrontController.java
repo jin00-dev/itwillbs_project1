@@ -192,7 +192,15 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
+		//회원등급 변경
+		else if(command.equals("/UserTypeChangeAction.me")) {
+			action = new UserTypeChangeAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		////3.주소로 이동//////////////////////////////////

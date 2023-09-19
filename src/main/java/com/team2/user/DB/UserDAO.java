@@ -348,5 +348,25 @@ public class UserDAO {
 			con.closeDB(conn, rs, pstmt);
 		}
 	}// boardCount() end
+	
+	// 유저 등급 바꾸기
+		public int updateUserType(int user_num, int chType) {
+			sql = "update user set user_type=? where user_num=?";
+
+			conn = con.getConnection();
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, chType);
+				pstmt.setInt(2, user_num);
+
+				return pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return -1;
+			} finally {
+				con.closeDB(conn, rs, pstmt);
+			}
+		}//
 
 }
