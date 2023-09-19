@@ -48,11 +48,11 @@ public class ENFBoardUpdateAction implements Action {
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		if(categroy == 0) {
-			forward.setPath("./eventUpdate.jsp");
+			forward.setPath("./event/eventUpdate.jsp");
 		}else if(categroy == 1) {
-			forward.setPath("./noticeBoardUpdate.jsp");
+			forward.setPath("./board/noticeBoardUpdate.jsp");
 		}else {
-			forward.setPath("./faqBoardUpdate.jsp");			
+			forward.setPath("./board/faqBoardUpdate.jsp");			
 		}
 		forward.setRedirect(false);		
 		

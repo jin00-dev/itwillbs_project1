@@ -28,7 +28,7 @@ public class QnaBoardAnswerAction implements Action {
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./qnaBoardAnswer.jsp");
+		forward.setPath("./board/qnaBoardAnswer.jsp");
 		forward.setRedirect(false);		
 		
 		return forward;

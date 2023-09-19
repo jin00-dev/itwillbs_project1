@@ -97,7 +97,7 @@ public class ENFBoardSearchAction implements Action {
 		request.setAttribute("searchText", searchText);
 		// 페이지이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./enfSearchBoard.jsp");
+		forward.setPath("./board/enfSearchBoard.jsp");
 		forward.setRedirect(false);
 
 		return forward;

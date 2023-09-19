@@ -99,7 +99,7 @@ public class QRBoardSearchAction implements Action {
 		request.setAttribute("searchText", searchText);
 		// 페이지이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./qrSearchBoard.jsp");
+		forward.setPath("./board/qrSearchBoard.jsp");
 		forward.setRedirect(false);
 
 		return forward;
