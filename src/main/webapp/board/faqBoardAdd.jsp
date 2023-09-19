@@ -27,6 +27,7 @@
 
 				<div id="faqAddSubmit">
 					<input type="submit" value="완료" class="btn" id="faqAddBtn">
+					<input type="button" value="취소" class="btn" onclick="window.close();">
 				</div>
 		</form>
 	</fieldset>

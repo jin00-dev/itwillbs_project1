@@ -48,7 +48,7 @@ public class ENFBoardUpdateAction implements Action {
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		if(categroy == 0) {
-			forward.setPath("./eventUpdate.jsp");
+			forward.setPath("./eventBoardUpdate.jsp");
 		}else if(categroy == 1) {
 			forward.setPath("./noticeBoardUpdate.jsp");
 		}else {
