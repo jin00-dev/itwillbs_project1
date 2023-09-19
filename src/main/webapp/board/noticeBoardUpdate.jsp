@@ -11,26 +11,21 @@
 </head>
 
 <body>
-	<!-- 상단 바 고정 -->
+<!-- 상단 바 고정 -->
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
+<!-- 상단 바 고정 -->
 	<!-- 여기 대관문의 꾸며아함. -->
 	
 	<div class="container">
-		<form action="./noticeBoardUpdatePro.bo?pageNum=${pageNum }"
+		<form action="./noticeBoardUpdatePro.bo?pageNum=${pageNum }&&category=1"
 			method="post">
 			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
 			<table id="Update">
 				<tr>
 					<th class="ttitle" colspan="3">공지사항 수정</th>
 				</tr>
-<!-- 				<tr> -->
-<!-- 					<td> -->
-<%-- 						<input type="radio" name="event_type" value="0" <c:if test="${dto.event_type == 0}">checked</c:if>> --%>
-<%-- 						<input type="radio" name="event_type" value="1" <c:if test="${dto.event_type == 1}">checked</c:if>>					 --%>
-<!-- 					</td> -->
-<!-- 				</tr> -->
 				<tr>
 					<td>제 목 :</td>
 					<td colspan="2"><input type="text" id="sInput" name="subject"
@@ -45,6 +40,8 @@
 
 			<div id="table_search">
 				<input type="submit" value="수정하기" class="btn">
+				<input type="submit" value="수정하기" >
+				<input type="button" value="목록이동" onclick="history.back();">
 			</div>
 			<div class="clear"></div>
 			<div id="page_control"></div>
@@ -52,7 +49,6 @@
 	</div>
 
 	<!-- footer아래로는 코드 금지 -->
-
 <!-- 하단바 고정  -->
 <footer>
 	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>

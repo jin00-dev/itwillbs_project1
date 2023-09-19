@@ -12,8 +12,7 @@
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
-	<!-- 여기 대관문의 꾸며아함. -->
+<!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
 		<h1>
@@ -51,7 +50,6 @@
 			<input type="button" value="대관문의작성" onclick="location.href = './rentWrite.bo'">		
 		</div>
 
-		
 	</div>
 	
 	<!-- footer아래로는 코드 금지 -->

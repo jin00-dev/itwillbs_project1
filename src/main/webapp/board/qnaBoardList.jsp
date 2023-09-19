@@ -9,14 +9,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>이벤트</title>
 </head>
-
 <body>
 <!-- 상단 바 고정 -->
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
-	<!-- 여기 대관문의 꾸며아함. -->
+<!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
 		<h1>qnaBoardList</h1>
@@ -58,6 +56,43 @@
 <%-- 			</c:if> --%>
 				
 			</table>
+				<div id="page_control">
+				<c:if test="${startPage > pageBlock }">
+					<a href="./qnaBoardList.bo?pageNum=${startPage-pageBlock }">Prev</a>
+				</c:if>
+				<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
+					<a href="./qnaBoardList.bo?pageNum=${i }">${i }</a>
+				</c:forEach>
+				<c:if test="${endPage < pageCount }">
+					<a href="./qnaBoardList.bo?pageNum=${startPage+pageBlock }">Next</a>
+				</c:if>
+			</div>
+			
+				<div id="table_search">
+			<form action="./qrBoardSearch.bo" name="boardSearch" method="post">
+				<input type="hidden" name="category" value="${boardList[0].category }">
+				<table>
+				<tr>
+					<td>
+						<select name="searchField">
+							<option value="0" >선택</option>
+							<option value="subject">제목</option>
+							<option value="content">내용</option>
+						</select>
+					</td>
+				 
+					<td>
+						<input type="text" name="searchText" class="input_box">
+					</td>
+					<td>
+						<input type="submit" value="search">
+					</td>
+				</tr>
+				</table>
+
+
+			</form>
+		</div>
 	</div>
 	
 	<!-- footer아래로는 코드 금지 -->

@@ -15,8 +15,8 @@
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
-	<!-- 여기 대관문의 꾸며아함. -->
+<!-- 상단 바 고정 -->
+<!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
 		<form action="./qnaBoardUpdatePro.bo?pageNum=${pageNum }"

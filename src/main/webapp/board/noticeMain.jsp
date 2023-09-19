@@ -14,9 +14,8 @@
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
+<!-- 상단 바 고정 -->
 <!-- 여기 공지사항 꾸며아함. -->
-
 	<div class="container">
 		<h1>공지사항</h1>
 		<table id="noticeBoardList">
@@ -30,7 +29,7 @@
 				<tr>
 					<td>${dto.notice_bno }</td>
 					<td><a
-						href="noticeBoardContent.bo?notice_bno=${dto.notice_bno }&pageNum=${pageNum}">${dto.subject }</a>
+						href="noticeBoardContent.bo?notice_bno=${dto.notice_bno }&&pageNum=${pageNum}&&category=${dto.category}">${dto.subject }</a>
 					</td>
 					<td><c:choose>
 							<c:when test="${empty dto.updatedate}">
@@ -45,7 +44,7 @@
 
 		</table>
 		<div id="table_search">
-			<form action="./boardSearch.bo" name="boardSearch" method="post">
+			<form action="./enfBoardSearch.bo" name="boardSearch" method="post">
 				<input type="hidden" name="category" value="${boardList[0].category }">
 				<table>
 				<tr>

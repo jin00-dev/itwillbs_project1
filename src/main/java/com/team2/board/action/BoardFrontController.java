@@ -103,7 +103,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				
 				//BoardUpdateAction 객체
-				action = new FaqBoardAddAction();
+				action = new ENFBoardAddAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -124,7 +124,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				
 				//BoardUpdateAction 객체
-				action = new NoticeBoardAddAction();
+				action = new ENFBoardAddAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -189,7 +189,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				
 				//BoardUpdateAction 객체
-				action = new NoticeBoardContentAction();
+				action = new ENFBoardContentAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -263,7 +263,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴2 - DB사용O, 페이지이동");
 				
 				// BoardDeleteAction() 객체
-				action = new NoticeBoardDeleteAction();
+				action = new ENFBoardDeleteAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -274,7 +274,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : /noticeBoardUpdate.bo 호출 ");
 				System.out.println(" C : 패턴 3 - DB사용O,페이지 출력");
 				// BoardUpdateAction
-				action = new NoticeBoardUpdateAction();
+				action = new ENFBoardUpdateAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
@@ -286,19 +286,65 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴2 - DB사용O,페이지 이동");
 				
 				// BoardUpdateProAction 객체 
-				action = new NoticeBoardUpdateProAction();
+				action = new ENFBoardUpdateProAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
+			else if(command.equals("/board/enfBoardSearch.bo")) {
+				System.out.println(" C : /board/enfBoardSearch.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용0, 페이지이동");
+
+				// BoardListAction
+				action = new ENFBoardSearchAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(command.equals("/board/qrBoardSearch.bo")) {
+				System.out.println(" C : /board/qrBoardSearch.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용0, 페이지이동");
+		
+				// BoardListAction
+				action = new QRBoardSearchAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else if(command.equals("/event/eventMain.bo")) {
+				System.out.println(" C : /board/eventMain.bo 호출");
+				System.out.println(" C : 패턴1 - DB사용X, 페이지이동");
+
+				forward = new ActionForward();
+				
+				forward.setPath("./eventMain.jsp");
+				forward.setRedirect(false);
+			}
+			else if(command.equals("/event/eventContent.bo")) {
+				System.out.println(" C : /board/eventContent.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
+				
+				//BoardUpdateAction 객체
+				action = new ENFBoardContentAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			
 			
 		System.out.println(" =========C : 2. 가상주소 비교 - 끝=========");
-		/*************************2. 가상주소 비교**************************************/
 		
-		/*************************1. 가상주소 페이지이동**************************************/
+		/*************************3. 가상주소 페이지이동**************************************/
 		System.out.println("\n =========C : 3. 가상주소 페이지이동 - 시작=========");
 		if(forward != null) {
 			if(forward.isRedirect()) {
@@ -311,7 +357,7 @@ public class BoardFrontController extends HttpServlet{
 			}
 		}
 		System.out.println(" =========C : 3. 가상주소 페이지이동 - 끝=========");
-		/*************************1. 가상주소 페이지이동**************************************/
+		/*************************3. 가상주소 페이지이동**************************************/
 		
 		System.out.println("\n\n -----------------컨트롤러 끝------------------");
 	}

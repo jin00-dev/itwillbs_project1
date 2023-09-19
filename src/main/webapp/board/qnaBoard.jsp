@@ -58,6 +58,7 @@
 
 				<div id="qnaSubmit">
 					<input type="button" value="완료" class="btn" id="qnaBtn">
+					<input type="button" value="취소" onclick="window.close();">
 				</div>
 		</form>
 	</fieldset>

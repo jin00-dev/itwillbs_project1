@@ -15,8 +15,8 @@
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
-	<!-- 여기 문의 꾸며아함. -->
+<!-- 상단 바 고정 -->
+<!-- 여기 문의 꾸며아함. -->
 
 		<table id="qnaContent">
 		<tr>
@@ -54,6 +54,7 @@
 	<script type="text/javascript">
 		function deleteQna() {
 			var popupX = (document.body.offsetWidth / 2) - (400 / 2) + 110;
+			var popupX = (document.body.offsetWidth / 2) - (400 / 2);
 			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 			
 			var popupY= (window.screen.height / 2) - (200 / 2) - 50;

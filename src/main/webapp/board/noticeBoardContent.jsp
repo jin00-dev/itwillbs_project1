@@ -15,8 +15,8 @@
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
-	<!-- 여기 공지사항 꾸며아함. -->
+<!-- 상단 바 고정 -->
+<!-- 여기 공지사항 꾸며아함. -->
 	<div class="container">
 		<h1>공지사항 글내용</h1>
 		<table id="noticeContent">
@@ -50,8 +50,13 @@
 	</table>
 	<script type="text/javascript">
 		function noticeDelete() {
-			window.open("./noticeBoardDelete.bo?notice_bno=${dto.notice_bno }&&pageNum=${param.pageNum }",
-					"_black","width=400, height=200");
+			var popupX = (document.body.offsetWidth / 2) - (400 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+			
+			var popupY= (window.screen.height / 2) - (200 / 2) - 50;
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+			window.open("./noticeBoardDelete.bo?notice_bno=${dto.notice_bno }&&pageNum=${param.pageNum }&&category=1",
+					"_black","width=400, height=200, left="+popupX+", top="+popupY);
 		}
 		function boardList() {
 			location.href="noticeMain.bo?pageNum=${param.pageNum}";
@@ -61,6 +66,7 @@
 		<div id="table_search">
 		<input type="button" value="수정하기"
 			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&event_type=${dto.event_type }&&pageNum=${param.pageNum }';">
+
 		<input type="button" value="삭제하기"
 			onclick="noticeDelete();">
 		</div>
