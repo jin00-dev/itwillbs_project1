@@ -125,14 +125,6 @@ public class BoardFrontController extends HttpServlet{
 				//BoardUpdateAction 객체
 				action = new ENFBoardAddAction();
 			}
-			else if(command.equals("/rentBoard.bo")) {
-				System.out.println(" C : /board/rentBoard.bo 호출");
-				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
-				
-				forward = new ActionForward();
-				forward.setPath("./rentBoardAdd.jsp");
-				forward.setRedirect(false);
-			}
 			else if(command.equals("/qnaBoardContent.bo")) {
 				System.out.println(" C : /qnaBoardContent.bo 호출");
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
@@ -349,7 +341,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
 
 				forward = new ActionForward();
-				forward.setPath("./event/eventAdd.jsp");
+				forward.setPath("./board/eventAdd.jsp");
 				forward.setRedirect(false);
 			}
 			else if(command.equals("/qnaBoardUpdate.bo")) {
@@ -368,7 +360,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
 				
 				forward = new ActionForward();
-				forward.setPath("./event/eventBoardDelete.jsp");
+				forward.setPath("./board/eventBoardDelete.jsp");
 				forward.setRedirect(false);	
 			}
 			else if(command.equals("/qnaBoardUpdate.bo")) {
@@ -497,7 +489,7 @@ public class BoardFrontController extends HttpServlet{
 
 				forward = new ActionForward();
 				
-				forward.setPath("./event/eventMain.jsp");
+				forward.setPath("./board/eventMain.jsp");
 				forward.setRedirect(false);
 			}
 			else if(command.equals("/eventContent.bo")) {
