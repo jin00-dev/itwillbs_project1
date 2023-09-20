@@ -59,7 +59,7 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.bo">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link" href="eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
 						</li>
 						<li class="nav-item dropdown"><a
@@ -71,6 +71,7 @@
 								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -126,7 +127,7 @@
 <%-- 	<c:if test="${user_type == 1 }"> --%>
 		<div id="table_search">
 		<input type="button" value="수정하기"
-			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&category=1&&pageNum=${param.pageNum }';">
+			onclick="location.href='enfBoardUpdate.bo?notice_bno=${dto.notice_bno}&&category=1&&pageNum=${param.pageNum }';">
 		<input type="button" value="삭제하기"
 			onclick="noticeDelete();">
 		</div>

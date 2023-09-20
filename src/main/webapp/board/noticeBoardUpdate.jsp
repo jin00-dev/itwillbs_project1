@@ -60,7 +60,7 @@
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.bo">이벤트</a></li>
+							href="eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
@@ -72,6 +72,7 @@
 								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -81,7 +82,7 @@
 	<!-- 여기 대관문의 꾸며아함. -->
 	
 	<div class="container">
-		<form action="./noticeBoardUpdatePro.bo?pageNum=${pageNum }&&category=1"
+		<form action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1"
 			method="post">
 			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
 			<table id="Update">

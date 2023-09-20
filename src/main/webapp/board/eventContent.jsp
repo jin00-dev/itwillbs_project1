@@ -81,6 +81,7 @@
 
 
 	<!-- 여기 공지사항 꾸며아함. -->
+	
 	<section id="eventContent">
 	<div id="left">
 		<figure id="leftImage">
@@ -116,7 +117,7 @@
 			<%-- 	<c:if test="${user_type == 1 }"> --%>
 			<div id="table_search">
 				<input type="button" value="수정하기"
-					onclick="location.href='eventBoardUpdate.bo?event_bno=${dto.event_bno}&&event_type=${dto.event_type }&&category=0';">
+					onclick="location.href='enfBoardUpdate.bo?event_bno=${dto.event_bno}&&event_type=${dto.event_type }&&category=0';">
 				<input type="button" value="삭제하기" onclick="eventDelete();">
 			</div>
 			<%-- 	</c:if> --%>
@@ -126,6 +127,8 @@
 	</div>
 	</section>
 	<script type="text/javascript">
+		if(${dto.event_type==1}){ alert("종료된 이벤트입니다.")}
+		
 		function eventDelete() {
 			var popupX = (document.body.offsetWidth / 2) - (400 / 2);
 			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음

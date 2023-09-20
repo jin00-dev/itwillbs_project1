@@ -22,6 +22,7 @@ public class ENFBoardUpdateProAction implements Action {
 	System.out.println(" M : BoardUpdateProAction_execute 호출 ");
 	
 		Byte category = (byte) Integer.parseInt(request.getParameter("category"));
+		System.out.println("category : "+category);
 		String pageNum = request.getParameter("pageNum");
 		String location = request.getServletContext().getRealPath("/img");
 		int maxSize = 1024 * 1024 * 10;

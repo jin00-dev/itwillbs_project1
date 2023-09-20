@@ -18,7 +18,7 @@ public class FaqMainAction implements Action {
 		
 		ENFBoardDAO dao = new ENFBoardDAO();
 		
-		List<ENFBoardDTO> boardList = dao.faqBoardList();
+		List<ENFBoardDTO> boardList = dao.BoardList();
 		
 		request.setAttribute("boardList", boardList);
 		

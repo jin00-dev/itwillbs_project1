@@ -59,7 +59,7 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="../event/eventMain.bo">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link" href="eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link" href="introduceMain.jsp">소개게시판</a>
 						</li>
 						<li class="nav-item dropdown"><a
@@ -71,6 +71,8 @@
 								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
+							
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -98,14 +100,7 @@
 						<a href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${dto.user_id }">${dto.subject }</a>
 					</td>
 					<td>
-						<c:choose> 
-							<c:when test="${empty dto.updatedate}">
-								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd"/>
-							</c:when>
-							<c:otherwise>
-								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd"/>							
-							</c:otherwise>
-						</c:choose>
+						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd"/>							
 					</td>
 					<td><c:choose> 
 							<c:when test="${dto.answer == 0}">
@@ -153,7 +148,7 @@
 				</tr>
 				</table>
 
-
+				<input type="button" value="이전 게시판" onclick="location.href='./faqMain.bo';">
 			</form>
 		</div>
 	</div>

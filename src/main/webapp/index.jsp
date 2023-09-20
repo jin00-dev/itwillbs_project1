@@ -13,8 +13,9 @@
 		// 페이지 테스트
 // 		response.sendRedirect("./QnAWriteBoard.bo");
 		response.sendRedirect("./Main.bo");
+// 		response.sendRedirect("./event/eventMain.bo");
+// 		response.sendRedirect("./board/eventMain.bo");
 	%>
 	
-
 </body>
 </html>

@@ -20,7 +20,7 @@ public class EventMainAction implements Action {
 		
 		ENFBoardDAO dao = new ENFBoardDAO();
 		
-		List<ENFBoardDTO> boardList = dao.eventBoardList();
+		List<ENFBoardDTO> boardList = dao.BoardList();
 		
 		request.setAttribute("boardList", boardList);
 		
