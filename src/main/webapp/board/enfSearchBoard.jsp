@@ -60,7 +60,7 @@
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.bo">이벤트</a></li>
+							href="eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
@@ -72,6 +72,7 @@
 								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -93,16 +94,11 @@
 				<tr>
 					<td>${dto.notice_bno }</td>
 					<td><a
-						href="noticeBoardContent.bo?notice_bno=${dto.notice_bno }&pageNum=${pageNum}">${dto.subject }</a>
+						href="enfBoardContent.bo?notice_bno=${dto.notice_bno }&pageNum=${pageNum}">${dto.subject }</a>
 					</td>
-					<td><c:choose>
-							<c:when test="${empty dto.updatedate}">
-								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
-							</c:when>
-							<c:otherwise>
-								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-							</c:otherwise>
-						</c:choose></td>
+					<td>
+						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
+					</td>
 					<td>${dto.read_count }</td>
 			</c:forEach>
 
@@ -119,10 +115,12 @@
 			<c:if test="${endPage < pageCount }">
 				<a href="./enfBoardSearch.bo?pageNum=${startPage+pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
 			</c:if>
-<!-- 			<input type="button" value="목록이동" onclick="history.back();"> -->
+			<input type="button" value="목록이동" onclick="location.href='noticeMain.bo';">
 		</div>
 	</div>
+	<script type="text/javascript">
 	
+	</script>
 	<!-- footer아래로는 코드 금지 -->
 
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">
