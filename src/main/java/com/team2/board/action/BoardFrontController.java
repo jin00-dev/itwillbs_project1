@@ -107,7 +107,6 @@ public class BoardFrontController extends HttpServlet{
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -128,7 +127,6 @@ public class BoardFrontController extends HttpServlet{
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -208,7 +206,7 @@ public class BoardFrontController extends HttpServlet{
 				}
 			}
 			else if(command.equals("/qnaBoardUpdatePro.bo")) {
-				System.out.println(" C : /qna/BoardUpdatePro.bo 호출 ");
+				System.out.println(" C : /qnaBoardUpdatePro.bo 호출 ");
 				System.out.println(" C : 패턴2 - DB사용O,페이지 이동");
 				
 				// BoardUpdateProAction 객체 
@@ -220,7 +218,7 @@ public class BoardFrontController extends HttpServlet{
 				}
 			}
 			else if(command.equals("/qnaBoardDelete.bo")) {
-				System.out.println(" C : /qna/BoardDelete.bo 호출 ");
+				System.out.println(" C : /qnaBoardDelete.bo 호출 ");
 				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
 				
 				forward = new ActionForward();
@@ -302,7 +300,6 @@ public class BoardFrontController extends HttpServlet{
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}else if(command.equals("/qrBoardSearch.bo")) {
@@ -314,7 +311,6 @@ public class BoardFrontController extends HttpServlet{
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -336,10 +332,22 @@ public class BoardFrontController extends HttpServlet{
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
+			else if(command.equals("/introduceMain.bo")) {
+				System.out.println(" C : /introduceMain.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
+				
+				//introduceMainAction 객체
+				action = new introduceMainAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
 			
 			
 		System.out.println(" =========C : 2. 가상주소 비교 - 끝=========");
