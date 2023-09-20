@@ -4,35 +4,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="../js/code.jquery.com_jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+			var select = "<option value='start' class ='start1'>선택하세요</option>";
 			$.ajax({
 				url : "./CinemaSelectAction.bo",
 				dataType : "json",
 				success : function(data){
-					arert("성공");
+					
 					$.each(data,function(idx,item){
-						$("#region_name").click(function(){
-							$(".start").remove(); //remove 후 첫 데이터 (강원) 데이터 선택 안됨
-						});//cilck
-						$("#region_name").append("<option value="+item.region+">"+item.region+"</option>");
+						$('#region_name').append("<option value="+item.region+">"+item.region+"</option>");
+					});//each
+					
+					$('#region_name').change(data,function(){
+						$("#cinema_name").empty();
+						var re = $("select#region_name option:checked").val();
 
-						$("#region_name").change(function(){ 
-							var re = $("select#region_name option:checked").val();
-										$(".start1").remove();
-								if(re == item.region){ 
-									var list = item.cinema_list.split(",");
-									for(var i in list){
-										$("#cinema_name").append("<option value="+list[i]+">"+list[i]+"</option>");
-										}//for
-									for(var ii in list){
-										$("#cinema_name").empty("<option value="+list[ii]+">"+list[ii]+"</option>"); //데이터 중복 수정 필요
-										$("#cinema_name").append("<option value="+list[ii]+">"+list[ii]+"</option>");
-										}//for 
-									}//if
+						$.each(data,function(idx,item){
+							if(item.region == re){
+								var list = item.cinema_list.split(",");
+								console.log(list);
+								for(var i = 0; i < list.length; i++){
+								$("#cinema_name").append("<option value="+list[i]+">"+list[i]+"</option>");
+								}//for
+							}//if
+							});//each	
 						});//change
-					});//each 
 				}//success
 			});//ajax 끝
 	}); //JQuery 끝 
@@ -44,12 +42,13 @@
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
+<!-- 상단 바 고정 -->
 
 	<h1>대관문의 작성 test</h1>
 	
 	<form action="./rentWriteAction.bo" method="post" name ="form">
 <table id="notice">
-	<tr>
+	 <tr>
 		<td > 아이디 : </td> 
 	    <td colspan="2">
 	    	<input type="text" id="wInput" name="ruser_id">
@@ -69,7 +68,6 @@
 	    	</select>
 	    	<select name = "cinema" id ="cinema_name">
 	    	<option value="start" class ="start1">선택하세요</option>
-	    
 	    	</select>
 	    </td>
     </tr>
