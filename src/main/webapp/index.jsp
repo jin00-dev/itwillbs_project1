@@ -14,6 +14,5 @@
 		response.sendRedirect("./Main.me");
 	%>
 	
-
 </body>
 </html>

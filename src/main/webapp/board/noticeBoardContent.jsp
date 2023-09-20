@@ -28,14 +28,9 @@
 			<td>${dto.notice_bno }</td>
 
 			<td>작성일</td>
-			<td><c:choose>
-					<c:when test="${empty dto.updatedate}">
-						<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
-					</c:when>
-					<c:otherwise>
-						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-					</c:otherwise>
-				</c:choose></td>
+			<td>
+				<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
+			</td>
 
 		</tr>
 		<tr>

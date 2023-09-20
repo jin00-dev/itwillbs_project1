@@ -8,7 +8,7 @@
 <body>
 	<h1>faqBoardAdd.jsp</h1>
 	<fieldset>
-		<form action="faqBoardAddAction.bo?category=2" method="post" name = "fr" id="faqAddForm">
+		<form action="enfBoardAdd.bo?category=2" method="post" name = "fr" id="faqAddForm">
 		<table id="faqAdd">
 					<tr>
 						<td>질문 :</td>
@@ -26,6 +26,7 @@
 
 				<div id="faqAddSubmit">
 					<input type="submit" value="완료" class="btn" id="faqAddBtn">
+					<input type="button" value="취소" class="btn" onclick="window.close();">
 				</div>
 		</form>
 	</fieldset>

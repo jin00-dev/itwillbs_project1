@@ -5,16 +5,18 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import com.team2.board.db.ENFBoardDAO;
 import com.team2.board.db.ENFBoardDTO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
 
-public class FaqMainAction implements Action {
+public class EventMainAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(" M : faqBoardAction_execute() 호출");
+		System.out.println(" M : eventMainAction_execute() 호출");
 		
 		ENFBoardDAO dao = new ENFBoardDAO();
 		
@@ -22,8 +24,9 @@ public class FaqMainAction implements Action {
 		
 		request.setAttribute("boardList", boardList);
 		
+		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./board/faqMain.jsp");
+		forward.setPath("./eventMain.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

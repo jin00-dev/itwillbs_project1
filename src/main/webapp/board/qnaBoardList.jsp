@@ -14,8 +14,7 @@
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-<!-- 여기 대관문의 꾸며아함. -->
-
+	<!-- 여기 대관문의 꾸며아함. -->
 	<div class="container">
 		<h1>qnaBoardList</h1>
 		<table id="qnaBoardList">
@@ -35,14 +34,7 @@
 						<a href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${dto.user_id }">${dto.subject }</a>
 					</td>
 					<td>
-						<c:choose> 
-							<c:when test="${empty dto.updatedate}">
-								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd"/>
-							</c:when>
-							<c:otherwise>
-								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd"/>							
-							</c:otherwise>
-						</c:choose>
+						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd"/>							
 					</td>
 					<td><c:choose> 
 							<c:when test="${dto.answer == 0}">
@@ -90,7 +82,7 @@
 				</tr>
 				</table>
 
-
+				<input type="button" value="이전 게시판" onclick="location.href='./faqMain.bo';">
 			</form>
 		</div>
 	</div>

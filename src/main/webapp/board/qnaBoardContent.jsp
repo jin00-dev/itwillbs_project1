@@ -17,7 +17,6 @@
 </header>
 <!-- 상단 바 고정 -->
 <!-- 여기 문의 꾸며아함. -->
-
 		<table id="qnaContent">
 		<tr>
 			<th class="ttitle" colspan="4"></th>
@@ -27,14 +26,9 @@
 			<td>${dto.qna_bno }</td>
 
 			<td>작성일</td>
-			<td><c:choose>
-					<c:when test="${empty dto.updatedate}">
-						<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
-					</c:when>
-					<c:otherwise>
-						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-					</c:otherwise>
-				</c:choose></td>
+			<td>
+				<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
+			</td>
 
 		</tr>
 		<tr>

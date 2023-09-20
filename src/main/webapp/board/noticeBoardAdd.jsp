@@ -8,7 +8,7 @@
 <body>
 	<h1>noticeBoardAdd.jsp</h1>
 	<fieldset>
-		<form action="noticeBoardAddAction.bo" method="post" name = "fr" id="noticeAddForm">
+		<form action="enfBoardAdd.bo" method="post" name = "fr" id="noticeAddForm">
 		<table id="noticeAdd">
 					<tr>
 						<td>제목 :</td>

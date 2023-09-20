@@ -1,5 +1,6 @@
 package com.team2.board.db;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 
 /*
@@ -19,7 +20,17 @@ public class ENFBoardDTO {
 	private Timestamp regdate;
 	private Timestamp updatedate;
 	private byte event_type;
+	private String img;
 	
+	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+
 	public byte getCategory() {
 		return category;
 	}
@@ -83,8 +94,10 @@ public class ENFBoardDTO {
 	@Override
 	public String toString() {
 		return "ENFBoardDTO [category=" + category + ", event_bno=" + event_bno + ", notice_bno=" + notice_bno
-				+ ", faq_bno=" + faq_bno + ", subject=" + subject + ", content=" + content + ", readcount=" + read_count
-				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", event_type=" + event_type + "]";
+				+ ", faq_bno=" + faq_bno + ", subject=" + subject + ", content=" + content + ", read_count="
+				+ read_count + ", regdate=" + regdate + ", updatedate=" + updatedate + ", event_type=" + event_type
+				+ ", img=" + img + "]";
 	}
+	
 	
 }//class
