@@ -517,7 +517,7 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				
 				//introduceMainAction 객체
-				action = new introduceMainAction();
+				action = new IntroduceMainAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {

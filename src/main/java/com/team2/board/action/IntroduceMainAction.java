@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
 
-public class introduceMainAction implements Action {
+public class IntroduceMainAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
