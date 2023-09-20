@@ -6,6 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+
+import com.google.gson.Gson;
+import com.mysql.cj.xdevapi.JsonArray;
 import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
@@ -41,14 +45,22 @@ public class AdminUserInfoBoardAction implements Action {
 		int endRow = currentPage * pageSize;
 
 		//////////////////////// 페이징처리-1//////////////////////////
-		List<UserDTO> list = new ArrayList<>();
+		List<UserDTO> list = null;
+		
 		if (search == null || search.equals("")) {
+			list = new ArrayList<>();
 			list = dao.getAllUserInfo(startRow, pageSize);
+			String jList = new Gson().toJson(list);
+			System.out.println(list.size());
 			req.setAttribute("list", list);
+			req.setAttribute("jList", jList);
 		}else {
 			if(dao.getAllUserInfo(search)!=null) {
+				list = new ArrayList<>();
 				list.add(dao.getAllUserInfo(search));
+				String jList = new Gson().toJson(list);
 				req.setAttribute("list", list);
+				req.setAttribute("jList", jList);
 			}
 		}
 
@@ -59,7 +71,7 @@ public class AdminUserInfoBoardAction implements Action {
 		int pageCount = bCount / pageSize + (bCount % pageSize != 0 ? 1 : 0);
 
 		// 한 화면에서 보여줄 페이지번호 개수(block) 1....10
-		int pageBlock = 4;
+		int pageBlock = 10;
 
 		// 페이지 블럭의 시작번호 1~10 => 1 11~20 => 11 21~30 => 21
 		int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
@@ -69,8 +81,11 @@ public class AdminUserInfoBoardAction implements Action {
 		if (endPage > pageCount) {
 			endPage = pageCount;
 		}
-
 		
+		
+		
+		System.out.println("@@@@@@@"+startRow);
+		System.out.println("@@@@@@@"+pageNum);
 		
 		req.setAttribute("pageNum", pageNum);
 		req.setAttribute("count", bCount);
@@ -80,7 +95,9 @@ public class AdminUserInfoBoardAction implements Action {
 		req.setAttribute("endPage", endPage);
 		req.setAttribute("startRow", startRow);
 		req.setAttribute("pageSize", pageSize);
-
+		
+		System.out.println("ddddddd");
+		
 		ActionForward af = new ActionForward();
 		af.setPath("./user/admin_userInfo.jsp");
 		af.setRedirect(false);

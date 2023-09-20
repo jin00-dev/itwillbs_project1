@@ -14,9 +14,9 @@
 <body>
 <c:if test="${empty sessionScope.user_id}">
 	<script>
-		alert('로그인 해주세요.');
-		location.href='./UserLogin.me';
-	</script>
+<!-- // 		alert('로그인 해주세요.'); -->
+<!-- // 		location.href='./UserLogin.me'; -->
+<!-- 	</script> -->
 </c:if>
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
@@ -109,94 +109,45 @@
 	      <input type="button" value="닫기" class="close">
 	    </div>
 	 </div>
+	 
   <script>
   	var choice =0;
+  	var jList = JSON.parse('${requestScope.jList}');
+  	
   	$('#openModalBtn0').click(function(){
-  		choice =0;
-		$('#p0').text('${list.get(0).user_id}님의 회원정보입니다.');
-		$('#p1').text('성명 : ${list.get(0).user_name}');
-		$('#p2').text('아이디 : ${list.get(0).user_id}');
-		if(${list.get(0).user_type}==0)
-			$('#p3').text('회원등급 : 일반회원');
-		if(${list.get(0).user_type}==1)
-			$('#p3').text('회원등급 : 사이트관리자');
-		if(${list.get(0).user_type}==2)
-			$('#p3').text('회원등급 : 극장관리자');
-		$('#p4').text('휴대폰번호 :${fn:substring(list.get(0).user_phone,0,3)}-${fn:substring(list.get(0).user_phone,3,7)}-${fn:substring(list.get(0).user_phone,7,11)}');
-		$('#p5').text('차 번호 : ${list.get(0).user_car_num}');
-		$('#p6').text('가입 날짜 : ${list.get(0).user_regdate}');
-		$('#p7').text('접속시간 : ${list.get(0).last_access}');
-		$('#p8').text('예매내역 : ${list.get(0).user_orderCount}건');
+  		choice=0
   	});
   	$('#openModalBtn1').click(function(){
-  		choice =1;
-		$('#p0').text('${list.get(1).user_id}님의 회원정보입니다.');
-		$('#p1').text('성명 : ${list.get(1).user_name}');
-		$('#p2').text('아이디 : ${list.get(1).user_id}');
-		if(${list.get(1).user_type}==0)
-			$('#p3').text('회원등급 : 일반회원');
-		if(${list.get(1).user_type}==1)
-			$('#p3').text('회원등급 : 사이트관리자');
-		if(${list.get(1).user_type}==2)
-			$('#p3').text('회원등급 : 극장관리자');		
-		$('#p4').text('휴대폰번호 :${fn:substring(list.get(1).user_phone,0,3)}-${fn:substring(list.get(1).user_phone,3,7)}-${fn:substring(list.get(1).user_phone,7,11)}');
-		$('#p5').text('차 번호 : ${list.get(1).user_car_num}');
-		$('#p6').text('가입 날짜 : ${list.get(1).user_regdate}');
-		$('#p7').text('접속시간 : ${list.get(1).last_access}');
-		$('#p8').text('예매내역 : ${list.get(1).user_orderCount}건');
+  		choice=1
   	});
   	$('#openModalBtn2').click(function(){
-  		choice =2;
-		$('#p0').text('${list.get(2).user_id}님의 회원정보입니다.');
-		$('#p1').text('성명 : ${list.get(2).user_name}');
-		$('#p2').text('아이디 : ${list.get(2).user_id}');
-		if(${list.get(2).user_type}==0)
-			$('#p3').text('회원등급 : 일반회원');
-		if(${list.get(2).user_type}==1)
-			$('#p3').text('회원등급 : 사이트관리자');
-		if(${list.get(2).user_type}==2)
-			$('#p3').text('회원등급 : 극장관리자');
-		$('#p4').text('휴대폰번호 :${fn:substring(list.get(2).user_phone,0,3)}-${fn:substring(list.get(2).user_phone,3,7)}-${fn:substring(list.get(2).user_phone,7,11)}');
-		$('#p5').text('차 번호 : ${list.get(2).user_car_num}');
-		$('#p6').text('가입 날짜 : ${list.get(2).user_regdate}');
-		$('#p7').text('접속시간 : ${list.get(2).last_access}');
-		$('#p8').text('예매내역 : ${list.get(2).user_orderCount}건');
+  		choice=2
   	});
   	$('#openModalBtn3').click(function(){
-  		choice =3;
-		$('#p0').text('${list.get(3).user_id}님의 회원정보입니다.');
-		$('#p1').text('성명 : ${list.get(3).user_name}');
-		$('#p2').text('아이디 : ${list.get(3).user_id}');
-		if(${list.get(3).user_type}==0)
-			$('#p3').text('회원등급 : 일반회원');
-		if(${list.get(3).user_type}==1)
-			$('#p3').text('회원등급 : 사이트관리자');
-		if(${list.get(3).user_type}==2)
-			$('#p3').text('회원등급 : 극장관리자');
-		$('#p4').text('휴대폰번호 :${fn:substring(list.get(3).user_phone,0,3)}-${fn:substring(list.get(3).user_phone,3,7)}-${fn:substring(list.get(3).user_phone,7,11)}');
-		$('#p5').text('차 번호 : ${list.get(3).user_car_num}');
-		$('#p6').text('가입 날짜 : ${list.get(3).user_regdate}');
-		$('#p7').text('접속시간 : ${list.get(3).last_access}');
-		$('#p8').text('예매내역 : ${list.get(3).user_orderCount}건');
+  		choice=3
   	});
   	$('#openModalBtn4').click(function(){
-  		choice =4;
-  		
-		$('#p0').text('${list.get(4).user_id}님의 회원정보입니다.');
-		$('#p1').text('성명 : ${list.get(4).user_name}');
-		$('#p2').text('아이디 : ${list.get(4).user_id}');
-		if(${list.get(4).user_type}==0)
-			$('#p3').text('회원등급 : 일반회원');
-		if(${list.get(4).user_type}==1)
-			$('#p3').text('회원등급 : 사이트관리자');
-		if(${list.get(4).user_type}==2)
-			$('#p3').text('회원등급 : 극장관리자');
-		$('#p4').text('휴대폰번호 :${fn:substring(list.get(4).user_phone,0,3)}-${fn:substring(list.get(4).user_phone,3,7)}-${fn:substring(list.get(4).user_phone,7,11)}');
-		$('#p5').text('차 번호 : ${list.get(4).user_car_num}');
-		$('#p6').text('가입 날짜 : ${list.get(4).user_regdate}');
-		$('#p7').text('접속시간 : ${list.get(4).last_access}');
-		$('#p8').text('예매내역 : ${list.get(4).user_orderCount}건');
+  		choice=4
   	});
+  	
+  	$('td[id^="openModalBtn"]').click(function(){
+		$('#p0').text(jList[choice].user_id+'님의 회원정보입니다.');
+		$('#p1').text('성명 : '+jList[choice].user_name);
+		$('#p2').text('아이디 : '+jList[choice].user_id);
+		if(jList[choice].user_type==0)
+			$('#p3').text('회원등급 : 일반회원');
+		if(jList[choice].user_type==1)
+			$('#p3').text('회원등급 : 사이트관리자');
+		if(jList[choice].user_type==2)
+			$('#p3').text('회원등급 : 극장관리자');
+		$('#p4').text('휴대폰번호 : '+jList[choice].user_phone);
+		$('#p5').text('차 번호 : '+jList[choice].user_car_num);
+		$('#p6').text('가입 날짜 : '+jList[choice].user_regdate);
+		$('#p7').text('접속시간 : '+jList[choice].last_access);
+		$('#p8').text('예매내역 : '+jList[choice].user_orderCount+'건');
+  	});
+  	
+  	
   	
   	//유저 등급변경 버튼
   	$("input[value='등급변경']").click(function(){
