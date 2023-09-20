@@ -98,8 +98,8 @@ public class BoardFrontController extends HttpServlet{
 				forward.setPath("./board/faqBoardAdd.jsp");
 				forward.setRedirect(false);
 			}
-			else if(command.equals("/faqBoardAddAction.bo")) {
-				System.out.println(" C : /faqBoardAddAction.bo 호출");
+			else if(command.equals("/enfBoardAdd.bo")) {
+				System.out.println(" C : /enfBoardAdd.bo 호출");
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				
 				//BoardUpdateAction 객체
@@ -124,13 +124,162 @@ public class BoardFrontController extends HttpServlet{
 				
 				//BoardUpdateAction 객체
 				action = new ENFBoardAddAction();
+			}
+			else if(command.equals("/rentBoard.bo")) {
+				System.out.println(" C : /board/rentBoard.bo 호출");
+				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
+				
+				forward = new ActionForward();
+				forward.setPath("./rentBoardAdd.jsp");
+				forward.setRedirect(false);
+			}
+			else if(command.equals("/qnaBoardContent.bo")) {
+				System.out.println(" C : /qnaBoardContent.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
+				
+				//BoardUpdateAction 객체
+				action = new QnaBoardContentAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else if(command.equals("/enfBoardContent.bo")) {
+				System.out.println(" C : /enfBoardContent.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
+				
+				//BoardUpdateAction 객체
+				action = new ENFBoardContentAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(command.equals("/qnaBoardUpdate.bo")) {
+				System.out.println(" C : /qnaBoardUpdate.bo 호출 ");
+				System.out.println(" C : 패턴 3 - DB사용O,페이지 출력");
+				// BoardUpdateAction
+				action = new QnaBoardUpdateAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-			else if(command.equals("/rentMain.bo")) {
+			else if(command.equals("/qnaBoardUpdatePro.bo")) {
+				System.out.println(" C : /qna/BoardUpdatePro.bo 호출 ");
+				System.out.println(" C : 패턴2 - DB사용O,페이지 이동");
+				
+				// BoardUpdateProAction 객체 
+				action = new QnaBoardUpdateProAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			else if(command.equals("/qnaBoardDelete.bo")) {
+				System.out.println(" C : /qna/BoardDelete.bo 호출 ");
+				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
+				
+				forward = new ActionForward();
+				forward.setPath("./board/qnaBoardDelete.jsp");
+				forward.setRedirect(false);		
+			}
+			else if(command.equals("/qnaBoardDeleteAction.bo")) {
+				System.out.println(" C : /qnaBoardDeleteAction.bo 호출 ");
+				System.out.println(" C : 패턴2 - DB사용O, 페이지이동");
+				
+				// BoardDeleteAction() 객체
+				action = new QnaBoardDeleteAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}			
+			}
+			else if(command.equals("/qnaBoardAnswer.bo")) {
+				System.out.println(" C : /qnaBoardAnswer.bo 호출 ");
+				System.out.println(" C : 패턴 3 - DB사용O,페이지 출력");
+				// BoardUpdateAction
+				action = new QnaBoardAnswerAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			else if(command.equals("/noticeBoardDelete.bo")) {
+				System.out.println(" C : /noticeBoardDelete.bo 호출 ");
+				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
+				
+				forward = new ActionForward();
+				forward.setPath("./board/noticeBoardDelete.jsp");
+				forward.setRedirect(false);	
+			}
+			else if(command.equals("/enfBoardDelete.bo")) {
+				System.out.println(" C : /enfBoardDelete.bo 호출 ");
+				System.out.println(" C : 패턴2 - DB사용O, 페이지이동");
+				
+				// BoardDeleteAction() 객체
+				action = new ENFBoardDeleteAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	
+			}
+			else if(command.equals("/enfBoardUpdate.bo")) {
+				System.out.println(" C : /enfBoardUpdate.bo 호출 ");
+				System.out.println(" C : 패턴 3 - DB사용O,페이지 출력");
+				// BoardUpdateAction
+				action = new ENFBoardUpdateAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			else if(command.equals("/enfBoardUpdatePro.bo")) {
+				System.out.println(" C : /noticeBoardUpdatePro.bo 호출 ");
+				System.out.println(" C : 패턴2 - DB사용O,페이지 이동");
+				
+				// BoardUpdateProAction 객체 
+				action = new ENFBoardUpdateProAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			else if(command.equals("/enfBoardSearch.bo")) {
+				System.out.println(" C : /enfBoardSearch.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용0, 페이지이동");
+
+				// BoardListAction
+				action = new ENFBoardSearchAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			else if(command.equals("/qrBoardSearch.bo")) {
+				System.out.println(" C : /qrBoardSearch.bo 호출");
+				System.out.println(" C : 패턴3 - DB사용0, 페이지이동");
+		
+				// BoardListAction
+				action = new QRBoardSearchAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(command.equals("/rentMain.bo")) {
 				System.out.println(" C : /rentMain.bo 호출");
 
 				forward = new ActionForward();
@@ -193,6 +342,34 @@ public class BoardFrontController extends HttpServlet{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+
+			}
+			else if (command.equals("/eventAdd.bo")) {
+				System.out.println(" C : /eventAdd.bo 호출");
+				System.out.println(" C : 패턴1- DB사용X, 페이지 이동");
+
+				forward = new ActionForward();
+				forward.setPath("./event/eventAdd.jsp");
+				forward.setRedirect(false);
+			}
+			else if(command.equals("/qnaBoardUpdate.bo")) {
+				System.out.println(" C : /qnaBoardUpdate.bo 호출 ");
+				System.out.println(" C : 패턴 3 - DB사용O,페이지 출력");
+				// BoardUpdateAction
+				action = new QnaBoardUpdateAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			else if(command.equals("/eventBoardDelete.bo")) {
+				System.out.println(" C : /eventBoardDelete.bo 호출 ");
+				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
+				
+				forward = new ActionForward();
+				forward.setPath("./event/eventBoardDelete.jsp");
+				forward.setRedirect(false);	
 			}
 			else if(command.equals("/qnaBoardUpdate.bo")) {
 				System.out.println(" C : /qnaBoardUpdate.bo 호출 ");
@@ -347,10 +524,11 @@ public class BoardFrontController extends HttpServlet{
 					e.printStackTrace();
 				}
 			}
-
 			
 			
 		System.out.println(" =========C : 2. 가상주소 비교 - 끝=========");
+		System.out.println(" C : 2. 가상주소 비교 - 끝");
+		/*************************2. 가상주소 비교**************************************/
 		
 		/*************************3. 가상주소 페이지이동**************************************/
 		System.out.println("\n =========C : 3. 가상주소 페이지이동 - 시작=========");

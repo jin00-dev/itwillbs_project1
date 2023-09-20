@@ -49,6 +49,7 @@ public class ENFBoardUpdateAction implements Action {
 		ActionForward forward = new ActionForward();
 		if(categroy == 0) {
 			forward.setPath("./event/eventUpdate.jsp");
+			forward.setPath("./eventBoardUpdate.jsp");
 		}else if(categroy == 1) {
 			forward.setPath("./board/noticeBoardUpdate.jsp");
 		}else {

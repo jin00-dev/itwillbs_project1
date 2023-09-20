@@ -60,7 +60,7 @@
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="../order/orderMain.jsp">예매안내</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="../event/eventMain.bo">이벤트</a></li>
+							href="eventMain.bo">이벤트</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="introduceMain.jsp">소개게시판</a></li>
 						<li class="nav-item dropdown"><a
@@ -72,6 +72,7 @@
 								<li><a class="dropdown-item" href="faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0" href="rentMain.bo">대관문의</a></li>
 							</ul></li>
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -101,19 +102,14 @@
 						<c:otherwise>
 							<td>${dto.rent_bno }</td>											
 							<td><a
-								href="rentBoardContent.bo?rent_bno=${dto.rent_bno }&pageNum=${pageNum}">${dto.subject }</a>
+								href="rentBoardContent.bo?rent_bno=${dto.rent_bno }&pageNum=${pageNum}">${boardList[0].category}</a>
 							</td>
 						</c:otherwise>
 					</c:choose>
 					
-					<td><c:choose>
-							<c:when test="${empty dto.updatedate}">
-								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
-							</c:when>
-							<c:otherwise>
-								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-							</c:otherwise>
-						</c:choose></td>
+					<td>
+						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
+					</td>
 					<td>${dto.read_count }</td>
 			</c:forEach>
 
@@ -135,8 +131,22 @@
 			</c:if>
 			<!-- 			<input type="button" value="목록이동" onclick="history.back();"> -->
 		</div>
+		<div>
+			<input type="button" value="검색전 게시판" onclick="boforeBoardList(${boardList[0].category});">
+		</div>
 	</div>
-
+	
+	<script type="text/javascript">
+	
+		function boforeBoardList(category) {
+// 			alert("category : "+category);
+			if(category == 0){
+				location.href = "qnaBoardList.bo";
+			}else{
+				location.href = "rentMain.bo";
+			}
+		}
+	</script>
 	<!-- footer아래로는 코드 금지 -->
 
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">

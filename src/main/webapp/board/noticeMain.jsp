@@ -29,16 +29,11 @@
 				<tr>
 					<td>${dto.notice_bno }</td>
 					<td><a
-						href="noticeBoardContent.bo?notice_bno=${dto.notice_bno }&&pageNum=${pageNum}&&category=${dto.category}">${dto.subject }</a>
+						href="enfBoardContent.bo?notice_bno=${dto.notice_bno }&&pageNum=${pageNum}&&category=${dto.category}">${dto.subject }</a>
 					</td>
-					<td><c:choose>
-							<c:when test="${empty dto.updatedate}">
-								<fmt:formatDate value="${dto.regdate }" pattern="YY-MM-dd" />
-							</c:when>
-							<c:otherwise>
-								<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-							</c:otherwise>
-						</c:choose></td>
+					<td>
+							<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
+					</td>
 					<td>${dto.read_count }</td>
 			</c:forEach>
 

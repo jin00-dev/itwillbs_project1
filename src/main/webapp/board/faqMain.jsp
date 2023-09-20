@@ -15,8 +15,6 @@
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
 
-	<!-- 여기 faq게시판 꾸며아함. -->
-
 	<div class="container">
 <!-- 		<h1> -->
 <!-- 			여기 faq게시판 꾸미는자리<br> 밑에 footer 알아서 내려감 -->
@@ -38,6 +36,12 @@
 			function qnaBoardAdd() {
 				window.open("./faqBoardAdd.bo","_black","width=500, height=300, left="+popupX+", top="+popupY);
 			}
+			function qnaBoardUpdate(bno) {
+				window.open("./faqBoardUpdate.bo?faq_bno="+bno+"&&category=2","_black","width=500, height=300, left="+popupX+", top="+popupY);
+			}
+			function qnaBoardDelete(bno) {
+				window.open("./faqBoardDelete.bo?faq_bno="+bno+"&&category=2","_black","width=500, height=300, left="+popupX+", top="+popupY);
+			}
 			function boardList() {
 				location.href="./faqMain.bo";
 			}
@@ -52,6 +56,8 @@
     <div class="faq-container">
       <c:forEach var="dto" items="${boardList }">
       	<div class="faq">
+    		<input type="button" name="btn" id="updateFaq" value="faq수정" onclick="qnaBoardUpdate(${dto.faq_bno});">
+		    <input type="button" name="btn" id="deleteFaq" value="faq삭제" onclick="qnaBoardDelete(${dto.faq_bno});">
         	<h3 class="faq-title">${dto.subject }</h3>
 
         	<p class="faq-text">${dto.content }</p>
@@ -94,7 +100,7 @@
 <!--       </div> -->
     </div>
     <div>
-    	<input type="button" name="btn" id="insertQna" value="faq추가" onclick="qnaBoardAdd();">
+    	<input type="button" name="btn" id="insertFaq" value="faq추가" onclick="qnaBoardAdd();">
     </div>
 		
 	</div>

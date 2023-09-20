@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
 figure {
-	width: 500px;
+	width: 600px;
 	display: flex;
+/* 	float: left; */
 }
 
 figure img {
@@ -13,22 +14,31 @@ figure img {
 
 .image_panel {
 	/* 	display: flex; */
-	/* 	float: left; */
+/* 		float: left; */
 	margin: 20px;
 }
 
 #leftImage {
 	width: 700px;
 }
-
+/* section{ */
+/* 	display: flex; */
+/* } */
 section:after{
+	clear:both;
+}
+div#image_container1:after{
 	display:block;
 	clear:both;
 }
-
+div#image_container2:after{
+	display:block;
+	clear:both;
+}
 div#left {
 	width: 50%;
-	float: left;
+/* 	float: left; */
+	display : flex;
 	box-sizing: border-box;
 /* 	padding: 1px; */
 }
@@ -39,7 +49,7 @@ div#left {
 
 div#right {
 	width: 50%;
-	float: right;
+/* 	float: right; */
 	box-sizing: border-box;
 /* 	padding: 1px; */
 }

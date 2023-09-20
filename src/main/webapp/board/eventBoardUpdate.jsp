@@ -16,6 +16,7 @@
 	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
 	rel="stylesheet">
 <script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/code.jquery.com_jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<section id="top">
@@ -79,48 +80,65 @@
 	</section>
 
 
-	<!-- 여기 공지사항 꾸며아함. -->
-
-	<div class="container">
-		<h1>검색 리스트페이지</h1>
-		<table id="noticeBoardList">
-			<tr>
-				<th class="bno">No.</th>
-				<th class="subject">Title</th>
-				<th class="date">Date</th>
-				<th class="readCount">ReadCount</th>
-			</tr>
-			<c:forEach var="dto" items="${boardList }">
-				<tr>
-					<td>${dto.notice_bno }</td>
-					<td><a
-						href="enfBoardContent.bo?notice_bno=${dto.notice_bno }&pageNum=${pageNum}">${dto.subject }</a>
-					</td>
-					<td>
-						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-					</td>
-					<td>${dto.read_count }</td>
-			</c:forEach>
-
-		</table>
-		
-		<div class="clear"></div>
-		<div id="page_control">
-			<c:if test="${startPage > pageBlock }">
-				<a href="./enfBoardSearch.bo?pageNum=${startPage-pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Prev</a>
-			</c:if>
-			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
-				<a href="./enfBoardSearch.bo?pageNum=${i }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">${i }</a>
-			</c:forEach>
-			<c:if test="${endPage < pageCount }">
-				<a href="./enfBoardSearch.bo?pageNum=${startPage+pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
-			</c:if>
-			<input type="button" value="목록이동" onclick="location.href='noticeMain.bo';">
-		</div>
-	</div>
+	<!-- 여기 대관문의 꾸며아함. -->
 	<script type="text/javascript">
-	
+	$(document).ready(function(){
+	    $("#fileChk").change(function(){
+	        if($("#fileChk").is(":checked")){
+// 	            alert("체크박스 체크했음!");
+	            $('#update').append("<input type='file' name='file' id='file2' required>");
+	        }else{
+// 	            alert("체크박스 체크 해제!");
+	            $('#file2').remove();
+	        }
+	    });
+	});
 	</script>
+	<div class="container">
+		<form action="./enfBoardUpdatePro.bo?&&category=0"
+			method="post"  enctype="multipart/form-data" id="updateForm">
+			<input type="hidden" name="event_bno" value="${dto.event_bno }">
+			<table id="update">
+				<tr>
+					<th class="ttitle" colspan="3">이벤트 수정</th>
+				</tr>
+				<tr>
+					<td> 이벤트 타입: </td>
+					<td>
+						<select name="event_type">
+							<option value=-1 >선택</option>
+							<option value=0>진행중</option>
+							<option value=1>완료</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>제 목 :</td>
+					<td colspan="2"><input type="text" id="sInput" name="subject"
+						value="${dto.subject }" required></td>
+				</tr>
+				<tr>
+					<td>내 용 :</td>
+					<td colspan="2"><textarea rows="" cols="" id="wInput"
+							name="content" required>${dto.content }</textarea></td>
+				</tr>
+				<tr>
+					<td>파 일 :</td>
+					<td> ../img/${dto.img }</td>
+						
+					<td>변경하겠습니까?<input type="checkbox" id="fileChk"></td>
+				</tr>
+			</table>
+
+			<div id="table_search">
+				<input type="submit" value="수정하기" >
+				<input type="button" value="목록이동" onclick="history.back();">
+			</div>
+			<div class="clear"></div>
+			<div id="page_control"></div>
+		</form>
+	</div>
+
 	<!-- footer아래로는 코드 금지 -->
 
 	<section id="footer_b" class="pt-3 pb-3 bg_grey">

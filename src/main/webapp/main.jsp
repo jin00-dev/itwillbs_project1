@@ -13,7 +13,6 @@
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
 	<section id="center" class="center_home">
 		<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-indicators">
@@ -62,6 +61,7 @@
 
 
 	<section id="stream" class="pb-5 pt-4">
+		<h2 class="mb-0">지역버튼</h2>
 		<div class="container">
 
 			<div class="row trend_2 mt-4">

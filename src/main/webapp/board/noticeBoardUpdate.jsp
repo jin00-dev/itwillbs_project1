@@ -16,10 +16,8 @@
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
 <!-- 상단 바 고정 -->
-	<!-- 여기 대관문의 꾸며아함. -->
-	
 	<div class="container">
-		<form action="./noticeBoardUpdatePro.bo?pageNum=${pageNum }&&category=1"
+		<form action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1"
 			method="post">
 			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
 			<table id="Update">
