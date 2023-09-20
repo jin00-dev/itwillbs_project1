@@ -12,9 +12,9 @@
 	 	<fieldset>
 			<legend>파일 업로드</legend>
 				<label for="subject" > 타이틀 :</label>
-				<input type="text" name="subject" id="subject"><br>
+				<input type="text" name="subject" id="subject" required><br>
 				<label for="content" > 내용 :</label>
-				<input type="text" name="content" id="content"><br>
+				<input type="text" name="content" id="content" required><br>
 				<label for="file"> 파일 :</label>
 				<input type="file" name="file" id="file" required><br>
 			<input type="submit" value="upload">	 	

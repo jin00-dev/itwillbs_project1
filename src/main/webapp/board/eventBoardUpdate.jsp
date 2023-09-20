@@ -115,12 +115,12 @@
 				<tr>
 					<td>제 목 :</td>
 					<td colspan="2"><input type="text" id="sInput" name="subject"
-						value="${dto.subject }"></td>
+						value="${dto.subject }" required></td>
 				</tr>
 				<tr>
 					<td>내 용 :</td>
 					<td colspan="2"><textarea rows="" cols="" id="wInput"
-							name="content">${dto.content }</textarea></td>
+							name="content" required>${dto.content }</textarea></td>
 				</tr>
 				<tr>
 					<td>파 일 :</td>
