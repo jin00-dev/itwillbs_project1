@@ -53,7 +53,7 @@ public class ENFBoardContentAction implements Action {
 		if(categroy == 0) {
 			forward.setPath("./event/eventContent.jsp");			
 		}else {
-			forward.setPath("./event/noticeBoardContent.jsp?pageNum="+pageNum);
+			forward.setPath("./board/noticeBoardContent.jsp?pageNum="+pageNum);
 			
 		}
 		forward.setRedirect(false);
