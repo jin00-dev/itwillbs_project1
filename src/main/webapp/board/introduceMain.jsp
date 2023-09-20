@@ -7,12 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>이벤트</title>
 </head>
-
 <body>
 <!-- 상단 바 고정 -->
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
+<!-- 상단 바 고정 -->
 
 	<!-- 여기 소개 게시판 꾸며아함. -->
 

@@ -107,7 +107,6 @@ public class BoardFrontController extends HttpServlet{
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -302,7 +301,6 @@ public class BoardFrontController extends HttpServlet{
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}else if(command.equals("/qrBoardSearch.bo")) {
@@ -314,7 +312,6 @@ public class BoardFrontController extends HttpServlet{
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -336,9 +333,20 @@ public class BoardFrontController extends HttpServlet{
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			}
+			else if(command.equals("/introduceMain.bo")) {
+				System.out.println(" C : /introduceMain.bo 호출");
+				// 소개 게시판 메인으로 이동
+				action = new IntroduceMainAction();
+				
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 			}
 			
 			
