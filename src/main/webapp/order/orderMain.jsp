@@ -219,7 +219,6 @@
 
 		</section>
 	</main>
->>>>>>> payment
 	
 
 	<!-- footer아래로는 코드 금지 -->
