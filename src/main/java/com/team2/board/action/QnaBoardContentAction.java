@@ -2,6 +2,7 @@ package com.team2.board.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.team2.board.db.QRBoardDAO;
 import com.team2.board.db.QRBoardDTO;
@@ -14,10 +15,12 @@ public class QnaBoardContentAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M : QnaBoardContentAction_execute() 호출");
 		
+		
 		// 전달정보 저장 bno, pageNum
 		int qna_bno = Integer.parseInt(request.getParameter("qna_bno"));
 		String pageNum = request.getParameter("pageNum");
-		
+		HttpSession session = request.getSession();
+		String user_id = (String) session.getAttribute("id");
 		// DAO - 조회수 1증가()
 		QRBoardDAO dao = new QRBoardDAO();
 		dao.updateRead_count((byte) 0,qna_bno);
@@ -28,6 +31,7 @@ public class QnaBoardContentAction implements Action {
 		
 		// request 영역에 정보 저장
 		request.setAttribute("dto", dto);
+		request.setAttribute("user_id", user_id);
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./board/qnaBoardContent.jsp?pageNum="+pageNum);

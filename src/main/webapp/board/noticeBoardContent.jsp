@@ -50,21 +50,21 @@
 			
 			var popupY= (window.screen.height / 2) - (200 / 2) - 50;
 			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-			window.open("./noticeBoardDelete.bo?notice_bno=${dto.notice_bno }&&pageNum=${param.pageNum }&&category=1",
+			window.open("./noticeBoardDelete.bo?notice_bno=${dto.notice_bno }&&pageNum=${param.pageNum }&&category=1&&user_id=${user_id}",
 					"_black","width=400, height=200, left="+popupX+", top="+popupY);
 		}
 		function boardList() {
-			location.href="noticeMain.bo?pageNum=${param.pageNum}";
+			location.href="noticeMain.bo?pageNum=${param.pageNum}&&user_id=${user_id}";
 		}
 	</script>
-<%-- 	<c:if test="${user_type == 1 }"> --%>
+	<c:if test="${user_id eq 'admin' }">
 		<div id="table_search">
 		<input type="button" value="수정하기"
-			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&category=1&&pageNum=${param.pageNum }';">
+			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&category=1&&user_id=${user_id}&&pageNum=${param.pageNum }';">
 		<input type="button" value="삭제하기"
 			onclick="noticeDelete();">
 		</div>
-<%-- 	</c:if> --%>
+	</c:if>
 		<input type="button" value="목록이동"
 			onclick="boardList();">
 	</div>

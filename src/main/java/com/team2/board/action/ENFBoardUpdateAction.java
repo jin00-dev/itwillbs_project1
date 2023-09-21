@@ -18,6 +18,7 @@ public class ENFBoardUpdateAction implements Action {
 		int event_bno = 0;
 		int notice_bno = 0;
 		int faq_bno = 0;
+		String user_id = request.getParameter("user_id");
 		Byte category = (byte) Integer.parseInt(request.getParameter("category"));
 		System.out.println("category : "+category);
 		if(category == 0) {
@@ -43,6 +44,7 @@ public class ENFBoardUpdateAction implements Action {
 		// request 영역 저장
 		request.setAttribute("dto", dto);
 		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("user_id", user_id);
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();

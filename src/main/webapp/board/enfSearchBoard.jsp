@@ -30,7 +30,7 @@
 				<tr>
 					<td>${dto.notice_bno }</td>
 					<td><a
-						href="enfBoardContent.bo?notice_bno=${dto.notice_bno }&&category=1&&pageNum=${pageNum}">${dto.subject }</a>
+						href="enfBoardContent.bo?notice_bno=${dto.notice_bno }&&category=1&&pageNum=${pageNum}&&${user_id}">${dto.subject }</a>
 					</td>
 					<td>
 						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
@@ -43,15 +43,15 @@
 		<div class="clear"></div>
 		<div id="page_control">
 			<c:if test="${startPage > pageBlock }">
-				<a href="./enfBoardSearch.bo?pageNum=${startPage-pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Prev</a>
+				<a href="./enfBoardSearch.bo?pageNum=${startPage-pageBlock }&&searchField=${searchField}&&user_id=${user_id}&&searchText=${searchText}&&category=${boardList[0].category }">Prev</a>
 			</c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
-				<a href="./enfBoardSearch.bo?pageNum=${i }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">${i }</a>
+				<a href="./enfBoardSearch.bo?pageNum=${i }&&searchField=${searchField}&&user_id=${user_id}&&searchText=${searchText}&&category=${boardList[0].category }">${i }</a>
 			</c:forEach>
 			<c:if test="${endPage < pageCount }">
-				<a href="./enfBoardSearch.bo?pageNum=${startPage+pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
+				<a href="./enfBoardSearch.bo?pageNum=${startPage+pageBlock }&&searchField=${searchField}&&user_id=${user_id}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
 			</c:if>
-			<input type="button" value="목록이동" onclick="location.href='noticeMain.bo';">
+			<input type="button" value="목록이동" onclick="location.href='noticeMain.bo?user_id=${user_id}';">
 		</div>
 	</div>
 	<script type="text/javascript">

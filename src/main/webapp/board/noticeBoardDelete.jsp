@@ -15,7 +15,7 @@
 
 	<h3>삭제하시겠습니까?</h3>
 
-	<form action="./enfBoardDelete.bo?pageNum=${param.pageNum }&&category=1" method="post">
+	<form action="./enfBoardDelete.bo?pageNum=${param.pageNum }&&category=1&&user_id=${user_id}" method="post">
 		<input type="hidden" name="notice_bno" value="${param.notice_bno }">
 		
 		<input type="submit" value="예" class="btn">

@@ -68,7 +68,7 @@
 		<c:if test="${dto.answer == 0 }"> 
 		<!-- 답변 못받을 경우만 수정가능하게  -->
 		<input type="button" value="수정하기"
-			onclick="location.href='qnaBoardUpdate.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }';">
+			onclick="location.href='qnaBoardUpdate.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }&&user_id=${user_id}';">
 		</c:if>
 		<input type="button" value="삭제하기"
 			onclick="deleteQna();">

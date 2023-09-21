@@ -19,14 +19,22 @@ public class QnaBoardListAction implements Action {
 		
 		// DB - BoardDAO 객체- M
 		QRBoardDAO dao = new QRBoardDAO();
-		
+		String user_id = request.getParameter("user_id");
+		System.out.println(" user_id  : "+user_id);
 		// 작성되어 있는 전체 글의 개수 계산(DB메서드) -M
-		int count = dao.getBoardCount((byte) 0);
+		int count = 0;
+		if(user_id.equals("admin")) {
+			System.out.println("관리자");
+			count = dao.getBoardCount((byte) 0);			
+		}else {
+			System.out.println("손님계정");
+			count = dao.getBoardCount((byte) 0,user_id);						
+		}
 		System.out.println(" M : 전체 글 개수 : "+count+"개");
 		// 페이징처리-1 -M
 		////////////////페이징처리 -1 /////////////////
 		
-		int pageSize = 10; // 한페이지에 10개씩 출력
+		int pageSize = 5; // 한페이지에 10개씩 출력
 		
 		// 페이지의 정보(몇페이지인지 확인하는 정보)
 		String pageNum = request.getParameter("pageNum");
@@ -46,7 +54,11 @@ public class QnaBoardListAction implements Action {
 		// 페이징처리 글 데이터를 가져오기(DB메서드) -M
 		List<QRBoardDTO> boardList = null;
 		if(count > 0) {
-			boardList = dao.qnaGetBoardListPage(startRow, pageSize);
+			if(user_id.equals("admin")) {
+				boardList = dao.qnaGetBoardListPage(startRow, pageSize);				
+			}else {
+				boardList = dao.qnaGetBoardListPage(startRow, pageSize,user_id);				
+			}
 		}
 		// 테이블에 출력(반복문) ->view
 		
@@ -82,6 +94,7 @@ public class QnaBoardListAction implements Action {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
+		request.setAttribute("user_id", user_id);
 		
 		// 페이지이동
 		ActionForward forward = new ActionForward();

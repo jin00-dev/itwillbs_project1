@@ -78,7 +78,7 @@ public class BoardFrontController extends HttpServlet{
 					e.printStackTrace();
 				}
 			}
-			else if(command.equals("/QnaBoardAction.bo")) {
+			else if(command.equals("/qnaBoardAction.bo")) {
 				System.out.println(" C :/qnaBoardAction.bo 호출");
 				System.out.println(" C : 패턴3 - DB사용O, 페이지출력");
 				

@@ -20,7 +20,7 @@
 <!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
-		<form action="./qnaBoardUpdatePro.bo?pageNum=${pageNum }"
+		<form action="./qnaBoardUpdatePro.bo?pageNum=${pageNum }&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="qna_bno" value="${dto.qna_bno }">
 			<input type="hidden" name="subject" value="${dto.subject }">

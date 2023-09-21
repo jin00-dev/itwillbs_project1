@@ -28,13 +28,13 @@
 						<c:when test="${dto.category == 0 }">
 							<td>${dto.qna_bno }</td>					
 							<td><a
-								href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&pageNum=${pageNum}">${dto.subject }</a>
+								href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&pageNum=${pageNum}&&user_id=${user_id}">${dto.subject }</a>
 							</td>
 						</c:when>
 						<c:otherwise>
 							<td>${dto.rent_bno }</td>											
 							<td><a
-								href="rentBoardContent.bo?rent_bno=${dto.rent_bno }&pageNum=${pageNum}">${boardList[0].category}</a>
+								href="rentBoardContent.bo?rent_bno=${dto.rent_bno }&pageNum=${pageNum}&&user_id=${user_id}">${boardList[0].category}</a>
 							</td>
 						</c:otherwise>
 					</c:choose>

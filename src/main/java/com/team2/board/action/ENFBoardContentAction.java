@@ -18,6 +18,7 @@ public class ENFBoardContentAction implements Action {
 		int event_bno = 0;
 		int notice_bno = 0;
 		int faq_bno = 0;
+		String user_id = request.getParameter("user_id");
 		Byte categroy = (byte) Integer.parseInt(request.getParameter("category"));
 		if(categroy == 0) {
 			event_bno = Integer.parseInt(request.getParameter("event_bno"));
@@ -47,6 +48,7 @@ public class ENFBoardContentAction implements Action {
 		}
 		
 		// request 영역에 정보 저장
+		request.setAttribute("user_id", user_id);
 		request.setAttribute("dto", dto);
 		// 페이지 이동
 		ActionForward forward = new ActionForward();

@@ -18,7 +18,7 @@
 <!-- 상단 바 고정 -->
 <!-- 여기 대관문의 꾸며아함. -->
 	<div class="container">
-		<form action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1"
+		<form action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
 			<table id="Update">

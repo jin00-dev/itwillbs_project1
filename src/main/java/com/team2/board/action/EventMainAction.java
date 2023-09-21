@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
@@ -19,11 +20,11 @@ public class EventMainAction implements Action {
 		System.out.println(" M : eventMainAction_execute() 호출");
 		
 		ENFBoardDAO dao = new ENFBoardDAO();
-		
+		HttpSession session = request.getSession();
+		String user_id = (String) session.getAttribute("id");
 		List<ENFBoardDTO> boardList = dao.BoardList((byte) 0);
-		
 		request.setAttribute("boardList", boardList);
-		
+		request.setAttribute("user_id", user_id);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./board/eventMain.jsp");

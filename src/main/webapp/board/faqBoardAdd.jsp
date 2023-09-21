@@ -8,7 +8,7 @@
 <body>
 	<h1>faqBoardAdd.jsp</h1>
 	<fieldset>
-		<form action="enfBoardAdd.bo?category=2" method="post" name = "fr" id="faqAddForm">
+		<form action="enfBoardAdd.bo?category=2&&user_id=${user_id}" method="post" name = "fr" id="faqAddForm">
 		<table id="faqAdd">
 					<tr>
 						<td>질문 :</td>

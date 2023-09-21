@@ -18,6 +18,7 @@ public class ENFBoardSearchAction implements Action {
 //		request.setCharacterEncoding("UTF-8");
 		// DB - BoardDAO 객체- M
 		ENFBoardDAO dao = new ENFBoardDAO();
+		String user_id = request.getParameter("user_id");
 		Byte category = (byte) Integer.parseInt(request.getParameter("category"));
 //		System.out.println("category : "+category );
 		String searchField = request.getParameter("searchField");
@@ -95,6 +96,7 @@ public class ENFBoardSearchAction implements Action {
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("searchField", searchField);
 		request.setAttribute("searchText", searchText);
+		request.setAttribute("user_id", user_id);
 		// 페이지이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./board/enfSearchBoard.jsp");
