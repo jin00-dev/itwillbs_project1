@@ -85,7 +85,7 @@ public class QnaBoardListAction implements Action {
 		
 		// 페이지이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./qnaBoardList.jsp");
+		forward.setPath("./board/qnaBoardList.jsp");
 		forward.setRedirect(false);
 		
 

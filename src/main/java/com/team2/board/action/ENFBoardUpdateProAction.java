@@ -92,10 +92,11 @@ public class ENFBoardUpdateProAction implements Action {
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		if(category == 0) {
-			forward.setPath("./eventMain.bo");
+			forward.setPath("./event/eventMain.bo");
 		}else if(category == 1) {
-			forward.setPath("./noticeMain.bo?pageNum="+pageNum);
+			forward.setPath("./board/noticeMain.bo?pageNum="+pageNum);
 		}else {
+			forward.setPath("./board/faqMain.bo");			
 			JSMethod.alertLocation(response, "수정완료");
 			return null;
 		}

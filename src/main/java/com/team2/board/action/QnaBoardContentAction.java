@@ -30,7 +30,7 @@ public class QnaBoardContentAction implements Action {
 		request.setAttribute("dto", dto);
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./qnaBoardContent.jsp?pageNum="+pageNum);
+		forward.setPath("./board/qnaBoardContent.jsp?pageNum="+pageNum);
 		forward.setRedirect(false);
 		
 		return forward;

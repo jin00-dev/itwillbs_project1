@@ -1,18 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="../js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="../js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 			$.ajax({
 				url : "./CinemaSelectAction.bo",
 				dataType : "json",
 				success : function(data){
-					
+					arert("성공");
 					$.each(data,function(idx,item){
 						$("#region_name").click(function(){
 							$(".start").remove(); //remove 후 첫 데이터 (강원) 데이터 선택 안됨
@@ -26,9 +25,11 @@
 									var list = item.cinema_list.split(",");
 									for(var i in list){
 										$("#cinema_name").append("<option value="+list[i]+">"+list[i]+"</option>");
-// 										$("#cinema_name").empty("<option value="+list[i]+">"+list[i]+"</option>"); 데이터 중복 수정 필요
-// 										$("#cinema_name").append("<option value="+list[i]+">"+list[i]+"</option>");
 										}//for
+									for(var ii in list){
+										$("#cinema_name").empty("<option value="+list[ii]+">"+list[ii]+"</option>"); //데이터 중복 수정 필요
+										$("#cinema_name").append("<option value="+list[ii]+">"+list[ii]+"</option>");
+										}//for 
 									}//if
 						});//change
 					});//each 
@@ -39,6 +40,11 @@
 	</script>
 </head>
 <body>
+<!-- 상단 바 고정 -->
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
+
 	<h1>대관문의 작성 test</h1>
 	
 	<form action="./rentWriteAction.bo" method="post" name ="form">
@@ -103,7 +109,11 @@
 	</div>
 </form>
 	
-		
+<!-- 하단바 고정  -->
+<footer>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+</footer>
+<!-- 하단바 고정  -->
 
 </body>
 </html>

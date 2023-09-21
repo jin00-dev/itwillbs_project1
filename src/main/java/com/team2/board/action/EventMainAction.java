@@ -26,7 +26,7 @@ public class EventMainAction implements Action {
 		
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./eventMain.jsp");
+		forward.setPath("./event/eventMain.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

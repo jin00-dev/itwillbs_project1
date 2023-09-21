@@ -85,7 +85,7 @@ public class NoticeMainAction implements Action {
 		
 		// 페이지이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./noticeMain.jsp");
+		forward.setPath("./board/noticeMain.jsp");
 		forward.setRedirect(false);
 		
 

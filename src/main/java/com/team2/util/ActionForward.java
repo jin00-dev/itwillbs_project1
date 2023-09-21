@@ -22,5 +22,4 @@ public class ActionForward {
 		return "ActionFoward [path=" + path + ", isRedirect=" + isRedirect + "]";
 	}
 	
-	
 }

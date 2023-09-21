@@ -1,21 +1,77 @@
 @charset "UTF-8";
-
-#join_wrap{
-	float: left;
-	border: 1px solid;
-	background: gray;
-	padding: 20px;
-	margin: 20px;
+/* 회원가입 전체 필드 */
+#join_box {
+  text-align: center;
+  margin: 0 auto;
+  width: 25em; 
 }
 
-#join_wrap input{
-	margin-left: 10px;
+#join_box p{
+	font-size: 14.4px;
+	text-align: left;
 }
 
-#join_wrap label{
-	width: 150px;
+/* 필드셋  */
+#certification, #join_wrap {
+  padding: 1em;
 }
 
+#certification button {
+	border-radius: 0.5em;
+	 margin: 0em 0.6em;
+}
+
+/* 버튼(인증,서브밋)   */
+button, input[type="submit"],input[type="button"] {
+  padding: 0.5em;
+  margin: 0.5em 1em;
+  width: 10em;
+  border-radius: 0.5em;
+}
+
+/* 중복확인 버튼   */
+#double_check{
+  padding: 0.5em;
+  margin: 0.5em;
+  width: 7em;
+  margin-right: 0;
+  margin-left: 0.7em;
+  border-radius: 0.5em;
+}
+/* 아이디 비밀번호 입력 필드 */
+input[type="text"], input[type="password"] {
+	padding: 0.5em;
+  	margin: 0.5em 0;
+	width: 23em;
+	border-radius: 0.5em;
+}
+/* 아이디 입력필드 */
+input[name="user_id"]{
+	width: 15em;
+	margin: 0.5em 0;
+}
+/* 설명 라벨 */
+#join_wrap label {
+	width: 23em;
+	text-align: left;
+	font-weight: 900;
+}
+/* 상단 회원가입 문구 */
+#join_box h1{
+	width: 11em;
+	border-bottom: 1px solid gray;
+	margin: 10px auto;
+	padding: 10px;
+}
+/*아이디 중복체크 결과 출력필드*/
+#chId{
+	width: 23em;
+	margin: 0;
+	font-size: 0.9em;
+	text-align: left;
+}
+
+/* 풋터 */
 #footer_b{
 	clear: left;
 }

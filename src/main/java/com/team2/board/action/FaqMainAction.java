@@ -23,7 +23,7 @@ public class FaqMainAction implements Action {
 		request.setAttribute("boardList", boardList);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./faqMain.jsp");
+		forward.setPath("./board/faqMain.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

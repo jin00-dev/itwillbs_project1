@@ -9,7 +9,7 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  
+
   	<!-- 게시판 컨트롤러 매핑 -->
 	  <servlet>
 	    <servlet-name>BoardFrontController</servlet-name>
@@ -33,6 +33,18 @@
 			<url-pattern>*.me</url-pattern>
 		</servlet-mapping>
   	<!-- 회원 컨트롤러 매핑 -->
+  	
+  	<!-- 예매 컨트롤러 매핑 -->
+		<servlet>
+			<servlet-name>OrderFrontController</servlet-name>
+			<servlet-class>com.team2.payment.action.OrderFrontController</servlet-class>
+		</servlet>
+		
+		<servlet-mapping>
+			<servlet-name>OrderFrontController</servlet-name>
+			<url-pattern>*.or</url-pattern>
+		</servlet-mapping>
+  	<!-- 예매 컨트롤러 매핑 -->
 	
 	<!-- 한글처리 필터 설정 -->
 	  <filter>

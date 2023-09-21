@@ -33,7 +33,7 @@ public class QnaBoardUpdateProAction implements Action {
 		request.setAttribute("dto", dto);
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./qnaBoardContent.bo?pageNum="+pageNum+"&&qna_bno="+qna_bno);
+		forward.setPath("./board/qnaBoardContent.bo?pageNum="+pageNum+"&&qna_bno="+qna_bno);
 		forward.setRedirect(true);
 				
 		return forward;

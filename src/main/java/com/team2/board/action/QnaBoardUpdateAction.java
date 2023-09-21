@@ -28,7 +28,7 @@ public class QnaBoardUpdateAction implements Action {
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./qnaBoardUpdate.jsp");
+		forward.setPath("./board/qnaBoardUpdate.jsp");
 		forward.setRedirect(false);		
 		
 		return forward;
