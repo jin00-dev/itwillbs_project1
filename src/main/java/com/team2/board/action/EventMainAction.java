@@ -20,13 +20,13 @@ public class EventMainAction implements Action {
 		
 		ENFBoardDAO dao = new ENFBoardDAO();
 		
-		List<ENFBoardDTO> boardList = dao.BoardList();
+		List<ENFBoardDTO> boardList = dao.BoardList((byte) 0);
 		
 		request.setAttribute("boardList", boardList);
 		
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./event/eventMain.jsp");
+		forward.setPath("./board/eventMain.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

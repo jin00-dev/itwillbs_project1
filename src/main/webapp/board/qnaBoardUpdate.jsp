@@ -25,7 +25,7 @@
 			<input type="hidden" name="answer" value="${dto.answer }">
 			<table id="Update">
 				<tr>
-					<th class="ttitle" colspan="3">1:1문의 답변쓰기</th>
+					<th class="ttitle" colspan="3">1:1문의 수정하기</th>
 				</tr>
 
 				<tr>
@@ -41,7 +41,8 @@
 			</table>
 
 			<div id="table_search">
-				<input type="submit" value="수정하기" class="btn">
+				<input type="submit" value="수정하기">
+				<input type="submit" value="취소" onclick="window.close();">
 			</div>
 			<div class="clear"></div>
 			<div id="page_control"></div>

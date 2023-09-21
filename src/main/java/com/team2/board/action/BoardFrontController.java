@@ -409,6 +409,18 @@ public class BoardFrontController extends HttpServlet{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
+			}
+			else if(command.equals("/eventBoardUpdate.bo")) {
+				System.out.println(" C : /eventBoardUpdate.bo 호출 ");
+				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
+				
+				action = new ENFBoardUpdateAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 			else if(command.equals("/eventBoardDelete.bo")) {
 				System.out.println(" C : /eventBoardDelete.bo 호출 ");
@@ -542,6 +554,12 @@ public class BoardFrontController extends HttpServlet{
 				System.out.println(" C : /eventMain.bo 호출");
 				System.out.println(" C : 패턴1 - DB사용X, 페이지이동");
 
+				action = new EventMainAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				forward = new ActionForward();
 				
 				forward.setPath("./board/eventMain.jsp");
@@ -569,6 +587,26 @@ public class BoardFrontController extends HttpServlet{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}
+			else if(command.equals("/faqBoardDelete.bo")) {
+				System.out.println(" C : /faqBoardDelete.bo 호출 ");
+				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
+				
+				forward = new ActionForward();
+				forward.setPath("./board/faqBoardDelete.jsp");
+				forward.setRedirect(false);	
+			}
+			else if(command.equals("/faqBoardUpdate.bo")) {
+				System.out.println(" C : /faqBoardUpdate.bo 호출 ");
+				System.out.println(" C : 패턴1 - DB사용X,페이지이동 ");
+				
+				action = new ENFBoardUpdateAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+					
 			}
 		System.out.println(" =========C : 2. 가상주소 비교 - 끝=========");
 		/*************************2. 가상주소 비교**************************************/

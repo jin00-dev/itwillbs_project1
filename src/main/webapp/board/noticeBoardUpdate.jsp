@@ -38,7 +38,6 @@
 			</table>
 
 			<div id="table_search">
-				<input type="submit" value="수정하기" class="btn">
 				<input type="submit" value="수정하기" >
 				<input type="button" value="목록이동" onclick="history.back();">
 			</div>

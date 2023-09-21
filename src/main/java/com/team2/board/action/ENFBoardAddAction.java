@@ -34,6 +34,7 @@ public class ENFBoardAddAction implements Action {
 		
 		if(category == 0) { //이벤트 게시판
 			location = request.getServletContext().getRealPath("/img"); // 실제저장되는경로
+			System.out.println("location : "+location);
 			multi = new MultipartRequest(request,
 					location,
 					maxSize,

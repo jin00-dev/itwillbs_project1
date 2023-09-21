@@ -60,7 +60,7 @@
 <%-- 	<c:if test="${user_type == 1 }"> --%>
 		<div id="table_search">
 		<input type="button" value="수정하기"
-			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&event_type=${dto.event_type }&&pageNum=${param.pageNum }';">
+			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&category=1&&pageNum=${param.pageNum }';">
 		<input type="button" value="삭제하기"
 			onclick="noticeDelete();">
 		</div>
