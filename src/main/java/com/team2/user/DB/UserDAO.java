@@ -367,6 +367,6 @@ public class UserDAO {
 			} finally {
 				con.closeDB(conn, rs, pstmt);
 			}
-		}//
+		}
 
 }
