@@ -7,6 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/event.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 
@@ -17,12 +18,6 @@
 </header>
 <!-- 상단 바 고정 -->
 <!-- 여기 이벤트 페이지 꾸며아함. -->
-
-	<div class="container">
-		<h1>
-			여기 이벤트페이지 꾸미는자리<br> 밑에 footer 알아서 내려감
-		</h1>
-	</div>
 	
 	<script type="text/javascript">
 
@@ -44,14 +39,14 @@
 	<h1>이벤트 메인페이지</h1>
 	<input type="button" value="이벤트추가" onclick="eventAdd();">
 	<h2>진행중인 이벤트</h2>
-	<section id="eventing">
+	<section id="eventing" class="eventContainer">
 		<div id="image_container1">
-			<figure id=image_figure1>
+			<figure class=image_figure>
 				<c:forEach var="dto" items="${boardList }">
 					<c:if test="${dto.event_type == 0 }">
 						<div class="image_panel">
 							<a href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0">
-								<img src="../img/${dto.img }">
+								<img src="./img/${dto.img }">
 							</a>
 							<p>${dto.subject }</p>
 						</div>
@@ -61,14 +56,14 @@
 		</div>
 	</section>
 	<h2>지난 이벤트</h2>
-	<section id="evented">
+	<section id="evented" class="eventContainer">
 		<div id="image_container2">
-			<figure id=image_figure2>
+			<figure class=image_figure>
 				<c:forEach var="dto" items="${boardList }">
 					<c:if test="${dto.event_type == 1 }">
 						<div class="image_panel">
 							<a href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0">
-								<img src="../img/${dto.img }">
+								<img src="./img/${dto.img }">
 							</a>
 							<p>${dto.subject }</p>
 						</div>

@@ -19,8 +19,8 @@ public class QnaBoardAction implements Action {
 		// 글정보 저장 => DTO
 		QRBoardDTO dto = new QRBoardDTO();
 		dto.setCategory((byte) 0);
-//		dto.setUser_id(request.getParameter("user_id"));
-		dto.setUser_id("7");
+//		dto.setUser_id(request.getParameter("user_id")); // 로그인한 user_id값을가져와야함
+		dto.setUser_id("test1"); // test용
 		dto.setSubject(request.getParameter("subject"));
 		dto.setContent(request.getParameter("content"));
 		

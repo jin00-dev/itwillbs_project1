@@ -151,16 +151,22 @@ public class ENFBoardDAO {
 	
 	
 	// 글 리스트 조회 -boardList()
-	public ArrayList<ENFBoardDTO> BoardList() throws Exception{
+	public ArrayList<ENFBoardDTO> BoardList(Byte category) throws Exception{
 		ArrayList<ENFBoardDTO> boardList = new ArrayList<>();
 //		List boardList = new ArrayList();//업캐스팅
 		System.out.println(" DAO : boardList() 실행");
-
+	
 		//1.2.디비연결
 		con = getConnect();
 		//3. sql구문작성 & pstmt 객체
-		
-		sql = "select * from event_notice_faq_board where category = 0";
+		if(category == 0) {
+			sql = "select * from event_notice_faq_board where category=0";				
+		}else if(category == 1) {
+			sql = "select * from event_notice_faq_board where category=1";				
+		}else { // category == 2
+			sql = "select * from event_notice_faq_board where category=2";				
+			
+		}
 		pstmt = con.prepareStatement(sql);
 		//4. sql 실행
 		rs = pstmt.executeQuery();

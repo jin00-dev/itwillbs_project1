@@ -7,6 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/event.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 <body>
@@ -19,8 +20,8 @@
 	
 	<section id="eventContent">
 	<div id="left">
-		<figure id="leftImage">
-			<img src="../img/${dto.img }">
+		<figure id="leftImage" class=image_figure>
+			<img src="./img/${dto.img }">
 		</figure>
 	</div>
 	<div id="right">
@@ -56,7 +57,7 @@
 			<%-- 	<c:if test="${user_type == 1 }"> --%>
 			<div id="table_search">
 				<input type="button" value="수정하기"
-					onclick="location.href='enfBoardUpdate.bo?event_bno=${dto.event_bno}&&event_type=${dto.event_type }&&category=0';">
+					onclick="location.href='eventBoardUpdate.bo?event_bno=${dto.event_bno}&&event_type=${dto.event_type }&&category=0';">
 				<input type="button" value="삭제하기" onclick="eventDelete();">
 			</div>
 			<%-- 	</c:if> --%>

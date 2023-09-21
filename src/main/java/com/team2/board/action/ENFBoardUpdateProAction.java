@@ -19,10 +19,10 @@ public class ENFBoardUpdateProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	System.out.println(" M : BoardUpdateProAction_execute 호출 ");
+	System.out.println(" M : ENFBoardUpdateProAction_execute 호출 ");
 	
 		Byte category = (byte) Integer.parseInt(request.getParameter("category"));
-		System.out.println("category : "+category);
+//		System.out.println("category : "+category);
 		String pageNum = request.getParameter("pageNum");
 		String location = request.getServletContext().getRealPath("/img");
 		int maxSize = 1024 * 1024 * 10;
@@ -91,12 +91,11 @@ public class ENFBoardUpdateProAction implements Action {
 		request.setAttribute("dto", dto);
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		if(category == 0) {
-			forward.setPath("./event/eventMain.bo");
-		}else if(category == 1) {
-			forward.setPath("./board/noticeMain.bo?pageNum="+pageNum);
+		
+		if(category == 1) {
+			forward.setPath("./noticeMain.bo?pageNum="+pageNum);
 		}else {
-			forward.setPath("./board/faqMain.bo");			
+			forward.setPath("./faqMain.bo");			
 			JSMethod.alertLocation(response, "수정완료");
 			return null;
 		}

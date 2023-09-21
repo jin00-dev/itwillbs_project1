@@ -8,7 +8,7 @@
 <body>
 	<h1>noticeBoardAdd.jsp</h1>
 	<fieldset>
-		<form action="enfBoardAdd.bo" method="post" name = "fr" id="noticeAddForm">
+		<form action="enfBoardAdd.bo?category=1" method="post" name = "fr" id="noticeAddForm">
 		<table id="noticeAdd">
 					<tr>
 						<td>제목 :</td>
@@ -25,7 +25,8 @@
 				</table>
 
 				<div id="noticeAddSubmit">
-					<input type="submit" value="완료" class="btn" id="noticeAddBtn">
+					<input type="submit" value="완료" >
+					<input type="button" value="취소" onclick="window.close();">
 				</div>
 		</form>
 	</fieldset>

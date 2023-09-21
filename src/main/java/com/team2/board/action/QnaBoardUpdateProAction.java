@@ -12,15 +12,15 @@ public class QnaBoardUpdateProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	System.out.println(" M : BoardUpdateProAction_execute 호출 ");
+	System.out.println(" M : QnaBoardUpdateProAction_execute 호출 ");
 		
 		String pageNum = request.getParameter("pageNum");
 		
 		// 전달정보 저장(수정할 데이터)
 		QRBoardDTO dto = new QRBoardDTO();
 		
-		dto.setQna_bno(Integer.parseInt(request.getParameter("qna_bno")));
-		int qna_bno =  dto.getQna_bno();
+		int qna_bno = Integer.parseInt(request.getParameter("qna_bno"));
+		dto.setQna_bno(qna_bno);
 		dto.setSubject(request.getParameter("subject"));
 		dto.setContent(request.getParameter("content"));
 		dto.setAnswer((byte) Integer.parseInt(request.getParameter("answer")));
@@ -31,9 +31,11 @@ public class QnaBoardUpdateProAction implements Action {
 				
 		// request 영역에 정보 저장
 		request.setAttribute("dto", dto);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("qna_bno", qna_bno);
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./board/qnaBoardContent.bo?pageNum="+pageNum+"&&qna_bno="+qna_bno);
+		forward.setPath("./qnaBoardList.bo");
 		forward.setRedirect(true);
 				
 		return forward;

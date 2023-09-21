@@ -51,7 +51,7 @@ public class ENFBoardContentAction implements Action {
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		if(categroy == 0) {
-			forward.setPath("./event/eventContent.jsp");			
+			forward.setPath("./board/eventContent.jsp");			
 		}else {
 			forward.setPath("./board/noticeBoardContent.jsp?pageNum="+pageNum);
 			
