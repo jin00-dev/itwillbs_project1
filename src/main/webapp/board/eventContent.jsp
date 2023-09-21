@@ -15,7 +15,7 @@
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
 <!-- 상단 바 고정 -->
-	<!-- 여기 공지사항 꾸며아함. -->
+<!-- 여기 공지사항 꾸며아함. -->
 	
 	<section id="eventContent">
 	<div id="left">

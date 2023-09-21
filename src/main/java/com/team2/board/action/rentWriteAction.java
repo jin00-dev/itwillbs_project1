@@ -25,7 +25,7 @@ public class rentWriteAction implements Action {
 		dto.setSubject(request.getParameter("rsubject"));
 		dto.setContent(request.getParameter("rcontent"));
 		
-		System.out.println(" M : "+dto);
+		System.out.println(" M : " +dto);
 		
 		//DB연결 => DAO 객체 - insertRentBoard (대관 문의 글쓰기) 
 		BoardDAO dao = new BoardDAO();

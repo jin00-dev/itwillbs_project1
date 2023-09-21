@@ -7,29 +7,30 @@
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+			var select = "<option value='start' class ='start1'>선택하세요</option>";
 			$.ajax({
 				url : "./CinemaSelectAction.bo",
 				dataType : "json",
 				success : function(data){
+					
 					$.each(data,function(idx,item){
-						$("#region_name").append("<option value="+item.region+">"+item.region+"</option>");
-						
-						$("#region_name").change(function(){
-						var re = $("select#region_name option:checked").val();
-						if(item.region == re){
-							$("#cinema_name").empty();
-// 						console.log(re+" / "+item.region);
-							var list = item.cinema_list.split(",");
-							for(var i=0; i<list.length; i++){
-// 							alert(list[i]);
-								$("#cinema_name").append("<option value="+list[i]+">"+list[i]+"</option>");
-							}//for
-						}//if
-						
-						});//change
-						 
+						$('#region_name').append("<option value="+item.region+">"+item.region+"</option>");
 					});//each
 					
+					$('#region_name').change(data,function(){
+						$("#cinema_name").empty();
+						var re = $("select#region_name option:checked").val();
+
+						$.each(data,function(idx,item){
+							if(item.region == re){
+								var list = item.cinema_list.split(",");
+								console.log(list);
+								for(var i = 0; i < list.length; i++){
+								$("#cinema_name").append("<option value="+list[i]+">"+list[i]+"</option>");
+								}//for
+							}//if
+							});//each	
+						});//change
 				}//success
 			});//ajax 끝
 		}); //JQuery 끝
@@ -84,12 +85,13 @@
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
+<!-- 상단 바 고정 -->
 
 	<h1>대관문의 작성 test</h1>
 	
 	<form action="./rentWriteAction.bo" method="post" name ="rentForm">
 <table id="notice">
-	<tr>
+	 <tr>
 		<td > 아이디 : </td> 
 	    <td colspan="2">
 	    	<input type="text" id="wInput" name="ruser_id">
@@ -109,7 +111,6 @@
 	    	</select>
 	    	<select name = "cinema" id ="cinema_name">
 	    	<option value="start" class ="start1">선택하세요</option>
-	    
 	    	</select>
 	    </td>
     </tr>

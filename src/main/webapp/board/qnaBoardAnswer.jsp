@@ -17,8 +17,7 @@
 <!-- 상단 바 고정 -->
 
 </head>
-<body>
-	<!-- 여기 대관문의 꾸며아함. -->
+<!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
 		<form action="./qnaBoardUpdatePro.bo?pageNum=${pageNum }"

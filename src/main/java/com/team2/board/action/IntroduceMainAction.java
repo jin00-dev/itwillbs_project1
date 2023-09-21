@@ -10,13 +10,18 @@ public class IntroduceMainAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-
+		System.out.println(" M : IntroduceMainAction_execute() 호출");
 		
-		// 페이지이동
-				ActionForward forward = new ActionForward();
-				forward.setPath("./board/introduceMain.jsp");
-				forward.setRedirect(false);
+		
+		
+		
+		
+		
+		ActionForward forward = new ActionForward();
 				
+		forward.setPath("./board/introduceMain.jsp");
+		forward.setRedirect(false);
+		
 		return forward;
 	}
 

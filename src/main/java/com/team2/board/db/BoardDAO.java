@@ -82,8 +82,8 @@ public class BoardDAO {
 			// 글쓰기 동작 처리 (insert)
 			
 			sql = "insert into qna_rent_board (category, rent_bno, user_id, rent_name,"
-					+ "cinema_name, rent_phone, rent_email, subject, content, read_count, regdate, answer)"
-					+ "values(1,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP(),?)";
+					+ "cinema_name, rent_phone, rent_email, subject, content, regdate, answer)"
+					+ "values(1,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP(),?)";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, rent_bno);
@@ -95,7 +95,6 @@ public class BoardDAO {
 			pstmt.setString(7, qbb.getSubject());
 			pstmt.setString(8, qbb.getContent());
 			pstmt.setInt(9, 0);
-			pstmt.setInt(10, 0);
 			
 			//sql 실행 
 			
@@ -134,7 +133,7 @@ public class BoardDAO {
 					JSONObject obj = new JSONObject();
 					obj.put("cinema_list", rs.getString("cinema_list"));
 					obj.put("region", rs.getString("region"));
-					System.out.println("obj = "+ obj);
+//					System.out.println("obj = "+ obj);
 					jcinemaList.add(obj);
 //					System.out.println("DAO : jcinemaList =" + jcinemaList);
 					

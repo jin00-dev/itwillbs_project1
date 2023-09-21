@@ -15,7 +15,6 @@
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
 	<div class="container">
 <!-- 		<h1> -->
 <!-- 			여기 faq게시판 꾸미는자리<br> 밑에 footer 알아서 내려감 -->
