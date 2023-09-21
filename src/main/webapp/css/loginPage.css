@@ -2,12 +2,27 @@
 
 .id_pw_wrap{
 	float: left;
-	border: 1px solid;
-	background: gray;
+	
+
 	padding: 20px;
 	margin: 20px;
+	 padding: 1rem;
+  margin: 1rem;
+
 }
 
 #footer_b{
 	clear: left;
+}
+.pp{
+	display: flex;
+	margin-left: 460px;
+}
+
+.button{
+	
+}
+
+.id_pw{
+	border-radius: 10px;
 }

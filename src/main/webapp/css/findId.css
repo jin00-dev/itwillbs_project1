@@ -53,7 +53,48 @@ margin: 15px;
 	margin-left: 10px;
 	margin-bottom: 5px;
 }
+#join_box {
+  text-align: center;
+  margin: 0 auto;
+  width: 25em; 
+}
 
+.button{
+     padding: 0.5em;
+  margin: 0.5em 1em;
+  width: 10em;
+  border-radius: 0.5em;
+}
+h1{
+    width: 11em;
+   border-bottom: 1px solid gray;
+   margin: 10px auto;
+   padding: 10px;
+}
+
+#join_wrap label {
+   width: 23em;
+   text-align: left;
+   font-weight: 900;
+   margin: auto;
+}
+#join_wrap{
+	margin: auto;
+	padding-left: 700px;
+}
+#A{
+	 padding: 0.5em;
+  margin: 0.5em 1em;
+  width: 15em;
+  border-radius: 0.5em;
+}
+#B{
+	
+	 padding: 0.5em;
+  margin: 0.5em 1em;
+  width: 15em;
+  border-radius: 0.5em;
+}
 
 
 
