@@ -33,7 +33,7 @@
 	});
 	</script>
 	<div class="container">
-		<form action="./enfBoardUpdatePro.bo?&&category=0"
+		<form action="./enfBoardUpdatePro.bo?category=0&&user_id=${user_id}"
 			method="post"  enctype="multipart/form-data" id="updateForm">
 			<input type="hidden" name="event_bno" value="${dto.event_bno }">
 			<table id="update">

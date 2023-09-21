@@ -182,7 +182,7 @@ public class QRBoardDAO {
 		//1.2.디비연결
 		con = getConnect();
 		//3. sql구문작성 & pstmt 객체
-		sql = "select * from qna_rent_board";
+		sql = "select * from qna_rent_board where category = 0";
 		pstmt = con.prepareStatement(sql);
 		//4. sql 실행
 		rs = pstmt.executeQuery();
@@ -254,6 +254,41 @@ public class QRBoardDAO {
 	
 		return result;
 	}
+	// 글의 개수 -getBoardCount
+	public int getBoardCount(Byte category, String user_id) {
+		System.out.println(" DAO : getBoardCount() 호출");
+		System.out.println(" DAO : 실행목적: 글의 개수(int)리턴");
+		
+		
+		int result = 0;
+		
+		try {
+			// 1.2. 디비연결
+			con = getConnect();
+			//3. sql구문 작성 &pstmt 객체
+			if(category == 0) {
+				sql = "select count(*) from qna_rent_board where category = 0 && user_id=?";
+			}else {
+				sql = "select count(*) from qna_rent_board where category = 1 && user_id=?";				
+			}
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			//4.sql 실행
+			rs = pstmt.executeQuery();
+			//5.데이터처리
+			if(rs.next()) {
+//			result = rs.getInt(1);
+				result = rs.getInt("count(*)");
+				System.out.println(" DAO : 글의 개수 조회 완료! ");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		return result;
+	}
 	public int getBoardCount(Byte category, String searchField, String searchText) {
 		System.out.println(" DAO : getBoardCount() 호출");
 		System.out.println(" DAO : 실행목적: 글의 개수(int)리턴");
@@ -295,6 +330,8 @@ public class QRBoardDAO {
 		
 		return result;
 	}
+	// 글의 개수 -getBoardCount
+	
 	// 글의 개수 -getBoardCount
 	public List<QRBoardDTO> searchGetBoardListPage(
 			Byte category, String searchField, String searchText, int startRow,int pageSize){
@@ -393,6 +430,64 @@ public class QRBoardDAO {
 				bb.setAnswer_context(rs.getString("answer_context"));
 				
 			
+				
+				//BoardBean -> List
+				boardList.add(bb);
+			}//while
+			System.out.println(" DAO : (페이징처리된) 글 리스트를 저장");
+			System.out.println(" DAO : 리스트 사이즈 : "+boardList.size());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return boardList;
+	}
+	
+	
+	// 글 리스트 정보 가져오기(페이징처리)-getBoardListPage(startRow,pageSize)
+	
+	// 글 리스트 정보 가져오기(페이징처리)-getBoardListPage(startRow,pageSize)
+	public List<QRBoardDTO> qnaGetBoardListPage(int startRow,int pageSize,String user_id){
+		
+		System.out.println(" DAO : qnaGetBoardListPage(startRow,pageSize) 호출");
+		List<QRBoardDTO> boardList = new ArrayList<QRBoardDTO>();
+		
+		try {
+			//1.2. 디비연결 (커넥션풀)
+			con = getConnect();
+			//3.sql구문 작성 & pstmt 객체
+			// 게시판 글 리스트 원하는 만큼만 조회
+			// 	limit 시작위치, 개수
+			//		: 위치(인덱스)에서 개수만큼 데이터를 짤라서 가져오기
+			
+			sql = "select * from qna_rent_board where category = 0 && user_id=? limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setString(1, user_id);
+			pstmt.setInt(2, startRow-1); //시작위치 starRow 1
+			pstmt.setInt(3, pageSize); // 개수 pageSize 10
+			//4. sql 실행
+			rs = pstmt.executeQuery();
+			//5. 데이터처리 (rs->BoardBean -> List)
+			while(rs.next()) {
+				// rs->BoardBean
+				QRBoardDTO bb = new QRBoardDTO();
+				bb.setCategory(rs.getByte("category"));
+				bb.setQna_bno(rs.getInt("qna_bno"));
+				bb.setUser_id(rs.getString("user_id"));
+				bb.setSubject(rs.getString("subject"));
+				bb.setContent(rs.getString("content"));
+				bb.setRead_count(rs.getInt("read_count"));
+				bb.setRegdate(rs.getTimestamp("regdate"));
+				bb.setUpdatedate(rs.getTimestamp("updatedate"));
+				bb.setAnswer(rs.getByte("answer"));
+				bb.setAnswer_context(rs.getString("answer_context"));
+				
+				
 				
 				//BoardBean -> List
 				boardList.add(bb);

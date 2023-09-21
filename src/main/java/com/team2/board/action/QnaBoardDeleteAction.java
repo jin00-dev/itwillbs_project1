@@ -2,6 +2,7 @@ package com.team2.board.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.team2.board.db.QRBoardDAO;
 import com.team2.board.db.QRBoardDTO;
@@ -17,14 +18,16 @@ public class QnaBoardDeleteAction implements Action {
 		
 		// 전달정보 저장(bno,pass,pageNum)
 		QRBoardDTO dto = new QRBoardDTO();
+		HttpSession session = request.getSession();
+		String user_id = (String) request.getAttribute("id");
 		dto.setCategory((byte) 0);
 		dto.setQna_bno(Integer.parseInt(request.getParameter("qna_bno")));
 		System.out.println("qna_bno : "+dto.getQna_bno());
-		dto.setUser_id(request.getParameter("user_id"));
+		dto.setUser_id(user_id);
+		session.setAttribute("user_id", user_id);
 		
 		String pass = request.getParameter("pass");
 		System.out.println("pass : "+pass);
-		String pageNum = request.getParameter("pageNum");
 		
 		// DAO - 글 삭제 메서드() 
 		QRBoardDAO dao = new QRBoardDAO();

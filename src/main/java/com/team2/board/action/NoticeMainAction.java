@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.team2.board.db.ENFBoardDAO;
 import com.team2.board.db.ENFBoardDTO;
@@ -16,7 +17,8 @@ public class NoticeMainAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M :noticeMainAction_execute 호출");
 		// M : DB + 처리(계산)
-		
+		HttpSession session = request.getSession();
+		String user_id = (String) session.getAttribute("id");
 		// DB - BoardDAO 객체- M
 		ENFBoardDAO dao = new ENFBoardDAO();
 		
@@ -82,7 +84,7 @@ public class NoticeMainAction implements Action {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		
+		request.setAttribute("user_id", user_id);
 		// 페이지이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./board/noticeMain.jsp");

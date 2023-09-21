@@ -15,7 +15,7 @@ public class QnaBoardUpdateProAction implements Action {
 	System.out.println(" M : QnaBoardUpdateProAction_execute 호출 ");
 		
 		String pageNum = request.getParameter("pageNum");
-		
+		String user_id = (String) request.getAttribute("id");
 		// 전달정보 저장(수정할 데이터)
 		QRBoardDTO dto = new QRBoardDTO();
 		
@@ -33,6 +33,7 @@ public class QnaBoardUpdateProAction implements Action {
 		request.setAttribute("dto", dto);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("qna_bno", qna_bno);
+		request.setAttribute("user_id", user_id);
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./qnaBoardList.bo");

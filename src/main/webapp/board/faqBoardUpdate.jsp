@@ -14,7 +14,7 @@
 <body>
 	<div class="container">
 		<form
-			action="./enfBoardUpdatePro.bo?&&category=2"
+			action="./enfBoardUpdatePro.bo?&&category=2&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="faq_bno" value="${dto.faq_bno }">
 			<table id="faqUpdate">

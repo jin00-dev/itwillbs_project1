@@ -17,7 +17,7 @@
 </header>
 <!-- 상단 바 고정 -->
 	<div class="container">
-		<form action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1"
+		<form action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
 			<table id="Update">

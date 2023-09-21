@@ -13,7 +13,7 @@
 </header>
 <!-- 상단 바 고정 -->
 	<h2> 게시판 글 삭제 페이지 </h2>
-	<form action="./qnaBoardDeleteAction.bo?pageNum=${param.pageNum }"
+	<form action="./qnaBoardDeleteAction.bo?pageNum=${param.pageNum }&&user_id=${user_id}"
 		method="post">
 		<input type="hidden" name="qna_bno" value="${param.qna_bno }">
 		<input type="hidden" name="user_id" value="${param.user_id }">

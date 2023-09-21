@@ -4,6 +4,7 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -25,6 +26,8 @@ public class ENFBoardUpdateProAction implements Action {
 //		System.out.println("category : "+category);
 		String pageNum = request.getParameter("pageNum");
 		String location = request.getServletContext().getRealPath("/img");
+		HttpSession session = request.getSession();
+		String user_id = request.getParameter("user_id");
 		int maxSize = 1024 * 1024 * 10;
 		MultipartRequest multi= null; 
 		String subject=null; 			
@@ -65,6 +68,7 @@ public class ENFBoardUpdateProAction implements Action {
 			dto.setSubject(subject);
 			dto.setContent(content);
 			dto.setImg(filesystemName);
+			session.setAttribute("user_id", user_id);
 			request.setAttribute("dto", dto);
 			
 			ENFBoardDAO dao = new ENFBoardDAO();

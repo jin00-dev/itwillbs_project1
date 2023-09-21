@@ -5,6 +5,7 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -22,6 +23,8 @@ public class ENFBoardAddAction implements Action {
 		String location = null;
 		int maxSize = 1024 * 1024 * 10; // 키로바이트 * 메가바이트 * 기가바이트   
 		MultipartRequest multi =null; 
+		HttpSession session = request.getSession();
+		String user_id = request.getParameter("user_id");
 		
 		Enumeration<?> files = null;
 		String element = "";
@@ -53,6 +56,7 @@ public class ENFBoardAddAction implements Action {
 			dto.setSubject(subject);
 			dto.setContent(content);
 			dto.setImg(filesystemName);
+			session.setAttribute("user_id", user_id);
 			
 			ENFBoardDAO dao = new ENFBoardDAO();
 			dao.insertBoard(dto);
@@ -63,6 +67,7 @@ public class ENFBoardAddAction implements Action {
 		}
 		dto.setSubject(request.getParameter("subject"));
 		dto.setContent(request.getParameter("content"));
+		session.setAttribute("user_id", user_id);
 		
 		ENFBoardDAO dao = new ENFBoardDAO();
 //		System.out.println(" M : "+dto);

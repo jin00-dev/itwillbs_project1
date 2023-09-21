@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>eventAdd.jsp</h1>
-	 <form action="enfBoardAdd.bo?category=0" method="post" enctype="multipart/form-data">
+	 <form action="enfBoardAdd.bo?category=0&&user_id=${user_id}" method="post" enctype="multipart/form-data">
 	 	<fieldset>
 			<legend>파일 업로드</legend>
 				<label for="subject" > 타이틀 :</label>

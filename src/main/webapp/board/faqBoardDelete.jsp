@@ -16,7 +16,7 @@
 
 	<h3>삭제하시겠습니까?</h3>
 
-	<form action="./enfBoardDelete.bo?category=2" method="post">
+	<form action="./enfBoardDelete.bo?category=2&&user_id=${user_id}" method="post">
 		<input type="hidden" name="faq_bno" value="${param.faq_bno }">
 		
 		<input type="submit" value="예" class="btn">
