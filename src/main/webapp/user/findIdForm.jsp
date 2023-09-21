@@ -30,8 +30,8 @@
         <nav class="navi">
             <ul>
                   
-                   <li><a id="find" href="./findIdForm.me">아이디찾기</a></li> 
-                   <li><a id="find" href="./findPwForm.me">비밀번호찾기</a></li> 
+                   <li><a id="find" href="./UserFindId.me">아이디찾기</a></li> 
+                   <li><a id="find" href="./UserFindPw.me">비밀번호찾기</a></li> 
             </ul>   
         </nav>
         </div>

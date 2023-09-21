@@ -28,8 +28,8 @@
         <nav class="navi">
             <ul>
                   
-                   <li><a href="./findIdForm.jsp">아이디찾기</a></li> 
-                   <li><a href="./findPwForm.jsp">비밀번호찾기</a></li> 
+                   <li><a href="./UserFindId.me">아이디찾기</a></li> 
+                   <li><a href="./UserFindPw.me">비밀번호찾기</a></li> 
             </ul>   
         </nav>
         </div>
