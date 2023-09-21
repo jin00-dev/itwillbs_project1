@@ -17,7 +17,7 @@
 	<section id="join_box">
 		<h1>회원가입</h1>
 		<fieldset id="certification">
-			<button onclick="certification()">간편인증</button>
+			<button onclick="certification()">이메일 인증</button>
 			<button onclick="requestPay()">휴대폰인증</button>
 		</fieldset>
 
@@ -27,7 +27,7 @@
 				<p id='hiddenMsgName'></p>
 				<label>전화번호 </label><br> <input type="text" name="user_phone"placeholder="-없이 휴대폰 번호 입력"> <br> 
 				<p id='hiddenMsgPhone'></p>
-				<label>아이디 </label><br><input type="text" name="user_id" placeholder="아이디 입력"> 
+				<label>아이디 </label><br><input type="text" name="user_id" id="user_id" placeholder="아이디 입력"> 
 				<input type="button" id="double_check" value="중복확인"onclick="checkUserId()"><br>
 				<p id='chId'></p>
 				<input type="hidden" id="isCheckId" value="false">
@@ -45,6 +45,8 @@
 
 	<hr>
 </section>
+
+<input type="hidden" id="random">
 
 <!--center end-------------------------------------------------------------  -->
 <!-- footer아래로는 코드 금지 -->
@@ -74,31 +76,54 @@
 			document.body.style.paddingTop = '0'
 		}
 	}
+	//이메일 인증
+	function certification(){
+        const userEmail = $("#user_id").val();
+        $.ajax({
+            type: 'post',
+            url: './UserEmailJoinAction.me', 
+            data: {'user_id': userEmail},
+            dataType: "text",
+            success: function (result) {
+            	if(result == ""){
+            		alert("정보를 다시 입력해주세요");
+            	}else{
+            		  alert("인증번호가 전송되었습니다");
+            		  alert(result);
+          			$("#random").val(result);
+            	}
+           
+            },error: function () {
+            	alert("정보를 다시 입력해주세요.");
+            }
+        });
+	}
+	 
 
 	//통합인증 - 미완성
-	function certification() {
-		var IMP = window.IMP; // 생략 가능
-		IMP.init("imp29272276");
-		// IMP.certification(param, callback) 호출
-		IMP.certification({ // param
-			pg : 'inicis_unified.MIIiasTest',//본인인증 설정이 2개이상 되어 있는 경우 필수 
-			// 			    merchant_uid: "ORD20180131-0000011", // 주문 번호
-			// 			    min_age: 15, //본인인증 최소 나이
-		    m_redirect_url : "./UserJoinAction.me", // 모바일환경에서 popup:false(기본값) 인 경우 필수, 예: https://www.myservice.com/payments/complete/mobile
-			popup : false
-		// PC환경에서는 popup 파라미터가 무시되고 항상 true 로 적용됨
-		}, function(rsp) { // callback
-			if (rsp.success) { // 인증 성공 시 jQuery로 HTTP 요청
-				$("input[name='isCertification']").val(rsp.success);
-				$("input[name='imp_uid']").val(rsp.imp_uid);
-				alert("인증에 성공하였습니다.");
-			} else {
-				$("input[name='isCertification']").val(rsp.success);
-				alert("인증에 실패하였습니다. 에러 내용: " + rsp.error_msg);
-			}
-		});
+// 	function certification() {
+// 		var IMP = window.IMP; // 생략 가능
+// 		IMP.init("imp29272276");
+// 		// IMP.certification(param, callback) 호출
+// 		IMP.certification({ // param
+// 			pg : 'inicis_unified.MIIiasTest',//본인인증 설정이 2개이상 되어 있는 경우 필수 
+// 			// 			    merchant_uid: "ORD20180131-0000011", // 주문 번호
+// 			// 			    min_age: 15, //본인인증 최소 나이
+// 		    m_redirect_url : "./UserJoinAction.me", // 모바일환경에서 popup:false(기본값) 인 경우 필수, 예: https://www.myservice.com/payments/complete/mobile
+// 			popup : false
+// 		// PC환경에서는 popup 파라미터가 무시되고 항상 true 로 적용됨
+// 		}, function(rsp) { // callback
+// 			if (rsp.success) { // 인증 성공 시 jQuery로 HTTP 요청
+// 				$("input[name='isCertification']").val(rsp.success);
+// 				$("input[name='imp_uid']").val(rsp.imp_uid);
+// 				alert("인증에 성공하였습니다.");
+// 			} else {
+// 				$("input[name='isCertification']").val(rsp.success);
+// 				alert("인증에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+// 			}
+// 		});
 
-	}
+// 	}
 
 	//아이디 중복체크 
 	function checkUserId() {

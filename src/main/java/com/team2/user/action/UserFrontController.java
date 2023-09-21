@@ -18,9 +18,9 @@ public class UserFrontController extends HttpServlet {
 		
 		////주소 계산//////////////////////////
 		String uri = request.getRequestURI();
-		System.out.println(uri);
 		String ss = request.getContextPath();
 		String command = uri.substring(ss.length());
+		System.out.println(command);
 		
 		Action action = null;
 		ActionForward forward = null;
@@ -201,6 +201,19 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		//인증 이메일 보내기
+		else if(command.equals("/UserEmailJoinAction.me")) {
+			action = new UserEmailJoinAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
 		
 		
 		////3.주소로 이동//////////////////////////////////

@@ -10,6 +10,7 @@ import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
+import com.team2.util.SendEmail;
 
 
 public class UserJoinAction implements Action {
@@ -19,8 +20,8 @@ public class UserJoinAction implements Action {
 //		req.setCharacterEncoding("UTF-8");
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
-		String isCertification = req.getParameter("isCertification");
-		String imp_uid = req.getParameter("imp_uid");
+//		String isCertification = req.getParameter("isCertification");
+//		String imp_uid = req.getParameter("imp_uid");
 		
 		
 		dto.setUser_id(req.getParameter("user_id"));
@@ -28,23 +29,23 @@ public class UserJoinAction implements Action {
 		dto.setUser_name(req.getParameter("user_name"));
 		dto.setUser_phone(req.getParameter("user_phone"));
 		
-		int result = dao.join(dto, isCertification);
+//		int result = dao.join(dto, isCertification);
 
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		
 		
-		if(result == -1 || result == 0  ) {
-			out.println("<script>");
-			out.println("alert('오류');");
-			out.println("history.back();");
-			out.println("</script>");
-		}else {
-			out.println("<script>");
-			out.println("alert('회원가입 성공');");
-			out.println("location.href='./UserLogin.me';");
-			out.println("</script>");
-		}
+//		if(result == -1 || result == 0  ) {
+//			out.println("<script>");
+//			out.println("alert('오류');");
+//			out.println("history.back();");
+//			out.println("</script>");
+//		}else {
+//			out.println("<script>");
+//			out.println("alert('회원가입 성공');");
+//			out.println("location.href='./UserLogin.me';");
+//			out.println("</script>");
+//		}
 
 		return null;
 	}
