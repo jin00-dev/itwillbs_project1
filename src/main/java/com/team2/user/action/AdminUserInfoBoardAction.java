@@ -71,7 +71,7 @@ public class AdminUserInfoBoardAction implements Action {
 		int pageCount = bCount / pageSize + (bCount % pageSize != 0 ? 1 : 0);
 
 		// 한 화면에서 보여줄 페이지번호 개수(block) 1....10
-		int pageBlock = 10;
+		int pageBlock = 4;
 
 		// 페이지 블럭의 시작번호 1~10 => 1 11~20 => 11 21~30 => 21
 		int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;

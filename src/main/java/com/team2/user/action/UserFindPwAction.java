@@ -26,15 +26,15 @@ public class UserFindPwAction implements Action{
 			dto.setUser_phone(request.getParameter("user_phone"));
 			String phone = request.getParameter("user_phone");
 			
-			UserDTO result = dao.findPw(phone);
+//			UserDTO result = dao.findPw(phone);
 			response.setContentType("text/html; charset=UTF-8");
 			
-			try {
-				response.getWriter().print(result.getUser_pass());
-				System.out.println(result.getUser_pass());
-			}catch (IOException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				response.getWriter().print(result.getUser_pass());
+//				System.out.println(result.getUser_pass());
+//			}catch (IOException e) {
+//				e.printStackTrace();
+//			}
 			return null;
 			
 			
