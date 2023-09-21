@@ -239,28 +239,6 @@ public class UserDAO {
 		}
 	}
 
-	// 비밀번호 찾기 findPw()
-	public UserDTO findPw(String phone) {
-		UserDTO dto = new UserDTO();
-		sql = "select user_pass from user where user_phone";
-		conn = con.getConnection();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, phone);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				dto.setUser_pass(rs.getString(1));
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			con.closeDB(conn, rs, pstmt);
-		}
-		return dto;
-	}
-
 	// 관리자 유저정보페이지 리스트 가져오기
 	public List<UserDTO> getAllUserInfo(int startRow, int pageSize) {
 		sql = "select * from user limit ?,?";
@@ -368,5 +346,28 @@ public class UserDAO {
 				con.closeDB(conn, rs, pstmt);
 			}
 		}//
+		
+		// 비밀번호 찾기 findPw()
+		public String findPw(String id) {
+		String pw = "";
+			sql = "select user_pass from user where user_id=?";
+			conn = con.getConnection();
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					pw =rs.getString(1);
+				}
+			
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				con.closeDB(conn, rs, pstmt);
+				}
+			return pw;
+		}
+
 
 }
