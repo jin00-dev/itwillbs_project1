@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="./css/event.css" rel="stylesheet">
 <title>이벤트</title>
+<link href="../css/event.css" rel="stylesheet">
 </head>
 
 <body>

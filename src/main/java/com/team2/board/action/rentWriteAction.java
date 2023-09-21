@@ -34,7 +34,7 @@ public class rentWriteAction implements Action {
 		// 페이지 이동
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./board/rentMain.jsp");
+		forward.setPath("./rentMain.bo");
 		forward.setRedirect(true);
 		
 		return forward;

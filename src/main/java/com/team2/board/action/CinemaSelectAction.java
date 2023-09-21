@@ -30,8 +30,6 @@ public class CinemaSelectAction implements Action {
 		  PrintWriter out = response.getWriter();
 		  out.print(cinemaList);
 		  
-		  
-		
 		return null;
 	}
 }

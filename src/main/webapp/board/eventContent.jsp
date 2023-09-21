@@ -49,10 +49,6 @@
 					<td>내 용</td>
 					<td colspan="3">${dto.content }</td>
 				</tr>
-				<tr>
-					<td>조회수</td>
-					<td>${dto.read_count }</td>
-				</tr>
 			</table>
 			<%-- 	<c:if test="${user_type == 1 }"> --%>
 			<div id="table_search">
