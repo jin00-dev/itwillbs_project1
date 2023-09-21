@@ -352,8 +352,8 @@ public class BoardFrontController extends HttpServlet{
 				action = new ENFBoardContentAction();
 
 			}
-			else if(command.equals("/board/eventMain.bo")) {
-				System.out.println(" C : /board/eventMain.bo 호출");
+			else if(command.equals("/eventMain.bo")) {
+				System.out.println(" C : /eventMain.bo 호출");
 				System.out.println(" C : 패턴1 - DB사용X, 페이지이동");
 
 				action = new EventMainAction();
