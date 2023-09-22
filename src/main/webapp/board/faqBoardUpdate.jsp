@@ -12,9 +12,13 @@
 </head>
 
 <body>
+	<!-- 상단 바 고정 -->
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
+	<!-- 상단 바 고정 -->
 	<div class="container">
-		<form
-			action="./enfBoardUpdatePro.bo?&&category=2&&user_id=${user_id}"
+		<form action="./enfBoardUpdatePro.bo?&&category=2&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="faq_bno" value="${dto.faq_bno }">
 			<table id="faqUpdate">

@@ -59,18 +59,19 @@
 			
 
 		</script>
-		<div>
-			<input type="button" onclick="qnaBoard();" value="1:1 문의" /> 
-			<input type="button" onclick="qnaBoardList();" value="1:1 문의내역" />
-		</div>
-		<h1>자주 묻는 질문</h1>
 		<div class="faq-container">
+			<div class="qnaButton">
+				<input type="button" onclick="qnaBoard();" value="1:1 문의"
+					class="btn" /> <input type="button" onclick="qnaBoardList();"
+					value="1:1 문의내역" class="btn" />
+			</div>
+			<h1>자주 묻는 질문</h1>
 			<c:forEach var="dto" items="${boardList }">
 				<div class="faq">
 					<c:if test="${user_id eq 'admin'}">
-						<input type="button" name="btn" id="updateFaq" value="faq수정"
+						<input type="button" class="btn" id="updateFaq" value="faq수정"
 							onclick="faqBoardUpdate(${dto.faq_bno});">
-						<input type="button" name="btn" id="deleteFaq" value="faq삭제"
+						<input type="button" class="btn" id="deleteFaq" value="faq삭제"
 							onclick="faqBoardDelete(${dto.faq_bno});">
 					</c:if>
 					<h3 class="faq-title">${dto.subject }</h3>
@@ -82,11 +83,11 @@
 					</button>
 				</div>
 			</c:forEach>
-			
+
 		</div>
 		<c:if test="${user_id eq 'admin'}">
 			<div>
-				<input type="button" name="btn" id="insertFaq" value="faq추가"
+				<input type="button" class="btn" value="faq추가"
 					onclick="faqBoardAdd();">
 			</div>
 		</c:if>
