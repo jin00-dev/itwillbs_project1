@@ -6,8 +6,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="./css/event.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>이벤트</title>
 </head>
 
@@ -40,7 +40,7 @@
 		<c:if test="${user_id eq 'admin'}">
 			<input type="button" value="이벤트추가" onclick="eventAdd();">
 		</c:if>
-	<h2>진행중인 이벤트</h2>
+	<h2 class="eventH2">진행중인 이벤트</h2>
 	<section id="eventing" class="eventContainer">
 		<div id="image_container1">
 			<figure class=image_figure>
@@ -49,15 +49,16 @@
 						<div class="image_panel">
 							<a href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
 								<img src="./img/${dto.img }">
+								<p>${dto.subject }</p>
 							</a>
-							<p>${dto.subject }</p>
 						</div>
 					</c:if>
+				
 				</c:forEach>
 			</figure>
 		</div>
 	</section>
-	<h2>지난 이벤트</h2>
+	<h2 class="eventH2">지난 이벤트</h2>
 	<section id="evented" class="eventContainer">
 		<div id="image_container2">
 			<figure class=image_figure>
@@ -66,8 +67,8 @@
 						<div class="image_panel">
 							<a href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
 								<img src="./img/${dto.img }">
-							</a>
 							<p>${dto.subject }</p>
+							</a>
 						</div>
 					</c:if>
 				</c:forEach>

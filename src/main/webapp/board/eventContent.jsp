@@ -19,16 +19,18 @@
 	<!-- 상단 바 고정 -->
 	<!-- 여기 공지사항 꾸며아함. -->
 
-	<section id="eventContent">
-		<div id="left">
-			<figure id="leftImage" class=image_figure>
+	<div id="eventContainer">
+		<div class="container" id="contentImg">
+			<div id="left">
+				<!-- 			<figure id="leftImage" class=image_figure> -->
 				<img src="./img/${dto.img }">
-			</figure>
+				<!-- 			</figure> -->
+			</div>
 		</div>
 		<div id="right">
 			<div class="container">
 				<h1>이벤트 글내용</h1>
-				<table id="eventContent">
+				<table id="eventContent" id="imgContent">
 					<tr>
 						<th class="ttitle" colspan="4"></th>
 					</tr>
@@ -61,7 +63,7 @@
 
 			</div>
 		</div>
-	</section>
+	</div>
 	<script type="text/javascript">
 		if(${dto.event_type==1}){ alert("종료된 이벤트입니다.")}
 		
@@ -77,45 +79,7 @@
 		function boardList() {
 			location.href="./eventMain.bo";
 		}
-// 		window.onload = function () {
-// 		    startLoadFile();
-// 		};
 
-// 		function startLoadFile(){
-// 		    $.ajax({
-// 		        url: './eventImg.json',
-// 		        type: 'get',
-// 		        dataType : 'json',
-// 		        success : function (data) {
-// 		        	console.log(data);
-// 		            createImages(data);
-// 		        }
-		    	
-// 		    });
-// 		}
-// 		function createImages(objImageInfo) {
-// 		    var images = objImageInfo.image;
-// 		    console.log(images);
-// // 		    var bno = "<c:out value='${dto.event_bno}'/>";
-// 		    var bno = '${dto.event_bno}';
-		  
-// 		    console.log(bno);
-// 		    var strDOM = "";
-// 		    for (var i = 0; i < images.length; i++) {
-// 		        // N번째 이미지 정보를 구하기
-// 		        var image = images[i];
-// 		        if(image.event_bno == bno){
-// 			        //  N번째 이미지 패널을 생성
-// 			        strDOM += "<div class='image_panel'>";
-// 			        strDOM += "    <img src='" + image.url + "'>";
-// 			        strDOM += "    <p class='title'>" + image.title + "</p>";
-// 			        strDOM += "</div>";
-// 		        }
-// 		    }
-// 		    // 이미지 컨테이너에 생성한 이미지 패널들을 추가하기
-// 		    var $imageContainer1 = $("#leftImage");
-// 		        $imageContainer1.append(strDOM);
-// 		}
 	</script>
 
 	<!-- footer아래로는 코드 금지 -->
