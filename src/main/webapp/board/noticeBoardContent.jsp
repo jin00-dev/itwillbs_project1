@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -7,43 +8,56 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 
 <body>
-<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
-<!-- 상단 바 고정 -->
-<!-- 여기 공지사항 꾸며아함. -->
+	<!-- 상단 바 고정 -->
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
+	<!-- 상단 바 고정 -->
+	<!-- 여기 공지사항 꾸며아함. -->
 	<div class="container">
 		<h1>공지사항 글내용</h1>
-		<table id="noticeContent">
-		<tr>
-			<th class="ttitle" colspan="4"></th>
-		</tr>
-		<tr>
-			<td>글번호</td>
-			<td>${dto.notice_bno }</td>
+		<table class="boardContent">
+			<tr>
+				<th class="ttitle" colspan="4"></th>
+			</tr>
+			<tr>
+				<td class="column">글번호</td>
+				<td class="cntBno">${dto.notice_bno }</td>
 
-			<td>작성일</td>
-			<td>
-				<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-			</td>
+				<td class="column">작성일</td>
+				<td class="cntDate"><fmt:formatDate value="${dto.updatedate }"
+						pattern="YY-MM-dd" /></td>
 
-		</tr>
-		<tr>
-			<td>제 목</td>
-			<td colspan="3">${dto.subject }</td>
-		</tr>
-		<tr>
-			<td>내 용</td>
-			<td colspan="3">${dto.content }</td>
-		</tr>
-		
-	</table>
-	<script type="text/javascript">
+			</tr>
+			<tr>
+				<td class="column">제 목</td>
+				<td class="cntSubject" colspan="3">${dto.subject }</td>
+			</tr>
+			<tr>
+				<td class="column">내 용</td>
+				<td class="cntContent" colspan="3">${dto.content }</td>
+			</tr>
+
+		</table>
+		<div>
+			<c:if test="${user_id eq 'admin' }">
+				<div class="rigthButton">
+					<input type="button" value="수정하기" class="btn"
+						onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&category=1&&user_id=${user_id}&&pageNum=${param.pageNum }';">
+					<input type="button" value="삭제하기" class="btn"
+						onclick="noticeDelete();">
+				</div>
+			</c:if>
+			<div class="rightButton">
+				<input type="button" value="목록이동" class="btn" onclick="boardList();">
+			</div>
+		</div>
+		<script type="text/javascript">
 		function noticeDelete() {
 			var popupX = (document.body.offsetWidth / 2) - (400 / 2);
 			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
@@ -57,25 +71,16 @@
 			location.href="noticeMain.bo?pageNum=${param.pageNum}&&user_id=${user_id}";
 		}
 	</script>
-	<c:if test="${user_id eq 'admin' }">
-		<div id="table_search">
-		<input type="button" value="수정하기"
-			onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&category=1&&user_id=${user_id}&&pageNum=${param.pageNum }';">
-		<input type="button" value="삭제하기"
-			onclick="noticeDelete();">
-		</div>
-	</c:if>
-		<input type="button" value="목록이동"
-			onclick="boardList();">
+
 	</div>
-	
+
 	<!-- footer아래로는 코드 금지 -->
-	
-<!-- 하단바 고정  -->
-<footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
-<!-- 하단바 고정  -->
+
+	<!-- 하단바 고정  -->
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
+	<!-- 하단바 고정  -->
 
 
 	<script>

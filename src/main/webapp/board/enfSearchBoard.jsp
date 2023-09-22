@@ -52,7 +52,7 @@
 				<a href="./enfBoardSearch.bo?pageNum=${startPage+pageBlock }&&searchField=${searchField}&&user_id=${user_id}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
 			</c:if>
 		</div>
-		<div class="before">
+		<div class="rightButton">
 			<input type="button" value="목록이동" onclick="location.href='noticeMain.bo?user_id=${user_id}';">
 		</div>
 	</div>
