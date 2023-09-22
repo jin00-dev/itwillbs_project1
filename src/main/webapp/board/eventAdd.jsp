@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- 상단 바 고정 -->
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
+<!-- 상단 바 고정 -->
 	<h1>eventAdd.jsp</h1>
 	 <form action="enfBoardAdd.bo?category=0&&user_id=${user_id}" method="post" enctype="multipart/form-data">
 	 	<fieldset>

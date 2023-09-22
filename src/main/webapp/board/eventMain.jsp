@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -12,13 +13,13 @@
 </head>
 
 <body>
-<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
-<!-- 상단 바 고정 -->
-<!-- 여기 이벤트 페이지 꾸며아함. -->
-	
+	<!-- 상단 바 고정 -->
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
+	<!-- 상단 바 고정 -->
+	<!-- 여기 이벤트 페이지 꾸며아함. -->
+
 	<script type="text/javascript">
 
 	var popupX = (document.body.offsetWidth / 2) - (400 / 2) + 90;
@@ -37,23 +38,27 @@
 	</script>
 
 	<h1>이벤트 메인페이지</h1>
-		<c:if test="${user_id eq 'admin'}">
-			<input type="button" value="이벤트추가" onclick="eventAdd();">
-		</c:if>
 	<h2 class="eventH2">진행중인 이벤트</h2>
 	<section id="eventing" class="eventContainer">
 		<div id="image_container1">
+			<c:if test="${user_id eq 'admin'}">
+				<div class="rightButton">
+					<input type="button" value="이벤트추가" onclick="eventAdd();">
+				</div>
+			</c:if>
+			<div></div>
 			<figure class=image_figure>
 				<c:forEach var="dto" items="${boardList }">
 					<c:if test="${dto.event_type == 0 }">
 						<div class="image_panel">
-							<a href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
+							<a
+								href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
 								<img src="./img/${dto.img }">
 								<p>${dto.subject }</p>
 							</a>
 						</div>
 					</c:if>
-				
+
 				</c:forEach>
 			</figure>
 		</div>
@@ -65,9 +70,10 @@
 				<c:forEach var="dto" items="${boardList }">
 					<c:if test="${dto.event_type == 1 }">
 						<div class="image_panel">
-							<a href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
+							<a
+								href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
 								<img src="./img/${dto.img }">
-							<p>${dto.subject }</p>
+								<p>${dto.subject }</p>
 							</a>
 						</div>
 					</c:if>
@@ -77,11 +83,11 @@
 	</section>
 
 	<!-- footer아래로는 코드 금지 -->
-<!-- 하단바 고정  -->
-<footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
-<!-- 하단바 고정  -->
+	<!-- 하단바 고정  -->
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
+	<!-- 하단바 고정  -->
 
 
 	<script>

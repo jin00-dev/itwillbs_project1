@@ -30,7 +30,7 @@
 		<div id="right">
 			<div class="container">
 				<h1>이벤트 글내용</h1>
-				<table id="eventContent" id="imgContent">
+				<table class="boardContent" id="imgContent">
 					<tr>
 						<th class="ttitle" colspan="4"></th>
 					</tr>
@@ -53,13 +53,13 @@
 					</tr>
 				</table>
 				<c:if test="${user_id eq 'admin'}">
-					<div id="table_search">
-						<input type="button" value="수정하기"
+					<div>
+						<input type="button" value="수정하기" class="btn"
 							onclick="location.href='eventBoardUpdate.bo?event_bno=${dto.event_bno}&&event_type=${dto.event_type }&&category=0&&user_id=${user_id}';">
-						<input type="button" value="삭제하기" onclick="eventDelete();">
+						<input type="button" value="삭제하기" class="btn" onclick="eventDelete();">
+						<input type="button" value="목록이동" class="btn" onclick="boardList();">
 					</div>
 				</c:if>
-				<input type="button" value="목록이동" onclick="boardList();">
 
 			</div>
 		</div>
