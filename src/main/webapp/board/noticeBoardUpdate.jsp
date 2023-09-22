@@ -23,7 +23,7 @@
 			action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
-			<table id="Update">
+			<table class="boardContent">
 				<tr>
 					<th class="ttitle" colspan="3">공지사항 수정</th>
 				</tr>
@@ -39,12 +39,10 @@
 				</tr>
 			</table>
 
-			<div id="table_search">
+			<div>
 				<input type="submit" value="수정하기" class="btn"> <input type="button"
 					value="목록이동" class="btn" onclick="history.back();">
 			</div>
-			<div class="clear"></div>
-			<div id="page_control"></div>
 		</form>
 	</div>
 

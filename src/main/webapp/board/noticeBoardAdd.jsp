@@ -16,8 +16,8 @@
 	<h1>noticeBoardAdd.jsp</h1>
 	<fieldset>
 		<form action="enfBoardAdd.bo?category=1&&user_id=${user_id}"
-			method="post" name="fr" id="noticeAddForm">
-			<table id="noticeAdd">
+			method="post">
+			<table class="boardContent">
 				<tr>
 					<td>제목 :</td>
 					<td colspan="2"><textarea rows="" cols="" id="sInput"
@@ -31,9 +31,9 @@
 
 			</table>
 
-			<div id="noticeAddSubmit">
-				<input type="submit" value="완료"> <input type="button"
-					value="취소" onclick="window.close();">
+			<div>
+				<input type="submit" value="완료" class="btn"> <input type="button"
+					value="취소" class="btn" onclick="window.close();">
 			</div>
 		</form>
 	</fieldset>

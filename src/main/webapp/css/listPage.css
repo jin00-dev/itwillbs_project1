@@ -82,9 +82,9 @@ input[type=submit]{
 }
 
 .boardContent{
-	display: flex;
-	justify-content: center;
-/* 	margin: 0 auto; */
+/* 	display: flex; */
+/* 	justify-content: center; */
+	margin: 0 auto;
 	font-size: 20px;
 /* 	border: 1px solid white; */
 }

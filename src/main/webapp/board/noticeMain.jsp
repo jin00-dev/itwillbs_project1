@@ -62,7 +62,6 @@
 				}
 			
 		</script>
-		<div class="clear"></div>
 		<div id="page_control">
 			<c:if test="${startPage > pageBlock }">
 				<a

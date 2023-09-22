@@ -19,7 +19,7 @@
 
 	<div class="container">
 		<h1>검색 리스트페이지</h1>
-		<table id="noticeBoardList">
+		<table class="BoardList">
 			<tr class="thList">
 				<th class="bno">No.</th>
 				<th class="subject">Title</th>
@@ -30,7 +30,7 @@
 				<tr>
 					<td>${dto.notice_bno }</td>
 					<td><a
-						href="enfBoardContent.bo?notice_bno=${dto.notice_bno }&&category=1&&pageNum=${pageNum}&&${user_id}">${dto.subject }</a>
+						href="enfBoardContent.bo?notice_bno=${dto.notice_bno }&&category=1&&pageNum=${pageNum}&&user_id=${user_id}">${dto.subject }</a>
 					</td>
 					<td>
 						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
