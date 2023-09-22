@@ -52,6 +52,7 @@
 			</tr>
 
 		</table>
+		<c:if test="${dto.user_id eq user_id }">
 			<div class="rightButton">
 				<c:if test="${dto.answer == 0 }">
 					<!-- 답변 못받을 경우만 수정가능하게  -->
@@ -60,6 +61,7 @@
 				</c:if>
 				<input type="button" value="삭제하기" class="btn" onclick="deleteQna();">
 			</div>
+		</c:if>
 	
 		<c:if test="${user_id eq 'admin' }">
 	
