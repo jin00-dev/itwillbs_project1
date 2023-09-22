@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+
+
+.container h1{
+	text-align: center;
+}
+.thList{
+	border-bottom: 1px solid white;
+	font-size: 35px;
+}
+
+.bno{
+	width: 70px;
+}
+
+.subject{
+	width: 400px;
+}
+
+.date{
+	width: 100px;
+}
+.readCount{
+	width: 100px;
+}
+.BoardList{
+/* 	width: 60%; */
+	margin: 0 auto;
+	border-bottom: 1px solid white;
+	font-size: 20px;
+}
+
+#page_control{
+	
+	text-align: center;
+}
+
+#table_search{
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+}
+
+.before{
+	margin: 0 auto;
+	display: flex;
+	justify-content: flex-end;
+}

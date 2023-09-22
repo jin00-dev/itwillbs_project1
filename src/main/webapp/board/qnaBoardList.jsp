@@ -8,6 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 <body>
@@ -17,9 +18,9 @@
 	</header>
 	<!-- 여기 대관문의 꾸며아함. -->
 	<div class="container">
-		<h1>qnaBoardList</h1>
-		<table id="qnaBoardList">
-			<tr>
+		<h1> 1:1 문의 내역</h1>
+		<table class="BoardList">
+			<tr class="thList">
 				<th class="bno">No.</th>
 				<th class="subject">Title</th>
 				<th class="date">Date</th>
@@ -93,9 +94,10 @@
 					</tr>
 				</table>
 
-				<input type="button" value="이전 게시판"
-					onclick="location.href='./faqMain.bo';">
 			</form>
+		</div>
+		<div class="before">
+			<input type="button" value="이전 게시판" onclick="location.href='./faqMain.bo?user_id=${user_id}';">
 		</div>
 	</div>
 

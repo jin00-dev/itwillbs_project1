@@ -16,7 +16,7 @@
 	<div class="container">
 		<h1>검색 리스트페이지</h1>
 		<table id="qrBoardList">
-			<tr>
+			<tr class="thList">
 				<th class="bno">No.</th>
 				<th class="subject">Title</th>
 				<th class="date">Date</th>
@@ -51,17 +51,16 @@
 		<div id="page_control">
 			<c:if test="${startPage > pageBlock }">
 				<a
-					href="./qrBoardSearch.bo?pageNum=${startPage-pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Prev</a>
+					href="./qrBoardSearch.bo?pageNum=${startPage-pageBlock }&&user_id=${user_id}&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Prev</a>
 			</c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
 				<a
-					href="./qrBoardSearch.bo?pageNum=${i }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">${i }</a>
+					href="./qrBoardSearch.bo?pageNum=${i }&&user_id=${user_id}&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">${i }</a>
 			</c:forEach>
 			<c:if test="${endPage < pageCount }">
 				<a
-					href="./qrBoardSearch.bo?pageNum=${startPage+pageBlock }&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
+					href="./qrBoardSearch.bo?pageNum=${startPage+pageBlock }&&user_id=${user_id}&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
 			</c:if>
-			<!-- 			<input type="button" value="목록이동" onclick="history.back();"> -->
 		</div>
 		<div>
 			<input type="button" value="검색전 게시판" onclick="boforeBoardList(${boardList[0].category});">
@@ -73,9 +72,9 @@
 		function boforeBoardList(category) {
 // 			alert("category : "+category);
 			if(category == 0){
-				location.href = "qnaBoardList.bo";
+				location.href = "qnaBoardList.bo?user_id=${user_id}";
 			}else{
-				location.href = "rentMain.bo";
+				location.href = "rentMain.bo?user_id=${user_id}";
 			}
 		}
 	</script>

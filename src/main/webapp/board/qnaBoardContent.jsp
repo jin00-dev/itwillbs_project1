@@ -60,10 +60,10 @@
 		}
 		
 		function boardList() {
-			location.href="qnaBoardList.bo?pageNum=${param.pageNum}";
+			location.href="qnaBoardList.bo?pageNum=${param.pageNum}&&user_id=${user_id}";
 		}
 	</script>
-<%-- 	<c:if test="${user_id == dto.user_id }"> --%>
+	<c:if test="${user_id == dto.user_id }">
 	<div id="table_search">
 		<c:if test="${dto.answer == 0 }"> 
 		<!-- 답변 못받을 경우만 수정가능하게  -->
@@ -75,12 +75,12 @@
 		<input type="button" value="목록이동"
 			onclick="boardList();">
 	</div>
-<%-- 	</c:if> --%>
-<%-- 		<c:if test="${user_type = 1 }"> --%>
+	</c:if>
+		<c:if test="${user_id eq 'admin' }">
 			<!-- 관리자만 가능하게  -->
 			<input type="button" value="답변쓰기"
-			onclick="location.href='qnaBoardAnswer.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }';">
-<%-- 		</c:if> --%>
+			onclick="location.href='qnaBoardAnswer.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }&&user_id=${user_id}';">
+		</c:if>
 	
 	<!-- footer아래로는 코드 금지 -->
 	

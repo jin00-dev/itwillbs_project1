@@ -3,6 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>Insert title here</title>
 	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script type="text/javascript">
@@ -21,7 +22,7 @@
 	<h1>faqBoard.jsp</h1>
 	
 	<fieldset>
-		<form action="qnaBoardAction.bo" method="post" name = "fr" id="qnaForm">
+		<form action="qnaBoardAction.bo?user_id=${user_id}" method="post" name = "fr" id="qnaForm">
 		<input type="hidden" name="user_id" value="${param.user_id }">
 		<table id="qna">
 					<tr>
