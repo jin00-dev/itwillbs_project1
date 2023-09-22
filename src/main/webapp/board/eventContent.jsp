@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="./css/event.css" rel="stylesheet">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
 	<!-- 상단 바 고정 -->
 	<!-- 여기 공지사항 꾸며아함. -->
 
-	<div id="eventContainer">
+	<div class="eventContainer">
 		<div class="container" id="contentImg">
 			<div id="left">
 				<!-- 			<figure id="leftImage" class=image_figure> -->
@@ -57,9 +58,11 @@
 						<input type="button" value="수정하기" class="btn"
 							onclick="location.href='eventBoardUpdate.bo?event_bno=${dto.event_bno}&&event_type=${dto.event_type }&&category=0&&user_id=${user_id}';">
 						<input type="button" value="삭제하기" class="btn" onclick="eventDelete();">
-						<input type="button" value="목록이동" class="btn" onclick="boardList();">
 					</div>
 				</c:if>
+					<div>					
+						<input type="button" value="목록이동" class="btn" onclick="boardList();">
+					</div>
 
 			</div>
 		</div>
@@ -77,7 +80,7 @@
 					"_black","width=400, height=200, left="+popupX+", top="+popupY);
 		}
 		function boardList() {
-			location.href="./eventMain.bo";
+			location.href="./eventMain.bo?user_id=${user_id}";
 		}
 
 	</script>

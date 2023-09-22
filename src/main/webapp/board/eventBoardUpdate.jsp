@@ -39,7 +39,7 @@
 					<th class="ttitle" colspan="3">이벤트 수정</th>
 				</tr>
 				<tr>
-					<td>이벤트 타입:</td>
+					<td>이벤트 타입 :</td>
 					<td><select name="event_type">
 							<option value=-1>선택</option>
 							<option value=0>진행중</option>
@@ -71,11 +71,10 @@
 			</table>
 
 			<div id="table_search">
-				<input type="submit" value="수정하기"> <input type="button"
-					value="목록이동" onclick="history.back();">
+				<input type="submit" value="수정하기" class="btn"> <input type="button"
+					value="목록이동" onclick="history.back();" class="btn">
 			</div>
-			<div class="clear"></div>
-			<div id="page_control"></div>
+			
 		</form>
 	</div>
 

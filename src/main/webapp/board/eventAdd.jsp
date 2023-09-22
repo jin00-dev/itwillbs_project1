@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="./css/event.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -22,7 +23,7 @@
 				<input type="text" name="content" id="content" required><br>
 				<label for="file"> 파일 :</label>
 				<input type="file" name="file" id="file" required><br>
-			<input type="submit" value="upload">	 	
+			<input type="submit" class="btn" value="upload">	 	
 	 	</fieldset>
 	 </form>
 </body>
