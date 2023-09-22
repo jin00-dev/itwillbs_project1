@@ -7,6 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 
@@ -19,8 +20,8 @@
 	<!-- 여기 공지사항 꾸며아함. -->
 	<div class="container">
 		<h1>공지사항</h1>
-		<table id="noticeBoardList">
-			<tr>
+		<table class="BoardList">
+			<tr class="thList">
 				<th class="bno">No.</th>
 				<th class="subject">Title</th>
 				<th class="date">Date</th>

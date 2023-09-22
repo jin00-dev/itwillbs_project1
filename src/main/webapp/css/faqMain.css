@@ -101,14 +101,3 @@
 }
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
-#qnaBoardList{
-  background-color: dimgray;
-  border: 1px solid #9fa4a8;
-}
-#qnaBoardList th{
-  padding : 30px;
-}
-
-#qnaBoardList .subject{
-  width : 300px;
-}

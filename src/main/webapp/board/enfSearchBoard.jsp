@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<link href="./css/listPage.css" rel="stylesheet">
 </head>
 <body>
 	<!-- 상단 바 고정 -->
@@ -20,7 +20,7 @@
 	<div class="container">
 		<h1>검색 리스트페이지</h1>
 		<table id="noticeBoardList">
-			<tr>
+			<tr class="thList">
 				<th class="bno">No.</th>
 				<th class="subject">Title</th>
 				<th class="date">Date</th>
@@ -51,6 +51,8 @@
 			<c:if test="${endPage < pageCount }">
 				<a href="./enfBoardSearch.bo?pageNum=${startPage+pageBlock }&&searchField=${searchField}&&user_id=${user_id}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
 			</c:if>
+		</div>
+		<div class="before">
 			<input type="button" value="목록이동" onclick="location.href='noticeMain.bo?user_id=${user_id}';">
 		</div>
 	</div>
