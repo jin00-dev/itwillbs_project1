@@ -43,7 +43,7 @@
 		<div id="image_container1">
 			<c:if test="${user_id eq 'admin'}">
 				<div class="rightButton">
-					<input type="button" value="이벤트추가" onclick="eventAdd();">
+					<input type="button" class="btn" value="이벤트추가" onclick="eventAdd();">
 				</div>
 			</c:if>
 			<div></div>

@@ -3,7 +3,7 @@
 .rightButton{
 	width: 1000px;
 /* 	padding: 0 100px 0 0; */
-/* 	margin: 0 0 10px 0; */
+	margin: 0 0 0px 50px;
 	display: flex;
 	justify-content: flex-end;
 }
