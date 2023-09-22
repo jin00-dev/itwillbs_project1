@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -7,44 +8,68 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 
 <body>
-<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
-<!-- 상단 바 고정 -->
-<!-- 여기 문의 꾸며아함. -->
-		<table id="qnaContent">
-		<tr>
-			<th class="ttitle" colspan="4"></th>
-		</tr>
-		<tr>
-			<td>글번호</td>
-			<td>${dto.qna_bno }</td>
+	<!-- 상단 바 고정 -->
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
+	<!-- 상단 바 고정 -->
+	<!-- 여기 문의 꾸며아함. -->
+	<div class="container">
+		<h1>글 내용</h1>
+		<div class="rightButton">
+			<input type="button" value="이전 게시판" class="btn"
+				onclick="location.href='./qnaBoardList.bo?user_id=${user_id}&&pageNum=${param.pageNum }';">
+		</div>
+		<table class="boardContent">
+			<tr>
+				<th class="ttitle" colspan="4"></th>
+			</tr>
+			<tr>
+				<td class="column">글번호 :</td>
+				<td class="cntBno">${dto.qna_bno }</td>
 
-			<td>작성일</td>
-			<td>
-				<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-			</td>
+				<td class="column">작성일 :</td>
+				<td class="cntDate"><fmt:formatDate value="${dto.updatedate }"
+						pattern="YY-MM-dd" /></td>
 
-		</tr>
-		<tr>
-			<td> 질 문</td>
-			<td colspan="3">${dto.subject }</td>
-		</tr>
-		<tr>
-			<td> 내 용</td>
-			<td colspan="3">${dto.content }</td>
-		</tr>
-		<tr>
-			<td> 답 변 </td>
-			<td colspan="3">${dto.answer_context }</td>
-		</tr>
-		
-	</table>
+			</tr>
+			<tr>
+				<td class="column">질 문 :</td>
+				<td class="cntSubject" colspan="3">${dto.subject }</td>
+			</tr>
+			<tr>
+				<td class="column">내 용 :</td>
+				<td class="cntContent" colspan="3">${dto.content }</td>
+			</tr>
+			<tr>
+				<td class="column">답 변 :</td>
+				<td class="cntContent" colspan="3">${dto.answer_context }</td>
+			</tr>
+
+		</table>
+			<div class="rightButton">
+				<c:if test="${dto.answer == 0 }">
+					<!-- 답변 못받을 경우만 수정가능하게  -->
+					<input type="button" value="수정하기" class="btn"
+						onclick="location.href='qnaBoardUpdate.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }&&user_id=${user_id}';">
+				</c:if>
+				<input type="button" value="삭제하기" class="btn" onclick="deleteQna();">
+			</div>
+	
+		<c:if test="${user_id eq 'admin' }">
+	
+			<!-- 				관리자만 가능하게   -->
+			<div class="rightButton">
+				<input type="button" value="답변쓰기" class="btn"
+					onclick="location.href='qnaBoardAnswer.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }&&user_id=${user_id}';">
+			</div>
+		</c:if>
+	</div>
 	<script type="text/javascript">
 		function deleteQna() {
 			var popupX = (document.body.offsetWidth / 2) - (400 / 2) + 110;
@@ -63,32 +88,14 @@
 			location.href="qnaBoardList.bo?pageNum=${param.pageNum}&&user_id=${user_id}";
 		}
 	</script>
-	<c:if test="${user_id == dto.user_id }">
-	<div id="table_search">
-		<c:if test="${dto.answer == 0 }"> 
-		<!-- 답변 못받을 경우만 수정가능하게  -->
-		<input type="button" value="수정하기"
-			onclick="location.href='qnaBoardUpdate.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }&&user_id=${user_id}';">
-		</c:if>
-		<input type="button" value="삭제하기"
-			onclick="deleteQna();">
-		<input type="button" value="목록이동"
-			onclick="boardList();">
-	</div>
-	</c:if>
-		<c:if test="${user_id eq 'admin' }">
-			<!-- 관리자만 가능하게  -->
-			<input type="button" value="답변쓰기"
-			onclick="location.href='qnaBoardAnswer.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }&&user_id=${user_id}';">
-		</c:if>
-	
+
+
 	<!-- footer아래로는 코드 금지 -->
-	
-<!-- 하단바 고정  -->
-<footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
-<!-- 하단바 고정  -->
+	<!-- 하단바 고정  -->
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
+	<!-- 하단바 고정  -->
 
 	<script>
 		window.onscroll = function() {

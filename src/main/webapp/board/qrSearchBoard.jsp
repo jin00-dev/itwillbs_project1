@@ -5,13 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<body>
-<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
-<!-- 상단 바 고정 -->
+<link href="./css/listPage.css" rel="stylesheet">
 </head>
+<body>
+	<!-- 상단 바 고정 -->
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
+	<!-- 상단 바 고정 -->
 
 	<div class="container">
 		<h1>검색 리스트페이지</h1>
@@ -26,22 +27,21 @@
 				<tr>
 					<c:choose>
 						<c:when test="${dto.category == 0 }">
-							<td>${dto.qna_bno }</td>					
+							<td>${dto.qna_bno }</td>
 							<td><a
 								href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&pageNum=${pageNum}&&user_id=${user_id}">${dto.subject }</a>
 							</td>
 						</c:when>
 						<c:otherwise>
-							<td>${dto.rent_bno }</td>											
+							<td>${dto.rent_bno }</td>
 							<td><a
 								href="rentBoardContent.bo?rent_bno=${dto.rent_bno }&pageNum=${pageNum}&&user_id=${user_id}">${boardList[0].category}</a>
 							</td>
 						</c:otherwise>
 					</c:choose>
-					
-					<td>
-						<fmt:formatDate value="${dto.updatedate }" pattern="YY-MM-dd" />
-					</td>
+
+					<td><fmt:formatDate value="${dto.updatedate }"
+							pattern="YY-MM-dd" /></td>
 					<td>${dto.read_count }</td>
 			</c:forEach>
 
@@ -62,11 +62,12 @@
 					href="./qrBoardSearch.bo?pageNum=${startPage+pageBlock }&&user_id=${user_id}&&searchField=${searchField}&&searchText=${searchText}&&category=${boardList[0].category }">Next</a>
 			</c:if>
 		</div>
-		<div>
-			<input type="button" value="검색전 게시판" onclick="boforeBoardList(${boardList[0].category});">
+		<div class="rightButton">
+			<input type="button" value="검색전 게시판"
+				onclick="boforeBoardList(${boardList[0].category});">
 		</div>
 	</div>
-	
+
 	<script type="text/javascript">
 	
 		function boforeBoardList(category) {
@@ -81,10 +82,10 @@
 	<!-- footer아래로는 코드 금지 -->
 
 	<!-- 하단바 고정  -->
-<footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
-<!-- 하단바 고정  -->
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
+	<!-- 하단바 고정  -->
 	<script>
 		window.onscroll = function() {
 			myFunction()

@@ -18,7 +18,11 @@
 	</header>
 	<!-- 여기 대관문의 꾸며아함. -->
 	<div class="container">
-		<h1> 1:1 문의 내역</h1>
+		<h1>1:1 문의 내역</h1>
+		<div class="rightButton">
+			<input type="button" value="이전 게시판" class="btn"
+				onclick="location.href='./faqMain.bo?user_id=${user_id}';">
+		</div>
 		<table class="BoardList">
 			<tr class="thList">
 				<th class="bno">No.</th>
@@ -62,17 +66,18 @@
 							</c:choose></td>
 				</c:if>
 			</c:forEach>
-
 		</table>
 		<div id="page_control">
 			<c:if test="${startPage > pageBlock }">
-				<a href="./qnaBoardList.bo?pageNum=${startPage-pageBlock }&&user_id=${user_id}">Prev</a>
+				<a
+					href="./qnaBoardList.bo?pageNum=${startPage-pageBlock }&&user_id=${user_id}">Prev</a>
 			</c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
 				<a href="./qnaBoardList.bo?pageNum=${i }&&user_id=${user_id}">${i }</a>
 			</c:forEach>
 			<c:if test="${endPage < pageCount }">
-				<a href="./qnaBoardList.bo?pageNum=${startPage+pageBlock }&&user_id=${user_id}">Next</a>
+				<a
+					href="./qnaBoardList.bo?pageNum=${startPage+pageBlock }&&user_id=${user_id}">Next</a>
 			</c:if>
 		</div>
 
@@ -90,15 +95,13 @@
 
 						<td><input type="text" name="searchText" class="input_box">
 						</td>
-						<td><input type="submit" value="search"></td>
+						<td><input type="submit" value="search" class="btn"></td>
 					</tr>
 				</table>
 
 			</form>
 		</div>
-		<div class="before">
-			<input type="button" value="이전 게시판" onclick="location.href='./faqMain.bo?user_id=${user_id}';">
-		</div>
+
 	</div>
 
 	<!-- footer아래로는 코드 금지 -->

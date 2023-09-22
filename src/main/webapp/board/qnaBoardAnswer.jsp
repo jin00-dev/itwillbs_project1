@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -7,21 +8,22 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 <body>
-<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
-<!-- 상단 바 고정 -->
-
+	<!-- 상단 바 고정 -->
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
+	<!-- 상단 바 고정 -->
 </head>
 <body>
 	<!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
-		<form action="./qnaBoardUpdatePro.bo?pageNum=${pageNum }&&user_id=${user_id}"
+		<form
+			action="./qnaBoardUpdatePro.bo?pageNum=${pageNum }&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="qna_bno" value="${dto.qna_bno }">
 			<input type="hidden" name="subject" value="${dto.subject }">
@@ -57,11 +59,11 @@
 
 	<!-- footer아래로는 코드 금지 -->
 
-<!-- 하단바 고정  -->
-<footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
-<!-- 하단바 고정  -->
+	<!-- 하단바 고정  -->
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
+	<!-- 하단바 고정  -->
 
 
 	<script>

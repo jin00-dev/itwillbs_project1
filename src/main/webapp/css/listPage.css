@@ -1,38 +1,71 @@
 @charset "UTF-8";
 
-
+input[type=button]{
+	background-color:buttonface;
+	border-color: darkgray;
+	color: darkgray;
+	padding: 4px 4px 4px 4px;
+}
+input[type=submit]{
+	background-color:buttonface;
+	border-color: darkgray;
+	color: darkgray;
+	padding: 4px 4px 4px 4px;
+}
 
 .container h1{
+	margin:10px 10px;
 	text-align: center;
+	color: darkgray;
 }
 .thList{
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid rgb(172, 0, 0);
 	font-size: 35px;
+	color: darkgray;
 }
 
 .bno{
-	width: 70px;
+	width: 10%;
 }
 
 .subject{
-	width: 400px;
+	width: 70%;
 }
 
 .date{
-	width: 100px;
+	width: 20%;
 }
 .readCount{
-	width: 100px;
+	width: 20%;
 }
+.cntBno{
+	width: 20px;
+}
+
+.cntSubject{
+	width: 600px;
+	
+}
+.cntContent{
+	width: 600px;
+}
+
+.cntDate{
+	width: 500px;
+}
+
+
+
+
 .BoardList{
-/* 	width: 60%; */
+	width: 100%;
 	margin: 0 auto;
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid rgb(172, 0, 0);
 	font-size: 20px;
+	color: white;
 }
 
 #page_control{
-	
 	text-align: center;
 }
 
@@ -42,8 +75,29 @@
 	justify-content: center;
 }
 
-.before{
-	margin: 0 auto;
+.rightButton{
+	margin: 0 0 10px 0;
 	display: flex;
 	justify-content: flex-end;
+}
+
+.boardContent{
+	display: flex;
+	justify-content: center;
+/* 	margin: 0 auto; */
+	font-size: 20px;
+/* 	border: 1px solid white; */
+}
+
+.boardContent td{
+	padding: 10px 10px;
+/* 	border-bottom: 1px solid white; */
+/* 	border-right: 1px solid white; */
+	border: 1px solid white;
+}
+
+.column{
+/* 	font-style: ; */
+	font-size: 25px;
+	color: gray;
 }
