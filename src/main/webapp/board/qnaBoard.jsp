@@ -24,10 +24,9 @@
 	<h1>faqBoard.jsp</h1>
 
 	<fieldset>
-		<form action="qnaBoardAction.bo?user_id=${user_id}" method="post"
-			name="fr" id="qnaForm">
+		<form action="qnaBoardAction.bo" method="post">
 			<input type="hidden" name="user_id" value="${param.user_id }">
-			<table id="qna">
+			<table class="boardContent">
 				<tr>
 					<td>제목 :</td>
 					<td colspan="2"><input type="text" id="wInput" name="subject">

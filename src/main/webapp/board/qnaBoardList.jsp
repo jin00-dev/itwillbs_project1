@@ -35,7 +35,7 @@
 					<tr>
 						<td>${dto.qna_bno }</td>
 						<td><a
-							href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${dto.user_id }">${dto.subject }</a>
+							href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${user_id }">${dto.subject }</a>
 						</td>
 						<td><fmt:formatDate value="${dto.updatedate }"
 								pattern="YY-MM-dd" /></td>
@@ -52,7 +52,7 @@
 					<tr>
 						<td>${dto.qna_bno }</td>
 						<td><a
-							href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${dto.user_id }">${dto.subject }</a>
+							href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${user_id }">${dto.subject }</a>
 						</td>
 						<td><fmt:formatDate value="${dto.updatedate }"
 								pattern="YY-MM-dd" /></td>
@@ -82,7 +82,7 @@
 		</div>
 
 		<div id="table_search">
-			<form action="./qrBoardSearch.bo" name="boardSearch" method="post">
+			<form action="./qrBoardSearch.bo?user_id=${user_id }" name="boardSearch" method="post">
 				<input type="hidden" name="category"
 					value="${boardList[0].category }">
 				<table>

@@ -332,6 +332,51 @@ public class QRBoardDAO {
 	}
 	// 글의 개수 -getBoardCount
 	
+	public int getBoardCount(Byte category, String user_id, String searchField, String searchText) {
+		System.out.println(" DAO : getBoardCount() 호출");
+		System.out.println(" DAO : 실행목적: 글의 개수(int)리턴");
+		
+		searchField = searchField.trim();
+		searchText = searchText.trim();
+		System.out.println("category : "+ category);
+		System.out.println("user_id : "+ user_id);		
+		System.out.println("searchField: "+searchField);
+		System.out.println("searchText: "+searchText);
+		int result = 0;
+		
+		try {
+			// 1.2. 디비연결
+			con = getConnect();
+			//3. sql구문 작성 &pstmt 객체
+			
+//			sql = "select count(*) from event_notice_faq_board where "+searchField+" like "+"'%"+searchText+"%' and category=1";								
+//			sql = "select count(*) from event_notice_faq_board where "+searchField+" like "+"'%"+searchText+"%' and category=?";								
+			sql = "select count(*) from qna_rent_board where "+searchField+" like ? and category=? and user_id=?";								
+			
+			
+			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1,searchField);
+			pstmt.setString(1,"%"+searchText+"%");
+			pstmt.setByte(2, category);
+			pstmt.setString(3, user_id);
+			//4.sql 실행
+			rs = pstmt.executeQuery();
+			//5.데이터처리
+			if(rs.next()) {
+//			result = rs.getInt(1);
+				result = rs.getInt("count(*)");
+				System.out.println(" DAO : 글의 개수 조회 완료! ");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		return result;
+	}
+	// 글의 개수 -getBoardCount
+	
 	// 글의 개수 -getBoardCount
 	public List<QRBoardDTO> searchGetBoardListPage(
 			Byte category, String searchField, String searchText, int startRow,int pageSize){
@@ -355,6 +400,67 @@ public class QRBoardDAO {
 			pstmt.setString(2, "%"+searchText+"%");
 			pstmt.setInt(3, startRow-1); //시작위치 starRow 1
 			pstmt.setInt(4, pageSize); // 개수 pageSize 10
+			//4. sql 실행
+			rs = pstmt.executeQuery();
+			//5. 데이터처리 (rs->BoardBean -> List)
+			while(rs.next()) {
+				// rs->BoardBean
+				QRBoardDTO bb = new QRBoardDTO();
+				bb.setCategory(rs.getByte("category"));
+				bb.setQna_bno(rs.getInt("qna_bno"));
+				bb.setRent_bno(rs.getInt("rent_bno"));
+				bb.setUser_id(rs.getString("User_id"));
+				bb.setSubject(rs.getString("subject"));
+				bb.setContent(rs.getString("content"));
+				bb.setRead_count(rs.getInt("read_count"));
+				bb.setRegdate(rs.getTimestamp("regdate"));
+				bb.setUpdatedate(rs.getTimestamp("updatedate"));
+				bb.setRent_name(rs.getString("rent_name"));
+				bb.setCinema_name(rs.getString("cinema_name"));
+				bb.setRent_phone(rs.getString("rent_phone"));
+				bb.setRent_email(rs.getString("rent_email"));
+				bb.setAnswer(rs.getByte("answer"));
+				bb.setAnswer_context(rs.getString("answer_context"));
+				
+				
+				//BoardBean -> List
+				boardList.add(bb);
+			}//while
+			
+			System.out.println(" DAO : (페이징처리된) 글 리스트를 저장");
+			System.out.println(" DAO : 리스트 사이즈 : "+boardList.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return boardList;
+	}
+	public List<QRBoardDTO> searchGetBoardListPage(
+			Byte category, String user_id, String searchField, String searchText, int startRow,int pageSize){
+		
+		System.out.println(" DAO : noticeGetBoardListPage(startRow,pageSize) 호출");
+		List<QRBoardDTO> boardList = new ArrayList<QRBoardDTO>();
+		System.out.println("stratRow : "+startRow);
+		System.out.println("pageSize : "+pageSize);
+		try {
+			//1.2. 디비연결 (커넥션풀)
+			con = getConnect();
+			//3.sql구문 작성 & pstmt 객체
+			// 게시판 글 리스트 원하는 만큼만 조회
+			// 	limit 시작위치, 개수
+			//		: 위치(인덱스)에서 개수만큼 데이터를 짤라서 가져오기			
+			sql = "select * from qna_rent_board where "
+					+ "category = ? and user_id=? and "+searchField+" like ? limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setByte(1, category);
+			pstmt.setString(2, user_id);
+			pstmt.setString(3, "%"+searchText+"%");
+			pstmt.setInt(4, startRow-1); //시작위치 starRow 1
+			pstmt.setInt(5, pageSize); // 개수 pageSize 10
 			//4. sql 실행
 			rs = pstmt.executeQuery();
 			//5. 데이터처리 (rs->BoardBean -> List)

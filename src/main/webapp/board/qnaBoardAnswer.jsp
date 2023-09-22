@@ -29,9 +29,9 @@
 			<input type="hidden" name="subject" value="${dto.subject }">
 			<input type="hidden" name="content" value="${dto.content }">
 			<input type="hidden" name="answer" value="1">
-			<table id="Update">
+			<table class="boardContent">
 				<tr>
-					<th class="ttitle" colspan="3">1:1문의 수정</th>
+					<th class="ttitle" colspan="3">1:1문의 답변</th>
 				</tr>
 
 				<tr>
@@ -49,11 +49,11 @@
 				</tr>
 			</table>
 
-			<div id="table_search">
-				<input type="submit" value="수정하기" class="btn">
+			<div>
+				<input type="submit" value="답변하기" class="btn">
+				<input type="button" value="취소하기" class="btn" onclick="history.back();">
 			</div>
-			<div class="clear"></div>
-			<div id="page_control"></div>
+			
 		</form>
 	</div>
 

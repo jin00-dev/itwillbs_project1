@@ -30,24 +30,24 @@
 				<th class="ttitle" colspan="4"></th>
 			</tr>
 			<tr>
-				<td class="column">글번호 :</td>
+				<td class="column">글번호 </td>
 				<td class="cntBno">${dto.qna_bno }</td>
 
-				<td class="column">작성일 :</td>
+				<td class="column">작성일 </td>
 				<td class="cntDate"><fmt:formatDate value="${dto.updatedate }"
 						pattern="YY-MM-dd" /></td>
 
 			</tr>
 			<tr>
-				<td class="column">질 문 :</td>
+				<td class="column">질 문 </td>
 				<td class="cntSubject" colspan="3">${dto.subject }</td>
 			</tr>
 			<tr>
-				<td class="column">내 용 :</td>
+				<td class="column">내 용 </td>
 				<td class="cntContent" colspan="3">${dto.content }</td>
 			</tr>
 			<tr>
-				<td class="column">답 변 :</td>
+				<td class="column">답 변 </td>
 				<td class="cntContent" colspan="3">${dto.answer_context }</td>
 			</tr>
 
@@ -80,7 +80,7 @@
 			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 			console.log(popupX);
 			console.log(popupY);
-			window.open("./qnaBoardDelete.bo?qna_bno=${dto.qna_bno }&&pageNum=${param.pageNum }&&user_id=${dto.user_id }",
+			window.open("./qnaBoardDelete.bo?qna_bno=${dto.qna_bno }&&pageNum=${param.pageNum }&&user_id=${user_id }",
 					"_black","height=200, width=400, left="+popupX+", top="+popupY);
 		}
 		

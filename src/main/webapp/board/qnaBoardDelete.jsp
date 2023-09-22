@@ -16,11 +16,11 @@
 	<!-- 상단 바 고정 -->
 	<h2>게시판 글 삭제 페이지</h2>
 	<form
-		action="./qnaBoardDeleteAction.bo?pageNum=${param.pageNum }&&user_id=${user_id}"
+		action="./qnaBoardDeleteAction.bo?pageNum=${param.pageNum }"
 		method="post">
 		<input type="hidden" name="qna_bno" value="${param.qna_bno }">
 		<input type="hidden" name="user_id" value="${param.user_id }">
-		<table id="delete">
+		<table class="boardContent">
 			<tr>
 				<th class="ttitle" colspan="3">1:1문의 삭제</th>
 			</tr>
@@ -32,11 +32,9 @@
 
 		</table>
 
-		<div id="table_search">
+		<div>
 			<input type="submit" value="글 삭제" class="btn">
 		</div>
-		<div class="clear"></div>
-		<div id="page_control"></div>
 	</form>
 
 	<!-- 하단바 고정  -->

@@ -16,7 +16,7 @@
 
 	<div class="container">
 		<h1>검색 리스트페이지</h1>
-		<table id="qrBoardList">
+		<table class="BoardList">
 			<tr class="thList">
 				<th class="bno">No.</th>
 				<th class="subject">Title</th>
@@ -27,11 +27,22 @@
 				<tr>
 					<c:choose>
 						<c:when test="${dto.category == 0 }">
-							<td>${dto.qna_bno }</td>
-							<td><a
-								href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&pageNum=${pageNum}&&user_id=${user_id}">${dto.subject }</a>
-							</td>
+							<c:if test="${user_id eq 'admin' }">
+								<tr>
+									<td>${dto.qna_bno }</td>
+									<td><a
+										href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${user_id }">${dto.subject }</a>
+									</td>
+							</c:if>
+							<c:if test="${user_id eq dto.user_id}">
+								<tr>
+									<td>${dto.qna_bno }</td>
+									<td><a
+										href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${user_id }">${dto.subject }</a>
+									</td>
+							</c:if>
 						</c:when>
+
 						<c:otherwise>
 							<td>${dto.rent_bno }</td>
 							<td><a
@@ -43,6 +54,7 @@
 					<td><fmt:formatDate value="${dto.updatedate }"
 							pattern="YY-MM-dd" /></td>
 					<td>${dto.read_count }</td>
+				</tr>
 			</c:forEach>
 
 		</table>
@@ -63,7 +75,7 @@
 			</c:if>
 		</div>
 		<div class="rightButton">
-			<input type="button" value="검색전 게시판"
+			<input type="button" value="이전 게시판" class="btn"
 				onclick="boforeBoardList(${boardList[0].category});">
 		</div>
 	</div>

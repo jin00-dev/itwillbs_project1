@@ -16,7 +16,7 @@ public class QnaBoardUpdateAction implements Action {
 		
 		// 전달정보 저장(bno,pageNum)
 		int qna_bno = Integer.parseInt(request.getParameter("qna_bno"));
-		String user_id = (String) request.getAttribute("id");
+		String user_id = request.getParameter("user_id");
 		String pageNum = request.getParameter("pageNum");
 		
 		// DAO - 특정글 정보 조회
