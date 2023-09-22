@@ -9,10 +9,10 @@
 </head>
 
 <body>
-<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
+	<!-- 상단 바 고정 -->
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
 
 	<!-- 여기 소개 게시판 꾸며아함. -->
 
@@ -21,14 +21,14 @@
 			여기 소개게시판 꾸미는자리<br> 밑에 footer 알아서 내려감
 		</h1>
 	</div>
-	
+
 	<!-- footer아래로는 코드 금지 -->
-	
-<!-- 하단바 고정  -->
-<footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
-<!-- 하단바 고정  -->
+
+	<!-- 하단바 고정  -->
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
+	<!-- 하단바 고정  -->
 
 	<script>
 		window.onscroll = function() {

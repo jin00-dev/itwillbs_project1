@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -7,17 +8,19 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 
 <body>
-<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
-<!-- 상단 바 고정 -->
+	<!-- 상단 바 고정 -->
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
+	<!-- 상단 바 고정 -->
 	<div class="container">
-		<form action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1&&user_id=${user_id}"
+		<form
+			action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
 			<table id="Update">
@@ -37,8 +40,8 @@
 			</table>
 
 			<div id="table_search">
-				<input type="submit" value="수정하기" >
-				<input type="button" value="목록이동" onclick="history.back();">
+				<input type="submit" value="수정하기" class="btn"> <input type="button"
+					value="목록이동" class="btn" onclick="history.back();">
 			</div>
 			<div class="clear"></div>
 			<div id="page_control"></div>
@@ -46,11 +49,11 @@
 	</div>
 
 	<!-- footer아래로는 코드 금지 -->
-<!-- 하단바 고정  -->
-<footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
-<!-- 하단바 고정  -->
+	<!-- 하단바 고정  -->
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
+	<!-- 하단바 고정  -->
 
 	<script>
 		window.onscroll = function() {
