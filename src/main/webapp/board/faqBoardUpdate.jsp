@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="./css/faqMain.css" rel="stylesheet">
 <title>Insert title here</title>
 
 <script type="text/javascript">
@@ -21,7 +22,7 @@
 		<form action="./enfBoardUpdatePro.bo?&&category=2&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="faq_bno" value="${dto.faq_bno }">
-			<table id="faqUpdate">
+			<table>
 				<tr>
 					<th class="ttitle" colspan="3">FAQ 수정</th>
 				</tr>
@@ -38,11 +39,9 @@
 			</table>
 
 			<div id="table_search">
-				<input type="submit" value="수정하기"> <input type="button"
-					value="취소" onclick="window.close();">
+				<input type="submit" class="btn" value="수정하기"> <input type="button"
+					value="취소" class="btn" onclick="window.close();">
 			</div>
-			<div class="clear"></div>
-			<div id="page_control"></div>
 		</form>
 	</div>
 

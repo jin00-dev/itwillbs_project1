@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="./css/faqMain.css" rel="stylesheet">
 <title>Insert title here</title>
 
 <script type="text/javascript">

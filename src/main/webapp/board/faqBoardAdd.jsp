@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="./css/faqMain.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
 	<h1>faqBoardAdd.jsp</h1>
 	<fieldset>
 		<form action="enfBoardAdd.bo?category=2&&user_id=${user_id}"
-			method="post" name="fr" id="faqAddForm">
+			method="post">
 			<table id="faqAdd">
 				<tr>
 					<td>질문 :</td>
@@ -31,7 +32,7 @@
 			</table>
 
 			<div id="faqAddSubmit">
-				<input type="submit" value="완료" class="btn" id="faqAddBtn">
+				<input type="submit" value="완료" class="btn">
 				<input type="button" value="취소" class="btn"
 					onclick="window.close();">
 			</div>
