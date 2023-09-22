@@ -32,6 +32,8 @@
 			function qnaBoard() {
 				if(${user_id == null}){
 					alert("로그인 후 이용해주세요");
+				}else if(${user_id == 'admin'}){
+					alert("관리자 계정입니다.");	
 				}else{
 					window.open("./qnaBoard.bo?user_id=${user_id}","_black","width=500, height=300, left="+popupX+", top="+popupY);
 				}
@@ -45,7 +47,7 @@
 				}
 			}
 			function faqBoardAdd() {
-				window.open("./faqBoardAdd.bo&&user_id=${user_id}","_black","width=500, height=300, left="+popupX+", top="+popupY);
+				window.open("./faqBoardAdd.bo?user_id=${user_id}","_black","width=500, height=300, left="+popupX+", top="+popupY);
 			}
 			function faqBoardUpdate(bno) {
 				window.open("./faqBoardUpdate.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=500, height=300, left="+popupX+", top="+popupY);

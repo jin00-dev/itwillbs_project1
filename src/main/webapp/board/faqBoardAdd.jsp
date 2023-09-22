@@ -17,7 +17,7 @@
 	<fieldset>
 		<form action="enfBoardAdd.bo?category=2&&user_id=${user_id}"
 			method="post">
-			<table id="faqAdd">
+			<table class="boardContent">
 				<tr>
 					<td>질문 :</td>
 					<td colspan="2"><textarea rows="" cols="" id="qInput"
