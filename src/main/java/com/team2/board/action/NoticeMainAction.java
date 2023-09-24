@@ -28,7 +28,7 @@ public class NoticeMainAction implements Action {
 		// 페이징처리-1 -M
 		////////////////페이징처리 -1 /////////////////
 		
-		int pageSize = 10; // 한페이지에 10개씩 출력
+		int pageSize = 5; // 한페이지에 10개씩 출력
 		
 		// 페이지의 정보(몇페이지인지 확인하는 정보)
 		String pageNum = request.getParameter("pageNum");

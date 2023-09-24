@@ -8,6 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 <body>
@@ -17,9 +18,13 @@
 	</header>
 	<!-- 여기 대관문의 꾸며아함. -->
 	<div class="container">
-		<h1>qnaBoardList</h1>
-		<table id="qnaBoardList">
-			<tr>
+		<h1>1:1 문의 내역</h1>
+		<div class="rightButton">
+			<input type="button" value="이전 게시판" class="btn"
+				onclick="location.href='./faqMain.bo?user_id=${user_id}';">
+		</div>
+		<table class="BoardList">
+			<tr class="thList">
 				<th class="bno">No.</th>
 				<th class="subject">Title</th>
 				<th class="date">Date</th>
@@ -30,7 +35,7 @@
 					<tr>
 						<td>${dto.qna_bno }</td>
 						<td><a
-							href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${dto.user_id }">${dto.subject }</a>
+							href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${user_id }">${dto.subject }</a>
 						</td>
 						<td><fmt:formatDate value="${dto.updatedate }"
 								pattern="YY-MM-dd" /></td>
@@ -47,7 +52,7 @@
 					<tr>
 						<td>${dto.qna_bno }</td>
 						<td><a
-							href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${dto.user_id }">${dto.subject }</a>
+							href="qnaBoardContent.bo?qna_bno=${dto.qna_bno }&&pageNum=${pageNum}&&user_id=${user_id }">${dto.subject }</a>
 						</td>
 						<td><fmt:formatDate value="${dto.updatedate }"
 								pattern="YY-MM-dd" /></td>
@@ -61,22 +66,23 @@
 							</c:choose></td>
 				</c:if>
 			</c:forEach>
-
 		</table>
 		<div id="page_control">
 			<c:if test="${startPage > pageBlock }">
-				<a href="./qnaBoardList.bo?pageNum=${startPage-pageBlock }&&user_id=${user_id}">Prev</a>
+				<a
+					href="./qnaBoardList.bo?pageNum=${startPage-pageBlock }&&user_id=${user_id}">Prev</a>
 			</c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
 				<a href="./qnaBoardList.bo?pageNum=${i }&&user_id=${user_id}">${i }</a>
 			</c:forEach>
 			<c:if test="${endPage < pageCount }">
-				<a href="./qnaBoardList.bo?pageNum=${startPage+pageBlock }&&user_id=${user_id}">Next</a>
+				<a
+					href="./qnaBoardList.bo?pageNum=${startPage+pageBlock }&&user_id=${user_id}">Next</a>
 			</c:if>
 		</div>
 
 		<div id="table_search">
-			<form action="./qrBoardSearch.bo" name="boardSearch" method="post">
+			<form action="./qrBoardSearch.bo?user_id=${user_id }" name="boardSearch" method="post">
 				<input type="hidden" name="category"
 					value="${boardList[0].category }">
 				<table>
@@ -89,14 +95,13 @@
 
 						<td><input type="text" name="searchText" class="input_box">
 						</td>
-						<td><input type="submit" value="search"></td>
+						<td><input type="submit" value="search" class="btn"></td>
 					</tr>
 				</table>
 
-				<input type="button" value="이전 게시판"
-					onclick="location.href='./faqMain.bo';">
 			</form>
 		</div>
+
 	</div>
 
 	<!-- footer아래로는 코드 금지 -->

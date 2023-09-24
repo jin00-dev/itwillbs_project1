@@ -20,35 +20,31 @@
 <body>
 	<!-- 여기 대관문의 꾸며아함. -->
 	<script type="text/javascript">
-	$(document).ready(function(){
-	    $("#fileChk").change(function(){
-	        if($("#fileChk").is(":checked")){
-// 	            alert("체크박스 체크했음!");
-	            $('#update').append("<input type='file' name='file' id='file2' required>");
-	        }else{
-// 	            alert("체크박스 체크 해제!");
-	            $('#file2').remove();
-	        }
-	    });
-	});
+		$(document).ready(function() {
+			$("#fileChk").change(function() {
+				if ($("#fileChk").is(":checked")) {// alert("체크박스 체크했음!");
+					$('#update').append("<input type='file' name='file' id='file2' required>");
+				} else {// alert("체크박스 체크 해제!");
+					$('#file2').remove();
+				}
+			});
+		});
 	</script>
 	<div class="container">
 		<form action="./enfBoardUpdatePro.bo?category=0&&user_id=${user_id}"
-			method="post"  enctype="multipart/form-data" id="updateForm">
+			method="post" enctype="multipart/form-data" id="updateForm">
 			<input type="hidden" name="event_bno" value="${dto.event_bno }">
 			<table id="update">
 				<tr>
 					<th class="ttitle" colspan="3">이벤트 수정</th>
 				</tr>
 				<tr>
-					<td> 이벤트 타입: </td>
-					<td>
-						<select name="event_type">
-							<option value=-1 >선택</option>
+					<td>이벤트 타입 :</td>
+					<td><select name="event_type">
+							<option value=-1>선택</option>
 							<option value=0>진행중</option>
 							<option value=1>완료</option>
-						</select>
-					</td>
+					</select></td>
 				</tr>
 				<tr>
 					<td>제 목 :</td>
@@ -62,12 +58,12 @@
 				</tr>
 				<tr>
 					<td>파 일 :</td>
-					<td> 
+					<td>
 						<figure class="image_figure">
 							<img alt="" src="./img/${dto.img }">
 						</figure>
 					</td>
-						
+
 				</tr>
 				<tr>
 					<td>변경하겠습니까?<input type="checkbox" id="fileChk"></td>
@@ -75,22 +71,21 @@
 			</table>
 
 			<div id="table_search">
-				<input type="submit" value="수정하기" >
-				<input type="button" value="목록이동" onclick="history.back();">
+				<input type="submit" value="수정하기" class="btn"> <input type="button"
+					value="목록이동" onclick="history.back();" class="btn">
 			</div>
-			<div class="clear"></div>
-			<div id="page_control"></div>
+			
 		</form>
 	</div>
 
 	<!-- footer아래로는 코드 금지 -->
 
-	
-<!-- 하단바 고정  -->
-<footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
-<!-- 하단바 고정  -->
+
+	<!-- 하단바 고정  -->
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
+	<!-- 하단바 고정  -->
 
 
 	<script>

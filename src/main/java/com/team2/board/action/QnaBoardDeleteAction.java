@@ -19,7 +19,7 @@ public class QnaBoardDeleteAction implements Action {
 		// 전달정보 저장(bno,pass,pageNum)
 		QRBoardDTO dto = new QRBoardDTO();
 		HttpSession session = request.getSession();
-		String user_id = (String) request.getAttribute("id");
+		String user_id = request.getParameter("user_id");
 		dto.setCategory((byte) 0);
 		dto.setQna_bno(Integer.parseInt(request.getParameter("qna_bno")));
 		System.out.println("qna_bno : "+dto.getQna_bno());

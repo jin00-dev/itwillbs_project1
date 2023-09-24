@@ -125,15 +125,13 @@
 		
 
 	</div>
-	
-	
 	<!-- footer아래로는 코드 금지 -->
-	
-<!-- 하단바 고정  -->
-<footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
-<!-- 하단바 고정  -->
+
+	<!-- 하단바 고정  -->
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
+	<!-- 하단바 고정  -->
 
 <script type="text/javascript">
 	selectMapList(); // 지도 그려주는 함수 실행

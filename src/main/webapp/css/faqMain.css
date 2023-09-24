@@ -1,8 +1,31 @@
 @charset "UTF-8";
 
+
+input[type=button]{
+	background-color:buttonface;
+	border-color: darkgray;
+	color: darkgray;
+	padding: 4px 4px 4px 4px;
+
+}
+
+input[type=submit]{
+	background-color:buttonface;
+	border-color: darkgray;
+	color: darkgray;
+	padding: 4px 4px 4px 4px;
+}
+
+.qnaButton{
+  margin: 50px 0 30px;
+  text-align: right;
+}
+
 .faq-container h1 {
   margin: 50px 0 30px;
   text-align: center;
+  font-family: inherit;
+  color: darkgray;
 }
 
 .faq-container {
@@ -14,8 +37,8 @@
 }
 
 .faq {
-  background-color: dimgray;
-  border: 1px solid #9fa4a8;
+  background-color: black;
+  border: 1px solid rgb(172, 0, 0);
   border-radius: 10px;
   margin: 20px 0;
   padding: 30px;
@@ -25,7 +48,7 @@
 }
 
 .faq.active {
-  background-color: dimgray;
+  background-color: black;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -51,6 +74,7 @@
 
 .faq-title {
   margin: 0 35px 0 0;
+  color: darkgray;
 }
 
 .faq-text {
@@ -101,14 +125,3 @@
 }
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
-#qnaBoardList{
-  background-color: dimgray;
-  border: 1px solid #9fa4a8;
-}
-#qnaBoardList th{
-  padding : 30px;
-}
-
-#qnaBoardList .subject{
-  width : 300px;
-}

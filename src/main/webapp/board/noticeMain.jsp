@@ -3,10 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 
@@ -19,8 +21,14 @@
 	<!-- 여기 공지사항 꾸며아함. -->
 	<div class="container">
 		<h1>공지사항</h1>
-		<table id="noticeBoardList">
-			<tr>
+		<c:if test="${user_id eq 'admin' }">
+			<div class="rightButton">
+				<input type="button" class="btn" value="공지추가"
+					onclick="noticeBoardAdd();">
+			</div>
+		</c:if>
+		<table class="BoardList">
+			<tr class="thList">
 				<th class="bno">No.</th>
 				<th class="subject">Title</th>
 				<th class="date">Date</th>
@@ -38,28 +46,7 @@
 			</c:forEach>
 
 		</table>
-		<div id="table_search">
-			<form action="./enfBoardSearch.bo?user_id=${user_id }" name="boardSearch" method="post">
-				<input type="hidden" name="category"
-					value="${boardList[0].category }">
-				
-				<table>
-					<tr>
-						<td><select name="searchField">
-								<option value="0">선택</option>
-								<option value="subject">제목</option>
-								<option value="content">내용</option>
-						</select></td>
 
-						<td><input type="text" name="searchText" class="input_box">
-						</td>
-						<td><input type="submit" value="search"></td>
-					</tr>
-				</table>
-
-
-			</form>
-		</div>
 		<script type="text/javascript">
 				var popupX = (document.body.offsetWidth / 2) - (500 / 2) + 90;
 				// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
@@ -74,25 +61,44 @@
 					location.href="./noticeMain.bo?user_id=${user_id}";
 				}
 			
-			</script>
-		<c:if test="${user_id eq 'admin' }">
-			<input type="button" name="noticeAdd" value="공지추가"
-				onclick="noticeBoardAdd();">
-		</c:if>
-		<div class="clear"></div>
+		</script>
 		<div id="page_control">
 			<c:if test="${startPage > pageBlock }">
-				<a href="./noticeMain.bo?pageNum=${startPage-pageBlock }&&user_id=${user_id}">Prev</a>
+				<a
+					href="./noticeMain.bo?pageNum=${startPage-pageBlock }&&user_id=${user_id}">Prev</a>
 			</c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
 				<a href="./noticeMain.bo?pageNum=${i }&&user_id=${user_id}">${i }</a>
 			</c:forEach>
 			<c:if test="${endPage < pageCount }">
-				<a href="./noticeMain.bo?pageNum=${startPage+pageBlock }&&user_id=${user_id}">Next</a>
+				<a
+					href="./noticeMain.bo?pageNum=${startPage+pageBlock }&&user_id=${user_id}">Next</a>
 			</c:if>
 		</div>
 	</div>
+	<div id="table_search">
+		<form action="./enfBoardSearch.bo?user_id=${user_id }"
+			name="boardSearch" method="post">
+			<input type="hidden" name="category"
+				value="${boardList[0].category }">
 
+			<table>
+				<tr>
+					<td><select name="searchField">
+							<option value="0">선택</option>
+							<option value="subject">제목</option>
+							<option value="content">내용</option>
+					</select></td>
+
+					<td><input type="text" name="searchText" class="input_box">
+					</td>
+					<td><input type="submit" value="search" class="btn"></td>
+				</tr>
+			</table>
+
+
+		</form>
+	</div>
 	<!-- footer아래로는 코드 금지 -->
 
 	<!-- 하단바 고정  -->

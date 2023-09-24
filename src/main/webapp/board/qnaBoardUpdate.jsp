@@ -7,6 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 
@@ -23,7 +24,7 @@
 			method="post">
 			<input type="hidden" name="qna_bno" value="${dto.qna_bno }">
 			<input type="hidden" name="answer" value="${dto.answer }">
-			<table id="Update">
+			<table class="boardContent">
 				<tr>
 					<th class="ttitle" colspan="3">1:1문의 수정하기</th>
 				</tr>
@@ -40,12 +41,10 @@
 				</tr>
 			</table>
 
-			<div id="table_search">
-				<input type="submit" value="수정하기">
-				<input type="submit" value="취소" onclick="window.close();">
+			<div>
+				<input type="submit" value="수정하기" class="btn">
+				<input type="button" value="취소" class="btn" onclick="history.back();">
 			</div>
-			<div class="clear"></div>
-			<div id="page_control"></div>
 		</form>
 	</div>
 

@@ -20,7 +20,7 @@ public class QRBoardSearchAction implements Action {
 //		request.setCharacterEncoding("UTF-8");
 		// DB - BoardDAO 객체- M
 		QRBoardDAO dao = new QRBoardDAO();
-		String user_id = request.getParameter("id");
+		String user_id = request.getParameter("user_id");
 		Byte category = (byte) Integer.parseInt(request.getParameter("category"));
 //		System.out.println("category : "+category );
 		String searchField = request.getParameter("searchField");
@@ -35,7 +35,12 @@ public class QRBoardSearchAction implements Action {
 			JSMethod.alertBack(response, "검색할내용을 입력하세요!");
 			return null;
 		}
-		int count = dao.getBoardCount(category, searchField, searchText);
+		int count = 0;
+		if(user_id.equals("admin")) {
+			count = dao.getBoardCount(category, searchField, searchText);
+		}else {
+			count = dao.getBoardCount(category, user_id, searchField, searchText);
+		}
 		System.out.println(" M : 전체 글 개수 : " + count + "개");
 		// 페이징처리-1 -M
 		//////////////// 페이징처리 -1 /////////////////
@@ -60,7 +65,11 @@ public class QRBoardSearchAction implements Action {
 		// 페이징처리 글 데이터를 가져오기(DB메서드) -M
 		List<QRBoardDTO> boardList = null;
 		if (count > 0) {
-			boardList = dao.searchGetBoardListPage(category, searchField, searchText, startRow, pageSize);
+			if(user_id.equals("admin")) {
+				boardList = dao.searchGetBoardListPage(category, searchField, searchText, startRow, pageSize);				
+			}else {
+				boardList = dao.searchGetBoardListPage(category, user_id, searchField, searchText, startRow, pageSize);				
+			}
 		}
 		// 테이블에 출력(반복문) ->view
 

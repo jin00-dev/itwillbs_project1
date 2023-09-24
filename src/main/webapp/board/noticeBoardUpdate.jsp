@@ -7,6 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>이벤트</title>
 </head>
 
@@ -18,10 +19,11 @@
 <!-- 상단 바 고정 -->
 <!-- 여기 대관문의 꾸며아함. -->
 	<div class="container">
-		<form action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1&&user_id=${user_id}"
+		<form
+			action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="notice_bno" value="${dto.notice_bno }">
-			<table id="Update">
+			<table class="boardContent">
 				<tr>
 					<th class="ttitle" colspan="3">공지사항 수정</th>
 				</tr>
@@ -37,21 +39,19 @@
 				</tr>
 			</table>
 
-			<div id="table_search">
-				<input type="submit" value="수정하기" >
-				<input type="button" value="목록이동" onclick="history.back();">
+			<div>
+				<input type="submit" value="수정하기" class="btn"> <input type="button"
+					value="목록이동" class="btn" onclick="history.back();">
 			</div>
-			<div class="clear"></div>
-			<div id="page_control"></div>
 		</form>
 	</div>
 
 	<!-- footer아래로는 코드 금지 -->
-<!-- 하단바 고정  -->
-<footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
-<!-- 하단바 고정  -->
+	<!-- 하단바 고정  -->
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
+	<!-- 하단바 고정  -->
 
 	<script>
 		window.onscroll = function() {

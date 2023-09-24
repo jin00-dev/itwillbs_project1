@@ -19,8 +19,8 @@ public class QnaBoardContentAction implements Action {
 		// 전달정보 저장 bno, pageNum
 		int qna_bno = Integer.parseInt(request.getParameter("qna_bno"));
 		String pageNum = request.getParameter("pageNum");
-		HttpSession session = request.getSession();
-		String user_id = (String) session.getAttribute("id");
+	
+		String user_id = request.getParameter("user_id");
 		// DAO - 조회수 1증가()
 		QRBoardDAO dao = new QRBoardDAO();
 		dao.updateRead_count((byte) 0,qna_bno);
