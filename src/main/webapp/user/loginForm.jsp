@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./css/loginPage.css">
 <title>로그인</title>
 </head>
 
@@ -48,7 +49,7 @@
 					<input type="password" name="pwCheck" placeholder="비밀번호 확인" class="id_pw"> <hr>
 				
 				<button type="submit" class="btn_login">
-					<span>와! 비회원 예매</span>
+					<span>비회원 예매</span>
 				</button>
 			</form>
 		</fieldset>
