@@ -35,7 +35,7 @@
 			});//ajax 끝
 		}); //JQuery 끝
 	</script>
-	<script type="text/javascript">
+<script type="text/javascript">
 		function cancel(){
 			// 대관문의 작성 취소 
 			if(confirm("대관문의 작성을 취소하시겠습니까?")){
@@ -78,7 +78,57 @@
 			}
 			}//checkForm
 		</script>
-	
+<style type="text/css">
+#rent_box{
+text-align: center;
+margin: 0 auto;
+width: 25em;
+}
+#renthr{
+background-color: black;
+}
+.btn1{
+  padding: 0.5em;
+  margin: 0.5em 1em;
+  width: 10em;
+  border-radius: 0.5em;
+}
+input{
+	padding: 0.5em;
+  	margin: 0.5em 0;
+	width: 23em;
+	border-radius: 0.5em;
+}
+textarea{
+	padding: 0.5em;
+  	margin: 0.5em 0;
+	width: 23em;
+	height: 15em;
+	border-radius: 0.5em;
+}
+#region_name{
+	padding: 0.5em;
+  	margin: 0.5em 0;
+	width: 10em;
+}
+#cinema_name{
+	padding: 0.5em;
+  	margin: 0.5em 0;
+	width: 13em;
+}
+.renth1{
+	width: 11em;
+	border-bottom: 1px solid gray;
+	margin: 10px auto;
+	padding: 10px;
+}
+#rent_box label{
+	width: 23em;
+	text-align: left;
+	font-weight: 900;
+}
+
+</style>
 </head>
 <body>
 <!-- 상단 바 고정 -->
@@ -86,75 +136,45 @@
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
 <!-- 상단 바 고정 -->
-
-	<h1>대관문의 작성 test</h1>
+<fieldset id = "rent_box">
+	<hr id = renthr>
+	<h1 class = "renth1">대관문의 작성</h1>
 	
 	<form action="./rentWriteAction.bo" method="post" name ="rentForm">
-<table id="notice">
-	 <tr>
-		<td > 아이디 : </td> 
-	    <td colspan="2">
-	    	<input type="text" id="wInput" name="ruser_id">
-	    </td>
-    </tr>
-	<tr>
-		<td > 이름(기업명) : </td> 
-	    <td colspan="2">
-	    	<input type="text" id="wInput" name="rname">
-	    </td>
-    </tr>
-	<tr>
-		<td > 극장선택 : </td> 
-	    <td colspan="2">
-	    	<select name = "region" id ="region_name">
+	
+	
+		<br><label> 아이디 </label><br>
+		<input type="text" id="wInput" name="ruser_id" placeholder="회원아이디 입력"><br>
+		
+		<br><label> 이름(기업명) </label><br>
+		<input type="text" id="wInput" name="rname" placeholder="이름(기업명)입력"><br>
+		
+		<br><label > 극장선택 </label><br>
+		<select name = "region" id ="region_name">
 	    	<option value="start" class ="start">선택하세요</option>
 	    	</select>
 	    	<select name = "cinema" id ="cinema_name">
 	    	<option value="start" class ="start1">선택하세요</option>
-	    	</select>
-	    </td>
-    </tr>
-	<tr>
-		<td > 휴대폰 번호 : </td> 
-	    <td colspan="2">
-	    	<input type="text" id="wInput" name="rphone">
-	    </td>
-    </tr>
-	<tr>
-		<td > 이메일 : </td> 
-	    <td colspan="2">
-	    	<input type="text" id="wInput" name="remail">
-	    </td>
-    </tr>
-    <tr>
-		<td> 제 목 : </td>
-	    <td colspan="2">
-	   		<input type="text" id="wInput" name="rsubject">
-	    </td>
-    </tr>
-    <tr>
-		<td> 내 용 : </td>
-	    <td colspan="2">
-	    	<textarea rows="" cols="" id="wInput" name="rcontent"
-		    	></textarea>
-	    </td>
-    </tr>
-</table>
-
-	<div id="table_search">
-		<input type="button" value="글쓰기" class="btn1" onclick = "checkForm();">
-	</div>
+	    	</select><br>
+	    	
+	    <br><label > 휴대폰 번호 </label><br>
+	    	<input type="text" id="wInput" name="rphone" placeholder="01000000000"><br>
+	    	
+	    <br><label > 이메일 </label><br>
+	    	<input type="text" id="wInput" name="remail" placeholder="email@email.com"><br>
+	    	
+	    <br><label > 제 목 </label><br>
+	    	<input type="text" id="wInput" name="rsubject"><br>
+		
+		 <br><label > 내 용 </label><br>
+		 	<textarea rows="" cols="" id="wInput" name="rcontent"></textarea><br>
+		 	
+		 <input type="button" value="글쓰기" class="btn1" onclick = "checkForm();">
+		 <input type="button" value="닫기" class="btn1" onclick ="cancel();" >
+		
 	
-	<div id="table_search">
-		<input type="button" value="닫기" class="btn1" onclick ="cancel();" >
-	</div>
-	
-		<div class="clear"></div>
-	<div id="page_control">
-	
-	</div>
 </form>
-	
+	</fieldset>
 <!-- 하단바 고정  -->
 <footer>
 	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>

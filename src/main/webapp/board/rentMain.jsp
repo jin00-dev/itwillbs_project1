@@ -6,6 +6,30 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>이벤트</title>
+<style type="text/css">
+.rentimg{
+	width: 100%;
+	height: 30%;
+}
+.rent_btn{
+background-color: #a3a1a1;
+    color: #e3dede;
+    margin-right: -2px;
+    padding : 5px;
+    border-radius: 5px;
+    width: 185px;
+    height: 50px;
+    cursor : pointer;
+    display: inline-block;
+}
+.rent_btn:hover {
+	background-color: white;
+	color : black;
+	}
+.hr1{
+background-color : black;
+}
+</style>
 </head>
 <body>
 <!-- 상단 바 고정 -->
@@ -16,13 +40,18 @@
 <!-- 여기 대관문의 꾸며아함. -->
 
 	<div class="container">
+		<hr class = "hr1">
 		<h1>
 			대관 문의 게시판 
 		</h1>
-		<h2> 대관 절차 </h2>
+		<hr>
+		<h2> 대관신청 절차 안내 </h2>
 		<ul>
 			<li>
-				대관 절차 적는 곳 			
+				하단의 '대관문의작성' 버튼을 클릭하여 양식에 맞게 폼을 작성하시면 7일이내 결과를 통보 해 드립니다. 이후 계약을 진행하시면 됩니다. 			
+			</li>
+			<li>
+				<img alt="대관 절차" src="./img/rentMain.jpg" class = "rentimg"> 			
 			</li>
 		</ul>
 		<h2> 승인 부결 통보 </h2>
@@ -48,7 +77,7 @@
 		</ul>
 		
 		<div>
-			<input type="button" value="대관문의작성" onclick="location.href = './rentWrite.bo'">		
+			<input type="button" value="대관문의작성" onclick="location.href = './rentWrite.bo'" class = "rent_btn">		
 		</div>
 
 	</div>
