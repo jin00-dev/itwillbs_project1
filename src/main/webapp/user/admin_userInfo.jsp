@@ -14,9 +14,9 @@
 <body>
 <c:if test="${empty sessionScope.user_id}">
 	<script>
-<!-- // 		alert('로그인 해주세요.'); -->
-<!-- // 		location.href='./UserLogin.me'; -->
-<!-- 	</script> -->
+ 		alert('로그인 해주세요.'); 
+		location.href='./UserLogin.me';
+	</script>
 </c:if>
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>

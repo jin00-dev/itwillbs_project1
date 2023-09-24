@@ -98,7 +98,7 @@ public class UserDAO {
 
 		conn = con.getConnection();
 		if (!is.equals("true")) {
-			return 0;
+			return -1;
 		}
 		try {
 			pstmt = conn.prepareStatement(sql);

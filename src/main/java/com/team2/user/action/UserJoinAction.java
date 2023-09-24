@@ -2,6 +2,7 @@ package com.team2.user.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,35 +18,34 @@ public class UserJoinAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-//		req.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("UTF-8");
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
-//		String isCertification = req.getParameter("isCertification");
+		String isCertification = req.getParameter("isCertification");
 //		String imp_uid = req.getParameter("imp_uid");
-		
-		
+	
 		dto.setUser_id(req.getParameter("user_id"));
 		dto.setUser_pass(req.getParameter("user_pass"));
 		dto.setUser_name(req.getParameter("user_name"));
 		dto.setUser_phone(req.getParameter("user_phone"));
 		
-//		int result = dao.join(dto, isCertification);
+		int result = dao.join(dto, isCertification);
 
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		
 		
-//		if(result == -1 || result == 0  ) {
-//			out.println("<script>");
-//			out.println("alert('오류');");
-//			out.println("history.back();");
-//			out.println("</script>");
-//		}else {
-//			out.println("<script>");
-//			out.println("alert('회원가입 성공');");
-//			out.println("location.href='./UserLogin.me';");
-//			out.println("</script>");
-//		}
+		if(result == -1 || result == 0  ) {
+			out.println("<script>");
+			out.println("alert('오류');");
+			out.println("history.back();");
+			out.println("</script>");
+		}else {
+			out.println("<script>");
+			out.println("alert('회원가입 성공');");
+			out.println("location.href='./UserLogin.me';");
+			out.println("</script>");
+		}
 
 		return null;
 	}

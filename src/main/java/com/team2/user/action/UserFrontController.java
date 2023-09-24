@@ -210,6 +210,15 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		//카카오 로그인 처리
+		else if(command.equals("/KakaoLoginAction.me")) {
+			action = new KakaoLoginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		

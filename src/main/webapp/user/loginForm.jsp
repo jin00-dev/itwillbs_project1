@@ -16,17 +16,42 @@
 <script src="./js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="./css/loginPage.css" />
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
+<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
-    Kakao.init('0d2a9fe9a6518b6101a59a7a94f08950');
+
+    Kakao.init('de2279459191574f31f380ed2e0961df');
     function kakaoLogin() {
         Kakao.Auth.login({
             success: function (response) {
                 Kakao.API.request({
                     url: '/v2/user/me',
                     success: function (response) {
-                        alert(JSON.stringify(response))
-                    },
+                    	var resp = response.kakao_account;
+//                     	console.log(resp);
+                    	if(resp.is_email_verified == true){
+                    	   $.ajax({
+	                    	   type: "POST",
+	                    	   url: "./KakaoLoginAction.me",
+	                    	   data: {kakaoEmail:resp.email,
+	                    		   		kakaoNickname:resp.profile.nickname,
+	                    		   		kakaoLogin:true
+	                    	   			},
+	                       	   success:function(result){
+	                       		   console.log(result);
+	                       		   if(result.trim() == "true"){
+	                       			   location.href="./Main.me";
+	                       		   }else{
+	                       			   alert('오류');
+	                       		   }
+	                       	   },
+	                       	   error: function(){
+	                       		   console.log("ajax 오류");
+	                       	   }
+                       	   });//ajax
+                       }else{
+                    	   
+                       }//if
+                    },//success
                     fail: function (error) {
                         alert(JSON.stringify(error))
                     },
@@ -40,6 +65,8 @@
 </script>
 </head>
 <body>
+	세션 : ${sessionScope.user_id }
+
 	<section id="top">
 		<div class="container">
 			<div class="row top_1">
