@@ -30,17 +30,25 @@
 			console.log(popupX);
 			console.log(popupY);
 			function qnaBoard() {
-				if(${user_id == null}){
-					alert("로그인 후 이용해주세요");
-				}else if(${user_id == 'admin'}){
+				var user_id = "${user_id}";
+				
+				if(user_id == 'admin'){
 					alert("관리자 계정입니다.");	
+				}else if(user_id == null || user_id.search('@') == -1){
+// 					console.log(user_id);
+// 					console.log(user_id.search('@'));
+					alert("로그인 후 이용해주세요");
 				}else{
 					window.open("./qnaBoard.bo?user_id=${user_id}","_black","width=500, height=300, left="+popupX+", top="+popupY);
 				}
 			}
 			function qnaBoardList() {
 // 				console.log(${user_id})
-				if(${user_id == null}){
+				var user_id = "${user_id}";
+				if(user_id == 'admin'){
+					alert("관리자 계정입니다.");
+					window.open("./qnaBoardList.bo?user_id=${user_id}", "_self");
+				}else if(user_id == null || user_id.search('@') == -1){
 					alert("로그인 후 이용해주세요");
 				}else{
 					window.open("./qnaBoardList.bo?user_id=${user_id}", "_self");

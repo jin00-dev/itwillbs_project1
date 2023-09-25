@@ -46,7 +46,7 @@
 		</table>
 		<div>
 			<c:if test="${user_id eq 'admin' }">
-				<div class="rigthButton">
+				<div class="CRUD">
 					<input type="button" value="수정하기" class="btn"
 						onclick="location.href='noticeBoardUpdate.bo?notice_bno=${dto.notice_bno}&&category=1&&user_id=${user_id}&&pageNum=${param.pageNum }';">
 					<input type="button" value="삭제하기" class="btn"

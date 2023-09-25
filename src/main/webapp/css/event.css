@@ -7,17 +7,22 @@
 	display: flex;
 	justify-content: flex-end;
 }
+.rightButton2{
+	margin: 0 0 10px 0;
+	display: flex;
+	justify-content: flex-end;
+}
 input[type=button]{
 	background-color:buttonface;
 	border-color: darkgray;
 	color: darkgray;
-	padding: 4px 4px 4px 4px;
+	padding: 3px 4px 3px 4px;
 }
 input[type=submit]{
 	background-color:buttonface;
 	border-color: darkgray;
 	color: darkgray;
-	padding: 4px 4px 4px 4px;
+	padding: 2px 3px 2px 3px;
 }
 
 .image_figure {
@@ -64,7 +69,7 @@ div#left img{
 	width: 50%;
 }
 #imgContent{
-	width: 50%;
+	width: 100%;
 }
 
 div#right {

@@ -36,31 +36,31 @@
 						<th class="ttitle" colspan="4"></th>
 					</tr>
 					<tr>
-						<td>글번호</td>
-						<td>${dto.event_bno }</td>
+						<td class="column">글번호</td>
+						<td class="cntBno">${dto.event_bno }</td>
 
-						<td>작성일</td>
-						<td><fmt:formatDate value="${dto.updatedate }"
+						<td class="column">작성일</td>
+						<td class="cntDate"><fmt:formatDate value="${dto.updatedate }"
 								pattern="YY-MM-dd" /></td>
 
 					</tr>
 					<tr>
-						<td>제 목</td>
-						<td colspan="3">${dto.subject }</td>
+						<td class="column">제 목</td>
+						<td colspan="3" class="cntSubject">${dto.subject }</td>
 					</tr>
 					<tr>
-						<td>내 용</td>
-						<td colspan="3">${dto.content }</td>
+						<td class="column">내 용</td>
+						<td colspan="3" class="cntContent">${dto.content }</td>
 					</tr>
 				</table>
 				<c:if test="${user_id eq 'admin'}">
-					<div>
+					<div class="CRUD">
 						<input type="button" value="수정하기" class="btn"
 							onclick="location.href='eventBoardUpdate.bo?event_bno=${dto.event_bno}&&event_type=${dto.event_type }&&category=0&&user_id=${user_id}';">
 						<input type="button" value="삭제하기" class="btn" onclick="eventDelete();">
 					</div>
 				</c:if>
-					<div>					
+					<div class="rightButton2">					
 						<input type="button" value="목록이동" class="btn" onclick="boardList();">
 					</div>
 

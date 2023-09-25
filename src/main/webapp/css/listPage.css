@@ -4,13 +4,13 @@ input[type=button]{
 	background-color:buttonface;
 	border-color: darkgray;
 	color: darkgray;
-	padding: 4px 4px 4px 4px;
+	padding: 3px 4px 3px 4px;
 }
 input[type=submit]{
 	background-color:buttonface;
 	border-color: darkgray;
 	color: darkgray;
-	padding: 4px 4px 4px 4px;
+	padding: 2px 3px 2px 3px;
 }
 
 .container h1{
@@ -38,7 +38,7 @@ input[type=submit]{
 .readCount{
 	width: 20%;
 }
-.cntBno{
+.boardContent .cntBno{
 	width: 20px;
 }
 
@@ -51,7 +51,11 @@ input[type=submit]{
 }
 
 .cntDate{
-	width: 500px;
+	width: 30%;
+}
+
+.cntBno{
+	width: 20%;
 }
 
 
@@ -63,6 +67,7 @@ input[type=submit]{
 	border-bottom: 1px solid rgb(172, 0, 0);
 	font-size: 20px;
 	color: white;
+
 }
 
 #page_control{
@@ -84,12 +89,14 @@ input[type=submit]{
 .boardContent{
 /* 	display: flex; */
 /* 	justify-content: center; */
+	width:100%;
 	margin: 0 auto;
 	font-size: 20px;
 /* 	border: 1px solid white; */
 }
 
 .boardContent td{
+	box-sizing: border-box;
 	padding: 10px 10px;
 	border-bottom: 1px solid rgb(172, 0, 0);
 /* 	border-right: 1px solid white; */
@@ -98,6 +105,15 @@ input[type=submit]{
 
 .column{
 /* 	font-style: ; */
+	width: 15%;
 	font-size: 25px;
 	color: gray;
+}
+
+.CRUD{
+	margin: 10px 0 0 0;
+}
+
+#table_search{
+	height: 100%;
 }
