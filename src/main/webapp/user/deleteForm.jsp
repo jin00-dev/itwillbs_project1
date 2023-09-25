@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="./css/userInfo.css">
+<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <c:if test="${empty sessionScope.user_id}">

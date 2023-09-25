@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <link rel="stylesheet" href="./css/joinPage.css">
 </head>
 
