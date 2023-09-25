@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -26,9 +25,8 @@
 	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
 		<input id="btn1" type="button" value="예매관리"	onclick="location.href='./UserOrderBoardAction.me'">
-		<input id="btn2" type="button" style="background: gray;" value="회원정보수정"	onclick="location.href='./UserInfoCheck.me'">
-		<input id="btn2" type="button" value="고객지원 관리"	onclick="location.href='./UserInfoCheck.me'">
-		<input id="btn2" type="button" value="컨텐츠 관리"	onclick="location.href='./UserInfoCheck.me'">
+		<input id="btn2" type="button" style="background: gray;" value="회원정보"	onclick="location.href='./UserInfoCheck.me'">
+		<input id="btn2" type="button" value="대관문의"	onclick="location.href='./UserInfoCheck.me'">
 	</div>
 	<div id="userInfo_box">
 		<div id="table_search">

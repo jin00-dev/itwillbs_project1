@@ -1,70 +1,24 @@
 @charset "UTF-8";
 
-.container{
-    width: 800px;
-    margin: 0 auto;
-}
-
-.navi{
-    width: 800px;
-    height: 60px;
-    border: 2px solid #ccc;
-    padding-bottom: 10px;
-
-}
-.navi ul{
-    list-style: none;
-}
-
-.navi ul li{
-    float: left;
-    width: 250px;
-    padding: 10px;
-    margin: 20px;
-}
-
-#box2{
-	border: 1px solid;
-	margin: 50px auto;
-	width: 300px;
-	height: 300px;
-
-}
-#box3{
-	border: 1px solid;
-	margin: 50px auto;
-	width: 300px;
-	height: 300px;
-}
-
-#a{
-margin: 15px;
-}
-
-#b{
-	margin-left: 25px;
-	float: center;
-}
-#box{
-	margin: 20px;
-
-}
-#find{
-	margin-left: 10px;
-	margin-bottom: 5px;
-}
+/* 아이디찾기(글자) 있는 섹션*/
 #join_box {
   text-align: center;
   margin: 0 auto;
   width: 25em; 
 }
 
-.button{
+/*아이디찾기 버튼*/
+#button{
      padding: 0.5em;
   margin: 0.5em 1em;
-  width: 10em;
+  width: 11em;
   border-radius: 0.5em;
+  height: 2.4em;
+  background: white;
+  margin-left: 3em;
 }
+
+/* 아이디찾기 글자*/
 h1{
     width: 11em;
    border-bottom: 1px solid gray;
@@ -72,40 +26,36 @@ h1{
    padding: 10px;
 }
 
+/* 이름, 전화번호 글자 */
 #join_wrap label {
    width: 23em;
    text-align: left;
    font-weight: 900;
    margin: auto;
 }
+
+/* 입력받는칸 묶은 필드셋*/
 #join_wrap{
-	margin: auto;
-	padding-left: 700px;
+   margin: auto;
+   padding-left: 660px;
 }
+
+/*이름 입력받는 칸  */
 #A{
-	 padding: 0.5em;
+    padding: 0.5em;
   margin: 0.5em 1em;
   width: 15em;
   border-radius: 0.5em;
 }
+
+/* 번호 입력받는 칸 */
 #B{
-	
-	 padding: 0.5em;
+   
+    padding: 0.5em;
   margin: 0.5em 1em;
   width: 15em;
   border-radius: 0.5em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#hiddenMsgPhone{
+   padding: 15px;
+}

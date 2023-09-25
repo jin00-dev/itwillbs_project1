@@ -1,28 +1,64 @@
 @charset "UTF-8";
 
+/*로그인,비회원예매 박스*/
 .id_pw_wrap{
-	float: left;
-	
-
-	padding: 20px;
-	margin: 20px;
-	 padding: 1rem;
+   float: left;
+   
+   padding: 20px;
+   margin: 20px;
+    padding: 1rem;
   margin: 1rem;
 
 }
 
 #footer_b{
-	clear: left;
+   clear: left;
 }
+
+
 .pp{
-	display: flex;
-	margin-left: 460px;
+   display: flex;
+   margin-left: 460px;
+   height:400px;
 }
 
-.button{
-	
+/*비회원예매바로가기 버튼*/
+.btn_login {
+   background: white;
+   border-radius: 10px;
+   padding: 5px;
+}
+/*로그인 버튼 */
+.btn_login1{
+   background: white;
+   border-radius: 10px;
+   padding: 5px;
+
 }
 
+/*입력받는칸*/
 .id_pw{
-	border-radius: 10px;
+   border-radius: 10px;
+   padding: 5px;
+   
+}
+
+/*버튼사이사이 띄우기*/
+#hiddenMsgId{
+   padding: 8px;
+}
+#hiddenLogin{
+   padding: 10px;
+}
+#hidden{
+   padding: 5px;
+}
+#hidden1{
+   padding: 3px;
+}
+#hidden2{
+   padding: 3px;
+}
+#hidden3{
+   padding: 1px;
 }

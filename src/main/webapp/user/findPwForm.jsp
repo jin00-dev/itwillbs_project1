@@ -1,86 +1,110 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<!-- Jquery 라이브러리 추가 -->
-<script src="../js/code.jquery.com_jquery-3.7.1.min.js"></script>
-<script type="text/javascript">
-
-</script>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="./css/findPw.css">
-
-<title>회원가입</title>
-
-</head>
-<body>
-<!-- 상단 바 고정 -->
+<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> 
+<head>
 <header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+   <jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-<!-- 상단 바 고정 -->
-<!-- 여기 회원가입 페이지 꾸며아함. -->
+   <!--center -------------------------------------------------------------  -->
 <section id="center" class="center_o pt-2 pb-2">
-	<form action="./loginForm.jsp" method="post"></form>
-		
-<fieldset>
- <div class="container">
-        <nav class="navi">
-            <ul>
-                  
-                   <li><a href="./UserFindId.me">아이디찾기</a></li> 
-                   <li><a href="./UserFindPw.me">비밀번호찾기</a></li> 
-            </ul>   
-        </nav>
-        </div>
- </fieldset>
- 
-	
-	
-	
-	 <div id="box3">
-	 <fieldset>
-            <h4 id="a">아이디</h4>
-               <input id="box" type="text"> <br>
-             <h4 id="a">휴대폰 번호</h4>
-              <input id="box" type="text" > 
-              <input type="button" value="인증"> <br>
-             
-               <input id="b" type="button" value="비밀번호 찾기"> 
-            </fieldset>
-		</div>
- </section>
+   <section id="join_box">
+   
+   <h1>비밀번호찾기</h1> 
+   </section>
+   <form action="./UserFindPwAction.me" method="post">
+   <fieldset id="join_wrap">
+   <label>아이디</label>
+   <br>
+   <input id="userEmail" type="text" name="user_id" placeholder="이메일형식">
+   
+   
+   <input id="checkEmail" type="button" value="이메일인증"><br>
+   <p id="A">이메일이 도착하는데 1~2분 소요됩니다</p>
+   <label>인증번호</label>
+   <br>
+   <input id="usernum" type="text" name="user_mailnum" placeholder="4자리">
+   <br>
+   <p id="hiddenemailnum"></p>
+   <input id="button" type="submit" value="비밀번호찾기" onclick="return check()">
+   
+   
+   </fieldset>
+   <input type="hidden" id="random">
+   
+    <script>
+    $("#checkEmail").click(function () {
+        const userEmail = $("#userEmail").val();
+        const sendEmail = document.forms["sendEmail"];
+        $.ajax({
+            type: 'post',
+            url: './UserEmailAction.me', 
+            data: { 
+                'user_id': userEmail
+            },
+            dataType: "text",
+            success: function (result) {
+               if(result == ""){
+                  alert("정보를 다시 입력해주세요");
+               }else{
+                    alert("인증번호가 전송되었습니다");
+                   $("#random").val(result);
+               }
+           
+            },error: function () {
+               alert("정보를 다시 입력해주세요");
+               
+            }
+        })
+    });
+    
+    function check(){
+       var user_mailnum = $("input[name='user_mailnum']").val();
+       var random = $("#random").val();
+       if(user_mailnum == random ){
+          return true;
+       }else{
+          alert("인증번호가 틀렸습니다");
+          return false;
+       }
+    }
+    
+</script>
+
+
+
+
+</form>
+</section>
 <!--center end-------------------------------------------------------------  -->
-	<!-- footer아래로는 코드 금지 -->
+   
 
-<!-- 하단바 고정  -->
 <footer>
-	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+   <jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 </footer>
-<!-- 하단바 고정  -->
 
 
-	<script>
-		window.onscroll = function() {
-			myFunction()
-		};
+   <script>
+      window.onscroll = function() {
+         myFunction()
+      };
 
-		var navbar_sticky = document.getElementById("navbar_sticky");
-		var sticky = navbar_sticky.offsetTop;
-		var navbar_height = document.querySelector('.navbar').offsetHeight;
+      var navbar_sticky = document.getElementById("navbar_sticky");
+      var sticky = navbar_sticky.offsetTop;
+      var navbar_height = document.querySelector('.navbar').offsetHeight;
 
-		function myFunction() {
-			if (window.pageYOffset >= sticky + navbar_height) {
-				navbar_sticky.classList.add("sticky")
-				document.body.style.paddingTop = navbar_height + 'px';
-			} else {
-				navbar_sticky.classList.remove("sticky");
-				document.body.style.paddingTop = '0'
-			}
-		}
-	</script>
+      function myFunction() {
+         if (window.pageYOffset >= sticky + navbar_height) {
+            navbar_sticky.classList.add("sticky")
+            document.body.style.paddingTop = navbar_height + 'px';
+         } else {
+            navbar_sticky.classList.remove("sticky");
+            document.body.style.paddingTop = '0'
+         }
+      }
+   </script>
 
 </body>
 </html>
