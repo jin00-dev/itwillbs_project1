@@ -30,7 +30,7 @@ public class NonuserDTO {
 	public void setNonuser_phone(String nonuser_phone) {
 		this.nonuser_phone = nonuser_phone;
 	}
-	
+	수정
 	@Override
 	public String toString() {
 		return super.toString();
