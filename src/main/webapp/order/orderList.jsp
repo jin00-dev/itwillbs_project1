@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Off The Lamp</title>
 <link href="./css/orderList.css" rel="stylesheet">
 <link href="./css/footer.css" rel=stylesheet>
@@ -31,6 +30,49 @@
 		session.setAttribute("id", id);
 	%>
 </script>
+<style>
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+	position: relative;
+	margin: 10% auto;
+	padding: 40px;
+	background-color: #202020;
+	width: 400px;
+	text-align: center;
+	font-weight: bolder;
+}
+
+.close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+
+#canselbtn{
+	background-color: #202020;
+	border: none;
+	color: aliceblue;
+}
+
+#canselbtn:hover{
+	color: red;
+}
+
+.openModalBtn:hover{
+	text-shadow: 3px 3px 3px grey;
+}
+
+</style>
 </head>
 
 <body>
@@ -93,52 +135,9 @@
 			</div>
 		</section>
 		</div>
+		</div>
 	</main>
-	<style>
-.modal {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.7);
-}
-
-.modal-content {
-	position: relative;
-	margin: 10% auto;
-	padding: 40px;
-	background-color: #202020;
-	width: 400px;
-	text-align: center;
-	font-weight: bolder;
-}
-
-.close {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	cursor: pointer;
-}
-
-#canselbtn{
-	background-color: #202020;
-	border: none;
-	color: aliceblue;
-}
-
-#canselbtn:hover{
-	color: red;
-}
-
-.openModalBtn:hover{
-	text-shadow: 3px 3px 3px grey;
-}
-
-</style>
-</head>
-<body>
+	
 	<div id="myModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span> 

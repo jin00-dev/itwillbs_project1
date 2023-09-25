@@ -292,8 +292,10 @@
 										<option class="text" value="소형차">소형차</option>
 										<option class="text" value="중형차">중형차</option>
 										<option class="text" value="대형차">대형차</option>
+								</select> 
 								</div>
-								</select> <input type="hidden" name="region" id="region">
+								
+								<input type="hidden" name="region" id="region">
 								<input type="hidden" name="movie" id="movie">
 								<input type="hidden" name="cinema" id="cinema">
 								<input type="hidden" name="time" id="time">
@@ -310,6 +312,7 @@
 					</div>
 				</section>
 			</div>
+		</div>
 	</main>
 
 	<!-- footer아래로는 코드 금지 -->

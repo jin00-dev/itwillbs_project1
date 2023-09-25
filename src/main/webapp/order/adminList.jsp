@@ -15,6 +15,29 @@
 	$(document).ready(function(){
 	});
 </script>
+<style>
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 150px;
+      left: 340px;
+      width: 650px;
+      height: 450px;
+      background-color: #eeeeee;
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 10px;
+      padding: 10px;
+      background-color: #eeeeee;
+      width: 600px;
+      height: 400px;
+      text-align: center;
+      color: black;
+    }
+</style>
 </head>
 <body>
 	<header>
@@ -74,35 +97,8 @@
 					</div>
 				</section>
 				</div>
+				</div>
 			</main>
-
-<style>
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 150px;
-      left: 340px;
-      width: 650px;
-      height: 450px;
-      background-color: #eeeeee;
-    }
-
-    .modal-content {
-      position: relative;
-      margin: 10px;
-      padding: 10px;
-      background-color: #eeeeee;
-      width: 600px;
-      height: 400px;
-      text-align: center;
-      color: black;
-    }
-
-
-  </style>
-</head>
-<body>
   <div id="myModal" class="modal">
     <div class="modal-content">
       예매번호:<input type="text" id="idNum1" readonly>

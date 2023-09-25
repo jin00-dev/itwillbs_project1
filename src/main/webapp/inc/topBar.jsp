@@ -10,7 +10,9 @@
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/global.css" rel="stylesheet">
 <link href="./css/index.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
+	rel="stylesheet">
 <script src="./js/bootstrap.bundle.min.js"></script>
 
 </head>
@@ -52,11 +54,11 @@
 			</div>
 		</div>
 	</section>
-
+	
 	<section id="header">
 		<nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
 			<div class="container">
-				<a class="navbar-brand text-white fw-bold" href="./main.me"><i
+				<a class="navbar-brand text-white fw-bold" href="./Main.me"><i
 					class="fa fa-video-camera col_red me-1"></i>Off The Lamp</a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -68,23 +70,22 @@
 					<ul class="navbar-nav mb-0">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="./orderMain.or">예매안내</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="./eventMain.bo">이벤트</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="./introduceMain.bo">소개게시판</a></li>
+						<li class="nav-item"><a class="nav-link" href="./eventMain.bo">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link" href="./introduceMain.bo">소개게시판</a>
+						</li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								고객문의 </a></ul>
+								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="./noticeMain.bo">공지사항</a></li>
 								<li><a class="dropdown-item" href="./faqMain.bo">자주묻는질문</a></li>
-								<li><a class="dropdown-item border-0 "href="./rentMain.bo">대관문의</a></li>
-							</ul>
+								<li><a class="dropdown-item border-0" href="./rentMain.bo">대관문의</a></li>
+							</ul></li>
 				</div>
 			</div>
 		</nav>
 	</section>
-	
+
 </body>
 </html>

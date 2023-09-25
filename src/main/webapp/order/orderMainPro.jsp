@@ -50,12 +50,19 @@
 	 });
 
 </script>
+<style>
+		input{
+			height: 35px;
+			background-color: #202020;
+			color: aliceblue;
+			border: none;
+		}
+	</style>
 </head>
 <body>
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
 
 	<!-- 여기 예매 페이지 꾸며아함. -->
 	<main>
@@ -168,16 +175,14 @@
 							style="top: 144px; left: 360px; background-color: #C8C8C8">D10</button>
 					</div>
 
-
 				</section>
 			</div>
+			
 
 			<div class="divbox1">
 				<section>
 
 					<div class="divbox2">결제</div>
-					
-					
 
 					<p>영화</p>
 					<input type="text" id="movieName" value="${param.movie }" readonly>
@@ -189,22 +194,15 @@
 					<input type="text" id="price" value="${param.price }" readonly>
 					<p>좌석</p>
 					<input type="text" id="seat" readonly>
-					<input class="btn1" type="button" id="re2" value="결제"
-					onclick="requestPay()">
+					<input class="btn1" type="button" id="re2" value="결제" onclick="requestPay()">
 				</section>
 			</div>
-
+		
 		</section>
 		</div>
+		</div>
 	</main>
-	<style>
-		input{
-			height: 35px;
-			background-color: #202020;
-			color: aliceblue;
-			border: none;
-		}
-	</style>
+	
 	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	<script type="text/javascript">
 
