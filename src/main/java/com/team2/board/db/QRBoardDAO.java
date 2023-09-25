@@ -673,6 +673,65 @@ public class QRBoardDAO {
 		return boardList;
 	}
 	
+	public List<QRBoardDTO> rentGetBoardListPage(int startRow,int pageSize,String user_id){
+		
+		System.out.println(" DAO : rentGetBoardListPage(startRow,pageSize) 호출");
+		List<QRBoardDTO> boardList = new ArrayList<QRBoardDTO>();
+		
+		try {
+			//1.2. 디비연결 (커넥션풀)
+			con = getConnect();
+			//3.sql구문 작성 & pstmt 객체
+			// 게시판 글 리스트 원하는 만큼만 조회
+			// 	limit 시작위치, 개수
+			//		: 위치(인덱스)에서 개수만큼 데이터를 짤라서 가져오기
+			
+			sql = "select * from qna_rent_board where category = 1 && user_id=? limit ?, ?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setString(1, user_id);
+			pstmt.setInt(2, startRow-1); //시작위치 starRow 1
+			pstmt.setInt(3, pageSize); // 개수 pageSize 10
+			//4. sql 실행
+			rs = pstmt.executeQuery();
+			//5. 데이터처리 (rs->BoardBean -> List)
+			while(rs.next()) {
+				// rs->BoardBean
+				QRBoardDTO bb = new QRBoardDTO();
+				bb.setCategory(rs.getByte("category"));
+				bb.setRent_bno(rs.getInt("rent_bno"));
+				bb.setUser_id(rs.getString("user_id"));
+				bb.setSubject(rs.getString("subject"));
+				bb.setContent(rs.getString("content"));
+				bb.setRead_count(rs.getInt("read_count"));
+				bb.setRegdate(rs.getTimestamp("regdate"));
+				bb.setUpdatedate(rs.getTimestamp("updatedate"));
+				bb.setRent_name(rs.getString("rent_name"));
+				bb.setCinema_name(rs.getString("cinema_name"));
+				bb.setRent_phone(rs.getString("rent_phone"));
+				bb.setRent_email(rs.getString("rent_email"));
+				bb.setAnswer(rs.getByte("answer"));
+				bb.setAnswer_context(rs.getString("answer_context"));
+				
+				
+				
+				//BoardBean -> List
+				boardList.add(bb);
+			}//while
+			
+			System.out.println(" DAO : (페이징처리된) 글 리스트를 저장");
+			System.out.println(" DAO : 리스트 사이즈"+boardList.size());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return boardList;
+	}
+	
 	
 	// 글 리스트 정보 가져오기(페이징처리)-getBoardListPage(startRow,pageSize)
 	

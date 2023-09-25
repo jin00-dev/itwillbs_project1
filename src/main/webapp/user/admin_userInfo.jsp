@@ -27,7 +27,7 @@
 	<div id="container">
 		<input id="btn1" type="button" value="예매관리"	onclick="location.href='./UserOrderBoardAction.me'">
 		<input id="btn2" type="button" style="background: gray;" value="회원정보"	onclick="location.href='./UserInfoCheck.me'">
-		<input id="btn2" type="button" value="대관문의"	onclick="location.href='./UserInfoCheck.me'">
+		<input id="btn2" type="button" value="대관문의"	onclick="location.href='./AdminRentInfoBoardAction.me'">
 	</div>
 	<div id="userInfo_box">
 		<div id="table_search">
