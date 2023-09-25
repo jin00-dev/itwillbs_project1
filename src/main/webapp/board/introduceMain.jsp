@@ -4,9 +4,6 @@
 <head>
 <link rel="stylesheet" href="./css/introduceMain.css">
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ur2rm9e363"></script>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Off The Lamp</title>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">

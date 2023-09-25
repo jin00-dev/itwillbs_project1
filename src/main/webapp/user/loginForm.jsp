@@ -3,13 +3,15 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="./css/loginPage.css">
-<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> 
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
+<title>Off The Lamp</title> 
 <head>
+</head>
+<body>
+   <!--center -----------------------------------------------------------  -->
 <header>
    <jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
-   <!--center -----------------------------------------------------------  -->
 <section id="center" class="center_o pt-2 pb-2">
    <div class=pp>
       <fieldset class="id_pw_wrap">

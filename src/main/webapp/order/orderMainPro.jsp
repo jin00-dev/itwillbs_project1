@@ -1,26 +1,13 @@
-<%@page
-	import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>예매안내</title>
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
+<title>Off The Lamp</title>
 <link href="./css/cinema.css" rel="stylesheet">
 <link href="./css/pay_v2.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
-	rel="stylesheet">
-<script src="./js/bootstrap.bundle.min.js"></script>
-<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 		
 		$(function(){		
@@ -65,6 +52,9 @@
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
 
 
 	<!-- 여기 예매 페이지 꾸며아함. -->

@@ -1,21 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <!-- Jquery 라이브러리 추가 -->
-<script src="../js/code.jquery.com_jquery-3.7.1.min.js"></script>
-<script type="text/javascript">
-
-
-</script>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../js/code.jquery.com_jquery-3.7.1.js"></script>
 <link rel="stylesheet" href="./css/findId.css">
-
-<title>회원가입</title>
-
+<title>Off The Lamp</title>
 </head>
 <body>
 <!-- 상단 바 고정 -->

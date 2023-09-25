@@ -3,11 +3,16 @@
 <html>
 <link rel="stylesheet" href="./css/findId.css">
 <head>
-<header>
-   <jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
+<title>Off The Lamp</title>
 
+</head>
    <!--center -------------------------------------------------------  -->
+   <body>
+   
+   <header>
+   <jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
+
 <section id="center" class="center_o pt-2 pb-2">
    <section id="join_box">
    

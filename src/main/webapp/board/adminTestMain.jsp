@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Off The Lamp</title>
 </head>
 <body>
 <!-- 상단 바 고정 -->

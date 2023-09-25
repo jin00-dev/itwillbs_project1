@@ -1,14 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <link href="./css/listPage.css" rel="stylesheet">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.7.1.js"
-	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-	crossorigin="anonymous"></script>
+<title>Off The Lamp</title>
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	function boardList() {
 		location.href = "qnaBoardList.bo?user_id=${user_id}";

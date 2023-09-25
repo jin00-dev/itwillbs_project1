@@ -12,7 +12,6 @@
 <link href="./css/index.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"	rel="stylesheet">
 <script src="./js/bootstrap.bundle.min.js"></script>
-<!-- <script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> -->
 
 </head>
 <body>
@@ -76,12 +75,12 @@
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								고객문의 </a>
+								고객문의 </a></ul>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="./noticeMain.bo">공지사항</a></li>
 								<li><a class="dropdown-item" href="./faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0 "href="./rentMain.bo">대관문의</a></li>
-							</ul></li>
+							</ul>
 				</div>
 			</div>
 		</nav>
