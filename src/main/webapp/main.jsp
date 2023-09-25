@@ -130,7 +130,7 @@
 
 	<section id="choice" class="pt-4 pb-5">
 		<div class="container">
-			<h2 class="mb-0">현재 상영 영화</h2>
+			<h2 class="mb-0">현재 상영 영화</h2><br>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
 					<div class="trend_2i row">
