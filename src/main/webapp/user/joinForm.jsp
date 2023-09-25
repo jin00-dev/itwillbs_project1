@@ -1,106 +1,277 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="./css/loginPage.css">
-<script src="./js/code.jquery.com_jquery-3.7.1.js"></script> 
 <head>
-<header>
-   <jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
+<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="./css/joinPage.css">
+</head>
 
-   <!--center -----------------------------------------------------------  -->
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
+<!-- ¿©±â È¸¿ø°¡ÀÔ ÆäÀÌÁö ²Ù¸ç¾ÆÇÔ. -->
+<!--center -------------------------------------------------------------  -->
+
+
 <section id="center" class="center_o pt-2 pb-2">
-   <div class=pp>
-      <fieldset class="id_pw_wrap">
-         <legend >ë¡œê·¸ì¸</legend><hr>
-         <p id='hidden2'></p>
-         <form id="f1" action="./UserLoginAction.me" method="post">
-         
-               <input type="text" name="id" placeholder="ì´ë©”ì¼í˜•ì‹" class="id_pw"> <br>
-               <p id='hiddenMsgId'></p>
-               <input type="password" name="pw" placeholder="ë¹„ë°€ë²ˆí˜¸" class="id_pw"> 
-            
-            <button type="submit" class="btn_login1" >
-               <span >ë¡œê·¸ì¸</span>
-            </button> 
-            <p id='hiddenLogin'></p>
-         </form>
-   
-      <div class="panel_item2">
-         <a href="./UserFindId.me">ì•„ì´ë””ì°¾ê¸°</a> |
-         <a href="./UserFindPw.me">ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°</a> |
-         <a href="./UserJoin.me">íšŒì›ê°€ì…</a> <br>
-         <hr>
-         <p id='hidden'></p>
-         <a id="kakao" href="javascript:kakaoLogin()"><img src="./img/kakaobutton.png" width="250px;"></a>
-         
-      </div>
-      </fieldset>
-      
-      <fieldset class="id_pw_wrap">
-         <legend >ë¹„íšŒì›ì˜ˆë§¤</legend><hr>
-         <p id='hidden3'></p>
-         <form id="f2" action="./NonUserLoginAction.me" method="post">
-         
-               <input id="F" type="text" name="nonuser_name" placeholder="ì´ë¦„" class="id_pw" required="required"> <br>
-               <p id='hidden1'></p>
-               <input id="G" type="text" name="nonuser_phone" placeholder="íœ´ëŒ€í°ë²ˆí˜¸'-'ë¹¼ê³  ì…ë ¥" class="id_pw" required="required"> <br>
-               <p id='hidden1'></p>
-               <input id="C" type="password" name="nonuser_pass" placeholder="ë¹„ë°€ë²ˆí˜¸" class="id_pw" required="required"> <br>
-               <p id='hidden1'></p>
-               <input id="D" type="password" name="pwCheck" placeholder="ë¹„ë°€ë²ˆí˜¸í™•ì¸" class="id_pw" required="required"> <hr>
-            
-            <button type="submit" class="btn_login" onclick="return check()">
-               <span class="A">ë¹„íšŒì›ì˜ˆë§¤ë°”ë¡œê°€ê¸°</span>
-            </button>
-         </form>
-      </fieldset>
-      <input type="hidden" class="btn_login">
-      <script>
-      
-      function check(){
-      
-       if(   $("#C").val()==$("#D").val() ){
-          return true;
-          
-       }else{
-          alert("ë¹„ë°€ë²ˆí˜¸ í™•ì¸ì„ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
-          
-          return false;
-       }
-      }
-      </script>
-   </div>
-      <hr>
- </section>
+	<section id="join_box">
+		<h1>È¸¿ø°¡ÀÔ</h1>
+
+		<form action="./UserJoinAction.me" method="post">
+			<fieldset id="join_wrap">
+				<label>¾ÆÀÌµğ </label><br><input type="text" name="user_id" id="user_id" placeholder="¾ÆÀÌµğ ÀÔ·Â"> 
+				<input type="button" id="double_check" value="Áßº¹È®ÀÎ"onclick="checkUserId()"><br>
+				<p id='chId'></p>
+				<label>ÀÎÁõ¹øÈ£ </label><br><input type="text" name="emailRand" id="emailRand" placeholder="ÀÎÁõ¹øÈ£ ÀÔ·Â"> 
+				<button type="button" id="certification" onclick="certificationF()">ÀÌ¸ŞÀÏ Àü¼Û</button>
+				<p id='chEmailRand'></p>
+				<label>ÀÌ¸§ </label> <br><input type="text" name="user_name" placeholder="ÀÌ¸§ÀÔ·Â"> <br>
+				<p id='hiddenMsgName'></p>
+				<label>ÀüÈ­¹øÈ£ </label><br> <input type="text" name="user_phone"placeholder="-¾øÀÌ ÈŞ´ëÆù ¹øÈ£ ÀÔ·Â"> <br> 
+				<p id='hiddenMsgPhone'></p>
+				<input type="hidden" id="isCheckId" value="false">
+				<label>ºñ¹Ğ¹øÈ£ </label><br> <input type="password" name="user_pass" placeholder="ºñ¹Ğ¹øÈ£ ÀÔ·Â"> <br>
+				<p id='hiddenMsgPw'></p>
+				 <label>ºñ¹Ğ¹øÈ£ È®ÀÎ </label><br> <input type="password" name="user_chpw" placeholder="ºñ¹Ğ¹øÈ£ ÀÔ·Â È®ÀÎ"> <br> 
+				<p id='hiddenMsgPwCheck'></p>
+				
+				 <input type="hidden"name="isCertification"> 
+				 <input type="hidden"name="imp_uid"> 
+			 	<input type="submit" value="È¸¿ø°¡ÀÔ"	onclick="return check()">
+			</fieldset>
+		</form>
+	</section>
+
+	<hr>
+</section>
+
+<input type="hidden" id="random" value="">
 
 <!--center end-------------------------------------------------------------  -->
+<!-- footer¾Æ·¡·Î´Â ÄÚµå ±İÁö -->
 
-   <footer>
-   <jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+<footer>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 </footer>
 
+<!-- iamport.payment.js -->
+<!-- <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script> -->
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+<script>
+	//ÀÌ¸ŞÀÏ Ã¼Å©¿ë
+	var emailCheck = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 
-   <script>
-      window.onscroll = function() {
-         myFunction()
-      };
+	window.onscroll = function() {
+		myFunction()
+	};
 
-      var navbar_sticky = document.getElementById("navbar_sticky");
-      var sticky = navbar_sticky.offsetTop;
-      var navbar_height = document.querySelector('.navbar').offsetHeight;
+	var navbar_sticky = document.getElementById("navbar_sticky");
+	var sticky = navbar_sticky.offsetTop;
+	var navbar_height = document.querySelector('.navbar').offsetHeight;
 
-      function myFunction() {
-         if (window.pageYOffset >= sticky + navbar_height) {
-            navbar_sticky.classList.add("sticky")
-            document.body.style.paddingTop = navbar_height + 'px';
-         } else {
-            navbar_sticky.classList.remove("sticky");
-            document.body.style.paddingTop = '0'
-         }
-      }
-   </script>
+	function myFunction() {
+		if (window.pageYOffset >= sticky + navbar_height) {
+			navbar_sticky.classList.add("sticky")
+			document.body.style.paddingTop = navbar_height + 'px';
+		} else {
+			navbar_sticky.classList.remove("sticky");
+			document.body.style.paddingTop = '0'
+		}
+	}
+	//ÀÌ¸ŞÀÏ ÀÎÁõ
+	function certificationF(){
+        const userEmail = $("#user_id").val();
+        if(userEmail != "" && emailCheck.test(userEmail)==true){
+	        $.ajax({
+	            type: 'post',
+	            url: './UserEmailJoinAction.me', 
+	            data: {'user_id': userEmail},
+	            dataType: "text",
+	            success: function (result) {
+	            	if(result.trim() == ""){
+	            		alert("Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
+	            	}else{
+	            		$("#chId").text("");
+	            		alert("ÀÎÁõ¹øÈ£°¡ Àü¼ÛµÇ¾ú½À´Ï´Ù");
+	          			$("#random").val(result);
+// 	          			$("input[name='isCertification']").val("true");
+	            	}
+	            },error: function () {
+	            	alert("Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+	            }
+	        });//ajax
+        }else{
+        	$("#chId").text("ÀÌ¸ŞÀÏ Çü½ÄÀ¸·Î ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+			$("#chId").css('color', 'red');
+			$("#random").val("");
+			$('input[name="user_id"]').focus();
+        }
+	}
+	 
+
+	//ÅëÇÕÀÎÁõ - ¹Ì¿Ï¼º
+// 	function certification() {
+// 		var IMP = window.IMP; // »ı·« °¡´É
+// 		IMP.init("imp29272276");
+// 		// IMP.certification(param, callback) È£Ãâ
+// 		IMP.certification({ // param
+// 			pg : 'inicis_unified.MIIiasTest',//º»ÀÎÀÎÁõ ¼³Á¤ÀÌ 2°³ÀÌ»ó µÇ¾î ÀÖ´Â °æ¿ì ÇÊ¼ö 
+// 			// 			    merchant_uid: "ORD20180131-0000011", // ÁÖ¹® ¹øÈ£
+// 			// 			    min_age: 15, //º»ÀÎÀÎÁõ ÃÖ¼Ò ³ªÀÌ
+// 		    m_redirect_url : "./UserJoinAction.me", // ¸ğ¹ÙÀÏÈ¯°æ¿¡¼­ popup:false(±âº»°ª) ÀÎ °æ¿ì ÇÊ¼ö, ¿¹: https://www.myservice.com/payments/complete/mobile
+// 			popup : false
+// 		// PCÈ¯°æ¿¡¼­´Â popup ÆÄ¶ó¹ÌÅÍ°¡ ¹«½ÃµÇ°í Ç×»ó true ·Î Àû¿ëµÊ
+// 		}, function(rsp) { // callback
+// 			if (rsp.success) { // ÀÎÁõ ¼º°ø ½Ã jQuery·Î HTTP ¿äÃ»
+// 				$("input[name='isCertification']").val(rsp.success);
+// 				$("input[name='imp_uid']").val(rsp.imp_uid);
+// 				alert("ÀÎÁõ¿¡ ¼º°øÇÏ¿´½À´Ï´Ù.");
+// 			} else {
+// 				$("input[name='isCertification']").val(rsp.success);
+// 				alert("ÀÎÁõ¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù. ¿¡·¯ ³»¿ë: " + rsp.error_msg);
+// 			}
+// 		});
+
+// 	}
+
+	//¾ÆÀÌµğ Áßº¹Ã¼Å© 
+	function checkUserId() {
+		var userId = $("input[name='user_id']").val();
+
+		if (userId.length == 0) {
+			$("#chId").text("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			$("#chId").css('color', 'red');
+			$("#isCheckId").val("false");
+			$('input[name="user_id"]').focus();
+		} else {
+			if(emailCheck.test(userId)==true){
+				$.ajax({
+					url : './UserIdCheckAction.me',
+					type : 'POST',
+					data : {userId : userId},
+					success : function(response) {
+						if (response.trim() === "true" && $('input[name="user_id"]').val() !="admin") {
+							$("#chId").text("»ç¿ë °¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.");
+							$("#chId").css('color', 'green');
+							$("#isCheckId").val("true");
+							$('input[name="user_id"]').focus();
+							console.log($("#isCheckId").val());
+						} else {
+							$("#chId").text("»ç¿ë ÇÒ ¼ö ¾ø´Â ¾ÆÀÌµğÀÔ´Ï´Ù.");
+							$("#chId").css('color', 'red');
+							$("#isCheckId").val("false");
+							$('input[name="user_id"]').focus();
+							console.log($("#isCheckId").val());
+						}
+					}
+				});
+			}else{
+				$("#chId").text("ÀÌ¸ŞÀÏ Çü½ÄÀ¸·Î ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+				$("#chId").css('color', 'red');
+				$("#isCheckId").val("false");
+				$('input[name="user_id"]').focus();
+			}
+		}
+	}
+
+	//ÀÔ·Â°ª °ø¹é ¹× ºñ¹Ğ¹øÈ£ ÀÏÄ¡È®ÀÎ ¹× ÀÎÁõÃ¼Å©
+	function check() {
+// 		var str = "";
+		let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+		let phoneRule = /^(01[016789]{1})[0-9]{4}[0-9]{4}$/;
+		
+		
+		/* ¾ÆÀÌµğ À¯È¿¼º °Ë»ç */
+		if ($('input[name="user_id"]').val().length == 0) {
+			$("#chId").text("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			$("#chId").css('color', 'red');
+			$('input[name="user_id"]').focus(); 
+			return false;
+		}else if($('#emailRand').val() != $('#random').val()){
+			$("#chEmailRand").text("ÀÎÁõ¹øÈ£¸¦ ´Ù½Ã ÇØÁÖ¼¼¿ä.");
+			$("#chEmailRand").css('color', 'red');
+			$('input[name="emailRand"]').focus();
+			$("input[name='isCertification']").val('true');
+			return false;
+		}else{
+			$("#chId").text("");
+		}
+		/* ÀÌ¸§ À¯È¿¼º °Ë»ç */
+		if ($('input[name="user_name"]').val().length == 0) {
+			$("#hiddenMsgName").text("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.");
+			$("#hiddenMsgName").css('color', 'red');
+			$('input[name="user_name"]').focus();
+			return false;
+		}else{
+			$("#hiddenMsgName").text("");
+		}
+
+		/* ÈŞ´ëÆù¹øÈ£ À¯È¿¼º °Ë»ç */
+		if ($('input[name="user_phone"]').val().length == 0) {
+			$("#hiddenMsgPhone").text("ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			$("#hiddenMsgPhone").css('color', 'red');
+			$('input[name="user_phone"]').focus();
+			return false;
+		}else if(phoneRule.test($('input[name="user_phone"]').val()) === false){
+			$("#hiddenMsgPhone").text("-¾øÀÌ ¿Ã¹Ù¸£°Ô ÀÔ·ÂÇÏ¼¼¿ä.");
+			$("#hiddenMsgPhone").css('color', 'red');
+			return false;
+		}else{
+			$("#hiddenMsgPhone").text("");
+		}
+
+		
+		/* ¾ÆÀÌµğ Áßº¹ °Ë»ç ½ÇÆĞ½Ã */
+		if ($('#isCheckId').val() != "true") {
+			$("#chId").text("¾ÆÀÌµğ Áßº¹ È®ÀÎÀ» ÇØÁÖ¼¼¿ä.");
+			$("#chId").css('color', 'red');
+// 			alert($("#chId").text());
+			$('input[name="user_id"]').focus(); 
+			return false;
+		}else{
+			$("#chId").text("");
+		}
+
+		/* ºñ¹Ğ¹øÈ£ ¹× ºñ¹Ğ¹øÈ£ È®ÀÎ À¯È¿¼º °Ë»ç */
+		if ($('input[name="user_pass"]').val().length == 0) {
+			$("#hiddenMsgPw").text("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+			$("#hiddenMsgPw").css('color', 'red');
+			$('input[name="user_pass"]').focus();
+			return false;
+		}else if(reg.test($('input[name="user_pass"]').val()) === false) {
+			$("#hiddenMsgPw").text("ºñ¹Ğ¹øÈ£´Â 8ÀÚ ÀÌ»óÀÌ¾î¾ß ÇÏ¸ç, ¼ıÀÚ/´ë¹®ÀÚ/¼Ò¹®ÀÚ/Æ¯¼ö¹®ÀÚ¸¦ ¸ğµÎ Æ÷ÇÔÇØ¾ß ÇÕ´Ï´Ù.");
+			$("#hiddenMsgPw").css('color', 'red');
+			return false;
+		}else{
+			$("#hiddenMsgPw").text("");
+		}
+
+		if ($('input[name="user_chpw"]').val().length == 0) {
+			$("#hiddenMsgPwCheck").text("ºñ¹Ğ¹øÈ£ È®ÀÎÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			$("#hiddenMsgPwCheck").css('color', 'red');
+			$('input[name="user_chpw"]').focus();
+			return false;
+		}else{
+			$("#hiddenMsgPwCheck").text("");
+		}
+
+		if ($('input[name="user_pass"]').val() != $('input[name="user_chpw"]').val()) {
+			$("#hiddenMsgPw").text("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+			$("#hiddenMsgPw").css('color', 'red');
+			$('input[name="user_pass"]').select(); 
+			return false;
+		}
+		
+		/* ÀÎÁõ¿©ºÎ Ã¼Å© */
+ 		if ($("input[name='isCertification']").val().trim() != 'true') {
+			alert('ÀÌ¸ŞÀÏ ÀÎÁõÀ» ÇØÁÖ¼¼¿ä');
+			console.log($("input[name='isCertification']").val());
+ 			return false;
+ 		}
+
+	}
+</script>
 
 </body>
 </html>

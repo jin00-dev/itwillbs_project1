@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="./css/userInfo.css">
+<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <c:if test="${empty sessionScope.user_id}">
@@ -56,10 +57,6 @@
 			$("#hiddenMsgPw").text("비밀번호를 입력해 주세요.");
 			$("#hiddenMsgPw").css('color', 'red');
 			$('input[name="user_pass"]').focus();
-			return false;
-		}else if(reg.test($('input[name="user_pass"]').val()) === false) {
-			$("#hiddenMsgPw").text("비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.");
-			$("#hiddenMsgPw").css('color', 'red');
 			return false;
 		}else{
 			$("#hiddenMsgPw").text("");

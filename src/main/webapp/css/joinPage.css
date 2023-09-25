@@ -12,25 +12,22 @@
 }
 
 /* 필드셋  */
-#certification, #join_wrap {
+#join_wrap {
   padding: 1em;
 }
 
-#certification button {
-	border-radius: 0.5em;
-	 margin: 0em 0.6em;
-}
+
 
 /* 버튼(인증,서브밋)   */
 button, input[type="submit"],input[type="button"] {
   padding: 0.5em;
-  margin: 0.5em 1em;
-  width: 10em;
+  margin: 0.5em 0.5em;
+  width: 9em;
   border-radius: 0.5em;
 }
 
 /* 중복확인 버튼   */
-#double_check{
+#double_check, #certification{
   padding: 0.5em;
   margin: 0.5em;
   width: 7em;
@@ -46,7 +43,7 @@ input[type="text"], input[type="password"] {
 	border-radius: 0.5em;
 }
 /* 아이디 입력필드 */
-input[name="user_id"]{
+input[name="user_id"], input[name="emailRand"]{
 	width: 15em;
 	margin: 0.5em 0;
 }

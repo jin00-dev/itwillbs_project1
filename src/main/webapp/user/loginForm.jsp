@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="./css/loginPage.css">
-<script src="./js/code.jquery.com_jquery-3.7.1.js"></script> 
+<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> 
 <head>
-<title>Off The Lamp</title>
 <header>
    <jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
@@ -79,7 +79,7 @@
 
    <footer>
    <jsp:include page="/inc/bottomBar.jsp"></jsp:include>
-</footer>
+	</footer>
 
 
    <script>
