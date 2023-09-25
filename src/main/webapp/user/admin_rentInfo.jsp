@@ -80,17 +80,17 @@
 		<div class="clear"></div>
 		<div id="page_control">
 			<c:if test="${startPage > pageBlock }">
-				<div>
+				<div class="pageButtonBox">
 					<a href="./AdminRentInfoBoardAction.me?pageNum=${startPage-pageBlock }" class="pageButton">Prev</a>
 				</div>
 			</c:if>
 			<c:forEach begin="${startPage }" end="${endPage }" step="1" var="i">
-				<div>
+				<div class="pageButtonBox">
 					<a href="./AdminRentInfoBoardAction.me?pageNum=${i }" class="pageButton">${i}</a>
 				</div>
 			</c:forEach>
 			<c:if test="${endPage < pageCount }">
-				<div>
+				<div class="pageButtonBox">
 					<a href="./AdminRentInfoBoardAction.me?pageNum=${startPage+pageBlock }" class="pageButton">Next</a>
 				</div>
 			</c:if>

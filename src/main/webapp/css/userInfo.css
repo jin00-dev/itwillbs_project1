@@ -50,6 +50,7 @@ main h1{
 #page_control{
 	display: flex;
     justify-content: center;
+
 }
 #page_control a{
 	color: black;
@@ -63,6 +64,10 @@ main h1{
 	margin: 0 1px;
 	display: inline-block;
 	text-align: center;
+	
+}
+.pageButtonBox{
+	box-shadow: 1px 1px 1px 1px black;
 }
 /* -------------------------회원정보 수정페이지 시작------------------------------------- */
 #userInfo_box {
@@ -159,4 +164,5 @@ input[type="text"], input[type="password"] {
 	color: darkgray;
 	text-shadow: 1px 0 black, 1px 0 black, 1px 0 black, 1px 0 black;
 }
+
 
