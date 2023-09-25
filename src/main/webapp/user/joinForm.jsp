@@ -16,20 +16,19 @@
 <section id="center" class="center_o pt-2 pb-2">
 	<section id="join_box">
 		<h1>회원가입</h1>
-		<fieldset id="certification">
-			<button onclick="certification()">이메일 인증</button>
-			<button onclick="requestPay()">휴대폰인증</button>
-		</fieldset>
 
 		<form action="./UserJoinAction.me" method="post">
 			<fieldset id="join_wrap">
+				<label>아이디 </label><br><input type="text" name="user_id" id="user_id" placeholder="아이디 입력"> 
+				<input type="button" id="double_check" value="중복확인"onclick="checkUserId()"><br>
+				<p id='chId'></p>
+				<label>인증번호 </label><br><input type="text" name="emailRand" id="emailRand" placeholder="인증번호 입력"> 
+				<button type="button" id="certification" onclick="certificationF()">이메일 전송</button>
+				<p id='chEmailRand'></p>
 				<label>이름 </label> <br><input type="text" name="user_name" placeholder="이름입력"> <br>
 				<p id='hiddenMsgName'></p>
 				<label>전화번호 </label><br> <input type="text" name="user_phone"placeholder="-없이 휴대폰 번호 입력"> <br> 
 				<p id='hiddenMsgPhone'></p>
-				<label>아이디 </label><br><input type="text" name="user_id" id="user_id" placeholder="아이디 입력"> 
-				<input type="button" id="double_check" value="중복확인"onclick="checkUserId()"><br>
-				<p id='chId'></p>
 				<input type="hidden" id="isCheckId" value="false">
 				<label>비밀번호 </label><br> <input type="password" name="user_pass" placeholder="비밀번호 입력"> <br>
 				<p id='hiddenMsgPw'></p>
@@ -38,7 +37,7 @@
 				
 				 <input type="hidden"name="isCertification"> 
 				 <input type="hidden"name="imp_uid"> 
-				 <input type="submit" value="회원가입"	onclick="return check()">
+			 	<input type="submit" value="회원가입"	onclick="return check()">
 			</fieldset>
 		</form>
 	</section>
@@ -46,7 +45,7 @@
 	<hr>
 </section>
 
-<input type="hidden" id="random">
+<input type="hidden" id="random" value="">
 
 <!--center end-------------------------------------------------------------  -->
 <!-- footer아래로는 코드 금지 -->
@@ -59,6 +58,9 @@
 <!-- <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script> -->
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script>
+	//이메일 체크용
+	var emailCheck = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
 	window.onscroll = function() {
 		myFunction()
 	};
@@ -77,26 +79,33 @@
 		}
 	}
 	//이메일 인증
-	function certification(){
+	function certificationF(){
         const userEmail = $("#user_id").val();
-        $.ajax({
-            type: 'post',
-            url: './UserEmailJoinAction.me', 
-            data: {'user_id': userEmail},
-            dataType: "text",
-            success: function (result) {
-            	if(result == ""){
-            		alert("정보를 다시 입력해주세요");
-            	}else{
-            		  alert("인증번호가 전송되었습니다");
-            		  alert(result);
-          			$("#random").val(result);
-            	}
-           
-            },error: function () {
-            	alert("정보를 다시 입력해주세요.");
-            }
-        });
+        if(userEmail != "" && emailCheck.test(userEmail)==true){
+	        $.ajax({
+	            type: 'post',
+	            url: './UserEmailJoinAction.me', 
+	            data: {'user_id': userEmail},
+	            dataType: "text",
+	            success: function (result) {
+	            	if(result.trim() == ""){
+	            		alert("정보를 다시 입력해주세요");
+	            	}else{
+	            		$("#chId").text("");
+	            		alert("인증번호가 전송되었습니다");
+	          			$("#random").val(result);
+// 	          			$("input[name='isCertification']").val("true");
+	            	}
+	            },error: function () {
+	            	alert("정보를 다시 입력해주세요.");
+	            }
+	        });//ajax
+        }else{
+        	$("#chId").text("이메일 형식으로 입력해 주세요.");
+			$("#chId").css('color', 'red');
+			$("#random").val("");
+			$('input[name="user_id"]').focus();
+        }
 	}
 	 
 
@@ -130,27 +139,38 @@
 		var userId = $("input[name='user_id']").val();
 
 		if (userId.length == 0) {
-			alert('아이디를 입력하세요');
+			$("#chId").text("아이디를 입력하세요.");
+			$("#chId").css('color', 'red');
+			$("#isCheckId").val("false");
 			$('input[name="user_id"]').focus();
 		} else {
-			$.ajax({
-				url : './UserIdCheckAction.me',
-				type : 'POST',
-				data : {userId : userId},
-				success : function(response) {
-					if (response.trim() === "true" && $('input[name="user_id"]').val() !="admin") {
-						$("#chId").text("사용 가능한 아이디입니다.");
-						$("#chId").css('color', 'green');
-						$("#isCheckId").val("true");
-						console.log($("#isCheckId").val());
-					} else {
-						$("#chId").text("사용 할 수 없는 아이디입니다.");
-						$("#chId").css('color', 'red');
-						$("#isCheckId").val("false");
-						console.log($("#isCheckId").val());
+			if(emailCheck.test(userId)==true){
+				$.ajax({
+					url : './UserIdCheckAction.me',
+					type : 'POST',
+					data : {userId : userId},
+					success : function(response) {
+						if (response.trim() === "true" && $('input[name="user_id"]').val() !="admin") {
+							$("#chId").text("사용 가능한 아이디입니다.");
+							$("#chId").css('color', 'green');
+							$("#isCheckId").val("true");
+							$('input[name="user_id"]').focus();
+							console.log($("#isCheckId").val());
+						} else {
+							$("#chId").text("사용 할 수 없는 아이디입니다.");
+							$("#chId").css('color', 'red');
+							$("#isCheckId").val("false");
+							$('input[name="user_id"]').focus();
+							console.log($("#isCheckId").val());
+						}
 					}
-				}
-			});
+				});
+			}else{
+				$("#chId").text("이메일 형식으로 입력해 주세요.");
+				$("#chId").css('color', 'red');
+				$("#isCheckId").val("false");
+				$('input[name="user_id"]').focus();
+			}
 		}
 	}
 
@@ -160,11 +180,22 @@
 		let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 		let phoneRule = /^(01[016789]{1})[0-9]{4}[0-9]{4}$/;
 		
-		/* 인증여부 체크 */
- 		if ($("input[name='isCertification']").val() != 'true') {
-			alert('본인인증을 해주세요');
- 			return false;
- 		}
+		
+		/* 아이디 유효성 검사 */
+		if ($('input[name="user_id"]').val().length == 0) {
+			$("#chId").text("아이디를 입력하세요.");
+			$("#chId").css('color', 'red');
+			$('input[name="user_id"]').focus(); 
+			return false;
+		}else if($('#emailRand').val() != $('#random').val()){
+			$("#chEmailRand").text("인증번호를 다시 해주세요.");
+			$("#chEmailRand").css('color', 'red');
+			$('input[name="emailRand"]').focus();
+			$("input[name='isCertification']").val('true');
+			return false;
+		}else{
+			$("#chId").text("");
+		}
 		/* 이름 유효성 검사 */
 		if ($('input[name="user_name"]').val().length == 0) {
 			$("#hiddenMsgName").text("이름을 입력하세요.");
@@ -189,15 +220,6 @@
 			$("#hiddenMsgPhone").text("");
 		}
 
-		/* 아이디 유효성 검사 */
-		if ($('input[name="user_id"]').val().length == 0) {
-			$("#chId").text("아이디를 입력하세요.");
-			$("#chId").css('color', 'red');
-			$('input[name="user_id"]').focus(); 
-			return false;
-		}else{
-			$("#chId").text("");
-		}
 		
 		/* 아이디 중복 검사 실패시 */
 		if ($('#isCheckId').val() != "true") {
@@ -239,6 +261,13 @@
 			$('input[name="user_pass"]').select(); 
 			return false;
 		}
+		
+		/* 인증여부 체크 */
+ 		if ($("input[name='isCertification']").val().trim() != 'true') {
+			alert('이메일 인증을 해주세요');
+			console.log($("input[name='isCertification']").val());
+ 			return false;
+ 		}
 
 	}
 </script>

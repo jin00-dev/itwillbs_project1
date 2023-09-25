@@ -65,8 +65,6 @@
 </script>
 </head>
 <body>
-	¼¼¼Ç : ${sessionScope.user_id }
-
 	<section id="top">
 		<div class="container">
 			<div class="row top_1">
