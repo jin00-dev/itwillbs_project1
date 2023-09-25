@@ -25,29 +25,29 @@
 <main>
 	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
-		<input id="btn1" type="button" value="예매관리"	onclick="location.href='./UserOrderBoardAction.me'">
-		<input id="btn2" type="button" value="회원정보"	onclick="location.href='./UserInfoCheck.me'">
-		<input id="btn2" type="button" style="background: gray;" value="대관문의" onclick="location.href='./AdminRentInfoBoardAction.me'">
+		<input class="btn" type="button" value="예매관리"	onclick="location.href='./UserOrderBoardAction.me'">
+		<input class="btn" type="button" value="회원정보"	onclick="location.href='./UserInfoCheck.me'">
+		<input class="btn" type="button" style="background: gray;" value="대관문의" onclick="location.href='./AdminRentInfoBoardAction.me'">
 	</div>
 	<div id="userInfo_box">
 		<div id="table_search">
 			<form action="AdminRentInfoBoardAction.me" method="post">
 				<input type="text" name="search" class="input_box" placeholder="회원 아이디를 입력해주세요.">
-				<input type="submit" value="검색" >
+				<input type="submit" value="검색" class="search">
 			</form>
 		</div>
 		<c:set var="bno" value="${startRow-1 }"/>
 		<c:set var="bno1" value="-1"/>
 		<table id="table">
 			<tr>
-				<td>No.</td>
-				<td>성명</td>
-				<td>아이디</td>
-				<td>휴대폰 번호</td>
-				<td>이메일</td>
-				<td>문의일자</td>
-				<td>답변</td>
-				<td>관리</td>
+				<td class="column">No.</td>
+				<td class="column">성명</td>
+				<td class="column">아이디</td>
+				<td class="column">휴대폰 번호</td>
+				<td class="column">이메일</td>
+				<td class="column">문의일자</td>
+				<td class="column">답변</td>
+				<td class="column">관리</td>
 			</tr>
 			<c:choose>
 				<c:when test="${!empty boardList }">
@@ -201,6 +201,17 @@
 			$(this).css("color","red");
 	  });
       
+      $(".search").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
+      $(".btn").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      $(".close").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
       // 내릴때
       $(".openModalBtn").mouseleave(function () {
 			$(this).css("color","white");
@@ -208,11 +219,21 @@
       $(".pageButton").mouseleave(function () {
 			$(this).css("color","black");
 	  });
+      $(".search").mouseleave(function () {
+			$(this).css("color","black");
+	  });
+      $(".btn").mouseleave(function () {
+			$(this).css("color","black");
+	  });
+      $(".close").mouseleave(function () {
+			$(this).css("color","black");
+	  });
 
       // 닫기 버튼을 클릭하면 모달을 숨깁니다.
       closeBtn.click(function(){
         modal.css("display", "none");
       });
+      
 
       // 모달 외부를 클릭하면 모달을 숨깁니다.
       $(window).click(function(event){
