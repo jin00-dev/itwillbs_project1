@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="./css/loginPage.css">
-<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> 
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script> 
 <head>
+<title>Off The Lamp</title>
 <header>
    <jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
@@ -33,8 +33,8 @@
          <a href="./UserJoin.me">회원가입</a> <br>
          <hr>
          <p id='hidden'></p>
-         <a href="javascript:kakaoLogin()"><img src="./img/kakao_login_large.png" width="130px" height="50px" style="vertical-align: middle;"/></a>
-         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<--간편로그인</span>
+         <a id="kakao" href="javascript:kakaoLogin()"><img src="./img/kakaobutton.png" width="250px;"></a>
+         
       </div>
       </fieldset>
       
