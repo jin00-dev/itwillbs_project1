@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./css/rentBoard.css">
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -78,57 +79,6 @@
 			}
 			}//checkForm
 		</script>
-<style type="text/css">
-#rent_box{
-text-align: center;
-margin: 0 auto;
-width: 25em;
-}
-#renthr{
-background-color: black;
-}
-.btn1{
-  padding: 0.5em;
-  margin: 0.5em 1em;
-  width: 10em;
-  border-radius: 0.5em;
-}
-input{
-	padding: 0.5em;
-  	margin: 0.5em 0;
-	width: 23em;
-	border-radius: 0.5em;
-}
-textarea{
-	padding: 0.5em;
-  	margin: 0.5em 0;
-	width: 23em;
-	height: 15em;
-	border-radius: 0.5em;
-}
-#region_name{
-	padding: 0.5em;
-  	margin: 0.5em 0;
-	width: 10em;
-}
-#cinema_name{
-	padding: 0.5em;
-  	margin: 0.5em 0;
-	width: 13em;
-}
-.renth1{
-	width: 11em;
-	border-bottom: 1px solid gray;
-	margin: 10px auto;
-	padding: 10px;
-}
-#rent_box label{
-	width: 23em;
-	text-align: left;
-	font-weight: 900;
-}
-
-</style>
 </head>
 <body>
 <!-- 상단 바 고정 -->
