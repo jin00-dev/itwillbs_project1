@@ -21,10 +21,6 @@
 	<!-- 여기 문의 꾸며아함. -->
 	<div class="container">
 		<h1>글 내용</h1>
-		<div class="rightButton">
-			<input type="button" value="이전 게시판" class="btn"
-				onclick="location.href='./qnaBoardList.bo?user_id=${user_id}&&pageNum=${param.pageNum }';">
-		</div>
 		<table class="boardContent">
 			<tr>
 				<th class="ttitle" colspan="4"></th>
@@ -53,7 +49,7 @@
 
 		</table>
 		<c:if test="${dto.user_id eq user_id }">
-			<div class="rightButton">
+			<div class="CRUD">
 				<c:if test="${dto.answer == 0 }">
 					<!-- 답변 못받을 경우만 수정가능하게  -->
 					<input type="button" value="수정하기" class="btn"
@@ -66,11 +62,15 @@
 		<c:if test="${user_id eq 'admin' }">
 	
 			<!-- 				관리자만 가능하게   -->
-			<div class="rightButton">
+			<div class="CRUD">
 				<input type="button" value="답변쓰기" class="btn"
 					onclick="location.href='qnaBoardAnswer.bo?qna_bno=${dto.qna_bno}&&pageNum=${param.pageNum }&&user_id=${user_id}';">
 			</div>
 		</c:if>
+		<div class="rightButton">
+			<input type="button" value="이전 게시판" class="btn"
+				onclick="location.href='./qnaBoardList.bo?user_id=${user_id}&&pageNum=${param.pageNum }';">
+		</div>
 	</div>
 	<script type="text/javascript">
 		function deleteQna() {

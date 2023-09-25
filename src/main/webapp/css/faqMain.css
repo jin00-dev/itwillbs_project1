@@ -5,16 +5,15 @@ input[type=button]{
 	background-color:buttonface;
 	border-color: darkgray;
 	color: darkgray;
-	padding: 4px 4px 4px 4px;
-
+	padding: 3px 4px 3px 4px;
 }
-
 input[type=submit]{
 	background-color:buttonface;
 	border-color: darkgray;
 	color: darkgray;
-	padding: 4px 4px 4px 4px;
+	padding: 2px 3px 2px 3px;
 }
+
 
 .qnaButton{
   margin: 50px 0 30px;
