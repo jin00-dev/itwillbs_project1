@@ -155,6 +155,7 @@
   	
   	$('#openModalBtn0').click(function(){
   		choice=0
+  		$('#openModalBtn0').attr
   	});
   	$('#openModalBtn1').click(function(){
   		choice=1
@@ -191,6 +192,13 @@
       $(".openModalBtn").click(function(){
         modal.css("display", "block");
       });
+      
+      $(".openModalBtn").mouseover(function () {
+			$(this).css("color","black");
+	  });
+      $(".openModalBtn").mouseleave(function () {
+			$(this).css("color","white");
+	  });
 
       // 닫기 버튼을 클릭하면 모달을 숨깁니다.
       closeBtn.click(function(){
