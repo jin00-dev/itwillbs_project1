@@ -57,7 +57,7 @@
 					<td>${list.rent_name }</td>
 					<td>${list.user_id }</td>
 					<td>${list.rent_phone} </td>
-					<td>${list.rent_email }건</td>
+					<td>${list.rent_email }</td>
 					<td><fmt:formatDate value="${list.regdate }"/> </td>
 					<td>
 						<c:choose>
@@ -81,17 +81,17 @@
 		<div id="page_control">
 			<c:if test="${startPage > pageBlock }">
 				<div>
-					<a href="./AdminRentInfoBoardAction.me?pageNum=${startPage-pageBlock }">Prev</a>
+					<a href="./AdminRentInfoBoardAction.me?pageNum=${startPage-pageBlock }" class="pageButton">Prev</a>
 				</div>
 			</c:if>
 			<c:forEach begin="${startPage }" end="${endPage }" step="1" var="i">
 				<div>
-					<a href="./AdminRentInfoBoardAction.me?pageNum=${i }">${i}</a>
+					<a href="./AdminRentInfoBoardAction.me?pageNum=${i }" class="pageButton">${i}</a>
 				</div>
 			</c:forEach>
 			<c:if test="${endPage < pageCount }">
 				<div>
-					<a href="./AdminRentInfoBoardAction.me?pageNum=${startPage+pageBlock }">Next</a>
+					<a href="./AdminRentInfoBoardAction.me?pageNum=${startPage+pageBlock }" class="pageButton">Next</a>
 				</div>
 			</c:if>
 		</div>
@@ -192,12 +192,21 @@
       $(".openModalBtn").click(function(){
         modal.css("display", "block");
       });
-      
+      // 마우스 올릴때 이벤트
       $(".openModalBtn").mouseover(function () {
-			$(this).css("color","black");
+			$(this).css("color","red");
 	  });
+      
+      $(".pageButton").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
+      // 내릴때
       $(".openModalBtn").mouseleave(function () {
 			$(this).css("color","white");
+	  });
+      $(".pageButton").mouseleave(function () {
+			$(this).css("color","black");
 	  });
 
       // 닫기 버튼을 클릭하면 모달을 숨깁니다.
