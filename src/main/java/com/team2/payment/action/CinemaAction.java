@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-
 import com.team2.payment.db.CinemaDTO;
 import com.team2.payment.db.OrderDAO;
 import com.team2.util.Action;

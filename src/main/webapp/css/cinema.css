@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+
 .c1{
 	color: yellow;
 	margin-left: 200px;
@@ -10,7 +12,7 @@
 }
 
 p{
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 #i1{
@@ -20,7 +22,7 @@ p{
 .cdiv {
 	border: 1px solid;
 	width: 200px;
-	height: 400px;
+	height: 450px;
 	float: left;
 	text-align: center;
 	line-height: 50px;
@@ -36,13 +38,13 @@ p{
 
 #section {
 	width: 1100px;
-	height: 500px;
+	height: 600px;
 	clear: left;
 }
 
 #movie_res {
 	width: 1100px;
-	height: 70px;
+	height: 90px;
 	border: 1px solid;
 	display: flex;  /* ▶ 디스플레이 속성을 flex로 변경 */
 	align-items: center; /* ▶ 자식 요소의 세로 정렬 방식을 중앙으로 변경 */
@@ -52,7 +54,7 @@ p{
 #theater {
 	border: 1px solid;
 	width: 400px;
-	height: 50px;
+	height: 70px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -61,7 +63,7 @@ p{
 #car_number {
 	border: 1px solid;
 	width: 300px;
-	height: 50px;
+	height: 70px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -109,10 +111,25 @@ a:focus{
 	margin: 20px auto;
 }
 
+#date{
+	display: inline-flex;
+}
+#day{
+	padding-left: 20px;
+	font-size: 25px;
+	padding-top: 5px;
+}
+#month{
+	font-size: 30px;
+	padding-left: 30px;
+}
+#orderMain{
+	height: 45px;
+}
 
-
-
-
+.divbox1{
+	height: 400px;
+}
 
 
 

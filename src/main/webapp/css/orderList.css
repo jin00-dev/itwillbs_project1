@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+html,body{
+	height: 100%;
+}
+
+main{
+	margin-top: 80px;
+}
+
+tr, td{
+	color: aliceblue;
+}
+
+#section{
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
+    width: 1700px;   
+}
+
+#orderBoard{
+	font-size: 17px;
+	margin-left: 200px;
+	margin-right: 200px;
+	font-weight: 300;
+	position: relative;
+}
+
+.table {
+   border-collapse: separate;
+   border-spacing: 10px 10px;
+   text-align: center;
+   margin-left: 40px;
+ }
+ 
+#page_control {
+	padding: 10px;
+	letter-spacing: 10px;
+	margin-left: 40px;
+}
+
+#serchForm{
+	margin-left: 1250px;
+}

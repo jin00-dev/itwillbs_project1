@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-
 import com.team2.payment.db.OrderDAO;
 import com.team2.payment.db.ScreenDTO;
 import com.team2.util.Action;
@@ -22,12 +21,13 @@ public class TheaterAction implements Action {
 		System.out.println("M : MovieAction() 호출!");
 		
 		String theater = request.getParameter("theater");
+		String date = request.getParameter("date");
 		
-		System.out.println("M : theater : "+theater);
+		System.out.println("M : theater : "+theater+" date : "+date);
 		
 		OrderDAO dao = new OrderDAO();
 		
-		List<ScreenDTO> movieList = dao.getMovieName(theater);
+		List<ScreenDTO> movieList = dao.getMovieName(theater, date);
 		
 		JSONArray movie = new JSONArray();
 		for(int i=0;i<movieList.size();i++) {

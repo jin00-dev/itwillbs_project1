@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <link rel="stylesheet" href="./css/userInfo.css">
 </head>
 <body>

@@ -2,12 +2,12 @@ package com.team2.payment.action;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 
 import com.team2.payment.db.OrderDAO;
 import com.team2.payment.db.ScreenDTO;
@@ -33,8 +33,10 @@ public class MovieAction implements Action {
 		for(int i=0;i<mTimeList.size();i++) {
 			JSONObject obj = new JSONObject();
 			obj.put("movieTime", mTimeList.get(i).getScreening_time());
+			obj.put("price", mTimeList.get(i).getPrice());
 			arrayTime.add(obj);
 			System.out.println("M 영화상영시간 : "+mTimeList.get(i).getScreening_time());
+			System.out.println("M 영화가격 : "+mTimeList.get(i).getPrice());
 		}
 		
 		response.setContentType("application/json; charset=UTF-8");

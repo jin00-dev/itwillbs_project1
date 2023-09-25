@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
 
-
-
 public class OrderFrontController extends HttpServlet {	
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -34,6 +32,7 @@ public class OrderFrontController extends HttpServlet {
 			Action action = null;
 			ActionForward forward = null;
 			
+			// 예매첫페이지
 			if(command.equals("/orderMain.or")){
 				System.out.println("C : orderMain.or 호출");
 				System.out.println("C : 패턴1 - 페이지이동");
@@ -41,7 +40,8 @@ public class OrderFrontController extends HttpServlet {
 				forward = new ActionForward();
 				forward.setPath("./order/orderMain.jsp");
 				forward.setRedirect(false);
-				
+			
+			// 지역에 맞는 극장정보
 			}else if(command.equals("/cinemaInfo.or")) {
 				System.out.println("C : cinemaInfo.or 호출");
 				System.out.println("C : 패턴2or3 - db사용x 비동기처리");
@@ -53,6 +53,7 @@ public class OrderFrontController extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
+			// 극장에맞는 영화정보
 			else if(command.equals("/theaterInfo.or")) {
 				System.out.println("C : theaterInfo.or 호출");
 				System.out.println("C : 패턴2or3 - db사용x 비동기처리");
@@ -64,6 +65,7 @@ public class OrderFrontController extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
+			// 영화 상영시간, 영화 가격
 			else if(command.equals("/movieInfo.or")) {
 				System.out.println("C : movieInfo.or 호출");
 				System.out.println("C : 패턴2or3 - db사용o 비동기처리");
@@ -75,6 +77,7 @@ public class OrderFrontController extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
+			// 좌석정보
 			else if(command.equals("/seatPayment.or")) {
 				System.out.println("C : seatPayment.or 호출");
 				System.out.println("C : 패턴2 - db사용o, 페이지이동");
@@ -86,6 +89,7 @@ public class OrderFrontController extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
+			// 예매2페이지
 			else if(command.equals("/seatPaymentPro.or")) {
 				System.out.println("C : seatPaymentPro.or 호출");
 				System.out.println("C : 패턴1 - 페이지이동 ");
@@ -95,7 +99,74 @@ public class OrderFrontController extends HttpServlet {
 				forward.setRedirect(false);
 			}
 			
+			// 아이디값으로 회원, 비회원 구분 후 휴대폰번호, 회원넘버, 이름정보
+			else if(command.equals("/getMemberInfo.or")) {
+				System.out.println("C : getMemberInfo.or 호출");
+				System.out.println("C : 패턴2 - db사용o, 페이지이동");
+				
+				action = new MemberInfo();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			// 결제테이블 insert , 예매테이블 insert(회원일시 예매횟수증가)
+			else if(command.equals("/paymentSuccess.or")) {
+				System.out.println("C : paymentSuccess.or 호출");
+				System.out.println("C : 패턴3 - db사용o, 화면출력");
+				
+				action = new PaymentSuccessAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+			// 마이페이지 - 예매내역 
+			else if(command.equals("/MyPageMain.or")) {
+				System.out.println("C : MypageMain.or 호출");
+				System.out.println("C : 패턴2or3 - db사용o 비동기처리");
+				
+				action = new GetOrderBoardAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}			
+			// 관리자 예매내역 페이지
+			else if(command.equals("/managerList.or")) {
+				System.out.println("C : managerList.or 호출");
+				System.out.println("C : 패턴2or3 - db사용o 비동기처리");
+				
+				action = new ManagerPaymentAction();
+				try {
+					forward = action.execute(request, response);
+					System.out.println("@@@@@@@@@@"+forward);
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("123@@@@@@@@@@"+forward);
+				}
+			}
 			
+			else if(command.equals("/Main.or")) {
+				forward = new ActionForward();
+				forward.setPath("./main.jsp");
+				forward.setRedirect(false);
+			}
+			else if(command.equals("/cancelOrder.or")) {
+				System.out.println("C : cancelOrder.or 호출");
+				System.out.println("C : 패턴3 - db사용");
+				
+				action = new CancelOrder();
+				try {
+					action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 			
 			System.out.println("C : 가상주소 매핑 - 끝");
 			/***************************** 2. 가상주소 매핑 *******************************/

@@ -1,5 +1,7 @@
-<%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page
+	import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -7,23 +9,20 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>예매안내</title>
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
+<link href="./css/cinema.css" rel="stylesheet">
+<link href="./css/pay_v2.css" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
+	rel="stylesheet">
+<script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
-
-			
-// 		var seat = seatList.replace(/,/g,'');
-// 		console.log("seat : "+seat);
 		
-		
- 			
-// 			$(document).ready(function(){			
-// 				if($('#0').text() == seatList[i]){
-// 					$('#0').css('color','blue');
-// 				}
-// 			});
-// 		}
-
-		// "button[type='button']" 
 		$(function(){		
 					
 		function showSeat(){
@@ -64,48 +63,29 @@
 	 });
 
 </script>
-
-<title>예매안내</title>
-<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
-<!-- 상단 바 고정 -->
-
-
 </head>
 <body>
+
+
 	<!-- 여기 예매 페이지 꾸며아함. -->
 	<main>
+		<div id="body-wrapper">
+		<div id="body-content">
 		<section id="section">
-
-			<%
-			String cinema = request.getParameter("cinema");
-			String car_num = request.getParameter("car_num");
-			String region = request.getParameter("region");
-			String time = request.getParameter("time");
-			String movie = request.getParameter("movie");
-			String car_type = request.getParameter("car_type");
-			String price = request.getParameter("price");
-			String id = request.getParameter("id");
-
-			System.out.println(region + "," + cinema + "," + movie + "," + time + "," + car_num + "," + car_type + "," + price);
-			System.out.println("Pro : 아이디 : " + id);
-			%>
-			<%-- 			<h2>${param.seat}</h2> --%>
-
 			<div class="divbox1">
 				<section>
 					<table>
 						<div class="divbox2">관람존 안내</div>
-						<tr>
-							<td>차량번호</td>
-							<td>차량종류</td>
-						</tr>
-						<tr>
-							<td><input type="text" value="${param.car_num }"></td>
-							<td><input type="text" value="${param.car_type }"></td>
-						</tr>
+						<div class="carInfo">
+							<tr>
+								<td>차량번호</td>
+								<td>차량종류</td>
+							</tr>
+							<tr>
+								<td><input type="text" value="${param.car_num }" readonly></td>
+								<td><input type="text" value="${param.car_type }" readonly></td>
+							</tr>
+						</div>					
 					</table>
 
 					<div class="seatMap" id="seatMap"
@@ -210,22 +190,31 @@
 					
 
 					<p>영화</p>
-					<input type="text" id="movieName" value="${param.movie }">
+					<input type="text" id="movieName" value="${param.movie }" readonly>
 					<p>극장</p>
-					<input type="text" value="${param.cinema }">
+					<input type="text" value="${param.cinema }" readonly>
 					<p>상영시간</p>
-					<input type="text" value="${param.time }">
+					<input type="text" value="${param.time }" readonly>
 					<p>영화가격</p>
-					<input type="text" id="price" value="${param.price }">
+					<input type="text" id="price" value="${param.price }" readonly>
 					<p>좌석</p>
-					<input type="text" id="seat">
+					<input type="text" id="seat" readonly>
 					<input class="btn1" type="button" id="re2" value="결제"
 					onclick="requestPay()">
 				</section>
 			</div>
 
 		</section>
+		</div>
 	</main>
+	<style>
+		input{
+			height: 35px;
+			background-color: #202020;
+			color: aliceblue;
+			border: none;
+		}
+	</style>
 	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	<script type="text/javascript">
 
@@ -252,17 +241,6 @@
 					var uniqeNum = info[1].substr(7,4);		// 주문번호는 개인의 휴대번호뒷자리에 + 랜덤숫자 2개
 					var a = Math.floor(Math.random()*100);	// 0.4897456136 -> 40.78411326 ->ㅡMath.floor(소수점부터제거)
 					
-					// 결제 사전검증	 "Access-Control-Allow-Origin": *
-// 					$.ajax({
-// 						  url: "https://api.iamport.kr/payments/prepare",
-// 						  method: "post",
-// 						  headers: { "Content-Type": "application/json"},
-// 						  data: {
-// 						    merchant_uid: uniqeNum+a, // 가맹점 주문번호
-// 						    amount: 200, // 결제 예정금액
-// 						  }
-// 					});
-
 			// 결제 api 실행
 				IMP.request_pay({
 					pg : "html5_inicis.INIpayTest",
@@ -301,40 +279,36 @@
  								"car_num" : "${param.car_num}",
  								"time" : "${param.time}",
  								"seat" : $('#seat').val()	// 바꿔야함.
-							}
+							},success:function(){
+// 								alert("결제완료 마이페이지로 이동하겠습니다.");	
+								location.href="./MyPageMain.or";
+							}						
 						}).done(function() {
 							// 가맹점 서버 결제 API 성공시 로직
 							
 							// 회원이 성공했을때 마이페이지로 보내기
 							// 비회원이 성공했을때 .... 어떻게 해주지?
-							console.log("결제완료");
-							console.log(${parma.movie}+","+${param.price}+"원 결제완료");
+// 							console.log("결제완료");
+// 							console.log(${parma.movie}+","+${param.price}+"원 결제완료");
 						})
 					} else {
 						alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
 					} 
 				});
 				} //success
+
 			}); // ajax
 		} //requestPay()
+
 	</script>
 	
 	<input type="hidden" id="seathi">
 
 	<!-- footer아래로는 코드 금지 -->
 
-	<section id="footer_b" class="pt-3 pb-3 bg_grey">
-		<div class="container">
-			<ul class="mb-0">
-				<li class="d-inline-block me-2"><a href="#">Home</a></li>
-				<li class="d-inline-block me-2"><a href="#">Features</a></li>
-				<li class="d-inline-block me-2"><a href="#">Pages</a></li>
-				<li class="d-inline-block me-2"><a href="#">Portfolio</a></li>
-				<li class="d-inline-block me-2"><a href="#">Blog</a></li>
-				<li class="d-inline-block"><a href="#">Contact</a></li>
-			</ul>
-		</div>
-	</section>
+	<footer>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	</footer>
 
 	<script>
 		window.onscroll = function() {
