@@ -5,8 +5,12 @@
 <html>
 <head>
 <link rel="stylesheet" href="./css/event.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Off The Lamp</title>
+<style type="text/css">
+.eventhr{
+	background-color: black;
+}
+</style>
 </head>
 
 <body>
@@ -33,8 +37,8 @@
 	}
 
 	</script>
-
-	<h1>이벤트 메인페이지</h1>
+	
+	<hr class = "eventhr">
 	<h2 class="eventH2">진행중인 이벤트</h2>
 	<section id="eventing" class="eventContainer">
 		<div id="image_container1">
@@ -48,8 +52,7 @@
 				<c:forEach var="dto" items="${boardList }">
 					<c:if test="${dto.event_type == 0 }">
 						<div class="image_panel">
-							<a
-								href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
+							<a href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
 								<img src="./img/${dto.img }">
 								<p>${dto.subject }</p>
 							</a>

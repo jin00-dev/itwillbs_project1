@@ -4,7 +4,6 @@
 <head>
 	<title>Off The Lamp</title>
 </head>
-
 <body>
 <!-- 상단 바 고정 -->
 <header>
@@ -58,9 +57,8 @@
 
 
 	<section id="stream" class="pb-5 pt-4">
-		<h2 class="mb-0">지역버튼</h2>
 		<div class="container">
-
+		<h2 class="mb-0">지역버튼</h2>
 			<div class="row trend_2 mt-4">
 				<div id="carouselExampleCaptions4" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-inner">
