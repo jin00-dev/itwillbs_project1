@@ -24,7 +24,6 @@ public class AdminUserInfoBoardAction implements Action {
 		
 		int bCount = dao.userListCount();
 		String search = req.getParameter("search");
-
 		// 페이징처리-1 => Model
 		//////////////////////// 페이징처리-1//////////////////////////
 

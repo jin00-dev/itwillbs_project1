@@ -118,9 +118,9 @@ public class QRBoardDTO {
 	@Override
 	public String toString() {
 		return "QRBoardDTO [category=" + category + ", qna_bno=" + qna_bno + ", rent_bno=" + rent_bno + ", user_id="
-				+ user_id + ", subject=" + subject + ", content=" + content + ", readcount=" + read_count + ", regdate="
-				+ regdate + ", updatedate=" + updatedate + ", rent_name=" + rent_name + ", cinema_name=" + cinema_name
-				+ ", rent_phone=" + rent_phone + ", rent_email=" + rent_email + ", answer=" + answer
+				+ user_id + ", subject=" + subject + ", content=" + content + ", read_count=" + read_count
+				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", rent_name=" + rent_name + ", cinema_name="
+				+ cinema_name + ", rent_phone=" + rent_phone + ", rent_email=" + rent_email + ", answer=" + answer
 				+ ", answer_context=" + answer_context + "]";
 	}
 	

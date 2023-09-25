@@ -192,6 +192,15 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		//관리자-대관문의 페이지
+		else if(command.equals("/AdminRentInfoBoardAction.me") ){
+			action = new AdminRentInfoBoardAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		//회원등급 변경
 		else if(command.equals("/UserTypeChangeAction.me")) {
 			action = new UserTypeChangeAction();
