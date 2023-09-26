@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ㅡ<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -74,12 +74,12 @@
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								고객문의 </a></ul>
+								고객문의 </a>
 							<ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="./noticeMain.bo">공지사항</a></li>
 								<li><a class="dropdown-item" href="./faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0 "href="./rentMain.bo">대관문의</a></li>
-							</ul>
+							</ul><li>
 				</div>
 			</div>
 		</nav>
