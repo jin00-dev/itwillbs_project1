@@ -100,7 +100,7 @@ public class QRBoardSearchAction implements Action {
 
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("count", count);
+		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
