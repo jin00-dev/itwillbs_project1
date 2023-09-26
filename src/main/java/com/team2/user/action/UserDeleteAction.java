@@ -30,7 +30,7 @@ public class UserDeleteAction implements Action {
 		if(result == 1) {
 			out.println("<script>");
 			out.println("alert('회원탈퇴 성공');");
-			out.println("location.href='./UserLogout.me'");
+			out.println("location.href='./UserLogoutAction.me'");
 			out.println("</script>");
 		}else {
 			out.println("<script>");

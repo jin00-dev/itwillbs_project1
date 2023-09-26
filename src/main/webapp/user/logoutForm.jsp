@@ -9,28 +9,28 @@
 </head>
 
 <body>
-<!-- »ó´Ü ¹Ù °íÁ¤ -->
+<!-- ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-<!-- »ó´Ü ¹Ù °íÁ¤ -->
+<!-- ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->
 <!--center -------------------------------------------------------------  -->
 <section id="center" class="center_o pt-2 pb-2">
 		
 			<script type="text/javascript">
-			alert("·Î±×¾Æ¿ôÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù");
+			alert("ë¡œê·¸ì•„ì›ƒ ì„±ê³µ");
 			location.href="./Main.me";
 			</script>
 	<hr>
  </section>
 <!--center end-------------------------------------------------------------  -->
-	<!-- footer¾Æ·¡·Î´Â ÄÚµå ±ÝÁö -->
+	<!-- footerï¿½Æ·ï¿½ï¿½Î´ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ -->
 
-<!-- ÇÏ´Ü¹Ù °íÁ¤  -->
+<!-- ï¿½Ï´Ü¹ï¿½ ï¿½ï¿½ï¿½ï¿½  -->
 <footer>
 	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 </footer>
-<!-- ÇÏ´Ü¹Ù °íÁ¤  -->
+<!-- ï¿½Ï´Ü¹ï¿½ ï¿½ï¿½ï¿½ï¿½  -->
 
 	<script>
 		window.onscroll = function() {
