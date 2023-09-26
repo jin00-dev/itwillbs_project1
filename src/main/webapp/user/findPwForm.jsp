@@ -4,6 +4,7 @@
 <html>
 <link rel="stylesheet" href="./css/findPw.css">
 <script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> 
+<title>Off The Lamp</title>
 <head>
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
@@ -12,23 +13,23 @@
 <section id="center" class="center_o pt-2 pb-2">
    <section id="join_box">
    
-   <h1>ºñ¹Ğ¹øÈ£Ã£±â</h1> 
+    <h1>ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°</h1> 
    </section>
    <form action="./UserFindPwAction.me" method="post">
    <fieldset id="join_wrap">
-   <label>¾ÆÀÌµğ</label>
+   <label>ì•„ì´ë””</label>
    <br>
-   <input id="userEmail" type="text" name="user_id" placeholder="ÀÌ¸ŞÀÏÇü½Ä">
+   <input id="userEmail" type="text" name="user_id" placeholder="ì´ë©”ì¼í˜•ì‹">
    
    
-   <input id="checkEmail" type="button" value="ÀÌ¸ŞÀÏÀÎÁõ"><br>
-   <p id="A">ÀÌ¸ŞÀÏÀÌ µµÂøÇÏ´Âµ¥ 1~2ºĞ ¼Ò¿äµË´Ï´Ù</p>
-   <label>ÀÎÁõ¹øÈ£</label>
+   <input id="checkEmail" type="button" value="ì´ë©”ì¼ì¸ì¦"><br>
+   <p id="A">ì´ë©”ì¼ì´ ë„ì°©í•˜ëŠ”ë° 1~2ë¶„ ì†Œìš”ë©ë‹ˆë‹¤</p>
+   <label>ì¸ì¦ë²ˆí˜¸</label>
    <br>
-   <input id="usernum" type="text" name="user_mailnum" placeholder="4ÀÚ¸®">
+   <input id="usernum" type="text" name="user_mailnum" placeholder="4ìë¦¬">
    <br>
    <p id="hiddenemailnum"></p>
-   <input id="button" type="submit" value="ºñ¹Ğ¹øÈ£Ã£±â" onclick="return check()">
+   <input id="button" type="submit" value="ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°" onclick="return check()">
    
    
    </fieldset>
@@ -47,14 +48,14 @@
             dataType: "text",
             success: function (result) {
             	if(result == ""){
-            		alert("Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
+            		alert("ì •ë³´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
             	}else{
-            		  alert("ÀÎÁõ¹øÈ£°¡ Àü¼ÛµÇ¾ú½À´Ï´Ù");
+            		  alert("ì¸ì¦ë²ˆí˜¸ê°€ ì „ì†¡ë˜ì—ˆìŠµë‹ˆë‹¤");
           			$("#random").val(result);
             	}
            
             },error: function () {
-            	alert("Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
+            	alert("ì •ë³´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
                
             }
         })
@@ -66,7 +67,7 @@
     	if(user_mailnum == random ){
     		return true;
     	}else{
-    		alert("ÀÎÁõ¹øÈ£°¡ Æ²·È½À´Ï´Ù");
+    		alert("ì¸ì¦ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤");
     		return false;
     	}
     }

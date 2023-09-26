@@ -5,7 +5,7 @@
 <html>
 <head>
 <link href="./css/listPage.css" rel="stylesheet">
-<title>이벤트</title>
+<title>Off The Lamp</title>
 </head>
 
 <body>

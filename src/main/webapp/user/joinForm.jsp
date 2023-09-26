@@ -4,6 +4,7 @@
 <head>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <link rel="stylesheet" href="./css/joinPage.css">
+<title>Off The Lamp</title>
 </head>
 
 <header>
