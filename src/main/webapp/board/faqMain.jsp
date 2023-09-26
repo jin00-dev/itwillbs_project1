@@ -95,7 +95,7 @@
 						<input type="button" class="btn" id="deleteFaq" value="faq삭제"
 							onclick="faqBoardDelete(${dto.faq_bno});">
 					</c:if>
-					<h3 class="faq-title">${dto.subject }</h3>
+					<h4 class="faq-title">${dto.subject }</h4>
 
 					<p class="faq-text">${dto.content }</p>
 
