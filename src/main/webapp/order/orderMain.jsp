@@ -261,7 +261,7 @@
 			alert("로그인이 필요한서비스입니다.");
 			return false;
 		} else {
-			var car_num = document.fr.car.value;
+			var car_num = document.fr.car.value();
 			if (car_num == "") {
 				alert("차량정보를 등록해주세요");
 				document.fr.car.focus();
