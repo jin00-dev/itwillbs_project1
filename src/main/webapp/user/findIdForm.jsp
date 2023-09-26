@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="./css/findId.css">
 <head>
+<link rel="stylesheet" href="./css/findId.css">
+</head>
+<body>
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
@@ -11,21 +13,21 @@
 <section id="center" class="center_o pt-2 pb-2">
    <section id="join_box">
    
-   <h1>���̵�ã��</h1> 
+   <h1>아이디찾기</h1> 
    </section>
    <form action="./UserFindIdAction.me" method="post">
    <fieldset id="join_wrap">
-   <label>�̸�</label>
+   <label>이름</label>
    <br>
-   <input id="A" type="text" name="user_name" placeholder="����">
+   <input id="A" type="text" name="user_name" placeholder="성명">
    <br>
    <p id="hiddenMsgName"></p>
-   <label>��ȭ��ȣ</label>
+   <label>전화번호</label>
    <br>
-   <input id="B" type="text" name="user_phone" placeholder="- ���� �Է��ϼ���">
+   <input id="B" type="text" name="user_phone" placeholder="- 빼고 입력하세요">
    <br>
    <p id="hiddenMsgPhone"></p>
-   <input id="button" type="submit" value="���̵�ã��" onclick="return check()">
+   <input id="button" type="submit" value="아이디찾기" onclick="return check()">
    </fieldset>
    
 </form>
