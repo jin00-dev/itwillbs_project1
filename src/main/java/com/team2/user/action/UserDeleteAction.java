@@ -38,7 +38,7 @@ public class UserDeleteAction implements Action {
 			out.println("history.back();");
 			out.println("</script>");
 		}
-		
+		 
 		return null;
 	}
 
