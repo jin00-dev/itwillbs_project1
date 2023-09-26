@@ -44,9 +44,6 @@ margin: 15px auto;
 </head>
 <body>
 	<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
 <!-- 상단 바 고정 -->
 	 <form action="enfBoardAdd.bo?category=0&&user_id=${user_id}" method="post" enctype="multipart/form-data">
 	 	<fieldset>
@@ -74,10 +71,6 @@ margin: 15px auto;
 				<input type="submit" class="btn" value="추가">
 				<input type="button" class="btn" value="취소" onclick="window.close();">
 			</div>
-				<textarea rows="" cols="" class="cntContent" name="content" required="required"></textarea><br>
-				<label for="file"> 파일 </label>
-				<input type="file" name="file" id="file" required><br>
-			<input type="submit" class="btn" value="upload">	 	
 	 	</fieldset>
 	 </form>
 </body>
