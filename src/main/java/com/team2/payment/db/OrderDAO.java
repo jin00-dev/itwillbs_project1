@@ -1,7 +1,6 @@
 package com.team2.payment.db;
 
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.team2.user.DB.NonuserDTO;
+import com.team2.user.DB.NonUserDTO;
 import com.team2.user.DB.UserDTO;
 
 public class OrderDAO {
@@ -217,8 +216,8 @@ public class OrderDAO {
 	}
 	
 	// 비회원이 예매결제시 필요한 비회원이름, 비회원휴대폰번호 가져오는 메서드
-	public NonuserDTO getNonuserInfo(int nonuser_id) {
-		NonuserDTO dto = new NonuserDTO();
+	public NonUserDTO getNonuserInfo(int nonuser_id) {
+		NonUserDTO dto = new NonUserDTO();
 		try {
 			con = getConnect();
 			sql = "select nonuser_name, nonuser_phone from non_user where nonuser_id=?";
@@ -538,7 +537,7 @@ public class OrderDAO {
 				sql = "SELECT p.payment_id, p.order_id, p.payment_state, p.payment_date, p.pg, p.payment_method, p.movie_name, p.price, p.name, p.phone "
 						+ "FROM user u  JOIN order_board o ON u.user_num = o.user_num join payment p ON o.order_id = p.order_id order by o.order_date desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, startRow);
+				pstmt.setInt(1, startRow-1);
 				pstmt.setInt(2, pageSize);
 				rs = pstmt.executeQuery();
 				

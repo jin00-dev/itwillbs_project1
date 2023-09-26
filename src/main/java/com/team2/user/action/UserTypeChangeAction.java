@@ -30,11 +30,12 @@ public class UserTypeChangeAction implements Action {
 		int user_num = list.get(choice).getUser_num();
 		
 		int result = dao.updateUserType(user_num, user_type);
-		
+	
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		
 		out.print(result);
+
 		
 		return null;
 	}

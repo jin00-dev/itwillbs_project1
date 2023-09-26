@@ -1,5 +1,8 @@
 package com.team2.user.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,22 +15,34 @@ import com.team2.util.ActionForward;
 public class UserLoginAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {
+	public ActionForward execute(HttpServletRequest request, 
+			HttpServletResponse response) throws IOException {
 		
-			resp.setContentType("text/html; charset=UTF-8");
-			HttpSession se = req.getSession();
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+			HttpSession se = request.getSession();
+		
 			
 			UserDAO mDAO = new UserDAO();
-			ActionForward action = new ActionForward();
+			ActionForward action = null;
 
-			String id = req.getParameter("id");
-			String pw = req.getParameter("pw");
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			
 			System.out.println(id+"dtd");
 			int result = mDAO.rogin(id, pw);
 			
-			if(result == -1) {
-				action = null;
+			if(result == 0) {
+				out.print("<script>");
+				out.print("alert('아이디 비밀번호를 다시 입력해주세요');");
+				out.print("location.href='./UserLogin.me';");
+				out.print("</script>");
+				
 			}else {
+
+				action = new ActionForward();
+
+
 				se.setAttribute("user_id", id);
 				action.setPath("./Main.me");
 				action.setRedirect(true);

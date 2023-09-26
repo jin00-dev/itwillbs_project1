@@ -9,53 +9,32 @@
 <head>
 <title>Off The Lamp</title>
 <link href="./css/orderList.css" rel="stylesheet">
-<link href="./css/footer.css" rel=stylesheet>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 	});
 </script>
-<style>
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 150px;
-      left: 340px;
-      width: 650px;
-      height: 450px;
-      background-color: #eeeeee;
-    }
-
-    .modal-content {
-      position: relative;
-      margin: 10px;
-      padding: 10px;
-      background-color: #eeeeee;
-      width: 600px;
-      height: 400px;
-      text-align: center;
-      color: black;
-    }
-</style>
 </head>
 <body>
 	<header>
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 	<main>
-		<div id="body-wrapper">
-		<div id="body-content">
+	<h1>${sessionScope.user_id } 님 환영합니다</h1>
+	<div id="container">
+		<input id="btn1" type="button" style="background: gray;" value="예매관리"	onclick="location.href='./managerList.or'">
+		<input id="btn2" type="button" value="회원정보수정"	onclick="location.href='./AdminUserInfoBoardAction.me'">
+		<input id="btn2" type="button" value="대관문의"	onclick="location.href='./AdminRentInfoBoardAction.me'">
+	</div>
 		<section id="section">
+	<div id="orderBoard">
 		<div id="serchForm">
 			<form action="./managerList.or">
-			아이디<input type="text" name="idcheck">
+			<input type="text" name="idcheck" class="input_box" placeholder="회원 아이디를 입력해주세요.">
 				<input type="submit" value="검색" onclick="">
 			</form>
 		</div>
-		
-			<div id="orderBoard">
-				<table class="table">
+				<table class="table" id="table">
 					<tr>
 						<td>NO.</td>
 						<td>예매번호</td>	
@@ -65,7 +44,6 @@
 						<td>예매날짜</td>	
 						<td>상세보기</td>				
 					</tr>
-			
 			<c:set var ="listNum" value="-1" />
 			<c:set var ="bno" value="${startRow -1 }" />
 			<c:forEach var="i" begin="1" end="${olist.size() }" step="1">
@@ -83,22 +61,55 @@
 		
 					<div id="page_control">
 							<c:if test="${startPage > pageBlock }">
+							<div>
 								<a href="./managerList.or?pageNum=${startPage-pageBlock }&idcheck=${idcheck}">Prev</a>
+							</div>
 							</c:if>
-							
 							<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
+							<div>
 								<a href="./managerList.or?pageNum=${i}&idcheck=${idcheck}">${i }</a>
+							</div>
 							</c:forEach>
 							
 							<c:if test="${endPage < pageCount }">
+							<div>
 								<a href="./managerList.or?pageNum=${startPage+pageBlock }&idcheck=${idcheck}">Next</a>
+							</div>
 							</c:if>
 						</div>
 					</div>
-				</section>
 				</div>
-				</div>
-			</main>
+		</section>
+	</main>
+
+<style>
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 650px;
+      height: 450px;
+      background-color: #eeeeee;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 10px;
+      padding: 10px;
+      background-color: #eeeeee;
+      width: 600px;
+      height: 400px;
+      text-align: center;
+      color: black;
+    }
+
+
+  </style>
+</head>
+<body>
   <div id="myModal" class="modal">
     <div class="modal-content">
       예매번호:<input type="text" id="idNum1" readonly>
@@ -158,6 +169,42 @@
       $(".openModalBtn").click(function(){
         modal.css("display", "block");
       });
+   // 마우스 올릴때 이벤트
+      $(".openModalBtn").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
+      $(".pageButton").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
+      $(".search").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
+      $(".btn").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      $(".close").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
+      // 내릴때
+      $(".openModalBtn").mouseleave(function () {
+			$(this).css("color","white");
+	  });
+      $(".pageButton").mouseleave(function () {
+			$(this).css("color","black");
+	  });
+      $(".search").mouseleave(function () {
+			$(this).css("color","black");
+	  });
+      $(".btn").mouseleave(function () {
+			$(this).css("color","black");
+	  });
+      $(".close").mouseleave(function () {
+			$(this).css("color","black");
+	  });
 
       // 닫기 버튼을 클릭하면 모달을 숨깁니다.
       closeBtn.click(function(){
@@ -175,7 +222,7 @@
     
   </script>
   	<footer>
-  		<jsp:include page="/inc/bottomBarPix.jsp"></jsp:include>
+  		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
   	</footer>
 
 </body>

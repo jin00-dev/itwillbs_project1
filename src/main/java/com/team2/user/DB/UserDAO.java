@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
 import com.team2.util.ConnectionDB;
 
 public class UserDAO {
@@ -16,82 +18,37 @@ public class UserDAO {
 	Connection conn;
 	ResultSet rs;
 	String sql;
-
-	public int rogin(String id, String pw) {
-		sql = "select user_id from user where user_id=? and user_pass=?";
+	
+	public int rogin( String id, String pw ) {
+		sql = "select user_pass from user where user_id=? and user_pass=?";
+		int result = 0;
 		try {
 			conn = con.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
+		
 			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				return 1; // 로그인성공
-			} else {
-				return 0; // 실패
+			
+			if(rs.next()) {
+				if(pw.equals(rs.getString("user_pass"))) {
+				 result = 1; //로그인성공
+				}else { 
+				result = 0; //실패
+				
 			}
-
-		} catch (Exception e) {
+			}
+			 
+		}catch(Exception e){
 			e.printStackTrace();
-			return -1;
-		} finally {
+			
+		}finally {
+			
 			con.closeDB(conn, rs, pstmt);
 		}
-	}
-
-	public List<String> findId(UserDTO m) {
-		sql = "select id from user where id_hint = ?";
-		List<String> list = new ArrayList<>();
-
-		try {
-			conn = con.getConnection();
-			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, m.getIdHint());
-			rs = pstmt.executeQuery();
-
-			list = new ArrayList<String>();
-
-			while (rs.next()) {
-				list.add(rs.getString(1));
-			}
-
-			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		} finally {
-			con.closeDB(conn, rs, pstmt);
-		}
-
-	}
-
-	public List<String> findPw(UserDTO m) {
-		sql = "select pw from user where id = ? and pw_hint =?";
-		List<String> list = null;
-
-		try {
-			conn = con.getConnection();
-			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, m.getId());
-//			pstmt.setString(2, m.getPwHint());
-			rs = pstmt.executeQuery();
-
-			list = new ArrayList<String>();
-
-			while (rs.next()) {
-				list.add(rs.getString(1));
-			}
-
-			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		} finally {
-			con.closeDB(conn, rs, pstmt);
-		}
-	}
-
+		return result;
+	} // 로그인
+	
 	// 회원가입
 	public int join(UserDTO m, String is) {
 		sql = "insert into user (user_id,user_name,user_pass,user_phone,user_regdate,last_access,user_type) values(?,?,?,?,default,default,0)";
@@ -117,6 +74,9 @@ public class UserDAO {
 		}
 
 	}
+
+	
+	///////////########
 
 	// 아이디 중복 확인
 	public boolean checkId(String id) {
@@ -144,31 +104,33 @@ public class UserDAO {
 			con.closeDB(conn, rs, pstmt);
 		}
 	}
-
-	// 아이디 찾기 findId()
-	public UserDTO findId(String phone) {
-		UserDTO dto = new UserDTO();
-		sql = "select user_id from user where user_phone=?";
-		conn = con.getConnection();
+	
+	//아이디 찾기 findId()
+	public String findId(String phone, String name) {
+		String  id = null;
+		sql = "select user_id from user where user_phone=? and user_name=?";
+		conn  = con.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, phone);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-
-				dto.setUser_id(rs.getString(1));
+			pstmt.setString(1, phone );
+			pstmt.setString(2, name);
+			rs =  pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				id = (rs.getString(1));
 			}
-
+			
 		} catch (SQLException e) {
-
+			
 			e.printStackTrace();
-		} finally {
+			
+		}finally {
 			con.closeDB(conn, rs, pstmt);
-		}
-		return dto;
+			}
+		return id;
 	}
-
+	
 	// 유저 정보 가져오기
 	public UserDTO getUserInfo(String user_id) {
 		sql = "select user_id, user_name, user_phone from user where user_id=?";
@@ -200,6 +162,8 @@ public class UserDAO {
 		conn = con.getConnection();
 
 		try {
+			conn  = con.getConnection();
+			sql = "update user set user_name=?, user_phone=?, user_pass=? where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getUser_name());
 			pstmt.setString(2, dto.getUser_phone());
@@ -347,26 +311,28 @@ public class UserDAO {
 			}
 		}
 		
-		// 비밀번호 찾기 findPw()
-		public String findPw(String id) {
-		String pw = "";
-			sql = "select user_pass from user where user_id=?";
-			conn = con.getConnection();
-			try {
-				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, id);
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					pw =rs.getString(1);
-				}
+	// 비밀번호 찾기 findPw()
+	public String findPw(String id) {
+	String pw = "";
+		sql = "select user_pass from user where user_id=?";
+		conn = con.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
 			
-			}catch (SQLException e) {
-				e.printStackTrace();
-			}finally {
-				con.closeDB(conn, rs, pstmt);
-				}
-			return pw;
+			if(rs.next()) {
+				pw =rs.getString(1);
+			}
+		
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			con.closeDB(conn, rs, pstmt);}
+		return pw;
 		}
+			
+ 
+	
 
 }

@@ -94,7 +94,7 @@
 	            		$("#chId").text("");
 	            		alert("인증번호가 전송되었습니다");
 	          			$("#random").val(result);
-// 	          			$("input[name='isCertification']").val("true");
+	          			$("input[name='isCertification']").val("true");
 	            	}
 	            },error: function () {
 	            	alert("정보를 다시 입력해주세요.");

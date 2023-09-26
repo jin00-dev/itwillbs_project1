@@ -7,9 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Off The Lamp</title>
 <link href="./css/orderList.css" rel="stylesheet">
-<link href="./css/footer.css" rel=stylesheet>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -30,7 +30,81 @@
 		session.setAttribute("id", id);
 	%>
 </script>
-<style>
+</head>
+
+<body>
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
+	<main>
+	<h1>${sessionScope.user_id } 님 환영합니다</h1>
+	<div id="container">
+		<input id="btn1" type="button" style="background: gray;" value="예매관리"	onclick="location.href='./MyPageMain.or'">
+		<input id="btn2" type="button" value="회원정보수정"	onclick="location.href='./UserInfoCheck.me'">
+	</div>
+		<div id="body-wrapper">
+		<div id="body-content">
+		<section id="section">
+			<div id="orderBoard">
+				<table class="table">
+					<tr>
+						<td>NO.</td>
+						<td>예매번호</td>
+						<td>예매날짜</td>
+						<td>영화제목</td>
+						<td>차 번호</td>
+						<td>예매상태</td>
+						<td>상세내역</td>
+					</tr>
+
+					<c:set var="bno" value="${startRow -1 }" />
+					<c:set var="listNum" value="-1" />
+					<c:forEach var="i" items="${requestScope.list}">
+						<tr>
+							<td>${bno=bno+1 }</td>
+							<td>${i.order_id }</td>
+							<td>${i.order_date }</td>
+							<td>${i.movie_name }</td>
+							<td>${i.car_num }</td>
+							<c:choose>
+								<c:when test="${i.order_state eq 0 }">
+									<td class="state">결제완료</td>
+								</c:when>
+								<c:otherwise>
+									<td class="state">취소완료</td>
+								</c:otherwise>
+							</c:choose>
+							<td id="openModalBtn${listNum=listNum+1 }" class="openModalBtn">상세내역</td>
+						</tr>
+					</c:forEach>
+
+				</table>
+
+				<div id="page_control">
+					<c:if test="${startPage > pageBlock }">
+						<div>
+							<a href="./MyPageMain.or?pageNum=${startPage-pageBlock }">Prev</a>
+						</div>
+					</c:if>
+
+					<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
+						<div>
+							<a href="./MyPageMain.or?pageNum=${i}">${i }</a>
+						</div>
+					</c:forEach>
+
+					<c:if test="${endPage < pageCount }">
+						<div>
+							<a href="./MyPageMain.or?pageNum=${startPage+pageBlock }">Next</a>
+						</div>
+					</c:if>
+
+				</div>
+			</div>
+		</section>
+		</div>
+	</main>
+	<style>
 .modal {
 	display: none;
 	position: fixed;
@@ -74,70 +148,7 @@
 
 </style>
 </head>
-
 <body>
-	<header>
-		<jsp:include page="/inc/topBar.jsp"></jsp:include>
-	</header>
-	<main>
-		<div id="body-wrapper">
-		<div id="body-content">
-		<section id="section">
-			<div id="orderBoard">
-				<table class="table">
-					<tr>
-						<td>NO.</td>
-						<td>예매번호</td>
-						<td>예매날짜</td>
-						<td>영화제목</td>
-						<td>차 번호</td>
-						<td>예매상태</td>
-						<td>상세내역</td>
-					</tr>
-
-					<c:set var="bno" value="${startRow -1 }" />
-					<c:set var="listNum" value="-1" />
-					<c:forEach var="i" items="${requestScope.list}">
-						<tr>
-							<td>${bno=bno+1 }</td>
-							<td>${i.order_id }</td>
-							<td>${i.order_date }</td>
-							<td>${i.movie_name }</td>
-							<td>${i.car_num }</td>
-							<c:choose>
-								<c:when test="${i.order_state eq 0 }">
-									<td class="state">결제완료</td>
-								</c:when>
-								<c:otherwise>
-									<td class="state">취소완료</td>
-								</c:otherwise>
-							</c:choose>
-							<td id="openModalBtn${listNum=listNum+1 }" class="openModalBtn">상세내역</td>
-						</tr>
-					</c:forEach>
-
-				</table>
-
-				<div id="page_control">
-					<c:if test="${startPage > pageBlock }">
-						<a href="./MyPageMain.or?pageNum=${startPage-pageBlock }">Prev</a>
-					</c:if>
-
-					<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
-						<a href="./MyPageMain.or?pageNum=${i}">${i }</a>
-					</c:forEach>
-
-					<c:if test="${endPage < pageCount }">
-						<a href="./MyPageMain.or?pageNum=${startPage+pageBlock }">Next</a>
-					</c:if>
-
-				</div>
-			</div>
-		</section>
-		</div>
-		</div>
-	</main>
-	
 	<div id="myModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span> 
@@ -203,6 +214,42 @@
 			$(".openModalBtn").click(function() {
 				modal.css("display", "block");
 			});
+			 // 마우스 올릴때 이벤트
+		      $(".openModalBtn").mouseover(function () {
+					$(this).css("color","red");
+			  });
+		      
+		      $(".pageButton").mouseover(function () {
+					$(this).css("color","red");
+			  });
+		      
+		      $(".search").mouseover(function () {
+					$(this).css("color","red");
+			  });
+		      
+		      $(".btn").mouseover(function () {
+					$(this).css("color","red");
+			  });
+		      $(".close").mouseover(function () {
+					$(this).css("color","red");
+			  });
+		      
+		      // 내릴때
+		      $(".openModalBtn").mouseleave(function () {
+					$(this).css("color","white");
+			  });
+		      $(".pageButton").mouseleave(function () {
+					$(this).css("color","black");
+			  });
+		      $(".search").mouseleave(function () {
+					$(this).css("color","black");
+			  });
+		      $(".btn").mouseleave(function () {
+					$(this).css("color","black");
+			  });
+		      $(".close").mouseleave(function () {
+					$(this).css("color","black");
+			  });
 
 			// 닫기 버튼을 클릭하면 모달을 숨깁니다.
 			closeBtn.click(function() {
@@ -241,7 +288,7 @@
 		});
 	</script>
 	<footer>
-		<jsp:include page="/inc/bottomBarPix.jsp"></jsp:include>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 	</footer>
 </body>
 </html>

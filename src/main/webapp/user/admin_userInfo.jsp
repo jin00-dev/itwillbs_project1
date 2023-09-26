@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +9,7 @@
 <title>Off The Lamp</title>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <link rel="stylesheet" href="./css/userInfo.css">
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 </head>
 <body>
 <c:if test="${empty sessionScope.user_id}">
@@ -25,8 +25,8 @@
 <main>
 	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
-		<input id="btn1" type="button" value="예매관리"	onclick="location.href='./UserOrderBoardAction.me'">
-		<input id="btn2" type="button" style="background: gray;" value="회원정보"	onclick="location.href='./UserInfoCheck.me'">
+		<input id="btn1" type="button" value="예매관리"	onclick="location.href='./managerList.or'">
+		<input id="btn2" type="button" style="background: gray;" value="회원정보수정"	onclick="location.href='.AdminUserInfoBoardAction.me'">
 		<input id="btn2" type="button" value="대관문의"	onclick="location.href='./AdminRentInfoBoardAction.me'">
 	</div>
 	<div id="userInfo_box">
@@ -145,9 +145,7 @@
 		$('#p7').text('접속시간 : '+jList[choice].last_access);
 		$('#p8').text('예매내역 : '+jList[choice].user_orderCount+'건');
   	});
-  	
-  	
-  	
+
   	//유저 등급변경 버튼
   	$("input[value='등급변경']").click(function(){
   		
@@ -185,6 +183,42 @@
       $(".openModalBtn").click(function(){
         modal.css("display", "block");
       });
+      // 마우스 올릴때 이벤트
+      $(".openModalBtn").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
+      $(".pageButton").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
+      $(".search").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
+      $(".btn").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      $(".close").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      
+      // 내릴때
+      $(".openModalBtn").mouseleave(function () {
+			$(this).css("color","white");
+	  });
+      $(".pageButton").mouseleave(function () {
+			$(this).css("color","black");
+	  });
+      $(".search").mouseleave(function () {
+			$(this).css("color","black");
+	  });
+      $(".btn").mouseleave(function () {
+			$(this).css("color","black");
+	  });
+      $(".close").mouseleave(function () {
+			$(this).css("color","black");
+	  });
 
       // 닫기 버튼을 클릭하면 모달을 숨깁니다.
       closeBtn.click(function(){
