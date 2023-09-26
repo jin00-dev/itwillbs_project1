@@ -33,7 +33,7 @@
 	
 	// 세션아이디 null, 지역, 날짜, 극장, 영화, 차번, 차종 선택안했을시 차량등록버튼 제어	
 	$('#btn1').click(function(){
-		var id = "${sessionScope.id}";
+		var id = "${sessionScope.user_id}";
 		if(id == ""){
 			alert("로그인이 필요한 서비스입니다");
 			return false;
@@ -255,7 +255,7 @@
 
 
 	function check() {
-		var id = "${sessionScope.id}";
+		var id = "${sessionScope.user_id}";
 		if (id == "") {
 			alert("로그인이 필요한서비스입니다.");
 			return false;

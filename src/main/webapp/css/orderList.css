@@ -48,9 +48,13 @@ main h1 {
 }
 /* 테이블 필드 세로줄 */
 #table td {
-	padding: 0.5em 1.0em;
+	width: 100px;
+	padding: 0.5em 0.5em;
 	font-size: 14.4px;
 	font-weight: 900;
+}
+#table .td1{
+	width: 10px;
 }
 /* 페이징 처리 */
 #page_control {
@@ -86,7 +90,7 @@ main h1 {
 	margin: 0 auto;
 	padding: 1em;
 	width: 50em;
-	height: 39em;
+	height: 33em;
 	background: gray;
 	/*   border: 1px solid white; */
 }
@@ -157,7 +161,7 @@ input[type="text"], input[type="password"] {
 }
 
 #myModal input {
-	width: 15em;
+	width: 5em;
 	margin: 0.5em auto;
 	float: left;
 }
