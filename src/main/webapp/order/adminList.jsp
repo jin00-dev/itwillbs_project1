@@ -90,15 +90,21 @@
 		
 					<div id="page_control">
 							<c:if test="${startPage > pageBlock }">
-								<a href="./managerList.or?pageNum=${startPage-pageBlock }&idcheck=${idcheck}">Prev</a>
+								<div>
+									<a href="./managerList.or?pageNum=${startPage-pageBlock }&idcheck=${idcheck}">Prev</a>
+								</div>
 							</c:if>
 							
 							<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
-								<a href="./managerList.or?pageNum=${i}&idcheck=${idcheck}">${i }</a>
+								<div>
+									<a href="./managerList.or?pageNum=${i}&idcheck=${idcheck}">${i }</a>
+								</div>
 							</c:forEach>
 							
 							<c:if test="${endPage < pageCount }">
-								<a href="./managerList.or?pageNum=${startPage+pageBlock }&idcheck=${idcheck}">Next</a>
+								<div>
+									<a href="./managerList.or?pageNum=${startPage+pageBlock }&idcheck=${idcheck}">Next</a>
+								</div>
 							</c:if>
 						</div>
 					</div>

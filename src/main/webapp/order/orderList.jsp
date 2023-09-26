@@ -47,16 +47,16 @@
 	<main>
 		<div id="body-content">
 		<section id="section">
-			<div id="orderBoard">
 				<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
-		<input id="btn1" type="button" value="예매/취소내역"	onclick="location.href='./MyPageMain.or'">
-		<input id="btn2" type="button" value="회원정보수정" style="background: gray;"	onclick="location.href='./UserInfoCheck.me'">
+		<input id="btn1" type="button" value="예매/취소내역" style="background: gray;"	onclick="location.href='./MyPageMain.or'">
+		<input id="btn2" type="button" value="회원정보수정"	onclick="location.href='./UserInfoCheck.me'">
 		
 	</div>
-				<table class="table">
+			<div id="orderBoard">
+				<table class="table" id="table">
 					<tr>
-						<td>NO.</td>
+						<td class="td1">NO.</td>
 						<td>예매번호</td>
 						<td>예매날짜</td>
 						<td>영화제목</td>
@@ -69,7 +69,7 @@
 					<c:set var="listNum" value="-1" />
 					<c:forEach var="i" items="${requestScope.list}">
 						<tr>
-							<td>${bno=bno+1 }</td>
+							<td class="td1">${bno=bno+1 }</td>
 							<td>${i.order_id }</td>
 							<td>${i.order_date }</td>
 							<td>${i.movie_name }</td>
@@ -90,15 +90,21 @@
 
 				<div id="page_control">
 					<c:if test="${startPage > pageBlock }">
-						<a href="./MyPageMain.or?pageNum=${startPage-pageBlock }">Prev</a>
+						<div>
+							<a href="./MyPageMain.or?pageNum=${startPage-pageBlock }">Prev</a>
+						 </div>
 					</c:if>
 
 					<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
-						<a href="./MyPageMain.or?pageNum=${i}">${i }</a>
+						<div>
+							<a href="./MyPageMain.or?pageNum=${i}">${i }</a>
+						</div>
 					</c:forEach>
 
 					<c:if test="${endPage < pageCount }">
-						<a href="./MyPageMain.or?pageNum=${startPage+pageBlock }">Next</a>
+						<div>
+							<a href="./MyPageMain.or?pageNum=${startPage+pageBlock }">Next</a>
+						</div>
 					</c:if>
 
 				</div>
@@ -122,7 +128,7 @@
 	position: relative;
 	margin: 10% auto;
 	padding: 40px;
-	background-color: #202020;
+	background-color: gray;
 	width: 400px;
 	text-align: center;
 	font-weight: bolder;
