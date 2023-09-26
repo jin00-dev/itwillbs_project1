@@ -39,6 +39,7 @@
 					<td><fmt:formatDate value="${dto.updatedate }"
 							pattern="YY-MM-dd" /></td>
 					<td>${dto.read_count }</td>
+				</tr>
 			</c:forEach>
 
 		</table>
