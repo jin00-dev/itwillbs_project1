@@ -16,6 +16,5 @@
 				href="./rentMain.bo" class="footer_bar">대관문의</a>
 		</div>
 	</footer>
-	</div>
 </body>
 </html>

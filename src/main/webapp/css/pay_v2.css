@@ -4,17 +4,43 @@
 p{
 	font-weight: bolder;
 	color:white;
+	font-size: 20px;
+	font-style: italic;
 }
 
 .divbox2{
-		border:  1px solid #202020;
-		height: 50px;
-		text-align: center;
-		line-height: 50px;
-		background-color: #202020;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #202020;
+    font-size: 20px;
+    font-weight: bolder;
 	}
+.divbox4{
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #202020;
+    font-size: 20px;
+    font-weight: bolder;
+	}
+	
 .divbox1{
-		border: 1px solid #202020;
+		border: 1px double white;
+		border-left-width: 5px;
+		border-top-width: 5px;
+		border-bottom-width: 5px;
+		border-right: none;
+		float: left;
+		width: 530px;
+		height: 580px;
+		}
+.divbox3{
+		border: 1px double white;
+		border-right-width: 5px;
+		border-left: none;
+		border-top-width: 5px;
+		border-bottom-width: 5px;
 		float: left;
 		width: 530px;
 		height: 580px;

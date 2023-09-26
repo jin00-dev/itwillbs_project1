@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.team2.payment.db.OrderDAO;
-import com.team2.user.DB.NonuserDTO;
+import com.team2.user.DB.NonUserDTO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
@@ -33,7 +33,7 @@ public class MemberInfo implements Action {
 		
 		try {
 			int nonId = Integer.parseInt(id);
-			NonuserDTO dto = dao.getNonuserInfo(nonId);
+			NonUserDTO dto = dao.getNonuserInfo(nonId);
 			response.getWriter().print(dto.getNonuser_name()+","+dto.getNonuser_phone());
 			System.out.println("M : 비회원정보조회성공");
 			System.out.println("M : NonuserInfo : " + dto.getNonuser_name() + "," + dto.getNonuser_phone());

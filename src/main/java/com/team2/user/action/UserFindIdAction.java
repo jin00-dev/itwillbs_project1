@@ -19,25 +19,37 @@ public class UserFindIdAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, 
-			HttpServletResponse response) {
+			HttpServletResponse response) throws IOException {
 		
 			
 			UserDAO dao =  new UserDAO();
-			UserDTO dto =  new UserDTO();
+	
 			
 		//	dto.setUser_name(request.getParameter("user_name"));
-			dto.setUser_phone(request.getParameter("user_phone"));
+			
 			String phone = request.getParameter("user_phone");
+			String name = request.getParameter("user_name");
 		
-			UserDTO result = dao.findId(phone);
+			String result = 	dao.findId(phone, name);
+			
+			System.out.println("result:"+result);
+			
 			response.setContentType("text/html; charset=UTF-8");
-			try {
-				response.getWriter().print(result.getUser_id());
-				System.out.println(result.getUser_id());
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
+			PrintWriter out = response.getWriter();
+			
+		if(result != null) {
+		    System.out.println("ddd");
+			out.print("<script>");
+			out.print("alert('고객님의 아이디는 "+result+"입니다');");
+			//  out.print("alert('고객님의 아이디는 입니다');");
+				out.print("location.href='./UserLogin.me';");
+				out.print("</script>");
+		} else {
+			System.out.println("aaaa");
+			out.print("<script>alert('입력하신 정보가 없습니다');history.back();</script>");
+		}
+			
+			
 			return null;
 			
 	}

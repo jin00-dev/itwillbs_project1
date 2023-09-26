@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Off The Lamp</title>
 </head>
 <body>
 <section id="footer_b" class="pt-3 pb-3 bg_grey">

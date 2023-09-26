@@ -1,36 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" ageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Off The Lamp</title>
 </head>
-
-<body>
-<!-- ��� �� ���� -->
 <header>
 	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-<!-- ��� �� ���� -->
-<!--center -------------------------------------------------------------  -->
+	<!--center -------------------------------------------------------------  -->
 <section id="center" class="center_o pt-2 pb-2">
-		
+	<form action="./UserLoing" method="post">
+	
+			
 			<script type="text/javascript">
-			alert("로그아웃 성공");
-			location.href="./Main.me";
+			alert("고객님의 비밀번호는 "+${user_pass}+" 입니다");
+			location.href="./UserLogin.me";
 			</script>
+		
+	</form>
+
 	<hr>
  </section>
 <!--center end-------------------------------------------------------------  -->
-	<!-- footer�Ʒ��δ� �ڵ� ���� -->
+	<!-- footer아래로는 코드 금지 -->
 
-<!-- �ϴܹ� ����  -->
 <footer>
 	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 </footer>
-<!-- �ϴܹ� ����  -->
+
+
 
 	<script>
 		window.onscroll = function() {

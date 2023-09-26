@@ -4,38 +4,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>예매안내</title>
+<title>Off The Lamp</title>
 <link href="./css/cinema.css" rel="stylesheet">
-<link href="./css/main.css" rel="stylesheet">
 <link href="./css/pay_v2.css" rel="stylesheet">
-<script src="./js/bootstrap.bundle.min.js"></script>
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
 
-		// 비회원 회원을 나눠서 구현하면 - 둘 중 하나는 null값이기때문에 오류
-		// 세션에서 가져오는 아이디값을 하나로 통일 - 비회원(int이기에 숫자로 구분) 회원(varchar이기에 문자가반드시 포함돼있어야함.)
+	// 비회원 회원을 나눠서 구현하면 - 둘 중 하나는 null값이기때문에 오류
+	// 세션에서 가져오는 아이디값을 하나로 통일 - 비회원(아이디 : autoincrement 숫자)
+	//											- 회원(아이디 : 이메일형식 문자가반드시 포함돼있어야함.)
 	<%
 		String id = (String) session.getAttribute("id");
 		session.setAttribute("id", id);
 	%>
 	
+	// jquery 시작
+	$(document).ready(function() {
+	
 	// 날짜가 자동으로 변경
 	var now = new Date();
-	var month = now.getMonth()+1;
-	var date = now.getDate();
+	var month = now.getMonth()+1;	// 월
+	var date = now.getDate();	// 일
+		
+	$('#month').text(month+"월");
+	$('#1').text(date + "일");
+	$('#2').text((date+1) +"일");
+	$('#3').text((date+2)+"일");
 	
+	// 세션아이디 null, 지역, 날짜, 극장, 영화, 차번, 차종 선택안했을시 차량등록버튼 제어	
+	$('#btn1').click(function(){
+		var id = "${sessionScope.id}";
+		if(id == ""){
+			alert("로그인이 필요한 서비스입니다");
+			return false;
+		}else if($('#text1').val() == ""){
+			alert("차량정보를 기입해주세요");
+			$( "#text1" ).trigger( "focus" );
+		}else if($('#choiceDate').val()==""){
+			alert("날짜를 선택해주세요");
+			return false;
+		}else if($('#cinema').val()==""){
+			alert("극장을 선택해주세요");
+			return false;
+		}else if($('#movie').val()==""){
+			alert("영화를 선택해주세요");
+			return false;
+		}else if($('#time').val()==""){
+			alert("시간을 선택해주세요");
+			return false;
+		}
+	});
 	
-	$('#month').text(month);
-	$('#1').text(date);
-	$('#2').text(date+1);
-	$('#3').text(date+2);
+
+	// 세션아이디 null, 지역, 날짜, 극장, 영화, 차번, 차종, 차량등록 선택안했을시 좌석선택버튼 제어
+	$('#seatSubmit').click(function(){
+		var id = "${sessionScope.id}";
+		if(id == ""){
+			alert("로그인이 필요한 서비스입니다");
+			return false;
+		}else if($('#choiceDate').val()==""){
+			alert("날짜를 선택해주세요");
+			return false;
+		}else if($('#cinema').val()==""){
+			alert("극장을 선택해주세요");
+			return false;
+		}else if($('#movie').val()==""){
+			alert("영화를 선택해주세요");
+			return false;
+		}else if($('#time').val()==""){
+			alert("시간을 선택해주세요");
+			return false;
+		}else if($('#car_num').val()=="" && $('#car_type').val()==""){
+			alert("차량등록을 해주세요");
+			return false;
+		}
+	});
+	
 			
 	// 날짜선택없이 지역선택할시 제어하기
 	
@@ -46,6 +90,7 @@
 		console.log("choiceDate : "+choiceDate);
 		$('.choiceDate').css('color','white');
 		$(this).css('color','red');
+		
 	
 		
 		$('.region').click(function() {
@@ -75,7 +120,7 @@
 					
 					   $('.showMovie').click(function(){
 							var theater = $(this).text();
-							
+							$('#cinema').val(theater);
 							$('.showMovie').not(this).css('color','white');
 							$(this).css('color','red')
 							
@@ -97,7 +142,7 @@
 				
 									$('.showTime').click(function(){
 										var movie = $(this).text();
-										
+										$('#movie').val(movie);
 										$('.showTime').not(this).css('color','white');
 										$(this).css('color','red')
 											
@@ -118,15 +163,16 @@
 												
 												$('.time').click(function(){
 													var time = $(this).text();
+													$('#time').val(time);
 													$('.time').not(this).css('color','white');
 													$(this).css('color','red');												
 													
 													
-													$('#btn1').click(function(){														
+													$('#btn1').click(function(){
 														var car_num = $('#text1').val();
 														var car_type = $('#option').val();
-														
-														console.log(theater+","+movie+","+time+","+car_num+","+car_type);															
+																												
+														alert("차량이 등록되었습니다");														
 														
 														// seatPayment.or - 차량선택시 결제예매에필요한 지역/좌석을 가져옴.
 														$.ajax({
@@ -138,7 +184,6 @@
 																"time":time,
 															},
 															success:function(data){
-																alert("전달성공");
 																console.log(data);
 																console.log(data[5]);
 																var seat = [];					
@@ -147,12 +192,9 @@
 																	// input hidden타입 각각의 아이디에 ajax로 받아온 데이터를 추가															
 																	var region = item.region;
 																	seat.push(item.seat);																
-																	$('#movie').val(movie);
-																	$('#cinema').val(theater);
 																	$('#region').val(region);
 																	$('#car_num').val(car_num);
 																	$('#car_type').val(car_type);
-																	$('#time').val(time);																				
 																});
 																console.log(seat);
 																$('#seat').val(seat);
@@ -161,7 +203,7 @@
 																alert("전달오류");
 															}
 														});
-	
+														
 													});
 													
 												});															
@@ -196,19 +238,7 @@
 		
 		$('.noMovie').click(function(){
 			alert("극장을 선택해주세요");
-		});
-		
-		$('#btn1').click(function(){
-			var id = "${sessionScope.user_id}";
-			if(id == ""){
-				alert("로그인이 필요한서비스입니다.");
-				return false;
-			}
-			
-			if($('#text1').val() == "" ){
-				alert("차량번호를 기입하세요");
-				$('#text1').focus();
-		}});
+		});		
 		
 		$('.region').click(function(){
 			if($('#choiceDate').val()==""){
@@ -224,13 +254,12 @@
 
 
 	function check() {
-		var id = "${sessionScope.user_id}";
+		var id = "${sessionScope.id}";
 		if (id == "") {
 			alert("로그인이 필요한서비스입니다.");
 			return false;
 		} else {
 			var car_num = document.fr.car.value;
-			console.log("car_num : " + car_num);
 			if (car_num == "") {
 				alert("차량정보를 등록해주세요");
 				document.fr.car.focus();
@@ -243,17 +272,27 @@
 	};
 
 </script>
+<style type="text/css">
+.title{
+	text-align: center;
+}
+.introhr{
+background-color: black;
+}
+</style>
 </head>
 <body>
-
-
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
 	<!-- 여기 예매 페이지 꾸며아함. -->
 	<main>
 		<div id="body-wrapper">
-			<div id="body-content">
+			<div id="body-content" class="mainBody">
 				<section id="section">
 					<div id="orderMain">
-					
+					<hr class ="introhr">
+						<h1 class = "title"> 영화 예매 </h1>
 						<div id="date">
 							<p id="month"></p>
 							<div id="day">
@@ -280,10 +319,14 @@
 								<a class="noCinema">한국민속촌자동차극장</a><br>
 							</div>
 							<div id="movieName" class="cdiv">
-								<a class="noMovie">잠</a><br> <a class="noMovie">오펜하이머</a><br>
-								<a class="noMovie">콘크리트 유토피아</a><br> <a class="noMovie">달짝지근해:
-									7510</a><br> <a class="noMovie">7번방의선물</a><br> <a
-									class="noMovie">악마를 보았다</a><br> <a class="noMovie">겨울왕국2</a><br>
+								<a class="noMovie">잠</a><br>
+								<a class="noMovie">오펜하이머</a><br>
+								<a class="noMovie">콘크리트 유토피아</a><br> 
+								<a class="noMovie">달짝지근해:7510</a><br> 
+								<a class="noMovie">7번방의선물</a><br> 
+								<a class="noMovie">악마를 보았다</a><br> 
+								<a class="noMovie">겨울왕국2</a><br>
+								<a class="noMovie">조작된 도시</a>
 							</div>
 							<div id="movieTime" class="cdiv"></div>
 							<div class="cdiv" id="otc">
@@ -309,7 +352,10 @@
 								<input type="hidden" name="seat" id="seat">
 								<input type="hidden" name="choiceDate" id="choiceDate">
 								<input type="button" id="btn1" value="차량등록">
-								<input type="submit" value="좌석선택" id="submit">
+								<input type="submit" value="좌석선택" id="seatSubmit">
+								<div id="seatDiv">
+								<a id="seatImg">>>></a>
+								</div>
 							</div>
 						</form>
 					</div>

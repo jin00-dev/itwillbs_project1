@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Off The Lamp</title>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <link rel="stylesheet" href="./css/userInfo.css">
 </head>
@@ -25,8 +25,8 @@
 <main>
 	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
-		<input class="btn" type="button" value="예매관리"	onclick="location.href='./UserOrderBoardAction.me'">
-		<input class="btn" type="button" value="회원정보"	onclick="location.href='./UserInfoCheck.me'">
+		<input class="btn" type="button" value="예매관리"	onclick="location.href='./managerList.or'">
+		<input class="btn" type="button" value="회원정보"	onclick="location.href='./AdminUserInfoBoardAction.me'">
 		<input class="btn" type="button" style="background: gray;" value="대관문의" onclick="location.href='./AdminRentInfoBoardAction.me'">
 	</div>
 	<div id="userInfo_box">
@@ -155,6 +155,7 @@
   	
   	$('#openModalBtn0').click(function(){
   		choice=0
+  		$('#openModalBtn0').attr
   	});
   	$('#openModalBtn1').click(function(){
   		choice=1
@@ -169,28 +170,15 @@
   		choice=4
   	});
   	
-  	$('td[id^="openModalBtn"]').css("cursor","pointer").click(function(){
+  	$('td[id^="openModalBtn"]').click(function(){
 		$('#p0').text(jList[choice].user_id+'님의 대관문의 정보입니다.');
 		$('#p1').text(jList[choice].rent_name);
 		$('#p2').text(jList[choice].regdate);
-		$('#p3').text(jList[choice].rent_phone);
+		$('#p3').text(jList[choice].user_phone);
 		$('#p4').text(jList[choice].rent_email);
-		$('#p5').text(jList[choice].subject);
-		$('#p6').text(jList[choice].content);
-		if(jList[choice].answer == 0){
-			$('#p7').text('N');
-		}else{
-			$('#p7').text('Y');
-			
-		}
-		 $('#p7').css("cursor","pointer").click(function () {
-			  	console.log(jList[choice].answer);
-			  	console.log(jList[choice].rent_bno);
-			  	var rent_bno = jList[choice].rent_bno;
-			  	var answer = jList[choice].answer;
-				location.href="rentAnswer.bo?rent_bno="+rent_bno+"&&answer="+answer;
-				
-		  });
+		$('#p6').text(jList[choice].subject);
+		$('#p7').text(jList[choice].content);
+		$('#p8').text(jList[choice].answer_context);
 		$('#p8').text(jList[choice].cinema_name);
   	});
   	
@@ -223,10 +211,6 @@
       $(".close").mouseover(function () {
 			$(this).css("color","red");
 	  });
-      $("#p7").mouseover(function () {
-			$(this).css("color","red");
-	  });
-      
       
       // 내릴때
       $(".openModalBtn").mouseleave(function () {
@@ -244,11 +228,7 @@
       $(".close").mouseleave(function () {
 			$(this).css("color","black");
 	  });
-      $("#p7").mouseleave(function () {
-			$(this).css("color","white");
-	  });
-	  
-	 
+
       // 닫기 버튼을 클릭하면 모달을 숨깁니다.
       closeBtn.click(function(){
         modal.css("display", "none");

@@ -6,22 +6,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>예매안내</title>
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
+<title>Off The Lamp</title>
 <link href="./css/cinema.css" rel="stylesheet">
 <link href="./css/pay_v2.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
-	rel="stylesheet">
-<script src="./js/bootstrap.bundle.min.js"></script>
-<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<link href="./css/pay_v1.css" rel="stylesheet">
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
+		<%
+			String id = (String)session.getAttribute("id");
+			session.setAttribute("id", id);
+		%>
 		
 		$(function(){		
 					
@@ -42,31 +36,29 @@
 	 						$('#'+j).addClass("xxseat");
 	 						$('#'+j).off('click');	// 팔린좌석은 선택안됨.
 	 					}
-
 	 			}
 	 		}
 		}
+		
 		$("button[type='button']").click(function(){	
 			$("button[type='button']").not('.xxseat').css('backgroundColor','#C8C8C8');
-			$(this).css('backgroundColor','grey');
-			
+			$(this).css('backgroundColor','grey');	
 			
 			var seat = $(this).text();
 			console.log(seat);
 			$('#seat').val(seat);
-		});
+		});	
 		
-		
-
 		showSeat();
-
+		
 	 });
 
 </script>
 </head>
 <body>
-
-
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
 	<!-- 여기 예매 페이지 꾸며아함. -->
 	<main>
 		<div id="body-wrapper">
@@ -78,8 +70,8 @@
 						<div class="divbox2">관람존 안내</div>
 						<div class="carInfo">
 							<tr>
-								<td>차량번호</td>
-								<td>차량종류</td>
+								<td class="td">차량번호</td>
+								<td class="td">차량종류</td>
 							</tr>
 							<tr>
 								<td><input type="text" value="${param.car_num }" readonly></td>
@@ -87,15 +79,40 @@
 							</tr>
 						</div>					
 					</table>
+					
+						<div class="origin">
+							<div id="divXY2">SCREEN</div>
+						</div>
 
 					<div class="seatMap" id="seatMap"
 						style="width: 432px; height: 360px;">
 
+		<style>
+			.origin{
+			    border: 1px solid black;
+			    float: left;
+			    perspective: 150px;
+			    margin-top: 80px;
+			    margin-left: 100px;
+			}
+			#divXY2{
+				font-size: 30px;
+			    transform: rotateX(-30deg);
+			    color: black;
+			    text-align: center;
+			    line-height: 70px;
+			    font-weight: bold;
+			}
+			.origin > div{
+  				width: 300px;
+   				height: 70px;
+    			background-color: white;
+    			/* transition : all 3s; */
+			}
+			
+		</style>
 
-						<div class="screen">
-							<span class="text"></span>
-						</div>
-
+						
 						<button type="button" id="0" class="seat soldout1"
 							style="top: 36px; left: 36px; background-color: #C8C8C8">A1</button>
 						<button type="button" id="1" class="seat soldout"
@@ -182,13 +199,9 @@
 				</section>
 			</div>
 
-			<div class="divbox1">
+			<div class="divbox3">
 				<section>
-
-					<div class="divbox2">결제</div>
-					
-					
-
+					<div class="divbox4">결제</div>				
 					<p>영화</p>
 					<input type="text" id="movieName" value="${param.movie }" readonly>
 					<p>극장</p>
@@ -207,20 +220,11 @@
 		</section>
 		</div>
 	</main>
-	<style>
-		input{
-			height: 35px;
-			background-color: #202020;
-			color: aliceblue;
-			border: none;
-		}
-	</style>
+
 	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	<script type="text/javascript">
 
 
-// 		const userCode = "imp14397622";
-		//IMP.init('imp14397622');
 		IMP.init('imp73450751');
 
 		function requestPay() {
@@ -255,7 +259,7 @@
 					if (rsp.success) {
 						// 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
 						// jQuery로 HTTP 요청
-						console.log(rsp.merchant_uid);
+						console.log("주문번호 : "+rsp.merchant_uid);
 						console.log(rsp.imp_uid);
 						console.log(rsp.pay_method);
 						jQuery.ajax({
@@ -280,16 +284,17 @@
  								"time" : "${param.time}",
  								"seat" : $('#seat').val()	// 바꿔야함.
 							},success:function(){
-// 								alert("결제완료 마이페이지로 이동하겠습니다.");	
-								location.href="./MyPageMain.or";
+ 								var id = "${sessionScope.id}";
+ 								if(id.indexOf('@') != -1){
+ 									alert("결제완료 마이페이지로 이동하겠습니다.");	
+ 									location.href="./MyPageMain.or";
+ 								}else{
+ 									alert("결제완료 비회원 예매취소/환불은 고객센터로 문의해주세요")
+ 									location.href='./Main.or';
+ 								}							
 							}						
 						}).done(function() {
-							// 가맹점 서버 결제 API 성공시 로직
-							
-							// 회원이 성공했을때 마이페이지로 보내기
-							// 비회원이 성공했을때 .... 어떻게 해주지?
-// 							console.log("결제완료");
-// 							console.log(${parma.movie}+","+${param.price}+"원 결제완료");
+
 						})
 					} else {
 						alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);

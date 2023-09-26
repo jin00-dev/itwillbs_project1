@@ -1,15 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link href="./css/event.css" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>이벤트</title>
+<link rel="stylesheet" href="./css/event.css">
+<title>Off The Lamp</title>
+<style type="text/css">
+.eventhr{
+	background-color: black;
+}
+</style>
 </head>
 
 <body>
@@ -29,14 +30,15 @@
 	// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 	function eventAdd() {
 		window.open("./eventAdd.bo?user_id=${user_id}","_black",
-				"width=500, height=600, left="+popupX+", top="+popupY);
+				"width=400, height=500, left="+popupX+", top="+popupY);
 	}
 	function boardList() {
 		location.href="./eventMain.bo?user_id=${user_id}";
 	}
 
 	</script>
-
+	
+	<hr class = "eventhr">
 	<h2 class="eventH2">진행중인 이벤트</h2>
 	<section id="eventing" class="eventContainer">
 		<div id="image_container1">
@@ -50,8 +52,7 @@
 				<c:forEach var="dto" items="${boardList }">
 					<c:if test="${dto.event_type == 0 }">
 						<div class="image_panel">
-							<a
-								href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
+							<a href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
 								<img src="./img/${dto.img }">
 								<p>${dto.subject }</p>
 							</a>

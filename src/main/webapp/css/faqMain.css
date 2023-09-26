@@ -16,12 +16,12 @@ input[type=submit]{
 
 
 .qnaButton{
-  margin: 50px 0 30px;
+  margin: 20px 0 30px;
   text-align: right;
 }
 
 .faq-container h1 {
-  margin: 50px 0 30px;
+  margin: 20px 0 20px;
   text-align: center;
   font-family: inherit;
   color: darkgray;

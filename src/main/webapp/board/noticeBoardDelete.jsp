@@ -2,9 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <link href="./css/listPage.css" rel="stylesheet">
-<title>Insert title here</title>
+<title>Off The Lamp</title>
 
 <script type="text/javascript">
 	

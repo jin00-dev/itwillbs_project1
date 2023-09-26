@@ -1,6 +1,5 @@
 @charset "UTF-8";
-
-.info{
+	.info{
 	color : black;
 	text-align: center;
 	margin-top: 20px;
@@ -34,3 +33,4 @@
 	.region_list{
 	text-align: center;
 	}
+	

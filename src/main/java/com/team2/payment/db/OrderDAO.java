@@ -12,7 +12,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.team2.user.DB.NonuserDTO;
+import com.team2.user.DB.NonUserDTO;
 import com.team2.user.DB.UserDTO;
 
 public class OrderDAO {
@@ -41,7 +41,7 @@ public class OrderDAO {
 
 		// context.xml 파일(jdbc/jsp 이름)접근
 		// DataSource 타입으로 변경
-		DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/team2");
+		DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/Team8");
 
 		// 연결정보 객체를 사용해서 디비 연결
 		con = ds.getConnection();
@@ -217,8 +217,8 @@ public class OrderDAO {
 	}
 	
 	// 비회원이 예매결제시 필요한 비회원이름, 비회원휴대폰번호 가져오는 메서드
-	public NonuserDTO getNonuserInfo(int nonuser_id) {
-		NonuserDTO dto = new NonuserDTO();
+	public NonUserDTO getNonuserInfo(int nonuser_id) {
+		NonUserDTO dto = new NonUserDTO();
 		try {
 			con = getConnect();
 			sql = "select nonuser_name, nonuser_phone from non_user where nonuser_id=?";
@@ -438,7 +438,8 @@ public class OrderDAO {
 		
 		
 		// 회원의 마이페이지 게시글수
-		public int getBoardCount(String num) {
+		public int getBoardCount(String id) {
+			System.out.println(" DAO : 매개변수 전달 id : "+id);
 			System.out.println(" DAO : getBoardCount() 호출 ");
 			System.out.println(" DAO : 실행목적 : 글의 개수(int) 리턴");
 			int result = 0;
@@ -450,7 +451,7 @@ public class OrderDAO {
 				sql = "select count(*) from order_board where user_num = (select user_num from user where user_id = ?)";
 				pstmt = con.prepareStatement(sql);
 				// 4. SQL 실행
-				pstmt.setString(1, num);
+				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
 				// 5. 데이터 처리
 				if(rs.next()) {
@@ -463,6 +464,7 @@ public class OrderDAO {
 				e.printStackTrace();
 			} finally {
 				closeDB();
+				System.out.println("DAO : "+id);
 			}
 			
 			return result;
@@ -472,6 +474,7 @@ public class OrderDAO {
 			public int getBoardCountJoin(String num) {
 				System.out.println(" DAO : getBoardCount() 호출 ");
 				System.out.println(" DAO : 실행목적 : 글의 개수(int) 리턴");
+				System.out.println(" DAO 전달받은 아이디 : "+num);
 				int result = 0;
 				
 				try {

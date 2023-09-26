@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="./css/findId.css">
 <head>
+<link rel="stylesheet" href="./css/findId.css">
+</head>
+<body>
 <header>
-   <jsp:include page="/inc/topBar.jsp"></jsp:include>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
 
-   <!--center -------------------------------------------------------  -->
+	<!--center -------------------------------------------------------  -->
 <section id="center" class="center_o pt-2 pb-2">
    <section id="join_box">
    
@@ -31,10 +33,8 @@
 </form>
 </section>
 <!--center end-------------------------------------------------------------  -->
-   <!-- footer아래로는 코드 금지 -->
-
-   <footer>
-   <jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+<footer>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 </footer>
 
 

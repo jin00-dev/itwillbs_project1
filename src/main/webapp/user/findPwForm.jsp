@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="./css/findPw.css">
 <script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> 
+<title>Off The Lamp</title>
 <head>
 <header>
-   <jsp:include page="/inc/topBar.jsp"></jsp:include>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-   <!--center -------------------------------------------------------------  -->
+	<!--center -------------------------------------------------------------  -->
 <section id="center" class="center_o pt-2 pb-2">
    <section id="join_box">
    
-   <h1>비밀번호찾기</h1> 
+    <h1>비밀번호찾기</h1> 
    </section>
    <form action="./UserFindPwAction.me" method="post">
    <fieldset id="join_wrap">
@@ -46,29 +47,29 @@
             },
             dataType: "text",
             success: function (result) {
-               if(result == ""){
-                  alert("정보를 다시 입력해주세요");
-               }else{
-                    alert("인증번호가 전송되었습니다");
-                   $("#random").val(result);
-               }
+            	if(result == ""){
+            		alert("정보를 다시 입력해주세요");
+            	}else{
+            		  alert("인증번호가 전송되었습니다");
+          			$("#random").val(result);
+            	}
            
             },error: function () {
-               alert("정보를 다시 입력해주세요");
+            	alert("정보를 다시 입력해주세요");
                
             }
         })
     });
     
     function check(){
-       var user_mailnum = $("input[name='user_mailnum']").val();
-       var random = $("#random").val();
-       if(user_mailnum == random ){
-          return true;
-       }else{
-          alert("인증번호가 틀렸습니다");
-          return false;
-       }
+    	var user_mailnum = $("input[name='user_mailnum']").val();
+    	var random = $("#random").val();
+    	if(user_mailnum == random ){
+    		return true;
+    	}else{
+    		alert("인증번호가 틀렸습니다");
+    		return false;
+    	}
     }
     
 </script>
@@ -79,10 +80,10 @@
 </form>
 </section>
 <!--center end-------------------------------------------------------------  -->
-   
+	
 
 <footer>
-   <jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 </footer>
 
 

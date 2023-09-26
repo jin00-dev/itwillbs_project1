@@ -10,22 +10,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Off The Lamp</title>
 <link href="./css/orderList.css" rel="stylesheet">
 <link href="./css/footer.css" rel=stylesheet>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	crossorigin="anonymous"></script>
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
+
 	$(document).ready(function() {
+		
+		var id = "${sessionScope.id}";
+		console.log(id);
+		
 		
 		$('.openModalBtn').click(function(){
 			var state = $('#idNum7').text();
 			console.log(state);
 			if(state == "결제상태 : 취소완료"){
-				$('#canselbtn').hide();
+				$('#cancelbtn').hide();
 			}else{
-				$('#canselbtn').show();
+				$('#cancelbtn').show();
 			}
 		});
 	});
@@ -99,6 +102,7 @@
 		</div>
 	</main>
 	<style>
+		
 .modal {
 	display: none;
 	position: fixed;
@@ -126,21 +130,22 @@
 	cursor: pointer;
 }
 
-#canselbtn{
+#cancelbtn{
 	background-color: #202020;
-	border: none;
-	color: aliceblue;
+    border: none;
+    font-weight: bolder;
+    font-size: x-large;
 }
 
-#canselbtn:hover{
+#cancelbtn:hover{
 	color: red;
 }
 
 .openModalBtn:hover{
 	text-shadow: 3px 3px 3px grey;
 }
-
-</style>
+		
+	</style>
 </head>
 <body>
 	<div id="myModal" class="modal">
@@ -155,7 +160,7 @@
 			<p id="idNum7"></p>				
 			<p id="idNum8"></p>				
 			<input type="button" class="close" value="X">			
-			<input type="button" id="canselbtn" value="예매취소">
+			<input type="button" id="cancelbtn" value="예매취소">
 		</div>
 	</div>
 	<script>
@@ -221,7 +226,7 @@
 				}
 			});
 			
-			$('#canselbtn').click(function(){
+			$('#cancelbtn').click(function(){
 				if(confirm("정말 취소하시겠습니까??") == true){
 // 					document.removefrm.submit();
 					modal.css("display","none");
@@ -233,7 +238,7 @@
 							"order_id":jlist[choice].order_id
 							},
 						success:function(){
-							alert("갓다옴");
+// 							alert("갓다옴");
 						},error:function(){
 							alert("에러");
 						}

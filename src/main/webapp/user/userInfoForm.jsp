@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Off The Lamp</title>
 <link rel="stylesheet" href="./css/userInfo.css">
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 </head>
 <body>
 <%-- <%session.setAttribute("user_id", "1"); %> --%>
@@ -24,7 +25,7 @@
 <main>
 	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
-		<input id="btn1" type="button" value="예매/취소내역"	onclick="location.href='./UserOrderBoardAction.me'">
+		<input id="btn1" type="button" value="예매/취소내역"	onclick="location.href='./MyPageMain.or'">
 		<input id="btn2" type="button" value="회원정보수정"	style="background: gray;"onclick="location.href='./UserInfoCheck.me'">
 		
 	</div>

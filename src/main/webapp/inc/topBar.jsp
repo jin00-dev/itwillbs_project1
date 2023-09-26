@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ㅡ<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -12,8 +12,6 @@
 <link href="./css/index.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"	rel="stylesheet">
 <script src="./js/bootstrap.bundle.min.js"></script>
-<!-- <script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> -->
-
 </head>
 <body>
 	<section id="top">
@@ -36,7 +34,7 @@
 							<c:choose>
 								<c:when test="${ sessionScope.user_id eq 'admin'}">
 									<li><a href="./UserLogoutAction.me">로그아웃</a></li>
-									<li><a href="./AdminUserInfoBoardAction.me">관리자페이지</a></li>
+									<li><a href="./managerList.or">관리자페이지</a></li>
 								</c:when>
 								<c:when test="${empty sessionScope.user_id }">
 									<li><a href="./UserLogin.me">로그인</a></li>
@@ -44,9 +42,9 @@
 								</c:when>
 								<c:when test="${!empty sessionScope.user_id }">
 									<li><a href="./UserLogoutAction.me">로그아웃</a></li>
-									<li><a href="./UserInfoCheck.me">마이페이지</a></li>
+									<li><a href="./MyPageMain.or">마이페이지</a></li>
 								</c:when>
-							</c:choose>		
+							</c:choose>						
 						</ul>
 					</div>
 				</div>
@@ -81,7 +79,7 @@
 								<li><a class="dropdown-item" href="./noticeMain.bo">공지사항</a></li>
 								<li><a class="dropdown-item" href="./faqMain.bo">자주묻는질문</a></li>
 								<li><a class="dropdown-item border-0 "href="./rentMain.bo">대관문의</a></li>
-							</ul></li>
+							</ul><li>
 				</div>
 			</div>
 		</nav>

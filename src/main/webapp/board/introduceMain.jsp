@@ -4,9 +4,6 @@
 <head>
 <link rel="stylesheet" href="./css/introduceMain.css">
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ur2rm9e363"></script>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Off The Lamp</title>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
@@ -328,6 +325,14 @@
 			});//ajax 끝
 		}); //JQuery 끝
 	</script>
+	<style type="text/css">
+	.introhr{
+	background-color: black;
+	}
+	.title{
+	text-align: center;
+	}
+	</style>
 
 </head>
 <body>
@@ -340,7 +345,8 @@
 	<!-- 여기 소개 게시판 꾸며아함. -->
 
 	<div class="container">
-		<h1>소개게시판</h1>
+		<hr class ="introhr">
+		<h1 class = "title">소개게시판</h1>
 		<hr>
 		<div class = "region_list">
 		<input type="button" value = "서울/경기" id="s" class = "btn_region1">

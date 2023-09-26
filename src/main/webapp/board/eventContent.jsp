@@ -1,16 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="./css/event.css" rel="stylesheet">
 <link href="./css/listPage.css" rel="stylesheet">
-<title>이벤트</title>
+<title>Off The Lamp</title>
 </head>
 <body>
 	<!-- 상단 바 고정 -->
@@ -30,7 +26,7 @@
 		</div>
 		<div id="right">
 			<div class="container">
-				<h1>이벤트 글내용</h1>
+				<h1>이벤트</h1>
 				<table class="boardContent" id="imgContent">
 					<tr>
 						<th class="ttitle" colspan="4"></th>

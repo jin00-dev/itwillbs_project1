@@ -24,7 +24,10 @@ public class GetOrderBoardAction implements Action {
 		List<PaymentDTO> plist = new ArrayList<>();
 		HttpSession session = request.getSession();
 		
-		int count = dao.getBoardCountJoin((String)session.getAttribute("id"));
+		String id = (String)session.getAttribute("id");
+		
+		int count = dao.getBoardCountJoin(id);
+		System.out.println(" M 아이디 : "+id);
 		System.out.println(" M : 전체 글 개수 :" + count + "개");
 
 		// 페이징처리-1 => Model
