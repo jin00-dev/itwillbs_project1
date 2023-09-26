@@ -88,7 +88,7 @@ public class AdminRentInfoBoardAction implements Action {
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("jList", jList);
 		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("count", count);
+		request.setAttribute("pageCount", count);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);

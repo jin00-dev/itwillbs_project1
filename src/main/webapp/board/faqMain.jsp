@@ -1,9 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Off The Lamp</title>
 <link href="./css/faqMain.css" rel="stylesheet">
 </head>
@@ -83,11 +87,6 @@
 					value="1:1 문의내역" class="btn" />
 			</div>
 			<h1>자주 묻는 질문</h1>
-							<div class="qnaButton">
-								<input type="button" onclick="qnaBoard();" value="1:1 문의"
-									class="btn" /> <input type="button" onclick="qnaBoardList();"
-									value="1:1 문의내역" class="btn" />
-							</div>
 			<c:forEach var="dto" items="${boardList }">
 				<div class="faq">
 					<c:if test="${user_id eq 'admin'}">
