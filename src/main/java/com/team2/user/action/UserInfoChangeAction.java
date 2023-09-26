@@ -9,6 +9,7 @@ import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
+import com.team2.util.SHA256;
 
 public class UserInfoChangeAction implements Action {
 
@@ -17,14 +18,20 @@ public class UserInfoChangeAction implements Action {
 		ActionForward forward = null;
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
-		
+		SHA256 sha = new SHA256();
 		dto.setUser_id(req.getParameter("user_id"));
 		dto.setUser_name(req.getParameter("user_name"));
 		dto.setUser_phone(req.getParameter("user_phone"));
-		dto.setUser_pass(req.getParameter("user_pass"));
+		dto.setUser_pass(sha.encodSha256(req.getParameter("user_pass")));
+		int result =0;
 		
-		int result = dao.updateUserInfo(dto);
+		if(dto.getUser_name().equals("null")) {
+			result = dao.updateUserPw(dto);
+		}else {
+			result = dao.updateUserInfo(dto);
+		}
 		
+		System.out.println(result);
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 

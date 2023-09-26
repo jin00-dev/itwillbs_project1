@@ -10,6 +10,7 @@ import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
+import com.team2.util.SHA256;
 
 public class KakaoLoginAction implements Action {
 
@@ -19,6 +20,7 @@ public class KakaoLoginAction implements Action {
 		req.setCharacterEncoding("UTF-8");
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
+		SHA256 sha = new SHA256();
 		
 		String kakaoEmail = req.getParameter("kakaoEmail");
 		String kakaoLogin = req.getParameter("kakaoLogin");
@@ -39,7 +41,7 @@ public class KakaoLoginAction implements Action {
 			isCertification = "true";
 			dto.setUser_id(kakaoEmail);
 			dto.setUser_name(kakaoNickname);
-			dto.setUser_pass("kakaoPW"+rand);
+			dto.setUser_pass(sha.encodSha256("kakaoPW"+rand));
 			dto.setUser_phone("kakao"+rand);
 		}
 	

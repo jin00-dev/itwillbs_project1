@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
+import com.team2.util.SHA256;
 
 public class UserFrontController extends HttpServlet {
 
@@ -21,7 +22,9 @@ public class UserFrontController extends HttpServlet {
 		String ss = request.getContextPath();
 		String command = uri.substring(ss.length());
 		System.out.println(command);
-
+		SHA256 sha = new SHA256();
+		System.out.println(sha.encodSha256("Test1234@@"));
+		
 		Action action = null;
 		ActionForward forward = null;
 		////이동 방식 계산////////////////////

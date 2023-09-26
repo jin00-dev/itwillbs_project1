@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="./css/findPw.css">
-<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> 
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <title>Off The Lamp</title>
 <head>
 <header>
