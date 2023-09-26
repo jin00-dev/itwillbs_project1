@@ -1,17 +1,39 @@
-<%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
+<%@page
+	import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
 <%@page import="com.team2.payment.db.OrderDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Off The Lamp</title>
 <link href="./css/orderList.css" rel="stylesheet">
+<link href="./css/footer.css" rel=stylesheet>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var id = "${sessionScope.id}";
+		
+		if(id != "admin"){
+			alert("관리자 접근페이지입니다")
+			location.href='./Main.or';
+		};
+		
+		$('.openModalBtn').click(function(){
+			var state = $('#idNum9').text();
+			console.log(state);
+			if(state == "결제상태 : 취소완료"){
+				$('#cancelbtn').hide();
+			}else{
+				$('#cancelbtn').show();
+			}
+		});
+						
+		
 	});
 </script>
 </head>
@@ -20,21 +42,18 @@
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 	<main>
-	<h1>${sessionScope.user_id } 님 환영합니다</h1>
-	<div id="container">
-		<input id="btn1" type="button" style="background: gray;" value="예매관리"	onclick="location.href='./managerList.or'">
-		<input id="btn2" type="button" value="회원정보수정"	onclick="location.href='./AdminUserInfoBoardAction.me'">
-		<input id="btn2" type="button" value="대관문의"	onclick="location.href='./AdminRentInfoBoardAction.me'">
-	</div>
+		<div id="body-wrapper">
+		<div id="body-content">
 		<section id="section">
-	<div id="orderBoard">
 		<div id="serchForm">
 			<form action="./managerList.or">
-			<input type="text" name="idcheck" class="input_box" placeholder="회원 아이디를 입력해주세요.">
+			아이디<input type="text" name="idcheck">
 				<input type="submit" value="검색" onclick="">
 			</form>
 		</div>
-				<table class="table" id="table">
+		
+			<div id="orderBoard">
+				<table class="table">
 					<tr>
 						<td>NO.</td>
 						<td>예매번호</td>	
@@ -42,8 +61,10 @@
 						<td>성명</td>	
 						<td>영화이름</td>	
 						<td>예매날짜</td>	
-						<td>상세보기</td>				
+						<td>결제상태</td>	
+						<td>상세내역</td>				
 					</tr>
+			
 			<c:set var ="listNum" value="-1" />
 			<c:set var ="bno" value="${startRow -1 }" />
 			<c:forEach var="i" begin="1" end="${olist.size() }" step="1">
@@ -54,6 +75,14 @@
 					<td>${ulist.get(i-1).user_name }</td>
 					<td>${olist.get(i-1).movie_name }</td>
 					<td>${olist.get(i-1).order_date }</td>
+					<c:choose>
+						<c:when test="${olist.get(i-1).order_state eq 0 }">
+							<td class="state">결제완료</td>
+						</c:when>
+						<c:otherwise>
+							<td class="state">취소완료</td>
+						</c:otherwise>
+					</c:choose>
 					<td id="openModalBtn${listNum=listNum+1 }" class="openModalBtn">상세내역</td>
 				</tr>
 			</c:forEach>
@@ -61,67 +90,81 @@
 		
 					<div id="page_control">
 							<c:if test="${startPage > pageBlock }">
-							<div>
 								<a href="./managerList.or?pageNum=${startPage-pageBlock }&idcheck=${idcheck}">Prev</a>
-							</div>
 							</c:if>
+							
 							<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
-							<div>
 								<a href="./managerList.or?pageNum=${i}&idcheck=${idcheck}">${i }</a>
-							</div>
 							</c:forEach>
 							
 							<c:if test="${endPage < pageCount }">
-							<div>
 								<a href="./managerList.or?pageNum=${startPage+pageBlock }&idcheck=${idcheck}">Next</a>
-							</div>
 							</c:if>
 						</div>
 					</div>
+				</section>
 				</div>
-		</section>
-	</main>
+			</main>
+		<style>
+			
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}
 
-<style>
+.modal-content {
+	position: relative;
+	margin: 10% auto;
+	padding: 40px;
+	background-color: #202020;
+	width: 400px;
+	text-align: center;
+	font-weight: bolder;
+}
 
-    .modal {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 650px;
-      height: 450px;
-      background-color: #eeeeee;
-      transform: translate3d(-50%, -50%, 0);
-    }
+.close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
 
-    .modal-content {
-      position: relative;
-      margin: 10px;
-      padding: 10px;
-      background-color: #eeeeee;
-      width: 600px;
-      height: 400px;
-      text-align: center;
-      color: black;
-    }
+#cancelbtn{
+	background-color: #202020;
+    border: none;
+    font-weight: bolder;
+    font-size: x-large;
+}
 
+#cancelbtn:hover{
+	color: red;
+}
 
-  </style>
+.openModalBtn:hover{
+	text-shadow: 3px 3px 3px grey;
+}
+			
+		</style>
 </head>
 <body>
   <div id="myModal" class="modal">
     <div class="modal-content">
-      예매번호:<input type="text" id="idNum1" readonly>
-       예매날짜:<input type="text" id="idNum2" readonly><br>
-       성명:<input type="text"  value=""id="idNum3" readonly>
-       영화이름:<input type="text" value=""id="idNum4" readonly><br>
-       휴대폰번호:<input type="text" value=""id="idNum5" readonly>
-       차번호:<input type="text" value=""id="idNum6" readonly><br>
-       상영일:<input type="text" value=""id="idNum7" readonly><br>
-       결제금액:<input type="text" value="" id="idNum8" readonly><br>
-      <input type="button" value="확인" class="close" onclick="cancelPay()">
-      <input type="button"  value="결제취소" >
+       <p id="idNum1"></p>
+       <p id="idNum2"></p>
+       <p id="idNum3"></p>
+       <p id="idNum4"></p>
+       <p id="idNum5"></p>
+       <p id="idNum6"></p>
+       <p id="idNum7"></p>
+       <p id="idNum8"></p>
+       <p id="idNum9"></p>
+      <input type="button" value="X" class="close">
+      <input type="button" id="cancelbtn"  value="결제취소" >
     </div>
   </div>
   <script>
@@ -147,16 +190,23 @@
   });
   
   $('td[id^="openModalBtn"]').click(function(){
-	  console.log(choice);
-   $('#idNum1').val(ojlist[choice].order_id);
-   $('#idNum2').val(ojlist[choice].order_date);
-   $('#idNum3').val(ujlist[choice].user_name);
-   $('#idNum4').val(ojlist[choice].movie_name);
-   $('#idNum5').val(ujlist[choice].user_phone);
-   $('#idNum6').val(ojlist[choice].car_num);
-   $('#idNum7').val(ojlist[choice].screening_time);
-   $('#idNum8').val(pjlist[choice].price);
-
+		var order_state;
+		if(ojlist[choice].order_state == 0){
+			order_state = "결제완료";
+		}
+		if(ojlist[choice].order_state == 1){
+			order_state = "취소완료";
+		}
+	  
+   $('#idNum1').text("예매번호 : "+ojlist[choice].order_id);
+   $('#idNum2').text("예매날짜 : "+ojlist[choice].order_date);
+   $('#idNum3').text("성명 : "+ujlist[choice].user_name);
+   $('#idNum4').text("영화이름 : "+ojlist[choice].movie_name);
+   $('#idNum5').text("휴대폰번호 : "+ujlist[choice].user_phone);
+   $('#idNum6').text("차번호 : "+ojlist[choice].car_num);
+   $('#idNum7').text("상영일 : "+ojlist[choice].screening_time);
+   $('#idNum8').text("결제금액 : "+pjlist[choice].price);
+   $('#idNum9').text("결제상태 : "+order_state);
   });
   
 
@@ -169,42 +219,6 @@
       $(".openModalBtn").click(function(){
         modal.css("display", "block");
       });
-   // 마우스 올릴때 이벤트
-      $(".openModalBtn").mouseover(function () {
-			$(this).css("color","red");
-	  });
-      
-      $(".pageButton").mouseover(function () {
-			$(this).css("color","red");
-	  });
-      
-      $(".search").mouseover(function () {
-			$(this).css("color","red");
-	  });
-      
-      $(".btn").mouseover(function () {
-			$(this).css("color","red");
-	  });
-      $(".close").mouseover(function () {
-			$(this).css("color","red");
-	  });
-      
-      // 내릴때
-      $(".openModalBtn").mouseleave(function () {
-			$(this).css("color","white");
-	  });
-      $(".pageButton").mouseleave(function () {
-			$(this).css("color","black");
-	  });
-      $(".search").mouseleave(function () {
-			$(this).css("color","black");
-	  });
-      $(".btn").mouseleave(function () {
-			$(this).css("color","black");
-	  });
-      $(".close").mouseleave(function () {
-			$(this).css("color","black");
-	  });
 
       // 닫기 버튼을 클릭하면 모달을 숨깁니다.
       closeBtn.click(function(){
@@ -217,12 +231,37 @@
           modal.css("display", "none");
         }
       });
+      
+		$('#cancelbtn').click(function(){
+			if(confirm("정말 취소하시겠습니까??") == true){
+//					document.removefrm.submit();
+				modal.css("display","none");
+				alert("취소완료");
+				
+				$.ajax({
+					url:"./cancelOrder.or",
+					data:{
+						"order_id":ojlist[choice].order_id
+						},
+					success:function(){
+						alert("갓다옴");
+					},error:function(){
+						alert("에러");
+					}
+				});
+				
+			}else{
+				return false;
+			}
+		});
+      
+      
     });
 
     
   </script>
   	<footer>
-  		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+  		<jsp:include page="/inc/bottomBarPix.jsp"></jsp:include>
   	</footer>
 
 </body>

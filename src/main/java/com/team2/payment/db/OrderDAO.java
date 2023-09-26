@@ -1,6 +1,7 @@
 package com.team2.payment.db;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,7 +41,7 @@ public class OrderDAO {
 
 		// context.xml 파일(jdbc/jsp 이름)접근
 		// DataSource 타입으로 변경
-		DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/team2");
+		DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/Team8");
 
 		// 연결정보 객체를 사용해서 디비 연결
 		con = ds.getConnection();
@@ -437,7 +438,8 @@ public class OrderDAO {
 		
 		
 		// 회원의 마이페이지 게시글수
-		public int getBoardCount(String num) {
+		public int getBoardCount(String id) {
+			System.out.println(" DAO : 매개변수 전달 id : "+id);
 			System.out.println(" DAO : getBoardCount() 호출 ");
 			System.out.println(" DAO : 실행목적 : 글의 개수(int) 리턴");
 			int result = 0;
@@ -449,7 +451,7 @@ public class OrderDAO {
 				sql = "select count(*) from order_board where user_num = (select user_num from user where user_id = ?)";
 				pstmt = con.prepareStatement(sql);
 				// 4. SQL 실행
-				pstmt.setString(1, num);
+				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
 				// 5. 데이터 처리
 				if(rs.next()) {
@@ -462,6 +464,7 @@ public class OrderDAO {
 				e.printStackTrace();
 			} finally {
 				closeDB();
+				System.out.println("DAO : "+id);
 			}
 			
 			return result;
@@ -471,6 +474,7 @@ public class OrderDAO {
 			public int getBoardCountJoin(String num) {
 				System.out.println(" DAO : getBoardCount() 호출 ");
 				System.out.println(" DAO : 실행목적 : 글의 개수(int) 리턴");
+				System.out.println(" DAO 전달받은 아이디 : "+num);
 				int result = 0;
 				
 				try {
@@ -537,7 +541,7 @@ public class OrderDAO {
 				sql = "SELECT p.payment_id, p.order_id, p.payment_state, p.payment_date, p.pg, p.payment_method, p.movie_name, p.price, p.name, p.phone "
 						+ "FROM user u  JOIN order_board o ON u.user_num = o.user_num join payment p ON o.order_id = p.order_id order by o.order_date desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, startRow-1);
+				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, pageSize);
 				rs = pstmt.executeQuery();
 				

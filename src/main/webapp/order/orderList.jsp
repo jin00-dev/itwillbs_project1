@@ -1,8 +1,10 @@
-<%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
+<%@page
+	import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
 <%@page import="com.team2.payment.db.OrderDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -10,17 +12,23 @@
 <meta charset="UTF-8">
 <title>Off The Lamp</title>
 <link href="./css/orderList.css" rel="stylesheet">
+<link href="./css/footer.css" rel=stylesheet>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
+
 	$(document).ready(function() {
+		
+		var id = "${sessionScope.id}";
+		console.log(id);
+		
 		
 		$('.openModalBtn').click(function(){
 			var state = $('#idNum7').text();
 			console.log(state);
 			if(state == "결제상태 : 취소완료"){
-				$('#canselbtn').hide();
+				$('#cancelbtn').hide();
 			}else{
-				$('#canselbtn').show();
+				$('#cancelbtn').show();
 			}
 		});
 	});
@@ -37,11 +45,6 @@
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 	<main>
-	<h1>${sessionScope.user_id } 님 환영합니다</h1>
-	<div id="container">
-		<input id="btn1" type="button" style="background: gray;" value="예매관리"	onclick="location.href='./MyPageMain.or'">
-		<input id="btn2" type="button" value="회원정보수정"	onclick="location.href='./UserInfoCheck.me'">
-	</div>
 		<div id="body-wrapper">
 		<div id="body-content">
 		<section id="section">
@@ -82,21 +85,15 @@
 
 				<div id="page_control">
 					<c:if test="${startPage > pageBlock }">
-						<div>
-							<a href="./MyPageMain.or?pageNum=${startPage-pageBlock }">Prev</a>
-						</div>
+						<a href="./MyPageMain.or?pageNum=${startPage-pageBlock }">Prev</a>
 					</c:if>
 
 					<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
-						<div>
-							<a href="./MyPageMain.or?pageNum=${i}">${i }</a>
-						</div>
+						<a href="./MyPageMain.or?pageNum=${i}">${i }</a>
 					</c:forEach>
 
 					<c:if test="${endPage < pageCount }">
-						<div>
-							<a href="./MyPageMain.or?pageNum=${startPage+pageBlock }">Next</a>
-						</div>
+						<a href="./MyPageMain.or?pageNum=${startPage+pageBlock }">Next</a>
 					</c:if>
 
 				</div>
@@ -105,6 +102,7 @@
 		</div>
 	</main>
 	<style>
+		
 .modal {
 	display: none;
 	position: fixed;
@@ -132,21 +130,22 @@
 	cursor: pointer;
 }
 
-#canselbtn{
+#cancelbtn{
 	background-color: #202020;
-	border: none;
-	color: aliceblue;
+    border: none;
+    font-weight: bolder;
+    font-size: x-large;
 }
 
-#canselbtn:hover{
+#cancelbtn:hover{
 	color: red;
 }
 
 .openModalBtn:hover{
 	text-shadow: 3px 3px 3px grey;
 }
-
-</style>
+		
+	</style>
 </head>
 <body>
 	<div id="myModal" class="modal">
@@ -161,7 +160,7 @@
 			<p id="idNum7"></p>				
 			<p id="idNum8"></p>				
 			<input type="button" class="close" value="X">			
-			<input type="button" id="canselbtn" value="예매취소">
+			<input type="button" id="cancelbtn" value="예매취소">
 		</div>
 	</div>
 	<script>
@@ -214,42 +213,6 @@
 			$(".openModalBtn").click(function() {
 				modal.css("display", "block");
 			});
-			 // 마우스 올릴때 이벤트
-		      $(".openModalBtn").mouseover(function () {
-					$(this).css("color","red");
-			  });
-		      
-		      $(".pageButton").mouseover(function () {
-					$(this).css("color","red");
-			  });
-		      
-		      $(".search").mouseover(function () {
-					$(this).css("color","red");
-			  });
-		      
-		      $(".btn").mouseover(function () {
-					$(this).css("color","red");
-			  });
-		      $(".close").mouseover(function () {
-					$(this).css("color","red");
-			  });
-		      
-		      // 내릴때
-		      $(".openModalBtn").mouseleave(function () {
-					$(this).css("color","white");
-			  });
-		      $(".pageButton").mouseleave(function () {
-					$(this).css("color","black");
-			  });
-		      $(".search").mouseleave(function () {
-					$(this).css("color","black");
-			  });
-		      $(".btn").mouseleave(function () {
-					$(this).css("color","black");
-			  });
-		      $(".close").mouseleave(function () {
-					$(this).css("color","black");
-			  });
 
 			// 닫기 버튼을 클릭하면 모달을 숨깁니다.
 			closeBtn.click(function() {
@@ -263,7 +226,7 @@
 				}
 			});
 			
-			$('#canselbtn').click(function(){
+			$('#cancelbtn').click(function(){
 				if(confirm("정말 취소하시겠습니까??") == true){
 // 					document.removefrm.submit();
 					modal.css("display","none");
@@ -275,7 +238,7 @@
 							"order_id":jlist[choice].order_id
 							},
 						success:function(){
-							alert("갓다옴");
+// 							alert("갓다옴");
 						},error:function(){
 							alert("에러");
 						}
@@ -288,7 +251,7 @@
 		});
 	</script>
 	<footer>
-		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+		<jsp:include page="/inc/bottomBarPix.jsp"></jsp:include>
 	</footer>
 </body>
 </html>
