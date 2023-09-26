@@ -33,7 +33,7 @@
 	
 	// 세션아이디 null, 지역, 날짜, 극장, 영화, 차번, 차종 선택안했을시 차량등록버튼 제어	
 	$('#btn1').click(function(){
-		var id = "${sessionScope.id}";
+		var id = "${sessionScope.user_id}";
 		if(id == ""){
 			alert("로그인이 필요한 서비스입니다");
 			return false;
@@ -172,8 +172,9 @@
 													$('#btn1').click(function(){
 														var car_num = $('#text1').val();
 														var car_type = $('#option').val();
-																												
+														
 														alert("차량이 등록되었습니다");														
+																												
 														
 														// seatPayment.or - 차량선택시 결제예매에필요한 지역/좌석을 가져옴.
 														$.ajax({
@@ -320,14 +321,14 @@ background-color: black;
 								<a class="noCinema">한국민속촌자동차극장</a><br>
 							</div>
 							<div id="movieName" class="cdiv">
-								<a class="noMovie">잠</a><br>
-								<a class="noMovie">오펜하이머</a><br>
-								<a class="noMovie">콘크리트 유토피아</a><br> 
-								<a class="noMovie">달짝지근해:7510</a><br> 
-								<a class="noMovie">7번방의선물</a><br> 
-								<a class="noMovie">악마를 보았다</a><br> 
-								<a class="noMovie">겨울왕국2</a><br>
-								<a class="noMovie">조작된 도시</a>
+								<a class="noMovie"></a><br>
+								<a class="noMovie"></a><br>
+								<a class="noMovie"></a><br> 
+								<a class="noMovie"></a><br> 
+								<a class="noMovie"></a><br> 
+								<a class="noMovie"></a><br> 
+								<a class="noMovie"></a><br>
+								<a class="noMovie"></a>
 							</div>
 							<div id="movieTime" class="cdiv"></div>
 							<div class="cdiv" id="otc">

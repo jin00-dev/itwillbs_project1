@@ -30,7 +30,7 @@
 	// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 	function eventAdd() {
 		window.open("./eventAdd.bo?user_id=${user_id}","_black",
-				"width=600, height=600, left="+popupX+", top="+popupY);
+				"width=600, height=700, left="+popupX+", top="+popupY);
 	}
 	function boardList() {
 		location.href="./eventMain.bo?user_id=${user_id}";
@@ -53,7 +53,9 @@
 					<c:if test="${dto.event_type == 0 }">
 						<div class="image_panel">
 							<a href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
+								<hr>
 								<img src="./img/${dto.img }">
+								<hr>
 								<p>${dto.subject }</p>
 							</a>
 						</div>
@@ -72,7 +74,9 @@
 						<div class="image_panel">
 							<a
 								href="enfBoardContent.bo?event_bno=${dto.event_bno}&&category=0&&user_id=${user_id}">
+								<hr>
 								<img src="./img/${dto.img }">
+								<hr>
 								<p>${dto.subject }</p>
 							</a>
 						</div>

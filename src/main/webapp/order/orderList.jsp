@@ -45,10 +45,15 @@
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 	<main>
-		<div id="body-wrapper">
 		<div id="body-content">
 		<section id="section">
 			<div id="orderBoard">
+				<h1>${sessionScope.user_id } 님 환영합니다</h1>
+	<div id="container">
+		<input id="btn1" type="button" value="예매/취소내역"	onclick="location.href='./MyPageMain.or'">
+		<input id="btn2" type="button" value="회원정보수정" style="background: gray;"	onclick="location.href='./UserInfoCheck.me'">
+		
+	</div>
 				<table class="table">
 					<tr>
 						<td>NO.</td>
