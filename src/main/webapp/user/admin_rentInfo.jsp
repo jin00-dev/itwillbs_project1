@@ -43,7 +43,6 @@
 				<td class="column">성명</td>
 				<td class="column">아이디</td>
 				<td class="column">휴대폰 번호</td>
-				<td class="column">이메일</td>
 				<td class="column">문의일자</td>
 				<td class="column">답변</td>
 				<td class="column">관리</td>
@@ -56,7 +55,6 @@
 					<td>${list.rent_name }</td>
 					<td>${list.user_id }</td>
 					<td>${list.rent_phone} </td>
-					<td>${list.rent_email }</td>
 					<td><fmt:formatDate value="${list.regdate }"/> </td>
 					<td>
 						<c:choose>

@@ -42,17 +42,21 @@
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 	<main>
-		<div id="body-wrapper">
-		<div id="body-content">
-		<section id="section">
-		<div id="serchForm">
-			<form action="./managerList.or">
-			아이디<input type="text" name="idcheck">
-				<input type="submit" value="검색" onclick="">
+		<h1>${sessionScope.user_id } 님 환영합니다</h1>
+	<div id="container">
+		<input id="btn1" type="button" style="background: gray;" value="예매관리"	onclick="location.href='./managerList.or'">
+		<input id="btn2" type="button" value="회원정보수정"	onclick="location.href='./AdminUserInfoBoardAction.me'">
+		<input id="btn2" type="button" value="대관문의"	onclick="location.href='./AdminRentInfoBoardAction.me'">
+	</div>
+	<div id="userInfo_box">
+		<div id="table_search">
+			<form action="AdminUserInfoBoardAction.me" method="post">
+				<input type="text" name="search" class="input_box" placeholder="회원 아이디를 입력해주세요.">
+				<input type="submit" value="검색" >
 			</form>
 		</div>
-		
-			<div id="orderBoard">
+		<c:set var="bno" value="${startRow-1 }"/>
+		<c:set var="bno1" value="-1"/>
 				<table class="table">
 					<tr>
 						<td>NO.</td>
