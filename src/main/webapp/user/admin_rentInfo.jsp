@@ -169,7 +169,7 @@
   		choice=4
   	});
   	
-  	$('td[id^="openModalBtn"]').click(function(){
+  	$('td[id^="openModalBtn"]').css("cursor","pointer").click(function(){
 		$('#p0').text(jList[choice].user_id+'님의 대관문의 정보입니다.');
 		$('#p1').text(jList[choice].rent_name);
 		$('#p2').text(jList[choice].regdate);
@@ -183,7 +183,7 @@
 			$('#p7').text('Y');
 			
 		}
-		 $('#p7').click(function () {
+		 $('#p7').css("cursor","pointer").click(function () {
 			  	console.log(jList[choice].answer);
 			  	console.log(jList[choice].rent_bno);
 			  	var rent_bno = jList[choice].rent_bno;
