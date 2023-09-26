@@ -12,19 +12,19 @@
 <link href="./css/faqMain.css" rel="stylesheet">
 </head>
 <body>
-<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
+	<!-- 상단 바 고정 -->
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
 	<div class="container">
 		<!-- 		<h1> -->
 		<!-- 			여기 faq게시판 꾸미는자리<br> 밑에 footer 알아서 내려감 -->
 		<!-- 		</h1> -->
 		<script type="text/javascript">
-			var popupX = (document.body.offsetWidth / 2) - (500 / 2);
+			var popupX=null;
 			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 		
-			var popupY= (window.screen.height / 2) - (600 / 2);
+			var popupY=null;
 			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 			console.log(popupX);
 			console.log(popupY);
@@ -46,7 +46,6 @@
 // 				console.log(${user_id})
 				var user_id = "${user_id}";
 				if(user_id == 'admin'){
-					alert("관리자 계정입니다.");
 					window.open("./qnaBoardList.bo?user_id=${user_id}", "_self");
 				}else if(user_id == null || user_id.search('@') == -1){
 					alert("로그인 후 이용해주세요");
@@ -55,16 +54,19 @@
 				}
 			}
 			function faqBoardAdd() {
+				popupX = (document.body.offsetWidth / 2) - (500 / 2);
 				popupY= (window.screen.height / 2) - (600 / 2) - 60;
 				window.open("./faqBoardAdd.bo?user_id=${user_id}","_black","width=500, height=600, left="+popupX+", top="+popupY);
 			}
 			function faqBoardUpdate(bno) {
+				popupX = (document.body.offsetWidth / 2) - (500 / 2);
+				popupY= (window.screen.height / 2) - (600 / 2);
 				window.open("./faqBoardUpdate.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=500, height=600, left="+popupX+", top="+popupY);
 			}
 			function faqBoardDelete(bno) {
-				popupX = (document.body.offsetWidth / 2) - (300 / 2);
+				popupX = (document.body.offsetWidth / 2) - (500 / 2);
 				popupY= (window.screen.height / 2) - (200 / 2);
-				window.open("./faqBoardDelete.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=300, height=200, left="+popupX+", top="+popupY);
+				window.open("./faqBoardDelete.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=500, height=200, left="+popupX+", top="+popupY);
 			}
 			function boardList() {
 				location.href="./faqMain.bo?user_id=${user_id}";
@@ -74,6 +76,12 @@
 		</script>
 		<div class="faq-container">
 			<div class="qnaButton">
+				<c:if test="${user_id eq 'admin'}">
+					<div>
+						<input type="button" class="btn" value="faq추가"
+							onclick="faqBoardAdd();">
+					</div>
+				</c:if>
 				<input type="button" onclick="qnaBoard();" value="1:1 문의"
 					class="btn" /> <input type="button" onclick="qnaBoardList();"
 					value="1:1 문의내역" class="btn" />
@@ -98,12 +106,7 @@
 			</c:forEach>
 
 		</div>
-		<c:if test="${user_id eq 'admin'}">
-			<div>
-				<input type="button" class="btn" value="faq추가"
-					onclick="faqBoardAdd();">
-			</div>
-		</c:if>
+
 
 	</div>
 	<script type="text/javascript">

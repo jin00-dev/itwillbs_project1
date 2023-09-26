@@ -30,18 +30,18 @@
 				</tr>
 
 				<tr>
-					<td>제 목 :</td>
+					<td class="column">제 목 </td>
 					<td colspan="2"><input type="text" class="cntSubject" name="subject"
 						value="${dto.subject }"></td>
 				</tr>
 				<tr>
-					<td>내 용 :</td>
+					<td class="column">내 용 </td>
 					<td colspan="2"><textarea rows="" cols="" class="cntContent"
 							name="content">${dto.content }</textarea></td>
 				</tr>
 			</table>
 
-			<div>
+			<div class="CRUD">
 				<input type="submit" value="수정하기" class="btn">
 				<input type="button" value="취소" class="btn" onclick="history.back();">
 			</div>

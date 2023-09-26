@@ -74,7 +74,7 @@
 	</div>
 	<script type="text/javascript">
 		function deleteQna() {
-			var popupX = (document.body.offsetWidth / 2) - (400 / 2);
+			var popupX = (document.body.offsetWidth / 2) - (500 / 2);
 			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 			
 			var popupY= (window.screen.height / 2) - (250 / 2) - 50;
@@ -82,7 +82,7 @@
 			console.log(popupX);
 			console.log(popupY);
 			window.open("./qnaBoardDelete.bo?qna_bno=${dto.qna_bno }&&pageNum=${param.pageNum }&&user_id=${user_id }",
-					"_black","height=250, width=400, left="+popupX+", top="+popupY);
+					"_black","height=250, width=500, left="+popupX+", top="+popupY);
 		}
 		
 		function boardList() {
