@@ -19,6 +19,10 @@ public class NoticeMainAction implements Action {
 		// M : DB + 처리(계산)
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("id");
+		if(user_id==null) {
+			user_id=request.getParameter("user_id");
+		}
+		System.out.println("user_id: "+user_id);
 		// DB - BoardDAO 객체- M
 		ENFBoardDAO dao = new ENFBoardDAO();
 		
@@ -32,6 +36,7 @@ public class NoticeMainAction implements Action {
 		
 		// 페이지의 정보(몇페이지인지 확인하는 정보)
 		String pageNum = request.getParameter("pageNum");
+		System.out.println("pageNum: "+pageNum);
 		if(pageNum == null){
 			pageNum = "1"; //페이지가 없을경우
 		}
@@ -56,15 +61,17 @@ public class NoticeMainAction implements Action {
 			  // 전체 페이지 수 => 글 / 페이지당 출력 개수
 			  //               50 / 10 => 5    55 / 10 => 6   
 			  int pageCount = count / pageSize + (count%pageSize != 0? 1:0);
+			  System.out.println("pageCount : "+pageCount);
 			  
 			  // 한 화면에서 보여줄 페이지번호 개수(block)  1....10
 			  int pageBlock = 4;
 			  
 			  // 페이지 블럭의 시작번호   1~10 => 1  11~20 => 11  21~30 => 21
 			  int startPage = ((currentPage - 1)/pageBlock) * pageBlock + 1;
-			  
+			  System.out.println("startPage : "+startPage);
 			  // 페이지 블럭의 끝 번호   1~10 => 10  11~20 => 20  21~30 => 30
-			  int endPage = startPage + pageBlock - 1;	
+			  int endPage = startPage + pageBlock;	
+			  System.out.println("endPage: "+endPage);
 			  if(endPage > pageCount){
 				  endPage = pageCount;
 		}
@@ -79,7 +86,7 @@ public class NoticeMainAction implements Action {
 		
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("count", count);
+		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
