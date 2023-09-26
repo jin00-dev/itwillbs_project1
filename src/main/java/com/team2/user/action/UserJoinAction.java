@@ -9,6 +9,7 @@ import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
+import com.team2.util.SHA256;
 
 
 public class UserJoinAction implements Action {
@@ -20,9 +21,10 @@ public class UserJoinAction implements Action {
 		UserDTO dto = new UserDTO();
 		String isCertification = req.getParameter("isCertification");
 //		String imp_uid = req.getParameter("imp_uid");
-	
+		SHA256 sha = new SHA256();
+
 		dto.setUser_id(req.getParameter("user_id"));
-		dto.setUser_pass(req.getParameter("user_pass"));
+		dto.setUser_pass(sha.encodSha256(req.getParameter("user_pass")));
 		dto.setUser_name(req.getParameter("user_name"));
 		dto.setUser_phone(req.getParameter("user_phone"));
 		

@@ -11,6 +11,7 @@ import com.team2.user.DB.NonUserDTO;
 import com.team2.user.DB.UserDAO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
+import com.team2.util.SHA256;
 
 public class NonUserLoginAction implements Action {
 
@@ -20,10 +21,11 @@ public class NonUserLoginAction implements Action {
 		
 		NonUserDAO dao = new NonUserDAO();
 		NonUserDTO dto = new NonUserDTO();		
+		SHA256 sha = new SHA256();
 		
 		dto.setNonuser_name(request.getParameter("nonuser_name"));
 		dto.setNonuser_phone(request.getParameter("nonuser_phone"));
-		dto.setNonuser_pass(request.getParameter("nonuser_pass"));
+		dto.setNonuser_pass(sha.encodSha256(request.getParameter("nonuser_pass")));
 		System.out.println(dto.getNonuser_name());
 		int result = dao.nonlogin(dto);
 		

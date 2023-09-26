@@ -48,8 +48,9 @@ h1{
 
 /* 입력받는칸 묶은 필드셋*/
 #join_wrap{
-   margin: auto;
-   padding-left: 600px;
+   margin: 0 auto;
+   width: 18em;
+/*    padding-left: 600px; */
 }
 
 /* 아이디 입력 받는 칸 */

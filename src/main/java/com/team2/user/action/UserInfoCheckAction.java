@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.team2.user.DB.UserDAO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
+import com.team2.util.SHA256;
 
 public class UserInfoCheckAction implements Action {
 
@@ -15,9 +16,10 @@ public class UserInfoCheckAction implements Action {
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		UserDAO dao = new UserDAO();
 		ActionForward forward = new ActionForward();
+		SHA256 sha = new SHA256();
 		
 		String id = req.getParameter("user_id");
-		String pw = req.getParameter("user_pass");
+		String pw = sha.encodSha256(req.getParameter("user_pass"));
 		System.out.println("id:"+id);
 		System.out.println("pw:"+pw);
 		int result = dao.rogin(id, pw);
