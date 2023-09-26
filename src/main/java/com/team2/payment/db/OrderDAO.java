@@ -41,7 +41,7 @@ public class OrderDAO {
 
 		// context.xml 파일(jdbc/jsp 이름)접근
 		// DataSource 타입으로 변경
-		DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/Team8");
+		DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/team2");
 
 		// 연결정보 객체를 사용해서 디비 연결
 		con = ds.getConnection();
