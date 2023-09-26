@@ -71,6 +71,10 @@ input[type=submit] {
 	color: white;
 }
 
+.BoardList td{
+	padding: 10px; 
+}
+
 #page_control {
 	text-align: center;
 	font-size: 20px;
