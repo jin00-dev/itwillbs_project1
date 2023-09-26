@@ -23,11 +23,13 @@ public class TheaterAction implements Action {
 		String theater = request.getParameter("theater");
 		String date = request.getParameter("date");
 		
-		System.out.println("M : theater : "+theater+" date : "+date);
+		String date2 = date.substring(2, 2);
+		
+		System.out.println("M : theater : "+theater+" date : "+date2);
 		
 		OrderDAO dao = new OrderDAO();
 		
-		List<ScreenDTO> movieList = dao.getMovieName(theater, date);
+		List<ScreenDTO> movieList = dao.getMovieName(theater, date2);
 		
 		JSONArray movie = new JSONArray();
 		for(int i=0;i<movieList.size();i++) {

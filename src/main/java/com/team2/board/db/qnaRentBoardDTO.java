@@ -115,11 +115,7 @@ public class qnaRentBoardDTO {
 	
 	@Override
 	public String toString() {
-		return "qnaRentBoardDTO [category=" + category + ", qna_bno=" + qna_bno + ", rent_bno=" + rent_bno
-				+ ", user_id=" + user_id + ", subject=" + subject + ", content=" + content + ", readCount=" + readCount
-				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", rent_name=" + rent_name + ", cinema_name="
-				+ cinema_name + ", rent_phone=" + rent_phone + ", rent_email=" + rent_email + ", answer=" + answer
-				+ ", answer_context=" + answer_context + "]";
+		return "qnaRentBoardDTO";
 	}//toString
 	
 }// class 

@@ -16,7 +16,7 @@
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var id = "${sessionScope.id}";
+		var id = "${sessionScope.user_id}";
 		
 		if(id != "admin"){
 			alert("관리자 접근페이지입니다")

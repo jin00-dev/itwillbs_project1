@@ -20,7 +20,7 @@ public class MemberInfo implements Action {
 		System.out.println("M : MemberInfo() 호출");
 		
 		
-		String id = request.getParameter("id");
+		String id = request.getParameter("user_id");
 		
 		System.out.println("M : "+id);
 		

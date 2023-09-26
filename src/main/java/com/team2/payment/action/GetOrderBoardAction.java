@@ -24,7 +24,7 @@ public class GetOrderBoardAction implements Action {
 		List<PaymentDTO> plist = new ArrayList<>();
 		HttpSession session = request.getSession();
 		
-		String id = (String)session.getAttribute("id");
+		String id = (String)session.getAttribute("user_id");
 		
 		int count = dao.getBoardCountJoin(id);
 		System.out.println(" M 아이디 : "+id);
@@ -57,8 +57,8 @@ public class GetOrderBoardAction implements Action {
 		// 페이징처리된 글 데이터를 가져오기(DB메서드) => Model
 		list = null;
 		if (count > 0) {
-			list = dao.getOrderBoard((String)session.getAttribute("id"),startRow, pageSize);
-			plist = dao.getPayment((String)session.getAttribute("id"),startRow, pageSize);
+			list = dao.getOrderBoard((String)session.getAttribute("user_id"),startRow, pageSize);
+			plist = dao.getPayment((String)session.getAttribute("user_id"),startRow, pageSize);
 			String jlist = new Gson().toJson(list);
 			String jplist = new Gson().toJson(plist);
 			request.setAttribute("jlist", jlist);

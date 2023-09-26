@@ -115,6 +115,7 @@
 					$('#theater_list').empty();
 					$.each(data,function(idx,item){					
 						var cinema_name = item.cinema_name;
+						console.log(cinema_name);
 						$('#theater_list').append("<a class='showMovie'>"+cinema_name+"</a> <br>")			
 					});
 					
@@ -155,7 +156,7 @@
 												$('#movieTime').empty();
 												$.each(data,function(idx,item){
 													// 상영중인 영화의 상영시간
-													$('#movieTime').append("<a class='time'>"+item.movieTime.substr(11,5)+"</a> <br>");
+													$('#movieTime').append("<a class='time'>"+item.movieTime+"</a> <br>");
 													// 영화 가격
 													$('#price').val(item.price);
 													console.log($('#price').val());

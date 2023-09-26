@@ -26,7 +26,7 @@ public class PaymentSuccessAction implements Action {
 		String region = request.getParameter("region");
 //		int user_num = Integer.parseInt(request.getParameter("user_num"));
 //		가져오는 데이터가 null인경우 int형으로 자료형변경시 numberFormatException이 발생.. 
-		String id = request.getParameter("id");
+		String id = request.getParameter("user_id");
 		String cinema = request.getParameter("cinema");
 		String seat = request.getParameter("seat");
 		String car_type = request.getParameter("car_type");

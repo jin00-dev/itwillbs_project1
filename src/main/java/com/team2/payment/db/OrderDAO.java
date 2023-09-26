@@ -41,7 +41,7 @@ public class OrderDAO {
 
 		// context.xml 파일(jdbc/jsp 이름)접근
 		// DataSource 타입으로 변경
-		DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/Team8");
+		DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/team2");
 
 		// 연결정보 객체를 사용해서 디비 연결
 		con = ds.getConnection();
@@ -102,7 +102,7 @@ public class OrderDAO {
 		String str = '%'+date+'%';	
 		try {
 			con = getConnect();
-			sql = "select distinct movie_name from screening where cinema_name=? and screening_time like ?";
+			sql = "select distinct movie_name from screening where cinema_name=? and screening_date like ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, thaeter);
 			pstmt.setString(2, str);
@@ -139,8 +139,6 @@ public class OrderDAO {
 				dto.setScreening_time(rs.getString(1));
 				dto.setPrice(rs.getInt(2));
 				mTimeList.add(dto);
-				System.out.println("DAO 영화상영시간 : " + rs.getString(1));
-				System.out.println("DAO 영화가격 : " + rs.getInt(2));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -185,7 +183,6 @@ public class OrderDAO {
 				OrderDTO dto = new OrderDTO();
 				dto.setSeat(rs.getString(1));
 				list.add(dto);
-				System.out.println("DAO 팔린좌석 : " + rs.getString(1));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -228,7 +225,6 @@ public class OrderDAO {
 			if(rs.next()) {
 				dto.setNonuser_name(rs.getString(1));
 				dto.setNonuser_phone(rs.getString(2));
-				System.out.println("DAO : 비회원정보 : "+rs.getString(1)+","+rs.getString(2));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

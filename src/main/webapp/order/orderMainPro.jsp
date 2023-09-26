@@ -242,7 +242,7 @@
 					console.log(info[1]);
 					console.log(info[2]);	// 비회원일땐 info[2] - num 값이 undefined
 					
-					var uniqeNum = info[1].substr(7,4);		// 주문번호는 개인의 휴대번호뒷자리에 + 랜덤숫자 2개
+					var uniqeNum = info[1].substr(8,4);		// 주문번호는 개인의 휴대번호뒷자리에 + 랜덤숫자 2개
 					var a = Math.floor(Math.random()*100);	// 0.4897456136 -> 40.78411326 ->ㅡMath.floor(소수점부터제거)
 					
 			// 결제 api 실행

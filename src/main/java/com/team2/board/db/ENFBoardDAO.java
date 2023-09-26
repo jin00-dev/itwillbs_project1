@@ -193,9 +193,6 @@ public class ENFBoardDAO {
 			boardList.add(bb);
 		}//while
 		System.out.println(" 게시판 목록 조회 성공! ");
-		System.out.println(boardList);
-		System.out.println(" DAO : boardList() 실행");
-		System.out.println("=========================");
 		
 		return boardList;
 	}// 글 리스트 조회 -boardList()
@@ -326,7 +323,6 @@ public class ENFBoardDAO {
 			}//while
 			
 			System.out.println(" DAO : (페이징처리된) 글 리스트를 저장");
-			System.out.println(" DAO : 리스트 사이즈"+boardList.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -521,7 +517,6 @@ public class ENFBoardDAO {
 			pstmt.executeUpdate();	
 			System.out.println(" DAO : 글 정보 수정완료! ");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -556,7 +551,6 @@ public class ENFBoardDAO {
 			System.out.println(" DAO : 글 삭제 수정완료! ");
 	
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			closeDB();
