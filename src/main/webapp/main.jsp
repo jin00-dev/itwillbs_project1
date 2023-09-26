@@ -68,7 +68,7 @@
 								<div class="trend_2im1 clearfix">
 									<div class="grid">
 										<figure class="effect-jazz mb-0">
-											<a href="#"><img src="img/12.jpg" class="w-100" alt="img25"></a>
+											<a href="#"><img src="img/오펜하이머3.jpg" class="w-100" alt="img25"></a>
 										</figure>
 									</div>
 								</div>
@@ -79,7 +79,7 @@
 								<div class="trend_2im1 clearfix">
 									<div class="grid">
 										<figure class="effect-jazz mb-0">
-											<a href="#"><img src="img/12.jpg" class="w-100" alt="img25"></a>
+											<a href="#"><img src="img/헤어질결심3.jpg" class="w-100" alt="img25"></a>
 										</figure>
 									</div>
 								</div>
@@ -90,7 +90,7 @@
 								<div class="trend_2im1 clearfix">
 									<div class="grid">
 										<figure class="effect-jazz mb-0">
-											<a href="#"><img src="img/12.jpg" class="w-100" alt="img25"></a>
+											<a href="#"><img src="img/엘리멘탈3.jpg" class="w-100" alt="img25"></a>
 										</figure>
 									</div>
 								</div>
