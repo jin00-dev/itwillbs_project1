@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="./css/faqMain.css" rel="stylesheet">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>Insert title here</title>
 
 <script type="text/javascript">
@@ -22,23 +23,23 @@
 		<form action="./enfBoardUpdatePro.bo?&&category=2&&user_id=${user_id}"
 			method="post">
 			<input type="hidden" name="faq_bno" value="${dto.faq_bno }">
-			<table>
+			<table class="boardContent">
 				<tr>
 					<th class="ttitle" colspan="3">FAQ 수정</th>
 				</tr>
 				<tr>
 					<td>제 목 :</td>
-					<td colspan="2"><input type="text" id="sInput" name="subject"
+					<td colspan="2"><input type="text" class="cntSubject" name="subject" required="required"
 						value="${dto.subject }"></td>
 				</tr>
 				<tr>
 					<td>내 용 :</td>
-					<td colspan="2"><textarea rows="" cols="" id="wInput"
-							name="content">${dto.content }</textarea></td>
+					<td colspan="2"><textarea rows="" cols="" class="cntContent"
+							name="content" required="required">${dto.content }</textarea></td>
 				</tr>
 			</table>
 
-			<div id="table_search">
+			<div class="CRUD">
 				<input type="submit" class="btn" value="수정하기"> <input type="button"
 					value="취소" class="btn" onclick="window.close();">
 			</div>

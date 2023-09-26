@@ -13,25 +13,24 @@
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 	<!-- 상단 바 고정 -->
-	<h1>noticeBoardAdd.jsp</h1>
+	<h1>공지사항 추가</h1>
 	<fieldset>
 		<form action="enfBoardAdd.bo?category=1&&user_id=${user_id}"
 			method="post">
 			<table class="boardContent">
 				<tr>
 					<td>제목 :</td>
-					<td colspan="2"><textarea rows="" cols="" id="sInput"
-							name="subject"></textarea></td>
+					<td colspan="2"><input type="text" class="cntSubject" required="required"></td>
 				</tr>
 				<tr>
 					<td>내용 :</td>
-					<td colspan="2"><textarea rows="" cols="" id="cInput"
-							name="content"></textarea></td>
+					<td colspan="2"><textarea rows="" cols="" class="cntContent"
+							name="content" required="required"></textarea></td>
 				</tr>
 
 			</table>
 
-			<div>
+			<div class="CRUD">
 				<input type="submit" value="완료" class="btn"> <input type="button"
 					value="취소" class="btn" onclick="window.close();">
 			</div>

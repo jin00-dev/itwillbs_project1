@@ -17,7 +17,7 @@
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 	<!-- 상단 바 고정 -->
-	<h2>공지게시판 글 삭제 페이지</h2>
+	<h2>공지게시판 글 삭제</h2>
 
 	<h3>삭제하시겠습니까?</h3>
 

@@ -32,8 +32,9 @@
 
 		</table>
 
-		<div>
+		<div class="CRUD">
 			<input type="submit" value="글 삭제" class="btn">
+			<input type="button" value="취소" class="btn" onclick="window.close();"> 
 		</div>
 	</form>
 

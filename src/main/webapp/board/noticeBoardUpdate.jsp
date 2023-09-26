@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -12,12 +13,12 @@
 </head>
 
 <body>
-<!-- 상단 바 고정 -->
-<header>
-	<jsp:include page="/inc/topBar.jsp"></jsp:include>
-</header>
-<!-- 상단 바 고정 -->
-<!-- 여기 대관문의 꾸며아함. -->
+	<!-- 상단 바 고정 -->
+	<header>
+		<jsp:include page="/inc/topBar.jsp"></jsp:include>
+	</header>
+	<!-- 상단 바 고정 -->
+	<!-- 여기 대관문의 꾸며아함. -->
 	<div class="container">
 		<form
 			action="./enfBoardUpdatePro.bo?pageNum=${pageNum }&&category=1&&user_id=${user_id}"
@@ -28,20 +29,20 @@
 					<th class="ttitle" colspan="3">공지사항 수정</th>
 				</tr>
 				<tr>
-					<td>제 목 :</td>
-					<td colspan="2"><input type="text" id="sInput" name="subject"
-						value="${dto.subject }"></td>
+					<td class="column">제 목 </td>
+					<td colspan="2"><input type="text" class="cntSubject"
+						name="subject" value="${dto.subject }"></td>
 				</tr>
 				<tr>
-					<td>내 용 :</td>
-					<td colspan="2"><textarea rows="" cols="" id="wInput"
+					<td class="column">내 용 </td>
+					<td colspan="2"><textarea rows="" cols="" class="cntContent"
 							name="content">${dto.content }</textarea></td>
 				</tr>
 			</table>
 
 			<div>
-				<input type="submit" value="수정하기" class="btn"> <input type="button"
-					value="목록이동" class="btn" onclick="history.back();">
+				<input type="submit" value="수정하기" class="btn"> <input
+					type="button" value="목록이동" class="btn" onclick="history.back();">
 			</div>
 		</form>
 	</div>
