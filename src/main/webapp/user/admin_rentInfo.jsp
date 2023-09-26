@@ -102,7 +102,7 @@
 
 	<!-- 모달 출력필드 -->
 	<div id="MyModal" class="modal">
-	    <div class="modal-contents">
+	    <div class="modal-contents-rent">
 	      <table id="table">
 	      <tr>
 				<th class="ttitle" colspan="4" id="p0"></th>

@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.team2.user.DB.NonUserDAO;
 import com.team2.user.DB.NonUserDTO;
@@ -22,12 +23,15 @@ public class NonUserLoginAction implements Action {
 		NonUserDAO dao = new NonUserDAO();
 		NonUserDTO dto = new NonUserDTO();		
 		SHA256 sha = new SHA256();
+		HttpSession se = request.getSession();
 		
 		dto.setNonuser_name(request.getParameter("nonuser_name"));
 		dto.setNonuser_phone(request.getParameter("nonuser_phone"));
 		dto.setNonuser_pass(sha.encodSha256(request.getParameter("nonuser_pass")));
 		System.out.println(dto.getNonuser_name());
 		int result = dao.nonlogin(dto);
+		
+		se.setAttribute("user_id", dto.getNonuser_phone());
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();

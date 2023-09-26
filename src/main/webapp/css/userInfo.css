@@ -74,7 +74,7 @@ main h1{
   margin: 0 auto;
   padding: 1em;
   width: 50em; 
-  height: 39em;
+  height: 35em;
   background: gray;
 /*   border: 1px solid white; */
 }
@@ -133,6 +133,15 @@ input[type="text"], input[type="password"] {
 }
 
 .modal-contents {
+  position: relative;
+  margin: 15% auto;
+  padding: 20px;
+  width: 40em;
+  height: 25em;
+  text-align: center;
+  background-color: gray;
+}
+.modal-contents-rent {
   position: relative;
   margin: 15% auto;
   padding: 20px;

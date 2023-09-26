@@ -57,13 +57,11 @@
 		</div>
 		<c:set var="bno" value="${startRow-1 }"/>
 		<c:set var="bno1" value="-1"/>
-				<table class="table">
+				<table class="table" id="table">
 					<tr>
-						<td>NO.</td>
+						<td class="td1">NO.</td>
 						<td>예매번호</td>	
 						<td>아이디</td>	
-						<td>성명</td>	
-						<td>영화이름</td>	
 						<td>예매날짜</td>	
 						<td>결제상태</td>	
 						<td>상세내역</td>				
@@ -73,11 +71,9 @@
 			<c:set var ="bno" value="${startRow -1 }" />
 			<c:forEach var="i" begin="1" end="${olist.size() }" step="1">
 				<tr>
-					<td>${bno=bno+1 }</td>
+					<td class="td1">${bno=bno+1 }</td>
 					<td>${olist.get(i-1).order_id }</td>
 					<td>${ulist.get(i-1).user_id }</td>
-					<td>${ulist.get(i-1).user_name }</td>
-					<td>${olist.get(i-1).movie_name }</td>
 					<td>${olist.get(i-1).order_date }</td>
 					<c:choose>
 						<c:when test="${olist.get(i-1).order_state eq 0 }">
@@ -125,7 +121,7 @@
 	position: relative;
 	margin: 10% auto;
 	padding: 40px;
-	background-color: #202020;
+	background-color: gray;
 	width: 400px;
 	text-align: center;
 	font-weight: bolder;
