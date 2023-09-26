@@ -76,19 +76,15 @@
 		</div>
 		<div class="rightButton">
 			<input type="button" value="이전 게시판" class="btn"
-				onclick="boforeBoardList(${boardList[0].category});">
+				onclick="beforeBoardList();">
 		</div>
 	</div>
 
 	<script type="text/javascript">
 	
-		function boforeBoardList(category) {
+		function beforeBoardList() {
 // 			alert("category : "+category);
-			if(category == 0){
 				location.href = "qnaBoardList.bo?user_id=${user_id}";
-			}else{
-				location.href = "rentMain.bo?user_id=${user_id}";
-			}
 		}
 	</script>
 	<!-- footer아래로는 코드 금지 -->

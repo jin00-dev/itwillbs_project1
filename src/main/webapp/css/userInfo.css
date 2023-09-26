@@ -173,5 +173,10 @@ input[type="text"], input[type="password"] {
 	color: darkgray;
 	text-shadow: 1px 0 black, 1px 0 black, 1px 0 black, 1px 0 black;
 }
+.column2{
+	width: 20%;
+	color: darkgray;
+	text-shadow: 1px 0 black, 1px 0 black, 1px 0 black, 1px 0 black;
+}
 
 

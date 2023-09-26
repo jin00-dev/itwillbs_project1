@@ -675,7 +675,7 @@ public class QRBoardDAO {
 	
 	public List<QRBoardDTO> rentGetBoardListPage(int startRow,int pageSize,String user_id){
 		
-		System.out.println(" DAO : rentGetBoardListPage(startRow,pageSize) 호출");
+		System.out.println(" DAO : rentGetBoardListPage(startRow,pageSize,search) 호출");
 		List<QRBoardDTO> boardList = new ArrayList<QRBoardDTO>();
 		
 		try {

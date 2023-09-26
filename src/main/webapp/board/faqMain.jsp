@@ -38,6 +38,7 @@
 // 					console.log(user_id.search('@'));
 					alert("로그인 후 이용해주세요");
 				}else{
+					popupX = (document.body.offsetWidth / 2) - (500 / 2);
 					popupY= (window.screen.height / 2) - (600 / 2);
 					window.open("./qnaBoard.bo?user_id=${user_id}","_black","width=500, height=600, left="+popupX+", top="+popupY);
 				}
@@ -54,17 +55,17 @@
 				}
 			}
 			function faqBoardAdd() {
-				popupX = (document.body.offsetWidth / 2) - (500 / 2);
-				popupY= (window.screen.height / 2) - (600 / 2) - 60;
-				window.open("./faqBoardAdd.bo?user_id=${user_id}","_black","width=500, height=600, left="+popupX+", top="+popupY);
+				popupX = (document.body.offsetWidth / 2) - (550 / 2)-60;
+				popupY= (window.screen.height / 2) - (550 / 2);
+				window.open("./faqBoardAdd.bo?user_id=${user_id}","_black","width=500, height=550, left="+popupX+", top="+popupY);
 			}
 			function faqBoardUpdate(bno) {
-				popupX = (document.body.offsetWidth / 2) - (500 / 2);
-				popupY= (window.screen.height / 2) - (600 / 2);
-				window.open("./faqBoardUpdate.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=500, height=600, left="+popupX+", top="+popupY);
+				popupX = (document.body.offsetWidth / 2) - (500 / 2)-60;
+				popupY= (window.screen.height / 2) - (500 / 2);
+				window.open("./faqBoardUpdate.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=500, height=500, left="+popupX+", top="+popupY);
 			}
 			function faqBoardDelete(bno) {
-				popupX = (document.body.offsetWidth / 2) - (500 / 2);
+				popupX = (document.body.offsetWidth / 2) - (500 / 2)-60;
 				popupY= (window.screen.height / 2) - (200 / 2);
 				window.open("./faqBoardDelete.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=500, height=200, left="+popupX+", top="+popupY);
 			}

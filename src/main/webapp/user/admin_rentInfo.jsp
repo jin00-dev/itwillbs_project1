@@ -116,10 +116,10 @@
 
 			</tr>
 			<tr>
-				<td class="column">이메일</td>
+				<td class="column2">이메일</td>
 				<td class="cntDate" id="p4"></td>
 
-				<td class="column">휴대폰 번호</td>
+				<td class="column2">휴대폰 번호</td>
 				<td class="cntBno" id="p3"></td>
 
 			</tr>
@@ -136,7 +136,7 @@
 				<td class="cntContent" colspan="3" id="p7"></td>
 			</tr>
 			<tr>
-				<td class="column">시네마 이름</td>
+				<td class="column2">시네마 이름</td>
 				<td class="cntContent" colspan="3" id="p8"></td>
 			</tr>
 
@@ -148,11 +148,16 @@
 	 
   <script>
   	var choice =0;
-  	var jList = JSON.parse('${requestScope.jList}');
+  	var jListStr = '${jList}';
+//   	console.log(jListTest);
+
+	// JSON.parse 에러 일으키는 단어들 치환
+	var jListRep = jListStr.replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f');
+	var jList = JSON.parse(jListRep);
+  	console.log(jList);
   	
   	$('#openModalBtn0').click(function(){
   		choice=0
-  		$('#openModalBtn0').attr
   	});
   	$('#openModalBtn1').click(function(){
   		choice=1
@@ -167,15 +172,28 @@
   		choice=4
   	});
   	
-  	$('td[id^="openModalBtn"]').click(function(){
+  	$('td[id^="openModalBtn"]').css("cursor","pointer").click(function(){
 		$('#p0').text(jList[choice].user_id+'님의 대관문의 정보입니다.');
 		$('#p1').text(jList[choice].rent_name);
 		$('#p2').text(jList[choice].regdate);
-		$('#p3').text(jList[choice].user_phone);
+		$('#p3').text(jList[choice].rent_phone);
 		$('#p4').text(jList[choice].rent_email);
-		$('#p6').text(jList[choice].subject);
-		$('#p7').text(jList[choice].content);
-		$('#p8').text(jList[choice].answer_context);
+		$('#p5').text(jList[choice].subject);
+		$('#p6').text(jList[choice].content);
+		if(jList[choice].answer == 0){
+			$('#p7').text('N');
+		}else{
+			$('#p7').text('Y');
+			
+		}
+		 $('#p7').css("cursor","pointer").click(function () {
+			  	console.log(jList[choice].answer);
+			  	console.log(jList[choice].rent_bno);
+			  	var rent_bno = jList[choice].rent_bno;
+			  	var answer = jList[choice].answer;
+				location.href="rentAnswer.bo?rent_bno="+rent_bno+"&&answer="+answer;
+				
+		  });
 		$('#p8').text(jList[choice].cinema_name);
   	});
   	
@@ -208,7 +226,9 @@
       $(".close").mouseover(function () {
 			$(this).css("color","red");
 	  });
-      
+      $("#p7").mouseover(function () {
+			$(this).css("color","red");
+      });
       // 내릴때
       $(".openModalBtn").mouseleave(function () {
 			$(this).css("color","white");
@@ -225,7 +245,10 @@
       $(".close").mouseleave(function () {
 			$(this).css("color","black");
 	  });
-
+      $("#p7").mouseleave(function () {
+			$(this).css("color","white");
+	  });
+	  
       // 닫기 버튼을 클릭하면 모달을 숨깁니다.
       closeBtn.click(function(){
         modal.css("display", "none");

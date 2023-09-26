@@ -5,6 +5,7 @@
 <html>
 <head>
 <link href="./css/event.css" rel="stylesheet">
+<link href="./css/listPage.css" rel="stylesheet">
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <title>Off The Lamp</title>
 <!-- 상단 바 고정 -->
@@ -30,12 +31,12 @@
 		<form action="./enfBoardUpdatePro.bo?category=0&&user_id=${user_id}"
 			method="post" enctype="multipart/form-data" id="updateForm">
 			<input type="hidden" name="event_bno" value="${dto.event_bno }">
-			<table id="update">
+			<table class="boardContent">
 				<tr>
 					<th class="ttitle" colspan="3">이벤트 수정</th>
 				</tr>
 				<tr>
-					<td>이벤트 타입 :</td>
+					<td class="column">타입</td>
 					<td><select name="event_type">
 							<option value=-1>선택</option>
 							<option value=0>진행중</option>
@@ -43,17 +44,17 @@
 					</select></td>
 				</tr>
 				<tr>
-					<td>제 목 :</td>
-					<td colspan="2"><input type="text" id="sInput" name="subject"
+					<td class="column">제 목</td>
+					<td colspan="2"><input type="text" class="cntSubject2" name="subject"
 						value="${dto.subject }" required></td>
 				</tr>
 				<tr>
-					<td>내 용 :</td>
-					<td colspan="2"><textarea rows="" cols="" id="wInput"
+					<td class="column">내 용</td>
+					<td colspan="2"><textarea rows="" cols="" class="cntContent2"
 							name="content" required>${dto.content }</textarea></td>
 				</tr>
 				<tr>
-					<td>파 일 :</td>
+					<td class="column">파 일</td>
 					<td>
 						<figure class="image_figure">
 							<img alt="" src="./img/${dto.img }">
@@ -62,11 +63,11 @@
 
 				</tr>
 				<tr>
-					<td>변경하겠습니까?<input type="checkbox" id="fileChk"></td>
+					<td class="column" id="update" colspan="3">변경하겠습니까?<input type="checkbox" id="fileChk"></td>
 				</tr>
 			</table>
 
-			<div id="table_search">
+			<div class="CRUD">
 				<input type="submit" value="수정하기" class="btn"> <input type="button"
 					value="목록이동" onclick="history.back();" class="btn">
 			</div>

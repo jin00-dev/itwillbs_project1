@@ -27,7 +27,12 @@ public class AdminRentInfoBoardAction implements Action {
 		search = request.getParameter("search");
 		System.out.println("search "+search);
 		// 작성되어 있는 전체 글의 개수 계산(DB메서드) -M
-		int count = dao.getBoardCount((byte) 1);		
+		int count = 0;
+		if(search == null || search.equals("")) {
+			count = dao.getBoardCount((byte) 1);			
+		}else {
+			count = dao.getBoardCount((byte) 1,search);		
+		}
 		System.out.println(" M : 전체 글 개수 : "+count+"개");
 		// 페이징처리-1 -M
 		////////////////페이징처리 -1 /////////////////
@@ -59,6 +64,7 @@ public class AdminRentInfoBoardAction implements Action {
 			}
 		}
 		String jList = new Gson().toJson(boardList);
+		
 		// 테이블에 출력(반복문) ->view
 		
 		// 페이징 처리-2 -M
@@ -88,7 +94,7 @@ public class AdminRentInfoBoardAction implements Action {
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("jList", jList);
 		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("pageCount", count);
+		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);

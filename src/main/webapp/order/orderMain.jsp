@@ -83,7 +83,7 @@
 			
 	// 날짜선택없이 지역선택할시 제어하기
 	
-	$('.choiceDate').click(function(){
+	$('.choiceDate').css("cursor","pointer").click(function(){
 		// 선택날짜	
 		var choiceDate = $(this).text();
 		$('#choiceDate').val(choiceDate);
@@ -93,7 +93,7 @@
 		
 	
 		
-		$('.region').click(function() {
+		$('.region').css("cursor","pointer").click(function() {
 			
 		var region = $(this).text();
 
@@ -119,7 +119,7 @@
 						$('#theater_list').append("<a class='showMovie'>"+cinema_name+"</a> <br>")			
 					});
 					
-					   $('.showMovie').click(function(){
+					   $('.showMovie').css("cursor","pointer").click(function(){
 							var theater = $(this).text();
 							$('#cinema').val(theater);
 							$('.showMovie').not(this).css('color','white');
@@ -141,7 +141,7 @@
 										$('#movieName').append("<a class='showTime'>"+movie_name+"</a> <br>")
 									});
 				
-									$('.showTime').click(function(){
+									$('.showTime').css("cursor","pointer").click(function(){
 										var movie = $(this).text();
 										$('#movie').val(movie);
 										$('.showTime').not(this).css('color','white');
@@ -162,14 +162,14 @@
 													console.log($('#price').val());
 												});	
 												
-												$('.time').click(function(){
+												$('.time').css("cursor","pointer").click(function(){
 													var time = $(this).text();
 													$('#time').val(time);
 													$('.time').not(this).css('color','white');
 													$(this).css('color','red');												
 													
 													
-													$('#btn1').click(function(){
+													$('#btn1').css("cursor","pointer").click(function(){
 														var car_num = $('#text1').val();
 														var car_type = $('#option').val();
 														
@@ -234,15 +234,15 @@
 	}); // date click
 	
 	
-		$('.noCinema').click(function(){
+		$('.noCinema').css("cursor","pointer").click(function(){
 			alert("지역을 선택해주세요");
 		});
 		
-		$('.noMovie').click(function(){
+		$('.noMovie').css("cursor","pointer").click(function(){
 			alert("극장을 선택해주세요");
 		});		
 		
-		$('.region').click(function(){
+		$('.region').css("cursor","pointer").click(function(){
 			if($('#choiceDate').val()==""){
 				alert("날짜를 선택해주세요");
 				return false;
