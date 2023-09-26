@@ -857,6 +857,35 @@ public class QRBoardDAO {
 	}
 	// 글 정보 수정하기 -updateBoard(bb)
 	
+	// 답변 정보 수정하기 -rentUpdateBoard(bb)
+	
+	public void rentUpdateBoard(int rent_bno, Byte answer) {
+		
+		//1.2. 디비연결
+		
+		try {
+			
+			con = getConnect();
+			
+			sql = "update qna_rent_board set answer=? where rent_bno=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setByte(1, answer);
+			pstmt.setInt(2, rent_bno);
+			
+			//4.sql 실행
+			pstmt.executeUpdate();	
+			System.out.println(" DAO : 글 정보 수정완료! ");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		
+	}
+	// 글 정보 수정하기 -updateBoard(bb)
+	
 	
 	// 글 정보 삭제하기 -deleteBoard(bb)
 

@@ -608,6 +608,17 @@ public class BoardFrontController extends HttpServlet{
 				}
 					
 			}
+			else if(command.equals("/rentAnswer.bo")) {
+				System.out.println(" C : /rentAnswer.bo 호출");
+				
+				action = new RentAnswerAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		System.out.println(" =========C : 2. 가상주소 비교 - 끝=========");
 		/*************************2. 가상주소 비교**************************************/
 		
