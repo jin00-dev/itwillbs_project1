@@ -58,7 +58,7 @@
 
 	// 세션아이디 null, 지역, 날짜, 극장, 영화, 차번, 차종, 차량등록 선택안했을시 좌석선택버튼 제어
 	$('#seatSubmit').click(function(){
-		var id = "${sessionScope.id}";
+		var id = "${sessionScope.user_id}";
 		if(id == ""){
 			alert("로그인이 필요한 서비스입니다");
 			return false;
