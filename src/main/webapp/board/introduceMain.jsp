@@ -325,6 +325,14 @@
 			});//ajax 끝
 		}); //JQuery 끝
 	</script>
+	<style type="text/css">
+	.introhr{
+	background-color: black;
+	}
+	.title{
+	text-align: center;
+	}
+	</style>
 
 </head>
 <body>
@@ -337,7 +345,8 @@
 	<!-- 여기 소개 게시판 꾸며아함. -->
 
 	<div class="container">
-		<h1>소개게시판</h1>
+		<hr class ="introhr">
+		<h1 class = "title">소개게시판</h1>
 		<hr>
 		<div class = "region_list">
 		<input type="button" value = "서울/경기" id="s" class = "btn_region1">

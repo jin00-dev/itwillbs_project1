@@ -26,6 +26,9 @@ background-color: #a3a1a1;
 .hr1{
 background-color : black;
 }
+.title{
+text-align: center;
+}
 </style>
 </head>
 <body>
@@ -38,7 +41,7 @@ background-color : black;
 
 	<div class="container">
 		<hr class = "hr1">
-		<h1>
+		<h1 class = "title">
 			대관 문의 게시판 
 		</h1>
 		<hr>

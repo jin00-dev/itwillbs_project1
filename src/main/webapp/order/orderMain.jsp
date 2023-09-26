@@ -25,10 +25,10 @@
 	var date = now.getDate();
 	
 	
-	$('#month').text(month);
-	$('#1').text(date);
-	$('#2').text(date+1);
-	$('#3').text(date+2);
+	$('#month').text(month+"월");
+	$('#1').text(date + "일");
+	$('#2').text((date+1) +"일");
+	$('#3').text((date+2)+"일");
 			
 	// 날짜선택없이 지역선택할시 제어하기
 	
@@ -236,6 +236,14 @@
 	};
 
 </script>
+<style type="text/css">
+.title{
+	text-align: center;
+}
+.introhr{
+background-color: black;
+}
+</style>
 </head>
 <body>
 <header>
@@ -248,7 +256,8 @@
 			<div id="body-content">
 				<section id="section">
 					<div id="orderMain">
-					
+						<hr class ="introhr">
+						<h1 class = "title"> 영화 예매 </h1>
 						<div id="date">
 							<p id="month"></p>
 							<div id="day">

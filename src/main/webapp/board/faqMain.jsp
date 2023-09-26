@@ -65,12 +65,12 @@
 
 		</script>
 		<div class="faq-container">
-			<div class="qnaButton">
-				<input type="button" onclick="qnaBoard();" value="1:1 문의"
-					class="btn" /> <input type="button" onclick="qnaBoardList();"
-					value="1:1 문의내역" class="btn" />
-			</div>
 			<h1>자주 묻는 질문</h1>
+							<div class="qnaButton">
+								<input type="button" onclick="qnaBoard();" value="1:1 문의"
+									class="btn" /> <input type="button" onclick="qnaBoardList();"
+									value="1:1 문의내역" class="btn" />
+							</div>
 			<c:forEach var="dto" items="${boardList }">
 				<div class="faq">
 					<c:if test="${user_id eq 'admin'}">
