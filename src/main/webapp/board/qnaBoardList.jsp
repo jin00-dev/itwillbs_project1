@@ -63,17 +63,21 @@
 				</c:if>
 			</c:forEach>
 		</table>
+		<script type="text/javascript">
+			console.log('startPage:'+${startPage});
+			console.log('endPage:'+${endPage});
+			console.log('pageBlock'+${pageBlock});
+			console.log('pageCount'+${pageCount});
+		</script>
 		<div id="page_control">
 			<c:if test="${startPage > pageBlock }">
-				<a
-					href="./qnaBoardList.bo?pageNum=${startPage-pageBlock }&&user_id=${user_id}">Prev</a>
+					<a href="./qnaBoardList.bo?pageNum=${startPage-pageBlock }&&user_id=${user_id}">Prev</a>			
 			</c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
-				<a href="./qnaBoardList.bo?pageNum=${i }&&user_id=${user_id}">${i }</a>
+					<a href="./qnaBoardList.bo?pageNum=${i }&&user_id=${user_id}">${i }</a>
 			</c:forEach>
 			<c:if test="${endPage < pageCount }">
-				<a
-					href="./qnaBoardList.bo?pageNum=${startPage+pageBlock }&&user_id=${user_id}">Next</a>
+					<a href="./qnaBoardList.bo?pageNum=${startPage+pageBlock }&&user_id=${user_id}">Next</a>
 			</c:if>
 		</div>
 
