@@ -148,7 +148,13 @@
 	 
   <script>
   	var choice =0;
-  	var jList = JSON.parse('${requestScope.jList}');
+  	var jListStr = '${jList}';
+//   	console.log(jListTest);
+
+	// JSON.parse 에러 일으키는 단어들 치환
+	var jListRep = jListStr.replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f');
+	var jList = JSON.parse(jListRep);
+  	console.log(jList);
   	
   	$('#openModalBtn0').click(function(){
   		choice=0

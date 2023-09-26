@@ -64,6 +64,7 @@ public class AdminRentInfoBoardAction implements Action {
 			}
 		}
 		String jList = new Gson().toJson(boardList);
+		
 		// 테이블에 출력(반복문) ->view
 		
 		// 페이징 처리-2 -M
