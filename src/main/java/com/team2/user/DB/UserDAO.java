@@ -158,7 +158,6 @@ public class UserDAO {
 
 	// 유저 정보 수정
 	public int updateUserInfo(UserDTO dto) {
-		sql = "update user set user_name=?, user_phone=?, user_pass=? where user_id=?";
 		conn = con.getConnection();
 
 		try {
@@ -178,6 +177,26 @@ public class UserDAO {
 			con.closeDB(conn, rs, pstmt);
 		}
 	}
+	
+	// 유저 비밀번호 수정
+		public int updateUserPw(UserDTO dto) {
+			sql = "update user set user_pass=? where user_id=?";
+			conn = con.getConnection();
+
+			try {
+				conn  = con.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, dto.getUser_pass());
+				pstmt.setString(2, dto.getUser_id());
+
+				return pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return -1;
+			} finally {
+				con.closeDB(conn, rs, pstmt);
+			}
+		}
 
 	// 유저 삭제
 	public int deleteUserInfo(UserDTO dto) {

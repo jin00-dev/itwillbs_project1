@@ -36,6 +36,7 @@ public class UserFindPwAction implements Action{
 				
 			}else {
 				
+				request.setAttribute("user_id", id);
 				request.setAttribute("user_pass", result);
 				
 				af.setPath("./user/findPwView.jsp");
