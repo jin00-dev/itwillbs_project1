@@ -1,118 +1,124 @@
 @charset "UTF-8";
 
-input[type=button]{
-	background-color:buttonface;
+input[type=button] {
+	background-color: buttonface;
 	border-color: darkgray;
 	color: darkgray;
 	padding: 3px 4px 3px 4px;
 }
-input[type=submit]{
-	background-color:buttonface;
+
+input[type=submit] {
+	background-color: buttonface;
 	border-color: darkgray;
 	color: darkgray;
 	padding: 2px 3px 2px 3px;
 }
 
-.container h1{
-	margin:30px 10px;
+.container h1 {
+	margin: 10px 10px;
 	text-align: center;
 }
-.thList{
+
+.thList {
 	border-bottom: 1px solid rgb(172, 0, 0);
 	font-size: 35px;
 	color: darkgray;
 }
 
-.bno{
+.bno {
 	width: 10%;
 }
 
-.subject{
+.subject {
 	width: 70%;
 }
 
-.date{
+.date {
 	width: 20%;
 }
-.readCount{
+
+.readCount {
 	width: 20%;
 }
-.boardContent .cntBno{
+
+.boardContent .cntBno {
 	width: 20px;
 }
 
-.cntSubject{
-	width: 600px;
-	
-}
-.cntContent{
-	width: 600px;
+.cntSubject {
+	width: 100%;
 }
 
-.cntDate{
+.cntContent {
+	width: 100%;
+	height: 300px;
+}
+
+.cntDate {
 	width: 30%;
 }
 
-.cntBno{
+.cntBno {
 	width: 20%;
 }
 
-
-
-
-.BoardList{
+.BoardList {
 	width: 100%;
 	margin: 0 auto;
 	border-bottom: 1px solid rgb(172, 0, 0);
 	font-size: 20px;
 	color: white;
-
 }
 
-#page_control{
+#page_control {
 	text-align: center;
+	font-size: 20px;
 }
 
-#table_search{
+#page_control a{
+	padding: 3px;
+}
+
+#table_search {
 	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 }
 
-.rightButton{
+.rightButton {
 	margin: 0 0 10px 0;
 	display: flex;
 	justify-content: flex-end;
 }
 
-.boardContent{
-/* 	display: flex; */
-/* 	justify-content: center; */
-	width:100%;
+.boardContent {
+	/* 	display: flex; */
+	/* 	justify-content: center; */
+	width: 100%;
 	margin: 0 auto;
 	font-size: 20px;
-/* 	border: 1px solid white; */
+	/* 	border: 1px solid white; */
 }
 
-.boardContent td{
+.boardContent td {
 	box-sizing: border-box;
 	padding: 10px 10px;
 	border-bottom: 1px solid rgb(172, 0, 0);
-/* 	border-right: 1px solid white; */
-/* 	border: 1px solid white; */
+	/* 	border-right: 1px solid white; */
+	/* 	border: 1px solid white; */
 }
 
-.column{
-/* 	font-style: ; */
+.column {
+	/* 	font-style: ; */
 	width: 15%;
 	font-size: 25px;
 	color: gray;
 }
 
-.CRUD{
+.CRUD {
 	margin: 10px 0 0 0;
 }
 
-#table_search{
+#table_search {
 	height: 100%;
 }

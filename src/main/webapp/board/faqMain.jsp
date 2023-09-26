@@ -17,10 +17,10 @@
 		<!-- 			여기 faq게시판 꾸미는자리<br> 밑에 footer 알아서 내려감 -->
 		<!-- 		</h1> -->
 		<script type="text/javascript">
-			var popupX = (document.body.offsetWidth / 2) - (500 / 2) + 90;
+			var popupX = (document.body.offsetWidth / 2) - (500 / 2);
 			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 		
-			var popupY= (window.screen.height / 2) - (300 / 2) - 20;
+			var popupY= (window.screen.height / 2) - (600 / 2);
 			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 			console.log(popupX);
 			console.log(popupY);
@@ -34,7 +34,8 @@
 // 					console.log(user_id.search('@'));
 					alert("로그인 후 이용해주세요");
 				}else{
-					window.open("./qnaBoard.bo?user_id=${user_id}","_black","width=500, height=300, left="+popupX+", top="+popupY);
+					popupY= (window.screen.height / 2) - (600 / 2);
+					window.open("./qnaBoard.bo?user_id=${user_id}","_black","width=500, height=600, left="+popupX+", top="+popupY);
 				}
 			}
 			function qnaBoardList() {
@@ -50,13 +51,16 @@
 				}
 			}
 			function faqBoardAdd() {
-				window.open("./faqBoardAdd.bo?user_id=${user_id}","_black","width=500, height=300, left="+popupX+", top="+popupY);
+				popupY= (window.screen.height / 2) - (600 / 2) - 60;
+				window.open("./faqBoardAdd.bo?user_id=${user_id}","_black","width=500, height=600, left="+popupX+", top="+popupY);
 			}
 			function faqBoardUpdate(bno) {
-				window.open("./faqBoardUpdate.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=500, height=300, left="+popupX+", top="+popupY);
+				window.open("./faqBoardUpdate.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=500, height=600, left="+popupX+", top="+popupY);
 			}
 			function faqBoardDelete(bno) {
-				window.open("./faqBoardDelete.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=500, height=300, left="+popupX+", top="+popupY);
+				popupX = (document.body.offsetWidth / 2) - (300 / 2);
+				popupY= (window.screen.height / 2) - (200 / 2);
+				window.open("./faqBoardDelete.bo?faq_bno="+bno+"&&category=2&&user_id=${user_id}","_black","width=300, height=200, left="+popupX+", top="+popupY);
 			}
 			function boardList() {
 				location.href="./faqMain.bo?user_id=${user_id}";

@@ -3,6 +3,7 @@
 <html>
 <head>
 <link href="./css/faqMain.css" rel="stylesheet">
+<link href="./css/listPage.css" rel="stylesheet">
 <title>Off The Lamp</title>
 </head>
 <body>
@@ -18,18 +19,17 @@
 			<table class="boardContent">
 				<tr>
 					<td>질문 :</td>
-					<td colspan="2"><textarea rows="" cols="" id="qInput"
-							name="subject"></textarea></td>
+					<td colspan="2"><input type="text" name="subject" required></td>
 				</tr>
 				<tr>
 					<td>답변 :</td>
-					<td colspan="2"><textarea rows="" cols="" id="aInput"
-							name="content"></textarea></td>
+					<td colspan="2"><textarea rows="" cols="" class="cntContent"
+							name="content" required="required"></textarea></td>
 				</tr>
 
 			</table>
 
-			<div id="faqAddSubmit">
+			<div class="CRUD">
 				<input type="submit" value="완료" class="btn">
 				<input type="button" value="취소" class="btn"
 					onclick="window.close();">

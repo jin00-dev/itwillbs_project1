@@ -30,21 +30,21 @@
 				</tr>
 
 				<tr>
-					<td>제 목 :</td>
-					<td colspan="2">${dto.subject }</td>
+					<td class="column">제 목 </td>
+					<td colspan="2" class="cntSubject">${dto.subject }</td>
 				</tr>
 				<tr>
-					<td>내 용 :</td>
-					<td colspan="2">${dto.content }</td>
+					<td class="column">내 용 </td>
+					<td colspan="2" class="cntContent">${dto.content }</td>
 				</tr>
 				<tr>
-					<td>답 변 내 용 :</td>
-					<td colspan="2"><textarea rows="" cols="" id="wInput"
+					<td class="column">답 변 내 용 </td>
+					<td colspan="2"><textarea rows="" cols="" class="cntContent"
 							name="answer_context"></textarea></td>
 				</tr>
 			</table>
 
-			<div>
+			<div class="CRUD">
 				<input type="submit" value="답변하기" class="btn">
 				<input type="button" value="취소하기" class="btn" onclick="history.back();">
 			</div>

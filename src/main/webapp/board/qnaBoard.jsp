@@ -17,7 +17,7 @@
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 
-	<h1>faqBoard.jsp</h1>
+	<h1>1:1문의</h1>
 
 	<fieldset>
 		<form action="qnaBoardAction.bo" method="post">
@@ -25,18 +25,18 @@
 			<table class="boardContent">
 				<tr>
 					<td>제목 :</td>
-					<td colspan="2"><input type="text" id="wInput" name="subject">
+					<td colspan="2"><input type="text" class="cntSubject" name="subject">
 					</td>
 				</tr>
 				<tr>
 					<td>내용 :</td>
-					<td colspan="2"><textarea rows="" cols="" id="wInput"
+					<td colspan="2"><textarea rows="" cols="" class="cntContent"
 							name="content"></textarea></td>
 				</tr>
 
 			</table>
 
-			<div id="qnaSubmit">
+			<div class="CRUD">
 				<input type="submit" value="완료" class="btn"> <input type="button"
 					value="취소" class="btn" onclick="window.close();">
 			</div>
