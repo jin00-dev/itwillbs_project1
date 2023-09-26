@@ -23,14 +23,13 @@
 
 	<script type="text/javascript">
 
-	var popupX = (document.body.offsetWidth / 2) - (400 / 2) + 90;
+	var popupX = (document.body.offsetWidth / 2) - (500 / 2);
 	// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 
-	var popupY= (window.screen.height / 2) - (400 / 2) - 20;
+	var popupY= (window.screen.height / 2) - (600 / 2);
 	// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 	function eventAdd() {
 		window.open("./eventAdd.bo?user_id=${user_id}","_black",
-				"width=400, height=500, left="+popupX+", top="+popupY);
 	}
 	function boardList() {
 		location.href="./eventMain.bo?user_id=${user_id}";

@@ -22,12 +22,12 @@
 					<th class="ttitle" colspan="3">FAQ 수정</th>
 				</tr>
 				<tr>
-					<td>제 목 :</td>
+					<td class="column">제 목 </td>
 					<td colspan="2"><input type="text" class="cntSubject" name="subject" required="required"
 						value="${dto.subject }"></td>
 				</tr>
 				<tr>
-					<td>내 용 :</td>
+					<td class="column">내 용 </td>
 					<td colspan="2"><textarea rows="" cols="" class="cntContent"
 							name="content" required="required">${dto.content }</textarea></td>
 				</tr>

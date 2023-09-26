@@ -11,17 +11,19 @@
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 	<!-- 상단 바 고정 -->
-	<h1>공지사항 추가</h1>
 	<fieldset>
 		<form action="enfBoardAdd.bo?category=1&&user_id=${user_id}"
 			method="post">
 			<table class="boardContent">
 				<tr>
-					<td>제목 :</td>
-					<td colspan="2"><input type="text" class="cntSubject" required="required"></td>
+					<th class="ttitle" colspan="3">공지 추가</th>
 				</tr>
 				<tr>
-					<td>내용 :</td>
+					<td class="column">제목</td>
+					<td colspan="2"><input type="text" class="cntSubject" name="subject" required="required"></td>
+				</tr>
+				<tr>
+					<td class="column">내용</td>
 					<td colspan="2"><textarea rows="" cols="" class="cntContent"
 							name="content" required="required"></textarea></td>
 				</tr>

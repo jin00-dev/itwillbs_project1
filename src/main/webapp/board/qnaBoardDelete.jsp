@@ -11,7 +11,6 @@
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 	<!-- 상단 바 고정 -->
-	<h2>게시판 글 삭제 페이지</h2>
 	<form
 		action="./qnaBoardDeleteAction.bo?pageNum=${param.pageNum }"
 		method="post">

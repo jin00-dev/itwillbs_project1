@@ -12,17 +12,19 @@
 		<jsp:include page="/inc/topBar.jsp"></jsp:include>
 	</header>
 	<!-- 상단 바 고정 -->
-	<h1>faqBoardAdd.jsp</h1>
 	<fieldset>
 		<form action="enfBoardAdd.bo?category=2&&user_id=${user_id}"
 			method="post">
 			<table class="boardContent">
 				<tr>
-					<td>질문 :</td>
-					<td colspan="2"><input type="text" name="subject" required></td>
+					<th class="ttitle" colspan="3">FAQ 추가</th>
 				</tr>
 				<tr>
-					<td>답변 :</td>
+					<td class="column">질문</td>
+					<td colspan="2"><input type="text" name="subject" class="cntSubject" required></td>
+				</tr>
+				<tr>
+					<td class="column">답변</td>
 					<td colspan="2"><textarea rows="" cols="" class="cntContent"
 							name="content" required="required"></textarea></td>
 				</tr>

@@ -55,13 +55,13 @@
 		</div>
 		<script type="text/javascript">
 		function noticeDelete() {
-			var popupX = (document.body.offsetWidth / 2) - (400 / 2);
+			var popupX = (document.body.offsetWidth / 2) - (500 / 2);
 			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 			
 			var popupY= (window.screen.height / 2) - (200 / 2) - 50;
 			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 			window.open("./noticeBoardDelete.bo?notice_bno=${dto.notice_bno }&&pageNum=${param.pageNum }&&category=1&&user_id=${user_id}",
-					"_black","width=400, height=200, left="+popupX+", top="+popupY);
+					"_black","width=500, height=200, left="+popupX+", top="+popupY);
 		}
 		function boardList() {
 			location.href="noticeMain.bo?pageNum=${param.pageNum}&&user_id=${user_id}";

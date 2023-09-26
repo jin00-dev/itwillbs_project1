@@ -79,6 +79,7 @@ div#right {
 .eventH2{
 	text-align: center;
 	color: darkgray;
+	margin-top: 20px;
 }
 .container:after{
 	clear:both;

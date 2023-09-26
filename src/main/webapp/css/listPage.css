@@ -111,8 +111,9 @@ input[type=submit] {
 .column {
 	/* 	font-style: ; */
 	width: 15%;
-	font-size: 25px;
+	font-size: 22px;
 	color: gray;
+	
 }
 
 .CRUD {
@@ -121,4 +122,9 @@ input[type=submit] {
 
 #table_search {
 	height: 100%;
+}
+
+.ttitle{
+	font-size:25px;
+	text-align: center;
 }
