@@ -2,8 +2,6 @@ package com.team2.user.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Random;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,7 +9,6 @@ import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
-import com.team2.util.SendEmail;
 
 
 public class UserJoinAction implements Action {

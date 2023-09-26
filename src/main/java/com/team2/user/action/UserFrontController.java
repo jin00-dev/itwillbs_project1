@@ -21,7 +21,7 @@ public class UserFrontController extends HttpServlet {
 		String ss = request.getContextPath();
 		String command = uri.substring(ss.length());
 		System.out.println(command);
-		
+
 		Action action = null;
 		ActionForward forward = null;
 		////이동 방식 계산////////////////////
@@ -173,6 +173,22 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/UserOrderBoardAction.me") ){
+			action = new UserOrderBoardAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			// 이메일 
+		}else if (command.equals("/UserEmailAction.me")) {
+			System.out.println("__________________");
+			action = new UserEmailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		//
 		else if(command.equals("/UserOrderBoardAction.me") ){
@@ -261,4 +277,6 @@ public class UserFrontController extends HttpServlet {
 
 	}
 
+
 }
+

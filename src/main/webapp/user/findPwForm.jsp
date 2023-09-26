@@ -1,39 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="./css/findPw.css">
-<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
-<title>Off The Lamp</title>
+<script src="./js/code.jquery.com_jquery-3.7.1.min.js"></script> 
 <head>
-
-</head>
-   <!--center -------------------------------------------------------------  -->
- <body>
- 
- <header>
-   <jsp:include page="/inc/topBar.jsp"></jsp:include>
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
 </header>
-
+	<!--center -------------------------------------------------------------  -->
 <section id="center" class="center_o pt-2 pb-2">
    <section id="join_box">
    
-   <h1>ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°</h1> 
+   <h1>ºñ¹Ğ¹øÈ£Ã£±â</h1> 
    </section>
    <form action="./UserFindPwAction.me" method="post">
    <fieldset id="join_wrap">
-   <label>ì•„ì´ë””</label>
+   <label>¾ÆÀÌµğ</label>
    <br>
-   <input id="userEmail" type="text" name="user_id" placeholder="ì´ë©”ì¼í˜•ì‹">
+   <input id="userEmail" type="text" name="user_id" placeholder="ÀÌ¸ŞÀÏÇü½Ä">
    
    
-   <input id="checkEmail" type="button" value="ì´ë©”ì¼ì¸ì¦"><br>
-   <p id="A">ì´ë©”ì¼ì´ ë„ì°©í•˜ëŠ”ë° 1~2ë¶„ ì†Œìš”ë©ë‹ˆë‹¤</p>
-   <label>ì¸ì¦ë²ˆí˜¸</label>
+   <input id="checkEmail" type="button" value="ÀÌ¸ŞÀÏÀÎÁõ"><br>
+   <p id="A">ÀÌ¸ŞÀÏÀÌ µµÂøÇÏ´Âµ¥ 1~2ºĞ ¼Ò¿äµË´Ï´Ù</p>
+   <label>ÀÎÁõ¹øÈ£</label>
    <br>
-   <input id="usernum" type="text" name="user_mailnum" placeholder="4ìë¦¬">
+   <input id="usernum" type="text" name="user_mailnum" placeholder="4ÀÚ¸®">
    <br>
    <p id="hiddenemailnum"></p>
-   <input id="button" type="submit" value="ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°" onclick="return check()">
+   <input id="button" type="submit" value="ºñ¹Ğ¹øÈ£Ã£±â" onclick="return check()">
    
    
    </fieldset>
@@ -51,29 +46,29 @@
             },
             dataType: "text",
             success: function (result) {
-               if(result == ""){
-                  alert("ì •ë³´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
-               }else{
-                    alert("ì¸ì¦ë²ˆí˜¸ê°€ ì „ì†¡ë˜ì—ˆìŠµë‹ˆë‹¤");
-                   $("#random").val(result);
-               }
+            	if(result == ""){
+            		alert("Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
+            	}else{
+            		  alert("ÀÎÁõ¹øÈ£°¡ Àü¼ÛµÇ¾ú½À´Ï´Ù");
+          			$("#random").val(result);
+            	}
            
             },error: function () {
-               alert("ì •ë³´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
+            	alert("Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
                
             }
         })
     });
     
     function check(){
-       var user_mailnum = $("input[name='user_mailnum']").val();
-       var random = $("#random").val();
-       if(user_mailnum == random ){
-          return true;
-       }else{
-          alert("ì¸ì¦ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤");
-          return false;
-       }
+    	var user_mailnum = $("input[name='user_mailnum']").val();
+    	var random = $("#random").val();
+    	if(user_mailnum == random ){
+    		return true;
+    	}else{
+    		alert("ÀÎÁõ¹øÈ£°¡ Æ²·È½À´Ï´Ù");
+    		return false;
+    	}
     }
     
 </script>
@@ -84,10 +79,10 @@
 </form>
 </section>
 <!--center end-------------------------------------------------------------  -->
-   
+	
 
 <footer>
-   <jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 </footer>
 
 

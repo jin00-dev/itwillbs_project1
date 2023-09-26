@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Off The Lamp</title>
 <link rel="stylesheet" href="./css/userInfo.css">
+<script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 </head>
 <body>
 <c:if test="${empty sessionScope.user_id}">
@@ -23,7 +24,7 @@
 <main>
 	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
-		<input id="btn1" type="button" value="예매/취소내역"	onclick="location.href='./UserOrderBoardAction.me'">
+		<input id="btn1" type="button" value="예매/취소내역"	onclick="location.href='./MyPageMain.or'">
 		<input id="btn2" type="button" value="회원정보수정" style="background: gray;"	onclick="location.href='./UserInfoCheck.me'">
 		
 	</div>
@@ -48,38 +49,6 @@
 			</fieldset>
 	</div>
 	</form>
-
-
-	<!-- <table id="table">
-		<tr>
-			<td><h5>No.</h5></td>		
-			<td>예매번호</td>		
-			<td>영화이름</td>		
-			<td>예매날짜</td>		
-			<td>차 번호</td>		
-			<td>상태</td>		
-			<td>상세내역</td>		
-		</tr>
-		<tr>
-			<td>1</td>		
-			<td>123123</td>		
-			<td>오팬하이머</td>		
-			<td>2023.05.05</td>		
-			<td>12소5455</td>		
-			<td>결제완료</td>		
-			<td>상세내역</td>		
-		</tr>
-		<tr>
-			<td>1</td>		
-			<td>123123</td>		
-			<td>오팬하이머</td>		
-			<td>2023.05.05</td>		
-			<td>12소5455</td>		
-			<td>결제완료</td>		
-			<td>상세내역</td>		
-		</tr>
-		
-	</table> -->
 
 </main>
 <!--center end-------------------------------------------------------------  -->

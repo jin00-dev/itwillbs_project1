@@ -3,43 +3,36 @@
 <html>
 <link rel="stylesheet" href="./css/findId.css">
 <head>
-<title>Off The Lamp</title>
+<header>
+	<jsp:include page="/inc/topBar.jsp"></jsp:include>
+</header>
 
-</head>
-   <!--center -------------------------------------------------------  -->
-   <body>
-   
-   <header>
-   <jsp:include page="/inc/topBar.jsp"></jsp:include>
-	</header>
-
+	<!--center -------------------------------------------------------  -->
 <section id="center" class="center_o pt-2 pb-2">
    <section id="join_box">
    
-   <h1>아이디찾기</h1> 
+   <h1>���̵�ã��</h1> 
    </section>
    <form action="./UserFindIdAction.me" method="post">
    <fieldset id="join_wrap">
-   <label>이름</label>
+   <label>�̸�</label>
    <br>
-   <input id="A" type="text" name="user_name" placeholder="성명">
+   <input id="A" type="text" name="user_name" placeholder="����">
    <br>
    <p id="hiddenMsgName"></p>
-   <label>전화번호</label>
+   <label>��ȭ��ȣ</label>
    <br>
-   <input id="B" type="text" name="user_phone" placeholder="- 빼고 입력하세요">
+   <input id="B" type="text" name="user_phone" placeholder="- ���� �Է��ϼ���">
    <br>
    <p id="hiddenMsgPhone"></p>
-   <input id="button" type="submit" value="아이디찾기" onclick="return check()">
+   <input id="button" type="submit" value="���̵�ã��" onclick="return check()">
    </fieldset>
    
 </form>
 </section>
 <!--center end-------------------------------------------------------------  -->
-   <!-- footer아래로는 코드 금지 -->
-
-   <footer>
-   <jsp:include page="/inc/bottomBar.jsp"></jsp:include>
+<footer>
+	<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 </footer>
 
 

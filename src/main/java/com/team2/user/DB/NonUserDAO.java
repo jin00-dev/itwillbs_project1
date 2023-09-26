@@ -14,7 +14,7 @@ public class NonUserDAO {
 	ResultSet rs;
 	String sql;
 	// 비회원 로그인 ---> 성공시 예매 페이지로 이동
-	public int nonlogin(NonuserDTO dto) {
+	public int nonlogin(NonUserDTO dto) {
 		sql = "insert into non_user (nonuser_name,nonuser_phone,nonuser_pass) values(?,?,?)";
 		
 		conn = con.getConnection();
