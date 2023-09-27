@@ -9,6 +9,7 @@ import com.team2.user.DB.UserDAO;
 import com.team2.user.DB.UserDTO;
 import com.team2.util.Action;
 import com.team2.util.ActionForward;
+import com.team2.util.SHA256;
 
 public class UserDeleteAction implements Action {
 
@@ -16,9 +17,11 @@ public class UserDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
+		SHA256 sha = new SHA256();
 		
 		dto.setUser_id(req.getParameter("user_id"));
-		dto.setUser_pass(req.getParameter("user_pass"));
+		dto.setUser_pass(sha.encodSha256(req.getParameter("user_pass")));
+		
 		System.out.println(dto.getUser_id());
 		System.out.println(dto.getUser_pass());
 		

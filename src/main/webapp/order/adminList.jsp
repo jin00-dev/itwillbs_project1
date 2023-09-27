@@ -11,9 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Off The Lamp</title>
-<!-- <link href="./css/orderList.css" rel="stylesheet"> -->
 <link href="./css/userInfo.css" rel="stylesheet">
-<!-- <link href="./css/footer.css" rel=stylesheet> -->
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -37,29 +35,7 @@
 		
 	});
 </script>
-<!-- <style> -->
-			
-<!-- .modal { -->
-<!-- 	display: none; -->
-<!-- 	position: fixed; -->
-<!-- 	top: 0; -->
-<!-- 	left: 0; -->
-<!-- 	width: 100%; -->
-<!-- 	height: 100%; -->
-<!-- 	background-color: rgba(0, 0, 0, 0.7); -->
-<!-- } -->
 
-<!-- .modal-content { -->
-<!-- 	position: relative; -->
-<!-- 	margin: 10% auto; -->
-<!-- 	padding: 40px; -->
-<!-- 	background-color: gray; -->
-<!-- 	width: 400px; -->
-<!-- 	text-align: center; -->
-<!-- 	font-weight: bolder; -->
-<!-- } -->
-			
-<!-- 		</style> -->
 </head>
 <body>
 	<header>
