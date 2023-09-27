@@ -9,6 +9,7 @@
 <title>Off The Lamp</title>
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <link rel="stylesheet" href="./css/userInfo.css">
+<!-- <link rel="stylesheet" href="./css/listPage.css"> -->
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 </head>
 <body>
@@ -25,37 +26,37 @@
 <main>
 	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
-		<input id="btn1" type="button" value="예매관리"	onclick="location.href='./managerList.or'">
-		<input id="btn2" type="button" style="background: gray;" value="회원정보수정"	onclick="location.href='.AdminUserInfoBoardAction.me'">
-		<input id="btn2" type="button" value="대관문의"	onclick="location.href='./AdminRentInfoBoardAction.me'">
+		<input class="btn" type="button" value="예매관리"	onclick="location.href='./managerList.or'">
+		<input class="btn" type="button" style="background: gray;" value="회원정보수정"	onclick="location.href='.AdminUserInfoBoardAction.me'">
+		<input class="btn" type="button" value="대관문의"	onclick="location.href='./AdminRentInfoBoardAction.me'">
 	</div>
 	<div id="userInfo_box">
 		<div id="table_search">
 			<form action="AdminUserInfoBoardAction.me" method="post">
 				<input type="text" name="search" class="input_box" placeholder="회원 아이디를 입력해주세요.">
-				<input type="submit" value="검색" >
+				<input type="submit" value="검색" class="search" >
 			</form>
 		</div>
 		<c:set var="bno" value="${startRow-1 }"/>
 		<c:set var="bno1" value="-1"/>
 		<table id="table">
 			<tr>
-				<td>No.</td>
-				<td>성명</td>
-				<td>아이디</td>
-				<td>휴대폰 번호</td>
-				<td>가입날짜</td>
-				<td>예매내역</td>
-				<td>관리</td>
+				<td class="column">No.</td>
+				<td class="column">성명</td>
+				<td class="column">아이디</td>
+				<td class="column">휴대폰 번호</td>
+				<td class="column">가입날짜</td>
+				<td class="column">예매내역</td>
+				<td class="column">관리</td>
 			</tr>
 			<c:choose>
 				<c:when test="${!empty list }">
 				<c:forEach items="${list }" var="list">
 				<tr>
 					<td>${bno=bno+1 } </td>
-					<td >${list.user_name }</td>
-					<td >${list.user_id }</td>
-					<td>${fn:substring(list.user_phone,0,3)}-${fn:substring(list.user_phone,3,7)}-${fn:substring(list.user_phone,7,11)} </td>
+					<td>${list.user_name }</td>
+					<td>${list.user_id }</td>
+					<td>${list.user_phone}</td>
 					<td><fmt:formatDate value="${list.user_regdate }"/> </td>
 					<td>${list.user_orderCount }건</td>
 					<td id="openModalBtn${bno1=bno1+1}" class="openModalBtn">관리</td>
@@ -69,18 +70,18 @@
 		<div class="clear"></div>
 		<div id="page_control">
 			<c:if test="${startPage > pageBlock }">
-				<div>
-					<a href="./AdminUserInfoBoardAction.me?pageNum=${startPage-pageBlock }">Prev</a>
+				<div class="pageButtonBox">
+					<a href="./AdminUserInfoBoardAction.me?pageNum=${startPage-pageBlock }" class="pageButton">Prev</a>
 				</div>
 			</c:if>
 			<c:forEach begin="${startPage }" end="${endPage }" step="1" var="i">
-				<div>
-					<a href="./AdminUserInfoBoardAction.me?pageNum=${i }">${i}</a>
+				<div class="pageButtonBox">
+					<a href="./AdminUserInfoBoardAction.me?pageNum=${i }" class="pageButton">${i}</a>
 				</div>
 			</c:forEach>
 			<c:if test="${endPage < pageCount }">
-				<div>
-					<a href="./AdminUserInfoBoardAction.me?pageNum=${startPage+pageBlock }">Next</a>
+				<div class="pageButtonBox">
+					<a href="./AdminUserInfoBoardAction.me?pageNum=${startPage+pageBlock }" class="pageButton">Next</a>
 				</div>
 			</c:if>
 		</div>
@@ -95,16 +96,51 @@
 	<!-- 모달 출력필드 -->
 	<div id="MyModal" class="modal">
 	    <div class="modal-contents">
-	      <h2 id="p0"></h2>
-	      <p id="p1"></p>
-	      <p id="p2"></p>
-     	  <p id="p3"></p>
-	      <input id="user_typeChange" type="button" value="등급변경">
-	      <p id="p4"></p>
-	      <p id="p6"></p>
-	      <p id="p5"></p>
-	      <p id="p7"></p>
-	      <p id="p8"></p>
+	    	<table id="table">
+	    		<tr>
+	    			<th class="ttitle" colspan="4" id="p0"></th>
+	    		</tr>
+	    		<tr>
+					<td class="column">성 명</td>
+					<td id="p1"></td>
+
+					<td class="column2">예매 내역</td>
+					<td id="p7"></td>
+
+				</tr>
+				<tr>
+					<td class="column2">휴대폰 번호</td>
+					<td id="p3"></td>
+
+					<td class="column">차 번호</td>
+					<td id="p4"></td>
+
+				</tr>
+				<tr>
+					<td class="column2">가입 날짜</td>
+					<td id="p5" colspan="3"></td>
+				</tr>
+				<tr>
+					<td class="column2">접속 시간</td>
+					<td id="p6" colspan="3"></td>
+				</tr>
+				<tr>
+					<td class="column"> 회원등급</td>
+					<td id="p2" colspan="2"></td>
+					<td><input id="user_typeChange" type="button" value="등급변경"></td>
+				</tr>
+
+		      </table>
+<!-- 	      <h2 id="p0"></h2> -->
+<!-- 	      <p id="p1"></p> -->
+<!-- 	      <p id="p2"></p> -->
+<!--      	  <p id="p3"></p> -->
+<!-- 	      <input id="user_typeChange" type="button" value="등급변경"> -->
+<!-- 	      <p id="p4"></p> -->
+<!-- 	      <p id="p6"></p> -->
+<!-- 	      <p id="p5"></p> -->
+<!-- 	      <p id="p7"></p> -->
+<!-- 	      <p id="p8"></p> -->
 	      <input type="button" value="닫기" class="close">
 	    </div>
 	 </div>
@@ -129,21 +165,21 @@
   		choice=4
   	});
   	
-  	$('td[id^="openModalBtn"]').click(function(){
+  	$('td[id^="openModalBtn"]').css("cursor","pointer").click(function(){
 		$('#p0').text(jList[choice].user_id+'님의 회원정보입니다.');
-		$('#p1').text('성명 : '+jList[choice].user_name);
-		$('#p2').text('아이디 : '+jList[choice].user_id);
+		$('#p1').text(+jList[choice].user_name);
+// 		$('#p2').text(jList[choice].user_id);
 		if(jList[choice].user_type==0)
-			$('#p3').text('회원등급 : 일반회원');
+			$('#p2').text('일반회원');
 		if(jList[choice].user_type==1)
-			$('#p3').text('회원등급 : 사이트관리자');
+			$('#p2').text('이트관리자');
 		if(jList[choice].user_type==2)
-			$('#p3').text('회원등급 : 극장관리자');
-		$('#p4').text('휴대폰번호 : '+jList[choice].user_phone);
-		$('#p5').text('차 번호 : '+jList[choice].user_car_num);
-		$('#p6').text('가입 날짜 : '+jList[choice].user_regdate);
-		$('#p7').text('접속시간 : '+jList[choice].last_access);
-		$('#p8').text('예매내역 : '+jList[choice].user_orderCount+'건');
+			$('#p2').text('극장관리자');
+		$('#p3').text(jList[choice].user_phone);
+		$('#p4').text(jList[choice].user_car_num);
+		$('#p5').text(jList[choice].user_regdate);
+		$('#p6').text(jList[choice].last_access);
+		$('#p7').text(jList[choice].user_orderCount+'건');
   	});
 
   	//유저 등급변경 버튼
@@ -202,6 +238,12 @@
       $(".close").mouseover(function () {
 			$(this).css("color","red");
 	  });
+      $(".pageButton").mouseover(function () {
+			$(this).css("color","red");
+	  });
+      $(".btn").mouseover(function () {
+			$(this).css("color","red");
+	  });
       
       // 내릴때
       $(".openModalBtn").mouseleave(function () {
@@ -219,7 +261,12 @@
       $(".close").mouseleave(function () {
 			$(this).css("color","black");
 	  });
-
+      $(".pageButton").mouseleave(function () {
+			$(this).css("color","black");
+	  });
+      $(".btn").mouseleave(function () {
+			$(this).css("color","black");
+	  });
       // 닫기 버튼을 클릭하면 모달을 숨깁니다.
       closeBtn.click(function(){
         modal.css("display", "none");

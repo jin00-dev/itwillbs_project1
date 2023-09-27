@@ -24,8 +24,8 @@
 <main>
 	<h1>${sessionScope.user_id } 님 환영합니다</h1>
 	<div id="container">
-		<input class="btn" type="button" value="예매관리"	onclick="location.href='./managerList.or'">
-		<input class="btn" type="button" value="회원정보"	onclick="location.href='./AdminUserInfoBoardAction.me'">
+		<input class="btn" type="button" value="예매관리" onclick="location.href='./managerList.or'">
+		<input class="btn" type="button" value="회원정보" onclick="location.href='./AdminUserInfoBoardAction.me'">
 		<input class="btn" type="button" style="background: gray;" value="대관문의" onclick="location.href='./AdminRentInfoBoardAction.me'">
 	</div>
 	<div id="userInfo_box">
@@ -143,7 +143,7 @@
 	      </table>
 	      
 	      <input type="button" value="닫기" class="close">
-	    </div>
+	   	 </div>
 	 </div>
 	 
   <script>

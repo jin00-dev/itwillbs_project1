@@ -309,6 +309,25 @@ public class UserDAO {
 			con.closeDB(conn, rs, pstmt);
 		}
 	}// boardCount() end
+	public int userListCount(String user_id) {
+		sql = "select count(*) from user where user_id=?";
+		
+		try {
+			conn = con.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			rs = pstmt.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("errerM :" + e);
+			return -1;
+		} finally {
+			con.closeDB(conn, rs, pstmt);
+		}
+	}// boardCount() end
 	
 	// 유저 등급 바꾸기
 		public int updateUserType(int user_num, int chType) {
