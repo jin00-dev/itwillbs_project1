@@ -48,7 +48,7 @@ public class KakaoLoginAction implements Action {
 		if(idCh == true) {
 			result = dao.join(dto, isCertification);
 		}else {
-			result =-1;
+			result =2;
 		}
 		
 		resp.setContentType("text/html; charset=UTF-8");
