@@ -5,17 +5,24 @@
 <link href="./css/faqMain.css" rel="stylesheet">
 <link href="./css/listPage.css" rel="stylesheet">
 <title>Off The Lamp</title>
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/global.css" rel="stylesheet">
+<link href="./css/index.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"	rel="stylesheet">
+<script src="./js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+
+.hrhr{
+background-color: black;
+}
+</style>
 </head>
 <body>
-	<!-- 상단 바 고정 -->
-	<header>
-		<jsp:include page="/inc/topBar.jsp"></jsp:include>
-	</header>
-	<!-- 상단 바 고정 -->
 	<fieldset>
 		<form action="enfBoardAdd.bo?category=2&&user_id=${user_id}"
 			method="post">
 			<table class="boardContent">
+				<hr class = "hrhr">
 				<tr>
 					<th class="ttitle" colspan="3">FAQ 추가</th>
 				</tr>
