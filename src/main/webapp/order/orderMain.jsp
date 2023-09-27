@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,8 +15,9 @@
 	// 세션에서 가져오는 아이디값을 하나로 통일 - 비회원(아이디 : autoincrement 숫자)
 	//											- 회원(아이디 : 이메일형식 문자가반드시 포함돼있어야함.)
 	<%
-		String id = (String) session.getAttribute("id");
-		session.setAttribute("id", id);
+		String id = (String) session.getAttribute("user_id");
+		session.setAttribute("user_id", id);
+		System.out.println("user_id : "+id );
 	%>
 	
 	// jquery 시작
@@ -350,7 +352,7 @@ background-color: black;
 								<input type="hidden" name="car_type" id="car_type">
 								<input type="hidden" name="car_num" id="car_num">
 								<input type="hidden" name="price" id="price">
-								<input type="hidden" name="id" id="id">
+								<input type="hidden" name="id" id="user_id">
 								<input type="hidden" name="seat" id="seat">
 								<input type="hidden" name="choiceDate" id="choiceDate">
 								<input type="button" id="btn1" value="차량등록">

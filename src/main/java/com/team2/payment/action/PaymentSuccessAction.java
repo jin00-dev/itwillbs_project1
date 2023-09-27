@@ -22,7 +22,7 @@ public class PaymentSuccessAction implements Action {
 		String movie_name = request.getParameter("movie_name");
 		int price = Integer.parseInt(request.getParameter("price"));
 		String name = request.getParameter("name");
-		String phone = request.getParameter("phone");
+		
 		String region = request.getParameter("region");
 //		int user_num = Integer.parseInt(request.getParameter("user_num"));
 //		가져오는 데이터가 null인경우 int형으로 자료형변경시 numberFormatException이 발생.. 
@@ -32,7 +32,8 @@ public class PaymentSuccessAction implements Action {
 		String car_type = request.getParameter("car_type");
 		String car_num = request.getParameter("car_num");
 		String time = request.getParameter("time");
-		
+		System.out.println("M : time "+time);
+		String phone = request.getParameter("phone");
 		System.out.println("M : payment_id : "+payment_id);
 		System.out.println("M : order_id : "+order_id);
 		
@@ -51,8 +52,9 @@ public class PaymentSuccessAction implements Action {
 			System.out.println("M : 예매횟수 조회, 증가 성공");
 		} catch (NumberFormatException nfe) {
 			try {
-				int nonuser_id = Integer.parseInt(id);
-				dao.successNonuserOrder(order_id,nonuser_id,region,cinema,seat,movie_name,time,car_type,car_num);
+//				String nonuser_phone = id;	// 비회원 휴대폰번호
+//				dao.getNonuserInfo(nonuser_phone);
+				dao.successNonuserOrder(order_id,region,cinema,seat,movie_name,time,car_type,car_num);
 			} catch (NumberFormatException nfen) {
 				
 			}
@@ -61,5 +63,7 @@ public class PaymentSuccessAction implements Action {
 		
 		return null;
 	}
+	
+	
 
 }

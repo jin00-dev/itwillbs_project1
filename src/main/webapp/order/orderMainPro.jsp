@@ -12,12 +12,13 @@
 <link href="./css/pay_v1.css" rel="stylesheet">
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
-		<%
-			String id = (String)session.getAttribute("id");
-			session.setAttribute("id", id);
-		%>
+<%-- 		<% --%>
+// 			String id = (String)session.getAttribute("user_id");
+// 			session.setAttribute("user_id", id);
+<%-- 		%> --%>
 		
 		$(function(){		
+		console.log("main -> pro 세션아이디 : "+"${sessionScope.user_id}");
 					
 		function showSeat(){
 			
@@ -228,19 +229,21 @@
 		IMP.init('imp73450751');
 
 		function requestPay() {
+			console.log("${sessionScope.user_id}");
+			var id = "${sessionScope.user_id}";
 			var userInfo;
 			$.ajax({
 				// 비회원일때 회원일때 구분해야함.
 				url : "./getMemberInfo.or",
 				data : {
-					"id":"${sessionScope.id}",
+					"user_id":id,	// 
 					}, // 로그인을 하면 들어오게 해주는 값이라 합칠때 수정 필수!!!
 				success : function(data){
-					// 회원일때 name, phone, num | 비회원일때 name, phone
+					// 회원일때 name, phone, num | 비회원일때 name, id
 					info = data.split(",");
 					console.log(info[0]);
 					console.log(info[1]);
-					console.log(info[2]);	// 비회원일땐 info[2] - num 값이 undefined
+					console.log(info[2]);	
 					
 					var uniqeNum = info[1].substr(8,4);		// 주문번호는 개인의 휴대번호뒷자리에 + 랜덤숫자 2개
 					var a = Math.floor(Math.random()*100);	// 0.4897456136 -> 40.78411326 ->ㅡMath.floor(소수점부터제거)
@@ -262,6 +265,8 @@
 						console.log("주문번호 : "+rsp.merchant_uid);
 						console.log(rsp.imp_uid);
 						console.log(rsp.pay_method);
+						var time = "${param.time}";
+						console.log("pro time : "+time);
 						jQuery.ajax({
 							url : "./paymentSuccess.or",
 							method : "POST",
@@ -274,17 +279,18 @@
 								"movie_name" : "${param.movie}",
 								"price" : ${param.price},
  								"name" : info[0],
- 								"phone": info[1],
+ 								"phone": info[1],	
+ 								"nonphone":id,	
  								"region" : "${param.region}",
  								"user_num" : info[2],
- 								"id" : "${sessionScope.id}",
+ 								"id" : "${sessionScope.id}",		
  								"cinema" : "${param.cinema}",
  								"car_type" : "${param.car_type}",
  								"car_num" : "${param.car_num}",
  								"time" : "${param.time}",
  								"seat" : $('#seat').val()	// 바꿔야함.
 							},success:function(){
- 								var id = "${sessionScope.id}";
+ 								var id = "${sessionScope.user_id}";
  								if(id.indexOf('@') != -1){
  									alert("결제완료 마이페이지로 이동하겠습니다.");	
  									location.href="./MyPageMain.or";

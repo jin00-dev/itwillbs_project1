@@ -192,6 +192,7 @@ public class OrderDAO {
 
 	// 회원이 예매결제할시 필요한 회원이름, 회원휴대폰번호, 회원번호 가져오는 메서드
 	public UserDTO getMemberInfo(String user_id) {
+		System.out.println(" DAO user_id : "+user_id);
 		UserDTO dto = new UserDTO();
 		try {
 			con = getConnect();
@@ -204,6 +205,7 @@ public class OrderDAO {
 				dto.setUser_name(rs.getString(1));
 				dto.setUser_phone(rs.getString(2));
 				dto.setUser_num(rs.getInt(3));
+				System.out.println("DAO user_num : "+rs.getInt(3));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -214,17 +216,17 @@ public class OrderDAO {
 	}
 	
 	// 비회원이 예매결제시 필요한 비회원이름, 비회원휴대폰번호 가져오는 메서드
-	public NonUserDTO getNonuserInfo(int nonuser_id) {
+	public NonUserDTO getNonuserInfo(String nonuser_id) {
 		NonUserDTO dto = new NonUserDTO();
 		try {
 			con = getConnect();
-			sql = "select nonuser_name, nonuser_phone from non_user where nonuser_id=?";
+			sql = "select nonuser_name, nonuser_id from non_user where nonuser_phone=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, nonuser_id);
+			pstmt.setString(1, nonuser_id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				dto.setNonuser_name(rs.getString(1));
-				dto.setNonuser_phone(rs.getString(2));
+				dto.setNonuser_id(rs.getInt(2));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -286,24 +288,23 @@ public class OrderDAO {
 	}
 	
 	// 비회원일시 예매정보 insert 테이블
-	public void successNonuserOrder(int order_id,int nonuser_id,String region,String cinema,
+	public void successNonuserOrder(int order_id,String region,String cinema,
 			String seat,String movie_name,String time,String car_type,String car_num) {
 			
 			try {
 				con = getConnect();
-				sql = "insert into order_board (order_id,nonuser_id,region,cinema_name,seat,movie_name,"
+				sql = "insert into order_board (order_id,region,cinema_name,seat,movie_name,"
 						+ "order_date,order_state,screening_time,car_type,car_num)"
-						+ "values(?,?,?,?,?,?,now(),0,?,?,?)";
+						+ "values(?,?,?,?,?,now(),0,?,?,?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, order_id);
-				pstmt.setInt(2, nonuser_id);
-				pstmt.setString(3, region);
-				pstmt.setString(4, cinema);
-				pstmt.setString(5, seat);
-				pstmt.setString(6, movie_name);
-				pstmt.setString(7, time);
-				pstmt.setString(8, car_type);
-				pstmt.setString(9, car_num);
+				pstmt.setString(2, region);
+				pstmt.setString(3, cinema);
+				pstmt.setString(4, seat);
+				pstmt.setString(5, movie_name);
+				pstmt.setString(6, time);
+				pstmt.setString(7, car_type);
+				pstmt.setString(8, car_num);
 				pstmt.executeUpdate();
 				System.out.println("DAO : 회원예매테이블 정보생성완료(비회원)");
 			} catch (Exception e) {

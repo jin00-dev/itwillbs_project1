@@ -22,6 +22,9 @@ public class MemberInfo implements Action {
 		
 		String id = request.getParameter("user_id");
 		
+		int idd = id.indexOf('@');
+		System.out.println(idd);
+		
 		System.out.println("M : "+id);
 		
 		// 전달받은 id값으로 회원, 비회원을 구분해야함 - (회원일시 id에 무조건 문자가있음)(비회원일시 무조건 숫자만있음)
@@ -31,19 +34,19 @@ public class MemberInfo implements Action {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		
-		try {
-			int nonId = Integer.parseInt(id);
-			NonUserDTO dto = dao.getNonuserInfo(nonId);
-			response.getWriter().print(dto.getNonuser_name()+","+dto.getNonuser_phone());
+		if(idd == -1) {
+			NonUserDTO dto = dao.getNonuserInfo(id);
+			response.getWriter().print(dto.getNonuser_name()+","+id);
 			System.out.println("M : 비회원정보조회성공");
-			System.out.println("M : NonuserInfo : " + dto.getNonuser_name() + "," + dto.getNonuser_phone());
-
-		} catch (NumberFormatException nfe) {
+			System.out.println("M : NonuserInfo : " + dto.getNonuser_name() + ","+id);
+		}else {
 			UserDTO dto = dao.getMemberInfo(id);
-			response.getWriter().print(dto.getUser_name() + "," + dto.getUser_phone()+","+dto.getUser_num());
+			response.getWriter().print(dto.getUser_name() + "," +dto.getUser_phone()+","+dto.getUser_num());
 			System.out.println("M : 회원정보조회성공");
 			System.out.println("M : userInfo : " + dto.getUser_name() + "," + dto.getUser_phone()+","+dto.getUser_num());
 		}
+		
+		
 
 
 		return null;

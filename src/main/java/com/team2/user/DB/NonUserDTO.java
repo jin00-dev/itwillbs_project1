@@ -4,6 +4,7 @@ public class NonUserDTO {
 	private String nonuser_name;
 	private String nonuser_phone;
 	private String nonuser_pass;
+	private int nonuser_id;
 	
 	
 	public String getNonuser_name() {
@@ -24,6 +25,13 @@ public class NonUserDTO {
 	public void setNonuser_pass(String nonuser_pass) {
 		this.nonuser_pass = nonuser_pass;
 	}
+	public int getNonuser_id() {
+		return nonuser_id;
+	}
+	public void setNonuser_id(int nonuser_id) {
+		this.nonuser_id = nonuser_id;
+	}
 	
+
 	
 }
