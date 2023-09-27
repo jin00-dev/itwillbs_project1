@@ -45,6 +45,7 @@ public class UserLoginAction implements Action {
 			action.setPath("./Main.me");
 			action.setRedirect(true);
 		}
+		
 		return action;
 
 	}

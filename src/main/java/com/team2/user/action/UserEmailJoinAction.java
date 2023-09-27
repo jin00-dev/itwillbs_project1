@@ -41,7 +41,7 @@ public class UserEmailJoinAction implements Action{
 		}else {
 			out.print("");
 		}
-	
+		
 		return null;
 	}
 	

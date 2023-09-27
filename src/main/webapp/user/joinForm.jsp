@@ -188,13 +188,14 @@
 			$("#chId").css('color', 'red');
 			$('input[name="user_id"]').focus(); 
 			return false;
-		}else if($('#emailRand').val() != $('#random').val()){
-			$("#chEmailRand").text("인증번호를 다시 해주세요.");
-			$("#chEmailRand").css('color', 'red');
-			$('input[name="emailRand"]').focus();
-			$("input[name='isCertification']").val('true');
-			return false;
-		}else{
+		}
+// 		}else if($('#emailRand').val() != $('#random').val()){
+// 			$("#chEmailRand").text("인증번호를 다시 해주세요.");
+// 			$("#chEmailRand").css('color', 'red');
+// 			$('input[name="emailRand"]').focus();
+// 			$("input[name='isCertification']").val('true');
+// 			return false;
+		else{
 			$("#chId").text("");
 		}
 		/* 이름 유효성 검사 */
@@ -264,11 +265,11 @@
 		}
 		
 		/* 인증여부 체크 */
- 		if ($("input[name='isCertification']").val().trim() != 'true') {
-			alert('이메일 인증을 해주세요');
-			console.log($("input[name='isCertification']").val());
- 			return false;
- 		}
+//  		if ($("input[name='isCertification']").val().trim() != 'true') {
+// 			alert('이메일 인증을 해주세요');
+// 			console.log($("input[name='isCertification']").val());
+//  			return false;
+//  		}
 
 	}
 </script>

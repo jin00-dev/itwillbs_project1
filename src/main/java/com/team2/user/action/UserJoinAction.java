@@ -19,7 +19,7 @@ public class UserJoinAction implements Action {
 		req.setCharacterEncoding("UTF-8");
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
-		String isCertification = req.getParameter("isCertification");
+		String isCertification = "true";
 //		String imp_uid = req.getParameter("imp_uid");
 		SHA256 sha = new SHA256();
 
@@ -45,7 +45,7 @@ public class UserJoinAction implements Action {
 			out.println("location.href='./UserLogin.me';");
 			out.println("</script>");
 		}
-
+		
 		return null;
 	}
 	

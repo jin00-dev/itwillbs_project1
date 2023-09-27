@@ -42,7 +42,7 @@ public class UserEmailAction implements Action{
 			sendemail.generateAndSendEmail(random, user_email);
 			out.print(random);
 		}
-	
+		
 		return null;
 	}
 }

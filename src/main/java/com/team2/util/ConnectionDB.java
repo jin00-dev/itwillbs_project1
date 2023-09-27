@@ -35,8 +35,11 @@ public class ConnectionDB {
 	//자원 해제
 	public void closeDB(Connection conn, ResultSet rs, PreparedStatement pstmt) {
 		try {
+			if(conn != null )		
 			conn.close();
+			if(rs != null)
 			rs.close();
+			if(pstmt != null)
 			pstmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
