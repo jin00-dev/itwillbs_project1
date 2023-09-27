@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>Off The Lamp</title>
 <link href="./css/orderList.css" rel="stylesheet">
-<link href="./css/footer.css" rel=stylesheet>
+<!-- <link href="./css/footer.css" rel=stylesheet> -->
 <script src="./js/code.jquery.com_jquery-3.7.1.js"></script>
 <script type="text/javascript">
 
@@ -262,7 +262,7 @@
 		});
 	</script>
 	<footer>
-		<jsp:include page="/inc/bottomBarPix.jsp"></jsp:include>
+		<jsp:include page="/inc/bottomBar.jsp"></jsp:include>
 	</footer>
 </body>
 </html>
