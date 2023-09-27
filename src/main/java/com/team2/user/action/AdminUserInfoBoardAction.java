@@ -21,9 +21,15 @@ public class AdminUserInfoBoardAction implements Action {
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
 		UserDAO dao = new UserDAO();
-		
-		int bCount = dao.userListCount();
+		int bCount = 0;
 		String search = req.getParameter("search");
+		if (search == null || search.equals("")) {
+			bCount = dao.userListCount();
+		}else {
+			bCount = dao.userListCount(search);
+			System.out.println("bCount"+bCount);
+			
+		}
 		// 페이징처리-1 => Model
 		//////////////////////// 페이징처리-1//////////////////////////
 
