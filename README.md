@@ -1,55 +1,43 @@
 # 자동차 극장 소개 및 예매 사이트 
-> 아이티윌 부산 학원에서 진행된 1차 프로젝트로, 정보의 접근성이 떨어지는 자동차 극장의 위치 및 간단한 정보를 한 눈에 볼 수 있으며
-> <br>해당 자동차 극장의 영화를 예매하고 결제 할 수 있는 사이트 
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+> 아이티윌 부산 학원에서 진행한 프로젝트<br>
+> 자동차 극장의 위치 및 간단한 정보를 한눈에 볼 수 있으며 영화를 예매하고 결제할 수 있는 사이트를 구현한 JSP MVC 모델2 프로젝트
 
-한 두 문단으로 프로젝트 소개 글을 작성합니다.
+- 기간 : 2023.08.24 ~ 2023.09.27
+- 팀원 구성 : <b>박여진</b>, 김소예, 홍현주, 김예지, 장승권, 하종우
+- 역할 : 총괄 팀장으로써 팀원간의 의사소통, 프로젝트 설계, Git을 활용한 버전 관리 전반, 프로젝트 발표, 게시판 CRUD 구현,
+- 사용 기술
 
-![](../header.png)
+  <table border = 1>
+     <tr>
+        <td>백엔드 </td>
+        <td> JSP / Java / JQuery/ Ajax/ JSON  </td>
+     </tr>
+     <tr>
+        <td>프론트엔드 </td>
+        <td> HTML / CSS  </td>
+     </tr>
+     <tr>
+        <td>DB </td>
+        <td> MySQL  </td>
+     </tr>
+     <tr>
+        <td>서버 </td>
+        <td> Tomcat </td>
+     </tr>
+     <tr>
+        <td>API </td>
+        <td> 카카오 간편로그인 / 네이버 지도 / PortOne </td>
+     </tr>
+     <tr>
+        <td>협업 도구 </td>
+        <td> Git / Github / Notion / Discord  </td>
+     </tr>
+  </table>
+   
 
-## 설치 방법
+## 프로젝트 자료 
+- [프로젝트 ppt](https://drive.google.com/file/d/15zxT7guDY57XbQDC7Om5K1Oddz8oPTxv/view?usp=sharing)
+- [요구사항 명세서](https://docs.google.com/spreadsheets/d/121b-0Syd5_DSfEWAOKdMIVIs-jJyTUfOhzT2vW8vjnA/edit?usp=sharing)
+- [ERD](https://docs.google.com/spreadsheets/d/121b-0Syd5_DSfEWAOKdMIVIs-jJyTUfOhzT2vW8vjnA/edit?usp=sharing)
 
-OS X & 리눅스:
-
-```sh
-npm install my-crazy-module --save
-```
-
-윈도우:
-
-```sh
-edit autoexec.bat
-```
-
-## 사용 예제
-
-스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.
-
-_더 많은 예제와 사용법은 [Wiki][wiki]를 참고하세요._
-
-## 개발 환경 설정
-
-모든 개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성합니다.
-
-```sh
-make install
-npm test
-```
-
-## 업데이트 내역
-
-* 0.2.1
-    * 수정: 문서 업데이트 (모듈 코드 동일)
-* 0.2.0
-    * 수정: `setDefaultXYZ()` 메서드 제거
-    * 추가: `init()` 메서드 추가
-* 0.1.1
-    * 버그 수정: `baz()` 메서드 호출 시 부팅되지 않는 현상 (@컨트리뷰터 감사합니다!)
-* 0.1.0
-    * 첫 출시
-    * 수정: `foo()` 메서드 네이밍을 `bar()`로 수정
-* 0.0.1
-    * 작업 진행 중
