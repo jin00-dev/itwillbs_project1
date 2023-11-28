@@ -39,5 +39,5 @@
 ## 프로젝트 자료 
 - [프로젝트 ppt](https://drive.google.com/file/d/15zxT7guDY57XbQDC7Om5K1Oddz8oPTxv/view?usp=sharing)
 - [요구사항 명세서](https://docs.google.com/spreadsheets/d/121b-0Syd5_DSfEWAOKdMIVIs-jJyTUfOhzT2vW8vjnA/edit?usp=sharing)
-- [ERD](https://docs.google.com/spreadsheets/d/121b-0Syd5_DSfEWAOKdMIVIs-jJyTUfOhzT2vW8vjnA/edit?usp=sharing)
+- [ERD]([https://docs.google.com/spreadsheets/d/121b-0Syd5_DSfEWAOKdMIVIs-jJyTUfOhzT2vW8vjnA/edit?usp=sharing](https://drive.google.com/file/d/1CpGhDHFUAILwhrDFHKbwBACwU4BPW9W9/view?usp=sharing)https://drive.google.com/file/d/1CpGhDHFUAILwhrDFHKbwBACwU4BPW9W9/view?usp=sharing)
 
