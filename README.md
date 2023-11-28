@@ -27,7 +27,7 @@
      </tr>
      <tr>
         <td>API </td>
-        <td> 카카오 간편로그인 / 네이버 지도 / PortOne </td>
+        <td> 카카오 간편로그인 / 네이버 지도 / PortOne 결제 API </td>
      </tr>
      <tr>
         <td>협업 도구 </td>
