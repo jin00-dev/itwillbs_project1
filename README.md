@@ -11,11 +11,11 @@
   <table border = 1>
      <tr>
         <td>백엔드 </td>
-        <td> JSP / Java / JQuery / Ajax / JSON  </td>
+        <td> JSP / Java  </td>
      </tr>
      <tr>
         <td>프론트엔드 </td>
-        <td> HTML / CSS  </td>
+        <td> HTML / CSS / JavaScript / JQuery / Ajax / JSON  </td>
      </tr>
      <tr>
         <td>DB </td>
